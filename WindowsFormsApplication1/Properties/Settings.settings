@@ -1,0 +1,198 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WindowsFormsApplication1.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="battlemap" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4_4E</Value>
+    </Setting>
+    <Setting Name="mainteam" Type="System.String" Scope="User">
+      <Value Profile="(Default)">第一梯队</Value>
+    </Setting>
+    <Setting Name="supportteam" Type="System.String" Scope="User">
+      <Value Profile="(Default)">第三梯队</Value>
+    </Setting>
+    <Setting Name="Fix" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Fixmaxtime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Fixmintime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="resolution" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1280*720</Value>
+    </Setting>
+    <Setting Name="DebugMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WaitTime" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="FirstTimeU" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="HomePage0" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HomePage1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3ac2f7</Value>
+    </Setting>
+    <Setting Name="HomePage2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffffff</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">292829</Value>
+    </Setting>
+    <Setting Name="UrgentTask" Type="System.String" Scope="User">
+      <Value Profile="(Default)">de3500</Value>
+    </Setting>
+    <Setting Name="selfdiscipline" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8cca10</Value>
+    </Setting>
+    <Setting Name="normal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffba00</Value>
+    </Setting>
+    <Setting Name="AirPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">94c6f7</Value>
+    </Setting>
+    <Setting Name="Battle0" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ff5500</Value>
+    </Setting>
+    <Setting Name="TeamSelect" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffba00</Value>
+    </Setting>
+    <Setting Name="TeamListSelect0" Type="System.String" Scope="User">
+      <Value Profile="(Default)">313531</Value>
+    </Setting>
+    <Setting Name="LogisticsTeamColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffaa00</Value>
+    </Setting>
+    <Setting Name="BattleSelectColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">f7ae00</Value>
+    </Setting>
+    <Setting Name="TeamListSelect1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffba00</Value>
+    </Setting>
+    <Setting Name="TeamListSelect2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffba00</Value>
+    </Setting>
+    <Setting Name="RandomNotes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AutoTeam1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">第一梯队</Value>
+    </Setting>
+    <Setting Name="AutoTeam2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">第二梯队</Value>
+    </Setting>
+    <Setting Name="AutoTeam3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">第三梯队</Value>
+    </Setting>
+    <Setting Name="AutoTeam4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">第四梯队</Value>
+    </Setting>
+    <Setting Name="AutoMap" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1_4E</Value>
+    </Setting>
+    <Setting Name="Simulator" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="OsType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="supplies" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RoundInterval" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="BattleLoopUnLockWindows" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="BindWindowsType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="LogisticsTask1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">代号01</Value>
+    </Setting>
+    <Setting Name="LogisticsTask2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">代号14</Value>
+    </Setting>
+    <Setting Name="LogisticsTask3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">代号17</Value>
+    </Setting>
+    <Setting Name="LogisticsTask4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">代号22</Value>
+    </Setting>
+    <Setting Name="TeamListSelect3" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="dismantlegun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ChangeGun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SetMap" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LockWindows" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FixMinPercentage" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="FixMaxPercentage" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="FixType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="FindTeamSlectStrSim" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="FindTeamSlectStrColorOffset" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="SetMapType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCapX1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCapX2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCapY1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCapY2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCheckX1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCheckX2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCheckY1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCheckY2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="SimulatorHomeCheckTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="GameIconX" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">343</Value>
+    </Setting>
+    <Setting Name="GameIconY" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">203</Value>
+    </Setting>
+    <Setting Name="Team_SerrorTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
