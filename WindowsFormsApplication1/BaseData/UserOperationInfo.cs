@@ -8,23 +8,13 @@ namespace WindowsFormsApplication1.BaseData
 {
     public class UserOperationInfo//模板
     {
-        //public static string LogisticsTask1 = Properties.Settings.Default.LogisticsTask1;//后勤任务1名称
-        //public static string LogisticsTask2 = Properties.Settings.Default.LogisticsTask2;//后勤任务
-        //public static string LogisticsTask3 = Properties.Settings.Default.LogisticsTask3;//后勤任务
-        //public static string LogisticsTask4 = Properties.Settings.Default.LogisticsTask4;//后勤任务
-        //public static double RT1 = 0, RT2 = 0, RT3 = 0, RT4 = 0;//后勤任务时间
-        //public static bool RT1_Start = false, RT2_Start = false, RT3_Start = false, RT4_Start = false;
-        //public static bool RT1_NeedToWait = false, RT2_NeedToWait = false, RT3_NeedToWait = false, RT4_NeedToWait = false;
-        //public static string LogisticsTeam1 = "第五梯队";//后勤任务小队
-        //public static string LogisticsTeam2 = "第六梯队";//后勤任务
-        //public static string LogisticsTeam3 = "第七梯队";//后勤任务
-        //public static string LogisticsTeam4 = "第八梯队";//后勤任务
+
 
         public string OperationName ;
         public string OperationTeamName;
         public double OperationTotalTime;
         public int OperationLastTime = -1;
-        public bool OperationState;//是否在运行
+        public bool OperationUsingState=false;//是否在运行
         public bool OperationNeedTowait=false;
         public bool Added = false;
         public bool NeedToRecieve = false;
@@ -42,6 +32,7 @@ namespace WindowsFormsApplication1.BaseData
             }
             else
             {
+                OperationUsingState = true;
                 Added = false;
                 OperationNeedTowait = false;
 

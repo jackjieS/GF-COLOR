@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Battle));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -85,8 +87,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label26 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -135,6 +135,22 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "普通作战";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(140, 187);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(37, 21);
+            this.textBox8.TabIndex = 133;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(11, 191);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(101, 12);
+            this.label26.TabIndex = 132;
+            this.label26.Text = "梯队选取错误(秒)";
             // 
             // checkBox6
             // 
@@ -256,7 +272,9 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "0_1",
             "0_4",
+            "3_4E",
             "5_4",
             "5_4E"});
             this.comboBox1.Location = new System.Drawing.Point(70, 9);
@@ -756,22 +774,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "测试";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(11, 191);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(101, 12);
-            this.label26.TabIndex = 132;
-            this.label26.Text = "梯队选取错误(秒)";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(140, 187);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(37, 21);
-            this.textBox8.TabIndex = 133;
             // 
             // Battle
             // 

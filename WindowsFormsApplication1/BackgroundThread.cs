@@ -394,7 +394,7 @@ namespace WindowsFormsApplication1
                             }
                         case "12":
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s() )
                                 {
                                     for (int i = 0; i < 4; i++)
                                     {

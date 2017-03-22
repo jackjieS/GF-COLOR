@@ -35,9 +35,9 @@ namespace TaskList
             WriteLog.WriteError("初始化成功*****************************");
             string mcode = im.eyLogin.GetMachineCode();
 
-            if (im.commonHelp.checkT(mcode) == true)
-                //if (true)
-            {
+            //if (im.commonHelp.checkT(mcode) == true)
+                if (true)
+                {
 
                 //模拟器选择
                 int dm_ret = 0;
@@ -138,10 +138,10 @@ namespace TaskList
 
         private void button2_Click(object sender, EventArgs e)//停止战斗任务从尾开始
         {
-            if (im.gameData.User_battleInfo[3].Used == true) { im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; }
-            if (im.gameData.User_battleInfo[2].Used == true) { im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; }
-            if (im.gameData.User_battleInfo[1].Used == true) { im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; }
-            if (im.gameData.User_battleInfo[0].Used == true) { im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; }
+            if (im.gameData.User_battleInfo[3].Used == true) { im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; return; }
+            if (im.gameData.User_battleInfo[2].Used == true) { im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; return; }
+            if (im.gameData.User_battleInfo[1].Used == true) { im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; return; }
+            if (im.gameData.User_battleInfo[0].Used == true) { im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; return; }
         }
 
 
@@ -183,14 +183,13 @@ namespace TaskList
 
         public void button6_Click(object sender, EventArgs e)//紧急停止
         {
-            //im.CompleteMisson.Abort();
-            //im.CountDown.Abort();//倒计时
-            //button5.Enabled = false;
-            //button6.Enabled = false;
-            //button1.Enabled = true;
-            //im.mouse.BindWindowS(dmae, 0);
-
-            //im.gametasklist.Clear();
+            im.CompleteMisson.Abort();
+            im.CountDown.Abort();//倒计时
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button1.Enabled = true;
+            im.mouse.BindWindowS(dmae, 0);
+            im.gametasklist.Clear();
             WindowsFormsApplication1.BaseData.SystemInfo.ThreadTCase=1;
 
 
@@ -305,7 +304,8 @@ namespace TaskList
 
         private void button14_Click_2(object sender, EventArgs e)
         {
-            im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[0]);
+            //im.mouse.MapSet(dmae, 891, 99, 544, 96, 499, 195, 171, 701);
+            MessageBox.Show(im.mouse.CheckSystemActivistPage(dmae).ToString());
         }
 
         private void Form1_Load(object sender, EventArgs e)//初始化

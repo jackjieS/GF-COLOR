@@ -24,11 +24,15 @@ namespace WindowsFormsApplication1
         {
             foreach (var item in im.gameData.User_operationInfo)
             {
-                if (item.Value.OperationNeedTowait == true)
+                if(item.Value.OperationUsingState == true)
                 {
-                    if(item.Value.Added==false)
-                    return true;
+                    if (item.Value.OperationNeedTowait == true)
+                    {
+                        if (item.Value.Added == false)
+                            return true;
+                    }
                 }
+
 
             }
 
