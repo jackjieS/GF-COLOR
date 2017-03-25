@@ -1033,13 +1033,16 @@ namespace testdm
 
             //判断有多少个在修复，剩余空槽有多少;
 
-            mouse.CheckFixBox(dmae,ref EmptyFixBox);
+            while (EmptyFixBox.Any()==false)
+            {
+                mouse.CheckFixBox(dmae, ref EmptyFixBox);
+            }
 
             //读取修复槽完毕
 
-            //开始读取修复数量
+                //开始读取修复数量
 
-            mouse.OpenFixBox(dmae, EmptyFixBox[0]);
+                mouse.OpenFixBox(dmae, EmptyFixBox[0]);
             mouse.delayTime(1);
 
             int dm_ret0 = dmae.CmpColor(716, 510, "ffffff", 1);//返回

@@ -75,6 +75,20 @@ namespace WindowsFormsApplication1
             }
 
         }
+        public bool CheckClientSize(DmAe dmae)
+        {
+            object width, height;
+            dmae.GetClientSize(BaseData.SystemInfo.GameWindowsHwnd, out width, out height);
+
+            if (Convert.ToInt32(width) != 1280 || Convert.ToInt32(height) != 720)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
 
 

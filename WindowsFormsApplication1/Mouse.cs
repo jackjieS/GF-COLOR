@@ -299,7 +299,7 @@ namespace testdm
                             }
                             else
                             {
-                                dmae.KeyDown(17);
+                                //dmae.KeyDown(17);
                                 dmae.MoveTo(x4, y4);
                                 tempx4 = x4;
                                 //检测突发情况（部署小队）
@@ -325,7 +325,7 @@ namespace testdm
                                     if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0 && dmae.CmpColor(x2, y3, "ffffff", 1) == 0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
                                     {
                                         delayTime(2);
-                                        dmae.KeyUp(17);
+                                        //dmae.KeyUp(17);
                                         return;
                                     }
                                 }

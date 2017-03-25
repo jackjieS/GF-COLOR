@@ -36,13 +36,18 @@ namespace TaskList
             string mcode = im.eyLogin.GetMachineCode();
 
             //if (im.commonHelp.checkT(mcode) == true)
-                if (true)
-                {
+            if (true)
+            {
 
                 //模拟器选择
                 int dm_ret = 0;
                 dm_ret = dmae.BindWindow();
                 dmae.SetDict();//设置系统路径和字典
+
+                if (im.commonHelp.CheckClientSize(dmae) == false)
+                {
+                    MessageBox.Show(" 当前分辨率有问题，脚本将会出错。 ");
+                }
 
 
                 if (dm_ret == 1)
@@ -185,6 +190,8 @@ namespace TaskList
         {
             im.CompleteMisson.Abort();
             im.CountDown.Abort();//倒计时
+            im.ThreadT.Abort();
+            im.MonitorPic.Abort();
             button5.Enabled = false;
             button6.Enabled = false;
             button1.Enabled = true;
@@ -305,7 +312,7 @@ namespace TaskList
         private void button14_Click_2(object sender, EventArgs e)
         {
             //im.mouse.MapSet(dmae, 891, 99, 544, 96, 499, 195, 171, 701);
-            MessageBox.Show(im.mouse.CheckSystemActivistPage(dmae).ToString());
+            //MessageBox.Show(im.mouse.CheckSystemActivistPage(dmae).ToString());
         }
 
         private void Form1_Load(object sender, EventArgs e)//初始化
