@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="BackgroundThread.cs" />
     <Compile Include="BaseData\FixGirlsInfo.cs" />
+    <Compile Include="BaseData\LMainColor.cs" />
     <Compile Include="BaseData\TaskList.cs" />
     <Compile Include="BaseData\UserBattleInfo.cs" />
     <Compile Include="BaseData\SystemInfo.cs" />
