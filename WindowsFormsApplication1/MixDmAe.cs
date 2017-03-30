@@ -142,9 +142,7 @@ namespace WindowsFormsApplication1
                 case 2:
                     {
 
-                        //return ae.BindWindow(variables.GameWindowsHwnd, "ogl1", "windows", "windows", 0);
-
-                        return -2;
+                        return dm.BindWindow(BaseData.SystemInfo.GameWindowsHwnd, "dx2", "windows", "windows", 0);
                     }
                 default:
                     break;
@@ -218,8 +216,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.UnBindWindow();
-                        return 0;
+                        return dm.UnBindWindow();
                     }
                 default:
                     return 0;
@@ -236,8 +233,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.SetWindowSize(hwnd, width, height);                       
-                        return 0;
+                        return dm.SetWindowSize(hwnd, width, height);
                     }
                 default:
                     break;
@@ -264,8 +260,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.GetClientSize(hwnd, ref width, ref height);
-                        return 0;
+                        return dm.GetClientSize(hwnd, out width, out height);
                     }
                 default:
                     return 0;
@@ -282,8 +277,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.Capture(x1, y1, x2, y2, file);
-                        return 0;
+                        return dm.Capture(x1, y1, x2, y2, file);
                     }
                 default:
                     return 0;
@@ -300,8 +294,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.UnBindWindow();
-                        return 0;
+                        return dm.SetPath(path);
                     }
                 default:
                     return 0;
@@ -326,10 +319,12 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        dmae = 0;
-                        //dmae = ae.SetDict(0, ae.GetDir(4) + @"\Resources\dm_soft0.txt");
-                        //dmae = ae.SetDict(1, ae.GetDir(4) + @"\Resources\dm_soft1.txt");
-                        //dmae = ae.SetDict(2, ae.GetDir(4) + @"\Resources\dm_soft2.txt");
+                        dmae = dm.SetPath(Application.StartupPath);
+                        if (dmae == 1) {; } else { WriteLog.WriteError("设置路径失败"); }
+                        dmae = dm.SetDict(0, @"\Resources\dm_soft0.txt");
+                        dmae = dm.SetDict(1, @"\Resources\TeamList.txt");
+                        dmae = dm.SetDict(2, @"\Resources\dm_soft2.txt");
+                        dmae = dm.SetDict(3, @"\Resources\LTeamList.txt");
                         if (dmae == 1) {; } else { WriteLog.WriteError("初始化字典失败"); }
                         if (dmae == 1) { return true; } else { return false; }
                     }
@@ -351,10 +346,9 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-
-                        //dmae = ae.UseDict(x);
-                        //if (dmae == 1) {; } else { WriteLog.WriteError("字典切换失败"); return 0; }
-                        return 0;
+                        dmae = dm.UseDict(x);
+                        if (dmae == 1) {; } else { WriteLog.WriteError("字典设置失败"); return 0; }
+                        return 1;
                     }
                 default:
                     return 0;
@@ -371,8 +365,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.MoveTo(x, y);
-                        return 0;
+                        return dm.MoveTo(x, y);
                     }
                 default:
                     return 0;
@@ -390,8 +383,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.WheelDown();
-                        return 0;
+                        return dm.WheelDown();
                     }
                 default:
                     return 0;
@@ -409,8 +401,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.WheelUp();
-                        return 0;
+                        return dm.WheelUp();
                     }
                 default:
                     return 0;
@@ -428,8 +419,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.KeyDown(vk_code);
-                        return 0;
+                        return dm.KeyDown(vk_code);
                     }
                 default:
                     return 0;
@@ -447,8 +437,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.KeyUp(vk_code);
-                        return 0;
+                        return dm.KeyUp(vk_code);
                     }
                 default:
                     return 0;
@@ -465,8 +454,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.LeftDown();
-                        return 0;
+                        return dm.LeftDown();
                     }
                 default:
                     return 0;
@@ -482,8 +470,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.RightDown();
-                        return 0;
+                        return dm.RightDown();
                     }
                 default:
                     return 0;
@@ -499,8 +486,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.RightUp();
-                        return 0;
+                        return dm.RightUp();
                     }
                 default:
                     return 0;
@@ -516,8 +502,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.LeftUp();
-                        return 0;
+                        return dm.LeftUp();
                     }
                 default:
                     return 0;
@@ -534,8 +519,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.GetColor(x, y);
-                        return "";
+                        return dm.GetColor(x, y);
                     }
                 default:
                     return "";
@@ -553,8 +537,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.FindColor(x1, y1, x2, y2, color, sim, dir, ref intX, ref intY);
-                        return 0;
+                        return dm.FindColor(x1, y1, x2, y2, color, sim, dir, out intX, out intY);
                     }
                 default:
                     return 0;
@@ -571,8 +554,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.LeftUp();
-                        return 0;
+                        return dm.LoadPic(all_pic);
                     }
                 default:
                     return 0;
@@ -591,8 +573,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.CmpColor(x, y, color, sim);
-                        return -1;
+                        return dm.FindPic(x1, y1, x2, y2, pic_name, delta_color, sim, dir, out intX, out intY);
                     }
                 default:
                     return -1;
@@ -609,8 +590,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.CmpColor(x, y, color, sim);
-                        return 1;
+                        return dm.CmpColor(x, y, color, sim);
                     }
                 default:
                     return 1;
@@ -631,8 +611,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.FindStr(x1, y1, x2, y2, str, color_format, sim, ref intX, ref intY);
-                        return -1;
+                        return dm.FindStr(x1, y1, x2, y2, str, color_format, sim, out intX, out intY);
                     }
                 default:
                     return -1;
@@ -650,8 +629,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        return 0;
-                        //return ae.FindStrFast(x1, y1, x2, y2, str, color_format, sim, ref intX, ref intY);
+                        return dm.FindStrFast(x1, y1, x2, y2, str, color_format, sim, out intX, out intY);
                     }
                 default:
                     return 0;
@@ -668,8 +646,7 @@ namespace WindowsFormsApplication1
                     }
                 case 2:
                     {
-                        //return ae.Ocr(x1, y1, x2, y2, color_format, sim);
-                        return "";
+                        return dm.Ocr(x1, y1, x2, y2, color_format, sim);
                     }
                 default:
                     return "";
@@ -685,9 +662,8 @@ namespace WindowsFormsApplication1
                 }
             case 2:
                 {
-                    //return ae.Ocr(x1, y1, x2, y2, color_format, sim);
-                    return "";
-                }
+                        return dm.GetAveRGB(x1, y1, x2, y2);
+                    }
             default:
                 return "";
             }

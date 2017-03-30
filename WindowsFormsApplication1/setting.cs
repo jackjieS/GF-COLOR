@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
 
             //地图缩放文字表达
             if (Properties.Settings.Default.SetMapType == 0) { label14.Text = "右键平移"; }
-            if (Properties.Settings.Default.SetMapType == 1) { label14.Text = "右键加滚动滑轮"; }
+            if (Properties.Settings.Default.SetMapType == 1) { label14.Text = "ctrl加滚动滑轮"; }
 
             //地图缩放选项
             comboBox4.SelectedIndex = Properties.Settings.Default.SetMapType;

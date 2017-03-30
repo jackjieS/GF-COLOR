@@ -288,62 +288,144 @@ namespace testdm
 
 
                     }
-                case 1://右键加滚动滑轮
+                case 1://ctrl加滚动滑轮
                     {
-                        int tempx4 = x4, tempy4 = y4;
+
                         while (true)
                         {
-                            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0 && dmae.CmpColor(x2, y2, "ffffff", 1) == 0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
+
+                            dmae.KeyUp(17);
+                            dmae.KeyDown(17);
+                            dmae.MoveTo(x4, y4);
+                            for (int x00= 0; x00 < 100; x00++)
                             {
-                                return;
-                            }
-                            else
-                            {
-                                //dmae.KeyDown(17);
-                                dmae.MoveTo(x4, y4);
-                                tempx4 = x4;
-                                //检测突发情况（部署小队）
-                                if (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                                dmae.WheelDown();
+                                dmae.MoveTo(x4+x00*2, y4);
+                                delayTime(0.03, 1);
+
+                                if (dmae.CmpColor(x1, y1, "ffffff", 1)==0&& dmae.CmpColor(x2, y2, "ffffff", 1) ==0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
                                 {
+                                    goto end;
+                                }
+
+                                if (CheckTeamSlectPage(dmae) == 0)
+                                {
+                                    //检测突发情况梯队列表
+                                    dmae.KeyUp(17);
+                                    while(CheckTeamSlectPage(dmae) == 0)
+                                    {
+                                        LeftClick(dmae, 906, 614, 1045, 664);
+                                        delayTime(1);
+                                    }
+                                    dmae.MoveTo(x4 + x00 * 2, y4);
+                                    dmae.KeyDown(17);
+                                }
+
+                                if(dmae.CmpColor(558, 489, "ffffff", 0.9)==0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                                {                            
+                                    //检测突发情况
+                                    dmae.KeyUp(17);
                                     while (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
                                     {
                                         LeftClick(dmae, 564, 496, 708, 545);
                                         delayTime(1);
                                     }
-
-                                }
-                                while (tempx4 < 1000)
-                                {
-                                    delayTime(0.1, 1);
-                                    dmae.WheelDown();
-
-                                    tempx4 += 5;
-                                    if (tempx4 > 1000)
+                                    dmae.KeyDown(17);
+                                    if ((x3 - 10) > 0)
                                     {
-                                        break;
-                                    }
-                                    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0 && dmae.CmpColor(x2, y3, "ffffff", 1) == 0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
-                                    {
-                                        delayTime(2);
-                                        //dmae.KeyUp(17);
-                                        return;
+                                        x3 -= 10;
+                                        dmae.MoveTo(x4, y4);
                                     }
                                 }
-
-
-
                             }
-
                         }
+                        end: dmae.KeyUp(17);
+
+                        if (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                        {
+                            //检测突发情况
+                            while (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                            {
+                                LeftClick(dmae, 564, 496, 708, 545);
+                                delayTime(1);
+                            }
+                        }
+                        if (CheckTeamSlectPage(dmae) == 0)
+                        {
+                            //检测突发情况梯队列表
+                            while (CheckTeamSlectPage(dmae) == 0)
+                            {
+                                LeftClick(dmae, 906, 614, 1045, 664);
+                                delayTime(1);
+                            }
+                        }
+
+
+
+                        break;
+
+
+                        //int tempx4 = x4, tempy4 = y4;
+                        //while (true)
+                        //{
+                        //    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0 && dmae.CmpColor(x2, y2, "ffffff", 1) == 0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
+                        //    {
+                        //        return;
+                        //    }
+                        //    else
+                        //    {
+                        //        dmae.KeyDown(17);
+                        //        dmae.MoveTo(x4, y4);
+                        //        tempx4 = x4;
+                        //        //检测突发情况（部署小队）
+                        //        if (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                        //        {
+                        //            while (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                        //            {
+                        //                LeftClick(dmae, 564, 496, 708, 545);
+                        //                delayTime(1);
+                        //            }
+
+                        //        }
+                        //        while (tempx4 < 1280)
+                        //        {
+                        //            delayTime(0.5, 1);
+                        //            dmae.WheelDown();
+
+                        //            if (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                        //            {
+                        //                while (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                        //                {
+                        //                    LeftClick(dmae, 564, 496, 708, 545);
+                        //                    delayTime(1);
+                        //                }
+
+                        //            }
+
+
+                        //            tempx4 += 5;
+                        //            if (tempx4 > 1280)
+                        //            {
+                        //                break;
+                        //            }
+
+                        //            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0 && dmae.CmpColor(x2, y3, "ffffff", 1) == 0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
+                        //            {
+                        //                delayTime(2);
+                        //                dmae.KeyUp(17);
+                        //                return;
+                        //            }
+                        //        }
+
+
+
+                        //    }
+
+                        //}
                     }
 
                 default:
                     {
-
-
-
-
-
                         dmae.KeyUp(17);
                         dmae.KeyDown(17);
                         while (dm_ret1 == 1 || dm_ret2 == 1 || dm_ret5 == 1) 
@@ -2060,20 +2142,17 @@ namespace testdm
 
         public void ClosMissionHelp (DmAe dmae)
         {
-            int dm_Ret0 = CheckMissionHelp(dmae);
 
-            while (dm_Ret0 == 1)
+            while (CheckMissionHelp(dmae) == 1)
             {
                 delayTime(1, 1);
-                dm_Ret0 = CheckMissionHelp(dmae);
             }
 
 
-            while (dm_Ret0 ==0)
+            while (CheckMissionHelp(dmae) == 0)
             {
                 LeftClick(dmae, 170, 115, 260, 155);
                 delayTime(1,1);
-                dm_Ret0 = CheckMissionHelp(dmae);
             }
         }
 
@@ -4733,6 +4812,23 @@ namespace testdm
 
         }
 
+        public bool CheckLsystemAgain(DmAe dmae)
+        {
+
+            for(int x1 = 446, y1 = 463; x1 <= 610; x1++)
+            {
+                if (dmae.GetColor(x1, y1) != "ffffff") return false;
+            }
+            for(int x1 = 611, y1 = 463; y1 <= 511; y1++)
+            {
+                if (dmae.GetColor(x1, y1) != "ffffff") return false;
+            }
+            for(int x1 = 446, y1 = 526; x1 <= 596; x1++)
+            {
+                if (dmae.GetColor(x1, y1) != "ffffff") return false;
+            }
+            return true;
+        }
 
         public int CheckMissionHelp(DmAe dmae, int x1 = 164, int y1 = 106, int x2 = 270, int y2 = 106, int x3 = 259, int y3 = 162)
         {

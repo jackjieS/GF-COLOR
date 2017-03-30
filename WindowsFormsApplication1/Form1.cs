@@ -312,56 +312,60 @@ namespace TaskList
 
         private void button14_Click_2(object sender, EventArgs e)
         {
-            int y=0;
-            //317,103
-            //86
-            for(int y1 = 103; y1 < 720; y1++)
-            {
-                string tempcolor1 = dmae.GetColor(317, y1);
-                if (tempcolor1 == "ffffff")
-                {
-                    for(int y2 = y1; y2 <= y1 + 68; y2++)
-                    {
-                        int result = dmae.CmpColor(317, y2,"ffffff",1);
-                        if (result == 0)//0=颜色匹配
-                        {
-                            if (y2 == y1 + 68)
-                            {
-                                y = y1;
-                                goto a;
-                            }
-                        }
-                    }
-                }
-            }
+            //im.mouse.MapSet(dmae, 905, 571, 904, 566, 961, 566, 88, 613);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+            im.mouse.MapSet(dmae, 183, 121, 751, 172, 571, 473, 88, 613);
+            //int y=0;
+            ////317,103
+            ////86
+            //for(int y1 = 103; y1 < 720; y1++)
+            //{
+            //    string tempcolor1 = dmae.GetColor(317, y1);
+            //    if (tempcolor1 == "ffffff")
+            //    {
+            //        for(int y2 = y1; y2 <= y1 + 68; y2++)
+            //        {
+            //            int result = dmae.CmpColor(317, y2,"ffffff",1);
+            //            if (result == 0)//0=颜色匹配
+            //            {
+            //                if (y2 == y1 + 68)
+            //                {
+            //                    y = y1;
+            //                    goto a;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
 
-            a: List<LMainColor> Lmaincolor = new List<LMainColor>();
-            Lmaincolor.Add(new LMainColor("", 0));
-            string tempcolor;
-            for (int y1 = y; y1 <= y+69; y1++)
-            {
-                for (int x1 = 256; x1 <= 314; x1++)
-                {
-                    tempcolor = dmae.GetColor(x1, y1);
-                    for (int i = 0; i < Lmaincolor.Count(); i++)
-                    {
-                        if (tempcolor == Lmaincolor[i].Color)
-                        {
-                            Lmaincolor[i].Count++;
-                            break;
-                        }
-                        if (i+1 == Lmaincolor.Count())
-                        {
-                            Lmaincolor.Add(new LMainColor(tempcolor,1));
-                            break;
-                        }
-                    }
-                }
-            }
-            Lmaincolor.Sort((LMainColor l1, LMainColor l2) =>
-            {
-                return l2.Count.CompareTo(l1.Count);
-            });
+            //a: List<LMainColor> Lmaincolor = new List<LMainColor>();
+            //Lmaincolor.Add(new LMainColor("", 0));
+            //string tempcolor;
+            //for (int y1 = y; y1 <= y+69; y1++)
+            //{
+            //    for (int x1 = 256; x1 <= 314; x1++)
+            //    {
+            //        tempcolor = dmae.GetColor(x1, y1);
+            //        for (int i = 0; i < Lmaincolor.Count(); i++)
+            //        {
+            //            if (tempcolor == Lmaincolor[i].Color)
+            //            {
+            //                Lmaincolor[i].Count++;
+            //                break;
+            //            }
+            //            if (i+1 == Lmaincolor.Count())
+            //            {
+            //                Lmaincolor.Add(new LMainColor(tempcolor,1));
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
+            //Lmaincolor.Sort((LMainColor l1, LMainColor l2) =>
+            //{
+            //    return l2.Count.CompareTo(l1.Count);
+            //});
+
+
 
         }
 

@@ -45,24 +45,46 @@ namespace WindowsFormsApplication1
                         //如果当前队列任务非空闲则加入开始后勤任务到最后(因为当前任务结束退到主页会检测，添加接收后期任务，故当前不需要添加接收后勤任务)
                         //如果当前队列任务是空闲则加入接收和开始后勤任务
 
-                        if (im.gametasklist.Any())
+                        if (im.gametasklist.Any() && (im.gametasklist[0].TaskNumber!=98))
                         {
                             im.gameData.User_operationInfo[i].ReceiveRightNow = true;
                         }
                         else
                         {
+                            //switch (i)
+                            //{
+                            //    case 0:
+                            //        {
+                            //            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                            //            im.gameData.User_operationInfo[i].Added = true;
+                            //            break;
+                            //        }
+                            //    case 1:
+                            //        {
+                            //            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                            //            im.gameData.User_operationInfo[i].Added = true;
+                            //            break;
+                            //        }
+                            //    case 2:
+                            //        {
+                            //            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                            //            im.gameData.User_operationInfo[i].Added = true;
+                            //            break;
+                            //        }
+                            //    case 3:
+                            //        {
+                            //            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                            //            im.gameData.User_operationInfo[i].Added = true;
+                            //            break;
+                            //        }
+                            //    default:
+                            //        break;
+                            //}
                             im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                            im.gameData.User_operationInfo[i].OperationLastTime =im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName,1);
                             im.gameData.User_operationInfo[i].Added = true;
                         }
-                        switch (i)
-                        {
-                            case 0: { im.gametasklist.Add(BaseData.TaskList.StartLogisticsTask1); break; }
-                            case 1: { im.gametasklist.Add(BaseData.TaskList.StartLogisticsTask2); break; }
-                            case 2: { im.gametasklist.Add(BaseData.TaskList.StartLogisticsTask3); break; }
-                            case 3: { im.gametasklist.Add(BaseData.TaskList.StartLogisticsTask4); break; }
-                            default:
-                                break;
-                        }
+
                     }
                 }
 
@@ -212,6 +234,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -248,6 +271,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -282,6 +306,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -318,6 +343,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -401,6 +427,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait&& (im.gameData.User_operationInfo[i].Added==false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
@@ -468,6 +495,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -536,6 +564,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -602,6 +631,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -667,6 +697,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -741,6 +772,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -784,6 +816,7 @@ namespace WindowsFormsApplication1
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
 
@@ -824,42 +857,47 @@ namespace WindowsFormsApplication1
 
                         case "98":
                             {
-                                while (true)
-                                {
-                                    if (SystemInfo.StayAtRecieveOperationPage)
+                                //if (im.gameData.GetOperationTime_60s())
+                                //{
+                                //    for (int i = 0; i < 4; i++)
+                                //    {
+                                //        if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
+                                //        {
+                                //            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                //            im.gameData.User_operationInfo[i].Added = true;
+                                //        }
+                                //    }
+                                //}
+                                //else
+                                //{
+                                    while (true)
                                     {
-
-                                        while (true)
+                                        if (SystemInfo.StayAtRecieveOperationPage)
                                         {
-                                            if (SystemInfo.StayAtRecieveOperationPage)
+                                            SystemInfo.AppState = "接收后勤任务";
+                                            im.mouse.delayTime(1, 1);
+                                            im.mouse.LeftClick(dmae, 484, 258, 681, 459);
+                                        }
+                                        while (im.mouse.CheckLsystemAgain(dmae))
+                                        {
+                                            im.mouse.LeftClick(dmae, 677, 475, 808, 514);
+                                            im.mouse.delayTime(1, 1);
+                                            while (im.mouse.CheckLsystemAgain(dmae) == false)
                                             {
-                                                SystemInfo.AppState = "接收后勤任务";
-                                                im.mouse.delayTime(1, 1);
-                                                im.mouse.LeftClick(dmae, 484, 258, 681, 459);
-                                            }
-                                            else
-                                            {
-                                                im.mouse.delayTime(0.1);
-                                                SystemInfo.AppState = "回到主页";
-
-                                                goto End;
-
+                                                goto end;
                                             }
                                         }
+                                        if (SystemInfo.StayAtHomePage)
+                                        {
+                                            SystemInfo.AppState = "主页";
+                                        }
+                                        im.mouse.delayTime(1, 1);
                                     }
-                                    if (SystemInfo.StayAtHomePage)
-                                    {
-                                        SystemInfo.AppState = "主页";
-                                    }
-                                    im.mouse.delayTime(0.1,1);
+                                    end: im.taskList.taskremove();
+                                    break;
                                 }
-
-                                End:
-                                im.taskList.taskremove();
-                                break;
-                            }
-
-
+                            //}
+                            //break;
 
 
 
@@ -987,7 +1025,6 @@ namespace WindowsFormsApplication1
 
                     BaseData.SystemInfo.StayAtHomePage = true;
                     BaseData.SystemInfo.PageCheck = "主页";
-                    continue;
                 }
                 else
                 {
@@ -1006,7 +1043,7 @@ namespace WindowsFormsApplication1
                 }
 
 
-                BaseData.SystemInfo.PageCheck = "";
+
                 Thread.Sleep(Settings.Default.SimulatorHomeCheckTime * 10);
 
             }

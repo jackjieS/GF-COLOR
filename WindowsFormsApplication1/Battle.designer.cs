@@ -274,6 +274,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "0_1",
             "0_4",
+            "3_2N",
             "3_4E",
             "5_4",
             "5_4E"});
