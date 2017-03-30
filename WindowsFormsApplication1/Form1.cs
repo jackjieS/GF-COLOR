@@ -75,9 +75,10 @@ namespace TaskList
                     im.Form1.button5.Enabled = true;
                     im.Form1.button3.Enabled = true;
                     im.Form1.button7.Enabled = true;
-
-
-
+                    im.Form1.button15.Enabled= true;
+                    im.Form1.button17.Enabled= true;
+                    im.Form1.button18.Enabled = true;
+                    im.Form1.button19.Enabled = true;
 
                     im.CountDown = new Thread(im.backGroundThread.CountDown);
                     im.CountDown.IsBackground = true;
@@ -415,6 +416,26 @@ namespace TaskList
             return windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
+       
 
+        private void button15_Click(object sender, EventArgs e)
+        {
+            im.gameData.User_operationInfo[0].OperationLastTime = Convert.ToInt32(textBox21.Text);
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            im.gameData.User_operationInfo[1].OperationLastTime = Convert.ToInt32(textBox21.Text);
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            im.gameData.User_operationInfo[2].OperationLastTime = Convert.ToInt32(textBox21.Text);
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            im.gameData.User_operationInfo[3].OperationLastTime = Convert.ToInt32(textBox21.Text);
+        }
     }
 }

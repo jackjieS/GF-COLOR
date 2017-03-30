@@ -587,6 +587,51 @@ namespace testdm
                         }
                 }
             }
+            if (page == 5)
+            {
+                switch (loc)
+                {
+                    case "0":
+                        {
+                            return "代号25";
+                        }
+                    case "1":
+                        {
+                            return "代号26";
+                        }
+                    case "2":
+                        {
+                            return "代号27";
+                        }
+                    case "3":
+                        {
+                            return "代号28";
+                        }
+                }
+            }
+
+            if (page == 6)
+            {
+                switch (loc)
+                {
+                    case "0":
+                        {
+                            return "代号29";
+                        }
+                    case "1":
+                        {
+                            return "代号30";
+                        }
+                    case "2":
+                        {
+                            return "代号31";
+                        }
+                    case "3":
+                        {
+                            return "代号32";
+                        }
+                }
+            }
             return "";
 
 
@@ -715,6 +760,16 @@ namespace testdm
                             case "代号22": { return 9005; }
                             case "代号23": { return 14405; }
                             case "代号24": { return 25205; }
+
+                            case "代号25": { return 7205; }
+                            case "代号26": { return 10805; }
+                            case "代号27": { return 18005; }
+                            case "代号28": { return 43205; }
+
+                            case "代号29": { return 9005; }
+                            case "代号30": { return 14405; }
+                            case "代号31": { return 19805; }
+                            case "代号32": { return 28805; }
 
                             default:
                                 return -1;
