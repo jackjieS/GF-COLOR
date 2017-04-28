@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox3.Text == "1") { MessageBox.Show("注意，模式1模拟器需为极速模式", "少女前线"); }
-            if (comboBox3.Text == "2") { MessageBox.Show("注意，模式2模式模拟器需为兼容模式", "少女前线"); }
+            if (comboBox3.Text == "2") { MessageBox.Show("注意，夜神模拟器请使用模式2", "少女前线"); }
         }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)

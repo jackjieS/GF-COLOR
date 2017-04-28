@@ -109,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundThread.cs" />
+    <Compile Include="BaseData\BuildingEquipmentInfo.cs" />
+    <Compile Include="BaseData\BuildingGunInfo.cs" />
     <Compile Include="BaseData\FixGirlsInfo.cs" />
     <Compile Include="BaseData\LMainColor.cs" />
     <Compile Include="BaseData\TaskList.cs" />
@@ -242,6 +244,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="Dm">
+      <Guid>{84288AAD-BA02-4EF2-85EC-3FAD4D11354D}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="EyLogin">
       <Guid>{F8560BB6-C0D0-415B-B950-99F35E2F5385}</Guid>
       <VersionMajor>1</VersionMajor>

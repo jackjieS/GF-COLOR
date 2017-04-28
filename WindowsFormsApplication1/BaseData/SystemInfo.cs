@@ -33,6 +33,8 @@ namespace WindowsFormsApplication1.BaseData
         public static string AppState = "";
         public static int hwnd = -1;
 
+        public static bool EquipmentPicRecord = true;
+        public static bool LFinish = false;
 
     }
 }

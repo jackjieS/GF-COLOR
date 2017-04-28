@@ -74,6 +74,19 @@ namespace WindowsFormsApplication1
 
             BaseData.UserAutoBattleInfo autobattleinfo = new BaseData.UserAutoBattleInfo();
             this.gameData.User_AutobattleInfo.Add(0, autobattleinfo);
+
+            for (int i = 0; i < 3; i++)//装备建造
+            {
+                BaseData.BuildingEquipmentInfo user_buildingequipmentinfo0 = new BaseData.BuildingEquipmentInfo();
+                this.gameData.User_BuildingEquipmentInfo.Add(i, user_buildingequipmentinfo0);
+            }
+            for (int i = 0; i < 3; i++)//枪建造
+            {
+                BaseData.BuildingGunInfo user_buildingguninfo0 = new BaseData.BuildingGunInfo();
+                this.gameData.User_BuildingGunInfo.Add(i, user_buildingguninfo0);
+            }
+
+
         }
         public Thread CountDown, CompleteMisson, ThreadT, MonitorPic;
         public List<TaskListstruct> gametasklist = new List<TaskListstruct>();

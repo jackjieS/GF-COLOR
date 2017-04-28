@@ -274,8 +274,10 @@
             this.comboBox1.Items.AddRange(new object[] {
             "0_1",
             "0_4",
+            "2_4E",
             "3_2N",
             "3_4E",
+            "4_4E",
             "5_4",
             "5_4E"});
             this.comboBox1.Location = new System.Drawing.Point(70, 9);

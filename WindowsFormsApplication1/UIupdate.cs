@@ -67,6 +67,12 @@ namespace WindowsFormsApplication1
                 case "textBox20": { if (im.Form1.textBox20.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox20.Text = text; } break; }
                 case "label13": { if (im.Form1.label13.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.label13.Text = text; } break; }
 
+                case "textBox22": { if (im.Form1.textBox22.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox22.Text = text; } break; }
+                case "textBox23": { if (im.Form1.textBox23.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox23.Text = text; } break; }
+                case "textBox24": { if (im.Form1.textBox24.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox24.Text = text; } break; }
+                case "textBox25": { if (im.Form1.textBox25.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox25.Text = text; } break; }
+                case "textBox26": { if (im.Form1.textBox26.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox26.Text = text; } break; }
+                case "textBox27": { if (im.Form1.textBox27.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox27.Text = text; } break; }
                 default:
                     break;
             }
@@ -113,6 +119,20 @@ namespace WindowsFormsApplication1
 
             }
 
+            try
+            {
+                SetText("textBox22", Convert.ToInt32(im.gameData.User_BuildingEquipmentInfo[0].BuildingTime).ToString());// 装备建造次数
+                SetText("textBox24", Convert.ToInt32(im.gameData.User_BuildingEquipmentInfo[0].BuildEquipmentLastTime).ToString());// 装备建造时间
+                SetText("textBox23", Convert.ToInt32(im.gameData.User_BuildingEquipmentInfo[1].BuildingTime).ToString());// 装备建造次数
+                SetText("textBox25", Convert.ToInt32(im.gameData.User_BuildingEquipmentInfo[1].BuildEquipmentLastTime).ToString());// 装备建造时间
+                SetText("textBox27", Convert.ToInt32(im.gameData.User_BuildingEquipmentInfo[2].BuildingTime).ToString());// 装备建造次数
+                SetText("textBox26", Convert.ToInt32(im.gameData.User_BuildingEquipmentInfo[2].BuildEquipmentLastTime).ToString());// 装备建造时间
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
             try
             {

@@ -121,6 +121,27 @@ namespace WindowsFormsApplication1
 
                         //variables.GameWindowsHwnd = Convert.ToInt32(dm.EnumWindow(0, "kpzs  -- Power plus BlueStacks", "", 1 + 2));//temp自动找
                     }
+                case 5:
+                    {
+                        try
+                        {
+                            string temp0 = dm.EnumWindow(0, "AEngineRenderWindow", "AEngineRenderWindowClass", 1 + 2);//temp自动找
+                            if (temp0 != "")
+                            {
+                                BaseData.SystemInfo.GameWindowsHwnd = Int32.Parse(temp0);
+                                break;
+                            }
+                            return -2;
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show("无法找到模拟器窗口", "少女前线");
+                            WriteLog.WriteError("查找句柄" + ex.ToString());
+                            return -2;
+                        }
+
+                    }
                 default:
                     break;
             }
@@ -314,6 +335,7 @@ namespace WindowsFormsApplication1
                         dmae = dm.SetDict(1, @"\Resources\TeamList.txt");
                         dmae = dm.SetDict(2, @"\Resources\dm_soft2.txt");
                         dmae = dm.SetDict(3, @"\Resources\LTeamList.txt");
+                        dmae = dm.SetDict(4, @"\Resources\BTime.txt");
                         if (dmae == 1) {; } else { WriteLog.WriteError("初始化字典失败"); }
                         if (dmae == 1) { return true; } else { return false; }
                     }
@@ -325,6 +347,7 @@ namespace WindowsFormsApplication1
                         dmae = dm.SetDict(1, @"\Resources\TeamList.txt");
                         dmae = dm.SetDict(2, @"\Resources\dm_soft2.txt");
                         dmae = dm.SetDict(3, @"\Resources\LTeamList.txt");
+                        dmae = dm.SetDict(4, @"\Resources\BTime.txt");
                         if (dmae == 1) {; } else { WriteLog.WriteError("初始化字典失败"); }
                         if (dmae == 1) { return true; } else { return false; }
                     }

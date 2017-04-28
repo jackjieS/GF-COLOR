@@ -18,7 +18,8 @@ namespace WindowsFormsApplication1
         public Dictionary<int, UserBattleInfo> User_battleInfo = new Dictionary<int, UserBattleInfo>();
         public Dictionary<int, UserAutoBattleInfo> User_AutobattleInfo = new Dictionary<int, UserAutoBattleInfo>();
         public Dictionary<int, UserOperationInfo> User_operationInfo = new Dictionary<int, UserOperationInfo>();
-
+        public Dictionary<int, BuildingEquipmentInfo> User_BuildingEquipmentInfo = new Dictionary<int, BuildingEquipmentInfo>();
+        public Dictionary<int, BuildingGunInfo> User_BuildingGunInfo = new Dictionary<int, BuildingGunInfo>();
 
         public bool GetOperationTime_60s()
         {

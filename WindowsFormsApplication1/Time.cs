@@ -1501,6 +1501,152 @@ namespace testdm
 
         }
 
+        public void BuildEquipmentArea(int i, ref int x1,  ref int y1,  ref int x2, ref int y2)
+        {
+            switch (i)
+            {
+                case 0: { x1 = 444; y1 = 177; x2 = 607; y2 = 222; break; }
+                case 1: { x1 = 444; y1 = 387; x2 = 600; y2 = 439; break; }
+                case 2: { x1 = 446; y1 = 600; x2 = 611; y2 = 643; break; }
+                default:
+                    break;
+            }
+        }
+
+        public void BuildEquipment(DmAe dmae, Mouse mouse)
+        {
+            dmae.UseDict(4);
+            object intX1, intY1;
+            int x1=0,y1=0,x2=0,y2=0;
+            mouse.ClickFactory(dmae);
+            mouse.ClickBuildEquipment(dmae);
+            mouse.delayTime(2, 1);
+            //读取两个格子的时间
+            SystemInfo.AppState = "读取时间";
+            for (int i = 0; i < 3; i++)
+            {
+                switch (mouse.CheckBuildEquipmentS(dmae, i))
+                {
+                    case 0:
+                        {
+                            im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentUsing= false;
+                            im.gameData.User_BuildingEquipmentInfo[i].NeedToRecieve = false; break;//空 }
+                        }
+                    case 1:
+                        {
+                            im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentUsing = false;
+                            im.gameData.User_BuildingEquipmentInfo[i].tempNeedToRecieve = true; break;//接收 }
+                        }
+                    case 2:
+                        {
+                            BuildEquipmentArea(i, ref x1, ref y1, ref x2, ref y2);
+                            im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentUsing = true;
+                            im.gameData.User_BuildingEquipmentInfo[i].NeedToRecieve = false;
+                            im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(x1,y1,x2,y2, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                            break;//需要读取时间break; }
+
+                        }
+                }
+
+            }
+
+            //如果两个槽都要接收装备
+            SystemInfo.AppState = "接收装备";
+            for (int i = 0; i < 3; i++)
+            {
+                if (im.gameData.User_BuildingEquipmentInfo[i].tempNeedToRecieve == true)
+                {
+                    mouse.ClickBuildingArea(dmae, i);//点击建造槽接收装备
+                    mouse.delayTime(8, 1);
+                    mouse.ClickBuildingResult(dmae);
+                    im.gameData.User_BuildingEquipmentInfo[i].tempNeedToRecieve = false;
+                }
+            }
+
+
+
+            //如果第一个格子是空
+            SystemInfo.AppState = "开始建造";
+            for (int i = 0; i < 3; i++)
+            {
+                if (im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentUsing == false)
+                {
+                    //点击建造槽
+                    mouse.ClickBuildingArea(dmae, i);
+
+                    //点击日志
+                    mouse.ClickBuildingLog(dmae);
+                    //点击收藏夹
+                    mouse.ClickBuildingFavorite(dmae);
+                    //点击套用公式
+                    mouse.ClickBuildingFavoriteFirst(dmae,im.gameData.User_BuildingEquipmentInfo[i].BuildingFavoriteNumber);
+                    //点击开始制造
+                    mouse.ClickStartBuilding(dmae);
+
+
+                    //检查是否满仓
+
+                    if (mouse.CheckEquipmentStorageFull(dmae))
+                    {
+                        while (mouse.CheckEquipmentStorageFull(dmae))
+                        {
+                            mouse.LeftClick(dmae, 455, 472, 598, 522);
+                            mouse.delayTime(1, 1);
+                        }
+                        mouse.LeftClickBackHome(dmae);
+                        return;
+                    }
+
+                    //识别时间
+
+                    //等待加载
+
+
+                    switch (i)
+                    {
+                        case 0:
+                            {
+                                while(dmae.FindColor(444, 177, 565, 222,"000000",1,0,out intX1,out intY1) == 0)
+                                {
+                                    mouse.delayTime(1);
+                                }
+                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(444, 177, 607, 222, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                                break;
+                            }
+                        case 1:
+                            {
+                                while (dmae.FindColor(444, 387, 565, 439, "000000", 1, 0, out intX1, out intY1) == 0)
+                                {
+                                    mouse.delayTime(1);
+                                }
+                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(444, 387, 600, 439, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                                break;
+                            }
+                        case 2:
+                            {
+                                while (dmae.FindColor(446, 600, 611, 643, "000000", 1, 0, out intX1, out intY1) == 0)
+                                {
+                                    mouse.delayTime(1);
+                                }
+                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(446, 600, 611, 643, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                                break;
+                            }
+
+                        default:
+                            break;
+                    }
+
+
+
+
+
+
+                }
+            }
+            SystemInfo.AppState = "返回主页";
+            mouse.LeftClickBackHome(dmae);
+        }
+
         public void ChangeGun(DmAe dmae, Mouse mouse,string mainteam,int gun1,int gun2 ,int gun3 ,int gun4, int gun5)
         {
             mouse.ClickTeam(dmae);
@@ -1548,11 +1694,11 @@ namespace testdm
                 //        break;
                 //    }
 
-                //case "2_4E":
-                //    {
-                //        Battle2_4E(dmae, mouse, mainteam, supportteam, support, setmap);
-                //        break;
-                //    }
+                case "2_4E":
+                    {
+                        Battle2_4E(dmae, mouse, ref userBattleInfo);
+                        break;
+                    }
                 case "3_2N":
                     {
                         Battle3_2N(dmae, mouse, ref userBattleInfo);
@@ -1593,11 +1739,11 @@ namespace testdm
                         Battle5_4(dmae, mouse, ref userBattleInfo);
                         break;
                     }
-                //case "4_4E":
-                //    {
-                //        Battle4_4E(dmae, mouse, mainteam, supportteam, tasktype, support,fix, fixmaxpercentage, setmap);
-                //        break;
-                //    }
+                case "4_4E":
+                    {
+                        Battle4_4E(dmae, mouse, ref userBattleInfo);
+                        break;
+                    }
                 case "5_4E":
                     {
                         Battle5_4E(dmae, mouse,ref userBattleInfo);
@@ -1775,71 +1921,69 @@ namespace testdm
         //    mouse.WaitToHome(dmae);
         //}
 
-        //public void Battle2_4E(DmAe dmae, Mouse mouse, string mainteam, string supportteam, bool supply,bool setmap =false)
-        //{
+        public void Battle2_4E(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
+        {
 
-        //    object intX, intY;
-        //    //MessageBox.Show("作者打了100多把都没有遇到强行撤离,使用时请注意", "少女前线");
-        //    mouse.LeftClickHomeToBattle(dmae, 2, 1, 4);
-        //    mouse.delayTime(1);
-        //    mouse.ClickFightType(dmae, "normal");
-        //    mouse.delayTime(4);
-
-
-        //    if(setmap == true)
-        //    {
-        //        mouse.MapSet(dmae, 236, 362, 261, 423, 1, 1, 214, 649);
-        //    }
-
-        //    mouse.ScreenUp(dmae, 11, 100, 719, 154, 80, 1, 1, 1, 1, 1, 1); //900, 665
-        //    mouse.delayTime(1);
-
-        //    mouse.Teamdispose(dmae, 226, 446, 273, 495, mainteam);//指挥部部署
-        //    mouse.delayTime(1);
-
-        //    mouse.BattleStart(dmae);
-
-        //    //开始补给
-
-        //    if (supply == true) { mouse.Support(dmae, 226, 446, 273, 495); }
-
-        //    mouse.MoveAndMove(dmae, 226, 446, 273, 495, 203, 246, 241, 284, 141, 453, 225, 481,0,0);//
-
-        //    int dm_ret0 = mouse.FindTeamSelectLine(dmae, 88, 255, 195, 274, 0);
-
-        //    while (dm_ret0 ==0)
-        //    {
-        //        mouse.LeftClick(dmae, 24, 142, 196, 248);
-        //        mouse.delayTime(1);
-        //        dm_ret0 = dm_ret0 = mouse.FindTeamSelectLine(dmae, 88, 255, 195, 274, 0);
-        //    }
-
-        //    mouse.Teamdispose(dmae, 226, 446, 273, 495, supportteam);//指挥部部署
-
-        //    mouse.RoundEnd2(dmae);
-        //    mouse.delayTime(10);
-
-        //    mouse.ScreenUp(dmae, 520, 136, 992, 203, 100, 1, 1, 1, 1, 1, 1); //900, 665
-
-        //    mouse.MoveAndFight(dmae, 198, 245, 239, 280, 352, 125, 396, 154, 251, 262, 360, 268, 1,0);//
-
-        //    //mouse.ScreenUp(dm, 520, 136, 992, 203, 50, 238, 437, "94c6f7" + "|" + Settings.Default.AirPort, 261, 500, "94c6f7" + "|" + Settings.Default.AirPort); //900, 665
-        //    mouse.delayTime(1);
-
-        //    mouse.MoveAndFight(dmae, 354, 119, 394, 152, 564, 123, 610, 152, 407, 134, 520, 140, 0,0);//need
-        //    //mouse.ScreenUp(dm, 520, 136, 992, 203, 50, 238, 437, "94c6f7" + "|" + Settings.Default.AirPort, 261, 500, "94c6f7" + "|" + Settings.Default.AirPort); //900, 665
-        //    mouse.delayTime(1);
-
-        //    mouse.MoveAndMove(dmae, 569, 116, 613, 152, 742, 201, 791, 250, 623, 133, 750, 139, 0, 0);//
-        //    mouse.delayTime(1);
-
-        //    mouse.RoundEnd(dmae);
-
-        //    mouse.delayTime(2);
-        //    mouse.WaitToHome(dmae);
+            object intX, intY;
+            //MessageBox.Show("作者打了100多把都没有遇到强行撤离,使用时请注意", "少女前线");
+            mouse.LeftClickHomeToBattle(dmae, 2, 1, 4);
+            mouse.delayTime(1);
+            mouse.ClickFightType(dmae, "normal");
+            mouse.delayTime(4);
 
 
-        //}
+            if (userBattleInfo.SetMap == true)
+            {
+                mouse.MapSet(dmae, 236, 362, 261, 423, 1, 1, 214, 649);
+            }
+
+            mouse.ScreenUp(dmae, 39, 191, 167, 570, 100, 785, 283, 763, 297, 781, 297); //900, 665
+            mouse.delayTime(1);
+
+            mouse.Teamdispose(dmae, 266, 521, 303, 559, userBattleInfo.TaskMianTeam);//指挥部部署
+            mouse.delayTime(1);
+
+            mouse.BattleStart(dmae);
+
+            //开始补给
+
+            if (userBattleInfo.ChoiceToSupply == true) { mouse.Support(dmae, 266, 521, 303, 559); }
+
+            mouse.MoveAndMove(dmae, 266, 521, 303, 559, 241, 359, 261, 378, 174, 516, 246, 534, 0, 0);//
+
+
+
+            while (mouse.FindTeamSelectLine(dmae, 137, 348, 214, 361, 0) == 0)
+            {
+                mouse.LeftClick(dmae, 24, 142, 196, 248);
+                mouse.delayTime(1);
+            }
+
+            mouse.Teamdispose(dmae, 266, 521, 303, 559, userBattleInfo.TaskSupportTeam1);//指挥部部署
+
+            mouse.RoundEnd2(dmae);
+            mouse.delayTime(10);
+
+            mouse.ScreenUp(dmae, 39, 191, 167, 570, 100, 497, 412, 563, 503, 665, 478); //900, 665
+
+            mouse.MoveAndFight(dmae, 233, 354, 269, 385, 359, 213, 391, 241, 121, 340, 212, 368, 1, 0);//
+
+            mouse.ScreenUp(dmae, 39, 191, 167, 570, 100, 497, 412, 563, 503, 665, 478); //900, 665
+
+            mouse.MoveAndFight(dmae, 355, 210, 393, 246, 580, 235, 614, 270, 238, 200, 335, 228, 0, 0);//need
+
+            mouse.ScreenUp(dmae, 39, 191, 167, 570, 100, 497, 412, 563, 503, 665, 478); //900, 665
+
+            mouse.MoveAndMove(dmae, 578, 236, 616, 262, 715, 306, 751, 349, 636, 228, 718, 248, 0, 0);//
+            mouse.delayTime(1);
+
+            mouse.RoundEnd(dmae, 713, 309, 756, 355, ref userBattleInfo);
+
+            mouse.delayTime(2);
+            mouse.WaitToHome(dmae);
+
+
+        }
 
         //public void Battle3_3E(DmAe dmae, Mouse mouse, string mainteam, string supportteam, int tasktype, bool supply,bool fix,int fixmaxpercentage, bool setmap = false)
         //{
@@ -1875,7 +2019,7 @@ namespace testdm
         //        if (supply == true) { mouse.Support(dmae, 349, 471, 402, 528); }
 
         //        mouse.MoveAndFight(dmae, 347, 471, 396, 521,/*第一个点*/
-                        //177, 357, 209, 391, /*第二个点*/412, 490, 520, 496/*检测范围*/, 0, 0);//
+        //177, 357, 209, 391, /*第二个点*/412, 490, 520, 496/*检测范围*/, 0, 0);//
 
 
         //        mouse.MoveAndFight(dmae, 172, 354, 216, 392,/*第一个点*/ 394, 200, 448, 238, /*第二个点*/188, 408, 195, 520/*检测范围*/, 0, 1);//
@@ -2041,92 +2185,92 @@ namespace testdm
 
         //}
 
-        //public void Battle4_4E(DmAe dmae, Mouse mouse, string mainteam, string supportteam, int tasktype, bool supply,bool fix, int fixmaxpercentage, bool setmap = false)
-        //{
+        public void Battle4_4E(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
+        {
 
-        //    mouse.LeftClickHomeToBattle(dmae, 4, 1, 4);
-        //    mouse.delayTime(1);
-        //    mouse.ClickFightType(dmae, "normal");
+            mouse.LeftClickHomeToBattle(dmae, 4, 1, 4);
+            mouse.delayTime(1);
+            mouse.ClickFightType(dmae, "normal");
 
-        //    mouse.delayTime(4);
-
-
-        //    //地图初始化测试
-        //    if(setmap == true)
-        //    {
-        //        mouse.MapSet(dmae, 399, 411, 906, 457, 158, 466, 220, 305);
-        //    }
+            mouse.delayTime(4);
 
 
-        //    mouse.Teamdispose(dmae, 1027, 452, 1077, 500, supportteam);//指挥部部署
-        //    mouse.delayTime(1);
-        //    mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
-        //    mouse.delayTime(1);
-        //    mouse.Teamdispose(dmae, 1086, 144, 1119, 175, mainteam);//机场部署
-        //    mouse.delayTime(1);
-
-        //    mouse.BattleStart(dmae);
-        //    mouse.delayTime(2);
-
-        //    //开始补给
+            //地图初始化测试
+            if (userBattleInfo.SetMap == true)
+            {
+                mouse.MapSet(dmae, 399, 411, 906, 457, 158, 466, 220, 305);
+            }
 
 
-        //    if (supply == true) { mouse.Support(dmae, 1084, 141, 1117, 178); }
+            mouse.Teamdispose(dmae, 1027, 452, 1077, 500, userBattleInfo.TaskSupportTeam1);//指挥部部署
+            mouse.delayTime(1);
+            mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
+            mouse.delayTime(1);
+            mouse.Teamdispose(dmae, 1086, 144, 1119, 175, userBattleInfo.TaskMianTeam);//机场部署
+            mouse.delayTime(1);
 
-        //    mouse.MoveAndFight(dmae, 1081, 140, 1125, 179, 844, 142, 883, 178, 1093, 182, 1112, 348, 0,1);//第一开始
+            mouse.BattleStart(dmae);
+            mouse.delayTime(2);
 
-        //    mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
-        //    mouse.delayTime(1);
+            //开始补给
 
-        //    mouse.MoveAndFight(dmae, 845, 141, 879, 173, 669, 140, 697, 176, 853, 189, 873, 276, 0,1);//第二开始
-        //    mouse.delayTime(1);
-        //    mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
-        //    mouse.delayTime(1);
 
-        //    if (tasktype == 2)
-        //    {
-        //        //第三开始
-        //        mouse.MoveAndFight(dmae, 688, 157, 725, 186, 450, 158, 501, 195, 679, 184, 697, 255, 0,1);//第二开始
-        //        mouse.delayTime(1);
-        //        mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
-        //        mouse.delayTime(1);
-        //        //第四开始
-        //        mouse.MoveAndFight(dmae, 452, 156, 492, 192, 185, 148, 238, 197, 464, 196, 483, 240, 0,1);//第二开始
-        //        mouse.delayTime(1);
-        //        mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
-        //        mouse.delayTime(1);
+            if (userBattleInfo.ChoiceToSupply == true) { mouse.Support(dmae, 1084, 141, 1117, 178); }
 
-        //        //结束回合
-        //        mouse.delayTime(1);
-        //        mouse.RoundEnd(dmae, 187, 142, 239, 196, fix, fixmaxpercentage);
+            mouse.MoveAndFight(dmae, 1081, 140, 1125, 179, 844, 142, 883, 178, 1093, 182, 1112, 348, 0, 1);//第一开始
 
-        //        mouse.delayTime(2);
-        //        //不断双击直到回到主页
-        //        mouse.WaitToHome(dmae);
+            mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
+            mouse.delayTime(1);
 
-        //    }
+            mouse.MoveAndFight(dmae, 845, 141, 879, 173, 669, 140, 697, 176, 853, 189, 873, 276, 0, 1);//第二开始
+            mouse.delayTime(1);
+            mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
+            mouse.delayTime(1);
 
-        //    else
-        //    {
+            if (userBattleInfo.TaskType == 2)
+            {
+                //第三开始
+                mouse.MoveAndFight(dmae, 688, 157, 725, 186, 450, 158, 501, 195, 679, 184, 697, 255, 0, 1);//第二开始
+                mouse.delayTime(1);
+                mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
+                mouse.delayTime(1);
+                //第四开始
+                mouse.MoveAndFight(dmae, 452, 156, 492, 192, 185, 148, 238, 197, 464, 196, 483, 240, 0, 1);//第二开始
+                mouse.delayTime(1);
+                mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
+                mouse.delayTime(1);
 
-        //        //mouse.ScreenUp(dm, 358, 250, 998, 338, 99, 1084, 150, "94c6f7", 1083, 190, "94c6f7"); //900, 665
-        //        mouse.delayTime(1);
-        //        mouse.MoveAndMove(dmae, 670, 146, 706, 177, 843, 143, 882, 173, 680, 184, 702, 252, 0, 1);//第三开始
+                //结束回合
+                mouse.delayTime(1);
+                mouse.RoundEnd(dmae, 187, 142, 239, 196, ref userBattleInfo);
 
-        //        mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
-        //        mouse.delayTime(1);
+                mouse.delayTime(2);
+                //不断双击直到回到主页
+                mouse.WaitToHome(dmae);
 
-        //        mouse.delayTime(1);
-        //        mouse.MoveToAirport(dmae, 843, 143, 882, 173, 1082, 139, 1123, 182, 856, 182, 872, 261, /*move坐标*/1060, 144,/*点击移动坐标*/987, 144, 1060, 175, 1);//第四开始
-        //        mouse.delayTime(1);
-        //        //撤离
-        //        mouse.Evacuate(dmae, 1064, 152, 1105, 190,fix, fixmaxpercentage);
-        //        mouse.delayTime(1);
-        //        mouse.StopBattle(dmae);
+            }
 
-        //    }
+            else
+            {
 
-        //}
+                //mouse.ScreenUp(dm, 358, 250, 998, 338, 99, 1084, 150, "94c6f7", 1083, 190, "94c6f7"); //900, 665
+                mouse.delayTime(1);
+                mouse.MoveAndMove(dmae, 670, 146, 706, 177, 843, 143, 882, 173, 680, 184, 702, 252, 0, 1);//第三开始
+
+                mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
+                mouse.delayTime(1);
+
+                mouse.delayTime(1);
+                mouse.MoveToAirport(dmae, 843, 143, 882, 173, 1082, 139, 1123, 182, 856, 182, 872, 261, /*move坐标*/1060, 144,/*点击移动坐标*/987, 144, 1060, 175, 1);//第四开始
+                mouse.delayTime(1);
+                //撤离
+                mouse.Evacuate(dmae, 1064, 152, 1105, 190, ref userBattleInfo);
+                mouse.delayTime(1);
+                mouse.StopBattle(dmae);
+
+            }
+
+        }
 
         //public void Battle5_1E(DmAe dmae, Mouse mouse, string mainteam, string supportteam, int tasktype,bool setmap = false)
         //{
@@ -2333,7 +2477,7 @@ namespace testdm
             mouse.RoundEnd2(dmae);
             mouse.ScreenDown(dmae, 59, 212, 268, 482, 200, 891, 99, 544, 96, 499, 195);//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
 
-            mouse.MoveAndMove(dmae, 578, 247, 636, 290, /*第一个点坐标*/438, 109, 492, 159,/*第二个点坐标*/394, 234, 548, 254/*监测点坐标*/, 0, 0);//第一开始
+            mouse.MoveAndMove(dmae, 578, 247, 636, 290, /*第一个点坐标*/448, 139, 484, 155,/*第二个点坐标*/394, 234, 548, 254/*监测点坐标*/, 0, 0);//第一开始
             mouse.MoveAndMove(dmae, 436, 112, 494, 157, /*第一个点坐标*/678, 73, 703, 102,/*第二个点坐标*/291, 104, 406, 119/*监测点坐标*/, 0, 0);//第一开始
             mouse.MoveAndFight(dmae, 646, 66, 702, 98, /*第一个点坐标*/768, 158, 824, 210,/*第二个点坐标*/ 661, 102, 686, 194/*监测点坐标*/, 0, 1);//第一开始
 
@@ -2363,7 +2507,7 @@ namespace testdm
 
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 905, 571, 904, 566, 961, 566, 88, 613);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+                mouse.MapSet(dmae, 907, 566, 920, 574, 959, 566, 88, 613);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
             }
 
             mouse.delayTime(1);
@@ -2612,7 +2756,7 @@ namespace testdm
 
 
 
-                        mouse.MoveAndFight(dmae, 1074, 264, 1111, 296, 886, 337, 924, 371, 964, 258, 1057, 270, 0,0);//第二开始
+                        mouse.MoveAndFight(dmae, 1074, 264, 1111, 296, 886, 337, 924, 371, 967, 255, 1056, 274, 0,0);//第二开始
                         mouse.delayTime(1);
 
 
