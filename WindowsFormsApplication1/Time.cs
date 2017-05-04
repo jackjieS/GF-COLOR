@@ -2526,13 +2526,34 @@ namespace testdm
 
             mouse.MoveAndFight(dmae, 472, 165, 520, 203, /*第一个点坐标*/643, 281, 679, 317,/*第二个点坐标*/319, 157, 450, 177/*监测点坐标*/, 0, 0);//第一开始
 
-            mouse.MoveAndMove(dmae, 643, 281, 679, 317, /*第一个点坐标*/472, 165, 520, 203,/*第二个点坐标*/463, 272, 594, 296/*监测点坐标*/, 0, 0);//第二开始
+            switch (userBattleInfo.TaskType)
+            {
+                case 1:
+                    {
+                        mouse.MoveAndMove(dmae, 643, 281, 679, 317, /*第一个点坐标*/472, 165, 520, 203,/*第二个点坐标*/463, 272, 594, 296/*监测点坐标*/, 0, 0);//第二开始
 
-            mouse.MoveToAirport(dmae, 456, 163, 494, 199, 219, 206, 259, 238,/**/ 332, 155, 426, 177, /*move坐标*/221, 205,/*点击移动坐标*/145, 203, 222, 239);//第四开始
+                        mouse.MoveToAirport(dmae, 456, 163, 494, 199, 219, 206, 259, 238,/**/ 332, 155, 426, 177, /*move坐标*/221, 205,/*点击移动坐标*/145, 203, 222, 239);//第四开始
 
-            mouse.Evacuate(dmae, 240, 208, 273, 239, ref userBattleInfo);
-            mouse.delayTime(1);
-            mouse.StopBattle(dmae);
+                        mouse.Evacuate(dmae, 240, 208, 273, 239, ref userBattleInfo);
+                        mouse.delayTime(1);
+                        mouse.StopBattle(dmae);
+                        break;
+                    }
+                case 2:
+                    {
+                        mouse.MoveAndFight(dmae, 619, 283, 661, 318, /*第一个点坐标*/507, 500, 552, 538,/*第二个点坐标*/463, 272, 594, 296/*监测点坐标*/, 0, 0);//第一开始
+
+                        mouse.MoveToAirport(dmae, 530, 500, 569, 535, 290, 543, 332, 580,/**/595, 498, 663, 506, /*move坐标*/240, 545,/*点击移动坐标*/196, 547, 273, 578);//第四开始
+                        mouse.Evacuate(dmae, 291, 545, 330, 576, ref userBattleInfo);
+                        mouse.delayTime(1);
+                        mouse.StopBattle(dmae);
+
+                        break;
+                    }
+            }
+
+
+
 
         }
 

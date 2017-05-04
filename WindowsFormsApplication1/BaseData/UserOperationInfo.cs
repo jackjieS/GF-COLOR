@@ -19,12 +19,19 @@ namespace WindowsFormsApplication1.BaseData
         public bool Added = false;
         public bool NeedToRecieve = false;
         public bool ReceiveRightNow = false;
-
+        public bool Lfinish = false;
         public void OperationLastTimeCD(int c)
         {
             //c是所需要减的时间
+            if (Lfinish)
+            {
 
-            OperationLastTime = OperationLastTime - c;
+            }
+            else
+            {
+                OperationLastTime = OperationLastTime - c;
+            }
+
 
             if (OperationLastTime < 60 )
             {
@@ -43,7 +50,6 @@ namespace WindowsFormsApplication1.BaseData
             if (OperationLastTime < 0)
             {
                 OperationLastTime = -1;
-
             }
 
             if (OperationLastTime == 0)

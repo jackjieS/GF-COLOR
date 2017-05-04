@@ -90,6 +90,7 @@ namespace WindowsFormsApplication1
         }
         public Thread CountDown, CompleteMisson, ThreadT, MonitorPic;
         public List<TaskListstruct> gametasklist = new List<TaskListstruct>();
+        public List<int> User_OperationNumberNow = new List<int>();
         public List<int> ShowerTime = new List<int>();
     }
 }

@@ -510,40 +510,10 @@ namespace testdm
             int count = 0;
             SystemInfo.AppState = "点击主页战斗按钮";
             WriteLog.WriteError("准备点击主页战斗按钮");
-            int temp = 0;
             while (CheckHomePage(dmae) == 1)
             {
                 delayTime(0.5,1);
-                //WriteLog.WriteError("不在主页");
-                //temp++;
-                //if (temp == 5)
-                //{
-                //    //战斗页面
-                //    int dm_ret9 = CheckBattlePage(dmae);
-                //    if (dm_ret9 == 0)
-                //    {
-                //        WriteLog.WriteError("temp = 5 点击主页战斗成功");
-                //        return;
-                //    }
-                //}
-                //if (temp == 6)
-                //{
-                //    int dm_ret11 = CheckMissionSettingPage(dmae);
-                //    if (dm_ret11 == 0 )
-                //    {
-                //        while (dm_ret11 == 0)
-                //        {
-                //            LeftClick(dmae, 276, 64, 283, 71);
-                //            delayTime(1, 1);
-                //            dm_ret11 = CheckMissionSettingPage(dmae);
-                //        }
-                //        return;
-                //    }
 
-                //    WriteLog.WriteError("temp = 6 不在主页");
-                //    LeftClick(dmae, 196, 90, 779, 531);
-                //    temp = 0;
-                //}
             }
 
 
