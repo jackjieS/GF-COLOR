@@ -2183,7 +2183,7 @@ namespace testdm
 
                     LeftClick(dmae, 604,542,759,616);
                     delayTime(1);
-                    Girl_Full(dmae);//检测床位是否已满
+                    Girl_Full(dmae,ref userBattleInfo);//检测床位是否已满
                 }
             }
 
