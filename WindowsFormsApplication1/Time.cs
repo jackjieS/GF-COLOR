@@ -256,7 +256,8 @@ namespace testdm
                 case 5: return "第六梯队";
                 case 6: return "第七梯队";
                 case 7: return "第八梯队";
-
+                case 8: return "第九梯队";
+                case 9: return "第十梯队";
                 default:return "";
 
             }
@@ -771,6 +772,11 @@ namespace testdm
                             case "代号31": { return 19805; }
                             case "代号32": { return 28805; }
 
+                            case "代号33": { return 3605; }
+                            case "代号34": { return 10805; }
+                            case "代号35": { return 21605; }
+                            case "代号36": { return 32405; }
+
                             default:
                                 return -1;
                         }
@@ -948,7 +954,7 @@ namespace testdm
                 //找到颜色后确定主颜色
                 AutoFindTeamMainColor = FindTeamMainColor(dmae, Convert.ToInt32(y));
                 //dm_ret2 = dmae.FindStr(75, Convert.ToInt32(y), 105, 720, TeamNumber, "313531" + "|" + Settings.Default.TeamListSelect0, 0.9, out intX, out intY);
-                dm_ret2 = dmae.FindStr(75, Convert.ToInt32(y), 105, 720, TeamNumber, AutoFindTeamMainColor+"-"+Settings.Default.FindTeamSlectStrColorOffset+ Settings.Default.FindTeamSlectStrColorOffset+ Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim/100), out intX, out intY);
+                dm_ret2 = dmae.FindStr(75, Convert.ToInt32(y), 120, 720, TeamNumber, AutoFindTeamMainColor+"-"+Settings.Default.FindTeamSlectStrColorOffset+ Settings.Default.FindTeamSlectStrColorOffset+ Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim/100), out intX, out intY);
 
                 if(dm_ret2 == -1)
                 {
@@ -1799,13 +1805,13 @@ namespace testdm
             }
         }
 
-        public int AutoBattle(DmAe dmae, Mouse mouse, string map, string team1, string team2, string team3, string team4)
+        public int AutoBattle(DmAe dmae, Mouse mouse, string map, string team1, string team2, string team3, string team4,ref UserBattleInfo userbattleinfo)
         {
             int battle1, battle2, battle3;
             AutoBattleTask(out battle1, out battle2, out battle3, map);
             mouse.LeftClickHomeToBattle(dmae, battle1, battle2, battle3);
             mouse.delayTime(1);
-            mouse.ClickFightType(dmae, "self-discipline");
+            mouse.ClickFightType(dmae, "self-discipline",ref userbattleinfo);
             mouse.delayTime(1);
             SelectTeam(dmae, mouse, team1, team2, team3, team4);
 
@@ -1928,7 +1934,7 @@ namespace testdm
             //MessageBox.Show("作者打了100多把都没有遇到强行撤离,使用时请注意", "少女前线");
             mouse.LeftClickHomeToBattle(dmae, 2, 1, 4);
             mouse.delayTime(1);
-            mouse.ClickFightType(dmae, "normal");
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
             mouse.delayTime(4);
 
 
@@ -2080,7 +2086,7 @@ namespace testdm
 
             mouse.LeftClickHomeToBattle(dmae, 3, 1, 4);
 
-            mouse.ClickFightType(dmae, "normal");
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
             mouse.delayTime(4);
 
             if (userBattleInfo.SetMap == true)
@@ -2190,7 +2196,7 @@ namespace testdm
 
             mouse.LeftClickHomeToBattle(dmae, 4, 1, 4);
             mouse.delayTime(1);
-            mouse.ClickFightType(dmae, "normal");
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
             mouse.delayTime(4);
 
@@ -2445,7 +2451,7 @@ namespace testdm
 
             mouse.LeftClickHomeToBattle(dmae, 0, 0, 1);
             mouse.delayTime(1);
-            mouse.ClickFightType(dmae, "normal");
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
@@ -2500,7 +2506,7 @@ namespace testdm
 
             mouse.LeftClickHomeToBattle(dmae, 3, 2, 2);
             mouse.delayTime(1);
-            mouse.ClickFightType(dmae, "normal");
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
             mouse.delayTime(4);
 
@@ -2593,7 +2599,7 @@ namespace testdm
         {
             mouse.LeftClickHomeToBattle(dmae, 5, 0, 4);
             mouse.delayTime(1);
-            mouse.ClickFightType(dmae, "normal");
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
 
 
@@ -2721,7 +2727,7 @@ namespace testdm
 
             mouse.LeftClickHomeToBattle(dmae, 5, 1, 4);
             mouse.delayTime(1);
-            mouse.ClickFightType(dmae, "normal");
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
 
 

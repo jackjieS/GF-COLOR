@@ -429,7 +429,11 @@
             "代号29",
             "代号30",
             "代号31",
-            "代号32"});
+            "代号32",
+            "代号33",
+            "代号34",
+            "代号35",
+            "代号36"});
             this.comboBox8.Location = new System.Drawing.Point(352, 113);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(59, 20);
@@ -472,7 +476,11 @@
             "代号29",
             "代号30",
             "代号31",
-            "代号32"});
+            "代号32",
+            "代号33",
+            "代号34",
+            "代号35",
+            "代号36"});
             this.comboBox7.Location = new System.Drawing.Point(352, 88);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(59, 20);
@@ -515,7 +523,11 @@
             "代号29",
             "代号30",
             "代号31",
-            "代号32"});
+            "代号32",
+            "代号33",
+            "代号34",
+            "代号35",
+            "代号36"});
             this.comboBox6.Location = new System.Drawing.Point(352, 63);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(59, 20);
@@ -558,7 +570,11 @@
             "代号29",
             "代号30",
             "代号31",
-            "代号32"});
+            "代号32",
+            "代号33",
+            "代号34",
+            "代号35",
+            "代号36"});
             this.comboBox5.Location = new System.Drawing.Point(352, 38);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(59, 20);
@@ -577,7 +593,9 @@
             "第五梯队",
             "第六梯队",
             "第七梯队",
-            "第八梯队"});
+            "第八梯队",
+            "第九梯队",
+            "第十梯队"});
             this.comboBox4.Location = new System.Drawing.Point(269, 113);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(77, 20);
@@ -596,7 +614,9 @@
             "第五梯队",
             "第六梯队",
             "第七梯队",
-            "第八梯队"});
+            "第八梯队",
+            "第九梯队",
+            "第十梯队"});
             this.comboBox3.Location = new System.Drawing.Point(269, 88);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(77, 20);
@@ -615,7 +635,9 @@
             "第五梯队",
             "第六梯队",
             "第七梯队",
-            "第八梯队"});
+            "第八梯队",
+            "第九梯队",
+            "第十梯队"});
             this.comboBox2.Location = new System.Drawing.Point(269, 63);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(77, 20);
@@ -634,7 +656,9 @@
             "第五梯队",
             "第六梯队",
             "第七梯队",
-            "第八梯队"});
+            "第八梯队",
+            "第九梯队",
+            "第十梯队"});
             this.comboBox1.Location = new System.Drawing.Point(269, 38);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(77, 20);

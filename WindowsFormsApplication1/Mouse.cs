@@ -2168,7 +2168,7 @@ namespace testdm
             }
         }
 
-        public void ClickFightType(DmAe dmae, string s1)//双击作战任务
+        public void ClickFightType(DmAe dmae, string s1,ref UserBattleInfo userBattleInfo)//双击作战任务
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "选择作战方式";
             WriteLog.WriteError("准备选择作战方式");
@@ -2202,14 +2202,14 @@ namespace testdm
 
                     delayTime(1,1);
 
-                    Girl_Full(dmae);//检测床位是否已满
+                    Girl_Full(dmae,ref userBattleInfo);//检测床位是否已满
                 }
             }
             WriteLog.WriteError("选择作战方式完成");
 
         }
 
-        public bool Girl_Full(DmAe dmae)//检测床位是否已满
+        public bool Girl_Full(DmAe dmae,ref UserBattleInfo userBattleInfo)//检测床位是否已满
         {
             int dm_ret0 = dmae.CmpColor(560, 500, "ffffff", 0.9);
             int dm_ret1 = dmae.CmpColor(720, 500, "ffffff", 0.9);
@@ -2251,9 +2251,11 @@ namespace testdm
             }
             else
             {
+                userBattleInfo.BattleFixTime = -1; userBattleInfo.Used = false;
                 MessageBox.Show("床位已满，请整顿", "少女前线");
             }
-            WindowsFormsApplication1.BaseData.SystemInfo.ThreadTCase = 2;
+
+            //WindowsFormsApplication1.BaseData.SystemInfo.ThreadTCase = 2;
             return true;
         }
 

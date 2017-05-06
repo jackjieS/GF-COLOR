@@ -707,7 +707,7 @@ namespace WindowsFormsApplication1
 
 
                                     im.gameData.User_AutobattleInfo[0].AutoBattleUse = false;
-                                    im.gameData.User_AutobattleInfo[0].AutoBattleLastTime = im.time.AutoBattle(dmae, im.mouse, Settings.Default.AutoMap, Settings.Default.AutoTeam1, Settings.Default.AutoTeam2, Settings.Default.AutoTeam3, Settings.Default.AutoTeam4);
+                                    //im.gameData.User_AutobattleInfo[0].AutoBattleLastTime = im.time.AutoBattle(dmae, im.mouse, Settings.Default.AutoMap, Settings.Default.AutoTeam1, Settings.Default.AutoTeam2, Settings.Default.AutoTeam3, Settings.Default.AutoTeam4,ref im.gameData.User_battleInfo[]);
                                     im.gameData.User_AutobattleInfo[0].AutoBattleLoopTime++;
                                     im.taskList.taskremove();
                                     ////战斗结束 判断是否需要加接收后勤任务到最前

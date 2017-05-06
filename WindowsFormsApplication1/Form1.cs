@@ -336,10 +336,10 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-
+            im.time.Team_S(dmae,im.mouse,"第十梯队");
             //bool i=im.mouse.CheckNewGunEquipmentPage(dmae);
-            int i1 = im.mouse.CheckBuildEquipmentS(dmae, 0);
-            int i2 = im.mouse.CheckBuildEquipmentS(dmae, 1);
+            //int i1 = im.mouse.CheckBuildEquipmentS(dmae, 0);
+            //int i2 = im.mouse.CheckBuildEquipmentS(dmae, 1);
             //int i = dmae.UseDict(4);
             //string time= dmae.Ocr(444, 177, 607, 222, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100));
             //im.mouse.MapSet(dmae, 905, 571, 904, 566, 961, 566, 88, 613);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
