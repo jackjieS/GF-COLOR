@@ -441,9 +441,6 @@ namespace WindowsFormsApplication1
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationNeedTowait&& (im.gameData.User_operationInfo[i].Added==false))
                                         {
-                                            //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
-                                            //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
-                                            //im.gameData.User_operationInfo[i].Added = true;
                                             im.User_OperationNumberNow.Add(i);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
@@ -858,7 +855,7 @@ namespace WindowsFormsApplication1
                                             //im.gameData.User_operationInfo[i].Added = true;
                                             im.User_OperationNumberNow.Add(i);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             //返回时间
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
