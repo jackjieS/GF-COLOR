@@ -126,6 +126,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button21 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -187,6 +188,7 @@
             // LtabPage
             // 
             this.LtabPage.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.LtabPage.Controls.Add(this.button21);
             this.LtabPage.Controls.Add(this.textBox21);
             this.LtabPage.Controls.Add(this.button14);
             this.LtabPage.Controls.Add(this.button13);
@@ -243,7 +245,7 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(75, 23);
             this.button14.TabIndex = 173;
-            this.button14.Text = "button14";
+            this.button14.Text = "作者测试用";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click_1);
             // 
@@ -1391,6 +1393,17 @@
             this.label2.TabIndex = 193;
             this.label2.Text = "任务队列";
             // 
+            // button21
+            // 
+            this.button21.Enabled = false;
+            this.button21.Location = new System.Drawing.Point(367, 170);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(72, 23);
+            this.button21.TabIndex = 175;
+            this.button21.Text = "宿舍点赞";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1532,6 +1545,7 @@
         public System.Windows.Forms.TextBox textBox26;
         public System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.Label label31;
+        public System.Windows.Forms.Button button21;
     }
 }
 

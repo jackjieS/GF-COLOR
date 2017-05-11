@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Battle));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -87,11 +89,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.label27 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -113,6 +115,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBox10);
+            this.tabPage1.Controls.Add(this.label29);
             this.tabPage1.Controls.Add(this.textBox8);
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.checkBox6);
@@ -142,9 +146,26 @@
             this.tabPage1.Text = "普通作战";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(140, 212);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(37, 21);
+            this.textBox10.TabIndex = 135;
+            this.textBox10.Text = "0";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(11, 214);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(53, 12);
+            this.label29.TabIndex = 134;
+            this.label29.Text = "循环次数";
+            // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(140, 187);
+            this.textBox8.Location = new System.Drawing.Point(140, 186);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(37, 21);
             this.textBox8.TabIndex = 133;
@@ -152,7 +173,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(11, 191);
+            this.label26.Location = new System.Drawing.Point(11, 189);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(101, 12);
             this.label26.TabIndex = 132;
@@ -285,7 +306,8 @@
             "3_4E",
             "4_4E",
             "5_4",
-            "5_4E"});
+            "5_4E",
+            "6_6"});
             this.comboBox1.Location = new System.Drawing.Point(70, 9);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(77, 20);
@@ -801,16 +823,31 @@
             this.tabPage3.Text = "测试";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // label28
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(10, 11);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(71, 16);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "人形强化";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(109, 139);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(65, 12);
+            this.label28.TabIndex = 4;
+            this.label28.Text = "(1-12位置)";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(77, 135);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(26, 21);
+            this.textBox9.TabIndex = 3;
+            this.textBox9.Text = "1";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(10, 139);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(65, 12);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "强化装备第";
             // 
             // radioButton4
             // 
@@ -823,31 +860,16 @@
             this.radioButton4.Text = "装备强化";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // label27
+            // radioButton3
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(10, 139);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(65, 12);
-            this.label27.TabIndex = 2;
-            this.label27.Text = "强化装备第";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(77, 135);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(26, 21);
-            this.textBox9.TabIndex = 3;
-            this.textBox9.Text = "1";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(109, 139);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(65, 12);
-            this.label28.TabIndex = 4;
-            this.label28.Text = "(1-12位置)";
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(10, 11);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(71, 16);
+            this.radioButton3.TabIndex = 0;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "人形强化";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // Battle
             // 
@@ -938,5 +960,7 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label29;
     }
 }

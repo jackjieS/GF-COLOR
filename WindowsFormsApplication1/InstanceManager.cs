@@ -32,6 +32,7 @@ namespace WindowsFormsApplication1
         public GameeData gameData;
         public UserData userData;
 
+        public events.Dormitory dormitory;
 
         public Object  BattleInfoLock;
 
@@ -52,6 +53,7 @@ namespace WindowsFormsApplication1
 
             this.gameData = new GameeData(this);
             this.userData = new UserData(this);
+            this.dormitory = new events.Dormitory(this);
 
             this.BattleInfoLock = new Object();
 

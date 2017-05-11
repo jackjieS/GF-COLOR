@@ -336,6 +336,7 @@ namespace WindowsFormsApplication1
                         dmae = dm.SetDict(2, @"\Resources\dm_soft2.txt");
                         dmae = dm.SetDict(3, @"\Resources\LTeamList.txt");
                         dmae = dm.SetDict(4, @"\Resources\BTime.txt");
+                        dmae = dm.SetDict(5, @"\Resources\Mission.txt");
                         if (dmae == 1) {; } else { WriteLog.WriteError("初始化字典失败"); }
                         if (dmae == 1) { return true; } else { return false; }
                     }
@@ -348,6 +349,7 @@ namespace WindowsFormsApplication1
                         dmae = dm.SetDict(2, @"\Resources\dm_soft2.txt");
                         dmae = dm.SetDict(3, @"\Resources\LTeamList.txt");
                         dmae = dm.SetDict(4, @"\Resources\BTime.txt");
+                        dmae = dm.SetDict(5, @"\Resources\Mission.txt");
                         if (dmae == 1) {; } else { WriteLog.WriteError("初始化字典失败"); }
                         if (dmae == 1) { return true; } else { return false; }
                     }

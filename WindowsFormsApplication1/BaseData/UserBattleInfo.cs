@@ -37,6 +37,7 @@ namespace WindowsFormsApplication1.BaseData
         public int FixMaxPercentage=0;
         public int FixMinPercentage=0;
         public int RoundInterval;
+        public int LoopMaxTime = -1;//循环最大次数达到这个数目则停止循环战斗 -1为无限次
         public bool BattleLoopUnLockWindows;
         public bool DismantleGun;
         public bool ChangeGun;

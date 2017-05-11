@@ -84,34 +84,34 @@ namespace testdm
             {
                 if (ZeroPage == 1)
                 {
-                    mouse.ChooseBattle(dmae, 0);
-                    mouse.delayTime(3,1);
+                    mouse.ChooseBattle(dmae, "00",1);
+                    //mouse.delayTime(3,1);
                     ZeroPage = 0;
                 }
                 if (i == 0)
                 {
-                    mouse.ChooseBattle(dmae, 1);
-                    mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "01",1);
+                    //mouse.delayTime(3, 1);
                 }
                 if (i == 1)
                 {
-                    mouse.ChooseBattle(dmae, 2);
-                    mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "02", 1);
+                    //mouse.delayTime(3, 1);
                 }
                 if (i == 2)
                 {
-                    mouse.ChooseBattle(dmae, 3);
-                    mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "03", 1);
+                    //mouse.delayTime(3, 1);
                 }
                 if (i == 3)
                 {
-                    mouse.ChooseBattle(dmae, 4);
-                    mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "04", 1);
+                    //mouse.delayTime(3, 1);
                 }
                 if (i == 4)
                 {
-                    mouse.ChooseBattle(dmae, 5);
-                    mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "05", 1);
+                    //mouse.delayTime(3, 1);
                 }
 
 
@@ -648,13 +648,13 @@ namespace testdm
             }
         }
 
-        public void AutoBattleTask(out int battle1, out int battle2, out int battle3,string map)
+        public void AutoBattleTask(out string battle1, out int battle2, out int battle3,string map)
         {
             switch (map)
             {
-                case "1_6": { battle1 = 1; battle2 = 0; battle3 = 6; break; }
-                case "1_4E": { battle1 = 1;battle2 = 1;battle3 = 4;break; }
-                default: { battle1 = 0; battle2 = 0; battle3 = 0; break; }
+                case "1_6": { battle1 = "01"; battle2 = 0; battle3 = 6; break; }
+                case "1_4E": { battle1 = "01"; battle2 = 1;battle3 = 4;break; }
+                default: { battle1 = "00"; battle2 = 0; battle3 = 0; break; }
 
             }
         }
@@ -693,35 +693,35 @@ namespace testdm
                     {
                         switch (TaskNumber)
                         {
-                            case "代号01": { mouse.ChooseBattle(dmae, 0); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 3005; }
-                            case "代号02": { mouse.ChooseBattle(dmae, 0); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 10805; }
-                            case "代号03": { mouse.ChooseBattle(dmae, 0); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 43205; }
-                            case "代号04": { mouse.ChooseBattle(dmae, 0); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 86405; }
+                            case "代号01": { mouse.ChooseBattle(dmae, "00", 1); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 3005; }
+                            case "代号02": { mouse.ChooseBattle(dmae, "00", 1); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 10805; }
+                            case "代号03": { mouse.ChooseBattle(dmae, "00", 1); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 43205; }
+                            case "代号04": { mouse.ChooseBattle(dmae, "00", 1); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 86405; }
 
-                            case "代号05": { mouse.ChooseBattle(dmae, 1); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 905; }
-                            case "代号06": { mouse.ChooseBattle(dmae, 1); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 1805; }
-                            case "代号07": { mouse.ChooseBattle(dmae, 1); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 3605; }
-                            case "代号08": { mouse.ChooseBattle(dmae, 1); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 7205; }
+                            case "代号05": { mouse.ChooseBattle(dmae, "01", 1); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 905; }
+                            case "代号06": { mouse.ChooseBattle(dmae, "01", 1); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 1805; }
+                            case "代号07": { mouse.ChooseBattle(dmae, "01", 1); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 3605; }
+                            case "代号08": { mouse.ChooseBattle(dmae, "01", 1); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 7205; }
 
-                            case "代号09": { mouse.ChooseBattle(dmae, 2); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 2405; }
-                            case "代号10": { mouse.ChooseBattle(dmae, 2); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 5405; }
-                            case "代号11": { mouse.ChooseBattle(dmae, 2); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 14405; }
-                            case "代号12": { mouse.ChooseBattle(dmae, 2); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 21605; }
+                            case "代号09": { mouse.ChooseBattle(dmae, "02", 1); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 2405; }
+                            case "代号10": { mouse.ChooseBattle(dmae, "02", 1); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 5405; }
+                            case "代号11": { mouse.ChooseBattle(dmae, "02", 1); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 14405; }
+                            case "代号12": { mouse.ChooseBattle(dmae, "02", 1); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 21605; }
 
-                            case "代号13": { mouse.ChooseBattle(dmae, 3); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 1205; }
-                            case "代号14": { mouse.ChooseBattle(dmae, 3); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 2705; }
-                            case "代号15": { mouse.ChooseBattle(dmae, 3); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 5405; }
-                            case "代号16": { mouse.ChooseBattle(dmae, 3); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 18005; }
+                            case "代号13": { mouse.ChooseBattle(dmae, "03", 1); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 1205; }
+                            case "代号14": { mouse.ChooseBattle(dmae, "03", 1); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 2705; }
+                            case "代号15": { mouse.ChooseBattle(dmae, "03", 1); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 5405; }
+                            case "代号16": { mouse.ChooseBattle(dmae, "03", 1); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 18005; }
 
-                            case "代号17": { mouse.ChooseBattle(dmae, 4); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 3605; }
-                            case "代号18": { mouse.ChooseBattle(dmae, 4); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 7205; }
-                            case "代号19": { mouse.ChooseBattle(dmae, 4); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 21605; }
-                            case "代号20": { mouse.ChooseBattle(dmae, 4); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 28805; }
+                            case "代号17": { mouse.ChooseBattle(dmae, "04", 1); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 3605; }
+                            case "代号18": { mouse.ChooseBattle(dmae, "04", 1); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 7205; }
+                            case "代号19": { mouse.ChooseBattle(dmae, "04", 1); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 21605; }
+                            case "代号20": { mouse.ChooseBattle(dmae, "04", 1); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 28805; }
 
-                            case "代号21": { mouse.ChooseBattle(dmae, 5); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 1805; }
-                            case "代号22": { mouse.ChooseBattle(dmae, 5); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 9005; }
-                            case "代号23": { mouse.ChooseBattle(dmae, 5); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 14405; }
-                            case "代号24": { mouse.ChooseBattle(dmae, 5); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 25205; }
+                            case "代号21": { mouse.ChooseBattle(dmae, "05", 1); mouse.ChooseLogisticsTask(dmae, 1); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 1805; }
+                            case "代号22": { mouse.ChooseBattle(dmae, "05", 1); mouse.ChooseLogisticsTask(dmae, 2); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 9005; }
+                            case "代号23": { mouse.ChooseBattle(dmae, "05", 1); mouse.ChooseLogisticsTask(dmae, 3); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 14405; }
+                            case "代号24": { mouse.ChooseBattle(dmae, "05", 1); mouse.ChooseLogisticsTask(dmae, 4); Team_S(dmae, mouse, TeamNumber); mouse.DoubleClickLogisticsConfirm(dmae); return 25205; }
 
                             default:
                                 return -1;
@@ -853,6 +853,37 @@ namespace testdm
             return colorlist[count];
         }
 
+        public string FindCombatMissionMainColor(DmAe dmae, int x1, int y1, int x2, int y2)
+        {
+            List<string> colorlist = new List<string>();
+            List<int> countlist = new List<int>();
+            string color0;
+            int count = 0, tempy = x1;
+
+            for (tempy = y1; tempy < y2; tempy++)
+            {
+                for (int x = x1; x < x2; x++)
+                {
+                    color0 = dmae.GetColor(x, tempy);
+                    count = colorlist.FindIndex(s => s == color0);
+
+                    if (count == -1)
+                    {
+                        colorlist.Add(color0);
+                        countlist.Add(1);
+                    }
+                    else
+                    {
+                        countlist[count] += 1;
+                    }
+                }
+            }
+            //count = countlist.Max();
+            //countlist.Remove(count);
+            count = countlist.Max();
+            count = countlist.FindIndex(s => s == count);
+            return colorlist[count];
+        }
 
         public static string FindYellowBackGroundColor(DmAe dmae)
         {
@@ -1755,6 +1786,11 @@ namespace testdm
                         Battle5_4E(dmae, mouse,ref userBattleInfo);
                         break;
                     }
+                case "6_6":
+                    {
+                        Battle6_6(dmae, mouse, ref userBattleInfo);
+                        break;
+                    }
 
                 //case "魔方行动E4":
                 //    {
@@ -1807,7 +1843,7 @@ namespace testdm
 
         public int AutoBattle(DmAe dmae, Mouse mouse, string map, string team1, string team2, string team3, string team4,ref UserBattleInfo userbattleinfo)
         {
-            int battle1, battle2, battle3;
+            string battle1;int battle2, battle3;
             AutoBattleTask(out battle1, out battle2, out battle3, map);
             mouse.LeftClickHomeToBattle(dmae, battle1, battle2, battle3);
             mouse.delayTime(1);
@@ -1932,7 +1968,7 @@ namespace testdm
 
             object intX, intY;
             //MessageBox.Show("作者打了100多把都没有遇到强行撤离,使用时请注意", "少女前线");
-            mouse.LeftClickHomeToBattle(dmae, 2, 1, 4);
+            mouse.LeftClickHomeToBattle(dmae, "02", 1, 4);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
             mouse.delayTime(4);
@@ -2084,7 +2120,7 @@ namespace testdm
         public void Battle3_4E(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
 
-            mouse.LeftClickHomeToBattle(dmae, 3, 1, 4);
+            mouse.LeftClickHomeToBattle(dmae, "03", 1, 4);
 
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
             mouse.delayTime(4);
@@ -2194,7 +2230,7 @@ namespace testdm
         public void Battle4_4E(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
 
-            mouse.LeftClickHomeToBattle(dmae, 4, 1, 4);
+            mouse.LeftClickHomeToBattle(dmae, "04", 1, 4);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
@@ -2449,7 +2485,7 @@ namespace testdm
         public void Battle0_1(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
 
-            mouse.LeftClickHomeToBattle(dmae, 0, 0, 1);
+            mouse.LeftClickHomeToBattle(dmae, "00", 0, 1);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
@@ -2504,7 +2540,7 @@ namespace testdm
         {
 
 
-            mouse.LeftClickHomeToBattle(dmae, 3, 2, 2);
+            mouse.LeftClickHomeToBattle(dmae, "03", 2, 2);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
@@ -2597,7 +2633,7 @@ namespace testdm
 
         public void Battle5_4(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
-            mouse.LeftClickHomeToBattle(dmae, 5, 0, 4);
+            mouse.LeftClickHomeToBattle(dmae, "05", 0, 4);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
@@ -2725,7 +2761,7 @@ namespace testdm
         {
 
 
-            mouse.LeftClickHomeToBattle(dmae, 5, 1, 4);
+            mouse.LeftClickHomeToBattle(dmae, "05", 1, 4);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
@@ -2972,6 +3008,67 @@ namespace testdm
             
         }
 
+        public void Battle6_6(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
+        {
+
+            mouse.LeftClickHomeToBattle(dmae, "06", 0, 6);
+            mouse.delayTime(1);
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+
+            mouse.delayTime(4);
+            if (userBattleInfo.SetMap == true)
+            {
+                mouse.MapSet(dmae, 830, 378, 802, 384, 810, 366, 307, 146, "ScreenUp");
+            }
+
+
+            mouse.delayTime(1);
+            if (mouse.Teamdispose(dmae, 130, 190, 170, 234, userBattleInfo.TaskMianTeam) == -1)//指挥部部署
+            {
+                mouse.BackToHomeFromBattlePageREADY(dmae);
+                userBattleInfo.Team_Serror = true;
+                return;
+            }
+
+
+            mouse.BattleStart(dmae);
+
+            //x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
+            //开始补给
+
+            if (userBattleInfo.ChoiceToSupply == true) { mouse.Support(dmae, 130, 190, 170, 234); }
+
+
+            mouse.MoveAndFight(dmae, 130, 190, 170, 234, /*第一个点坐标*/359, 203, 396, 229,/*第二个点坐标*/ 144, 230, 160, 293/*监测点坐标*/, 0, 1);//第一开始
+
+            mouse.MoveAndMove(dmae, 363, 204, 396, 230, /*第一个点坐标*/541, 209, 574, 241,/*第二个点坐标*/373, 234, 389, 308/*监测点坐标*/, 0, 1);//第一开始
+
+            mouse.MoveAndFight(dmae, 543, 209, 572, 235, /*第一个点坐标*/672, 206, 704, 239,/*第二个点坐标*/ 551, 262, 565, 315/*监测点坐标*/, 0, 1);//第一开始
+
+            mouse.RoundEnd2(dmae);
+
+            mouse.Support(dmae, 673, 213, 705, 237);
+
+            mouse.MoveAndFight(dmae, 673, 213, 705, 237, /*第一个点坐标*/611, 324, 642, 359,/*第二个点坐标*/ 564, 201, 655, 222/*监测点坐标*/, 1, 0);//第一开始
+
+            mouse.MoveAndMove(dmae, 607, 327, 639, 356, /*第一个点坐标*/536, 522, 566, 555,/*第二个点坐标*/656, 322, 748, 335/*监测点坐标*/, 0, 0);//第一开始
+
+            mouse.MoveAndFight(dmae, 533, 520, 563, 549, /*第一个点坐标*/729, 558, 757, 584,/*第二个点坐标*/ 583, 521, 635, 531/*监测点坐标*/, 0, 0);//第一开始
+
+            mouse.ScreenUp(dmae, 547, 95, 903, 146, 300, 830, 378, 802, 384, 810, 366);//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
+
+            mouse.MoveAndFight(dmae, 729, 558, 763, 589, /*第一个点坐标*/752, 392, 792, 438,/*第二个点坐标*/ 775, 553, 854, 570/*监测点坐标*/, 0, 0);//第一开始
+
+            mouse.ScreenUp(dmae, 547, 95, 903, 146, 300, 830, 378, 802, 384, 810, 366);//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
+
+            mouse.RoundEnd(dmae, 749, 389, 800, 440, ref userBattleInfo);
+
+
+
+        }
+
+
+
         //public void SummerE4(DmAe dmae, Mouse mouse, string mainteam, string supportteam, int tasktype, bool supply,bool fix,int fixmaxpercentage, bool setmap = false)
         //{
 
@@ -3193,7 +3290,7 @@ namespace testdm
         //                default:
         //            break;
         //    }
-            
+
 
 
 
@@ -3254,61 +3351,61 @@ namespace testdm
 
         //}
 
-                
-
-
-
-     //   public void Battle1_6(DmAe dmae, Mouse mouse, string MainTeam, string SupportTeam,bool fix,int fixmintime, ref bool Battletask1Used, ref int case0)
-     //   {
-
-     //       object intX, intY;
-
-     //       mouse.LeftClickHomeToBattle(dmae, 1, 1, 4);
-     //       mouse.delayTime(1);
-     //       mouse.ClickFightType(dmae, "normal");
-     //       mouse.delayTime(4);
-
-
-     //       //mouse.ScreenUp(dm, 520, 136, 992, 203, 100, 900, 664, "94c6f7"); //900, 665
-     //       mouse.delayTime(1);
 
 
 
 
-     //       mouse.Teamdispose(dmae, 1057, 476, 1110, 524, MainTeam);//指挥部部署
-     //       mouse.delayTime(1);
-     //       mouse.ScreenUp(dmae, 358, 250, 998, 338, 300, 1, 1, 1, 1, 1, 1); //900, 665
-     //       mouse.delayTime(1);
-     //       mouse.Teamdispose(dmae, 1063, 156, 1106, 185, SupportTeam);//机场部署
-     //       mouse.delayTime(1);
+        //   public void Battle1_6(DmAe dmae, Mouse mouse, string MainTeam, string SupportTeam,bool fix,int fixmintime, ref bool Battletask1Used, ref int case0)
+        //   {
 
-     //       mouse.BattleStart(dmae);
-     //       mouse.delayTime(2);
+        //       object intX, intY;
+
+        //       mouse.LeftClickHomeToBattle(dmae, 1, 1, 4);
+        //       mouse.delayTime(1);
+        //       mouse.ClickFightType(dmae, "normal");
+        //       mouse.delayTime(4);
+
+
+        //       //mouse.ScreenUp(dm, 520, 136, 992, 203, 100, 900, 664, "94c6f7"); //900, 665
+        //       mouse.delayTime(1);
 
 
 
-     //   //    mouse.MoveAndFight(dm, 1063, 156, 1106, 185, 866, 151, 906, 187, 1125, 170);//第一开始
 
-     //       mouse.ScreenUp(dmae, 358, 250, 998, 338, 300, 1, 1, 1, 1, 1, 1); //900, 665
-     //       mouse.delayTime(1);
-     ////       mouse.MoveAndFight(dm, 866, 151, 906, 187, 688, 155, 725, 191, 845, 167);//第二开始
-     //       mouse.delayTime(1);
+        //       mouse.Teamdispose(dmae, 1057, 476, 1110, 524, MainTeam);//指挥部部署
+        //       mouse.delayTime(1);
+        //       mouse.ScreenUp(dmae, 358, 250, 998, 338, 300, 1, 1, 1, 1, 1, 1); //900, 665
+        //       mouse.delayTime(1);
+        //       mouse.Teamdispose(dmae, 1063, 156, 1106, 185, SupportTeam);//机场部署
+        //       mouse.delayTime(1);
 
-     //       mouse.ScreenUp(dmae, 358, 250, 998, 338, 300, 1, 1, 1, 1, 1, 1); //900, 665
-     //       mouse.delayTime(1);
-     //       //mouse.MoveAndMove(dm, 688, 155, 725, 191, 866, 151, 906, 187, 667, 171);//第三开始
+        //       mouse.BattleStart(dmae);
+        //       mouse.delayTime(2);
 
-     //       mouse.delayTime(1);
-     //       //mouse.MoveToAirport(dm, 869, 151, 906, 185, 1065, 159, 1099, 186, 887, 200, /*move坐标*/1002, 156, /*点击移动坐标*/971, 157, 1047, 190);//第四开始
-     //       mouse.delayTime(1);
-     //       //撤离
-     //       mouse.Evacuate(dmae, 1064, 152, 1105, 190,fix, fixmintime);
-     //       mouse.delayTime(1);
-     //       mouse.StopBattle(dmae);
 
-     //       mouse.delayTime(2);
-     //       mouse.WaitToHome(dmae);
-     //   }
+
+        //   //    mouse.MoveAndFight(dm, 1063, 156, 1106, 185, 866, 151, 906, 187, 1125, 170);//第一开始
+
+        //       mouse.ScreenUp(dmae, 358, 250, 998, 338, 300, 1, 1, 1, 1, 1, 1); //900, 665
+        //       mouse.delayTime(1);
+        ////       mouse.MoveAndFight(dm, 866, 151, 906, 187, 688, 155, 725, 191, 845, 167);//第二开始
+        //       mouse.delayTime(1);
+
+        //       mouse.ScreenUp(dmae, 358, 250, 998, 338, 300, 1, 1, 1, 1, 1, 1); //900, 665
+        //       mouse.delayTime(1);
+        //       //mouse.MoveAndMove(dm, 688, 155, 725, 191, 866, 151, 906, 187, 667, 171);//第三开始
+
+        //       mouse.delayTime(1);
+        //       //mouse.MoveToAirport(dm, 869, 151, 906, 185, 1065, 159, 1099, 186, 887, 200, /*move坐标*/1002, 156, /*点击移动坐标*/971, 157, 1047, 190);//第四开始
+        //       mouse.delayTime(1);
+        //       //撤离
+        //       mouse.Evacuate(dmae, 1064, 152, 1105, 190,fix, fixmintime);
+        //       mouse.delayTime(1);
+        //       mouse.StopBattle(dmae);
+
+        //       mouse.delayTime(2);
+        //       mouse.WaitToHome(dmae);
+        //   }
 
 
 

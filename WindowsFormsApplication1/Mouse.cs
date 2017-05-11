@@ -84,7 +84,7 @@ namespace testdm
         public void ScreenUp(DmAe dmae, int x1, int y1, int x2, int y2,int amount, int ColorX4,int ColorY4,int ColorX5, int ColorY5,int ColorX6,int ColorY6, string Color4 = "ffffff",string Color5 = "ffffff",string Color6 = "ffffff")//x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
         {
             Random ran = new Random();
-            WindowsFormsApplication1.BaseData.SystemInfo.AppState = "屏幕往上移动";
+            SystemInfo.AppState = "屏幕往上移动";
             int dm_ret0 = dmae.CmpColor(ColorX4, ColorY4, Color4, 1);//找不到颜色返回1
             int dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, Color5, 1);//找不到颜色返回1
             int dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, Color6, 1);//找不到颜色返回1
@@ -516,9 +516,6 @@ namespace testdm
 
             }
 
-
-
-
             while (CheckHomePage(dmae) == 0)
             {
                 BindWindowS(dmae, 1);
@@ -529,10 +526,6 @@ namespace testdm
                     WriteLog.WriteError("temp = 5 点击主页战斗成功");
                     return;
                 }
-
-
-
-
                 if (CheckMissionSettingPage(dmae) == 0)
                 {
                     while (CheckMissionSettingPage(dmae) == 0)
@@ -557,9 +550,19 @@ namespace testdm
             }
 
             WriteLog.WriteError("点击主页战场按钮成功");
+        }
 
-
-
+        public void ClickHomeDormitory(DmAe dmae)
+        {
+            while (CheckHomePage(dmae) == 1)
+            {
+                delayTime(0.5, 1);
+            }
+            while (CheckHomePage(dmae) == 0)
+            {
+                BindWindowS(dmae, 1);
+                LeftClick(dmae, 1074, 184, 1243, 252);
+            }
         }
 
         public void ClickTeam(DmAe dmae)
@@ -1739,14 +1742,17 @@ namespace testdm
         }
 
 
-        public void LeftClickHomeToBattle(DmAe dmae, int battle,int difficult,int mission,int activity = 0)//battle ==11 2016夏活
+        public void LeftClickHomeToBattle(DmAe dmae, string battle,int difficult,int mission,int activity = 0)//battle ==11 2016夏活
         {
             ClickHomeBattle(dmae);
 
 
-            ChooseBattle(dmae, battle);//点击战役battle ==11 2016夏活
+            ChooseBattle(dmae, battle,0);//点击战役battle ==11 2016夏活
+
             ChooseDifficult(dmae, difficult);//0不选择跳过
+
             ChooseMission(dmae, mission);//点击地图
+
             delayTime(1);
         }
 
@@ -1788,78 +1794,167 @@ namespace testdm
 
 
 
-        public void ChooseBattle(DmAe dmae, int battle)      //选择战役 11为夏活E1,12夏活E2 13夏活E3 14 夏活E4
+        public void ChooseBattle(DmAe dmae, string battle,int type)      //选择战役
         {
+            dmae.UseDict(5);
+            object intX=-1, intY=-1;
+            int result = -1;
 
-            bool dm_ret6 = ((dmae.CmpColor(240, 240, "ffffff", 0.9) == 0) || (dmae.CmpColor(240, 240, "f7ae00", 0.7) == 0) || (dmae.CmpColor(240, 240, Settings.Default.BattleSelectColor, 0.7) == 0));//任务1斜杠//确保打开了任务选择页面
-            while (dm_ret6 == false)
+            //等待UI加载
+            if(type == 0)
             {
-                delayTime(1);
-                dm_ret6 = ((dmae.CmpColor(240, 240, "ffffff", 0.9) == 0) || (dmae.CmpColor(240, 240, "f7ae00", 0.7) == 0) || (dmae.CmpColor(240, 240, Settings.Default.BattleSelectColor, 0.7) == 0));
-            }
-
-
-            WindowsFormsApplication1.BaseData.SystemInfo.AppState = "选择战役";
-            if (battle == 0)//点击第零战役
-            {
-
-                LeftClick(dmae, 203, 114, 294, 179);
-                delayTime(1);
-                int dm_ret0 = dmae.CmpColor(250, 188, Settings.Default.BattleSelectColor, 0.7);
-                while (dm_ret0 == 1) { LeftClick(dmae, 203, 114, 294, 179); delayTime(1); dm_ret0 = dmae.CmpColor(250, 188, Settings.Default.BattleSelectColor, 0.7); }
-
-            }
-
-            if (battle == 1)//点击第一战役
-            {
-                LeftClick(dmae, 202, 213, 297, 285); delayTime(1);
-                int dm_ret1 = dmae.CmpColor(240, 240, Settings.Default.BattleSelectColor, 0.7);
-                while (dm_ret1 == 1) { LeftClick(dmae, 202, 213, 297, 285); delayTime(1); dm_ret1 = dmae.CmpColor(240, 240, Settings.Default.BattleSelectColor, 0.7); }
-            }
-
-            if (battle == 2)//点击第二战役
-            {
-
-                LeftClick(dmae, 201, 315, 302, 387); delayTime(1);
-                int dm_ret2 = dmae.CmpColor(250, 350, Settings.Default.BattleSelectColor, 0.7);
-                while(dm_ret2 == 1) { LeftClick(dmae, 201, 315, 302, 387); delayTime(1); dm_ret2 = dmae.CmpColor(250, 350, Settings.Default.BattleSelectColor, 0.7); }
-
-            }
-            if (battle == 3)//点击第三战役
-            {
-
-
-                LeftClick(dmae, 197, 411, 298, 494); delayTime(1);
-                int dm_ret3 = dmae.CmpColor(250, 455, Settings.Default.BattleSelectColor, 0.7);
-                while(dm_ret3 == 1 ) { LeftClick(dmae, 197, 411, 298, 494); delayTime(1); dm_ret3 = dmae.CmpColor(250, 455, Settings.Default.BattleSelectColor, 0.7); }
-
-            }
-            if (battle == 4)//点击第四战役
-            {
-
-                LeftClick(dmae, 200, 522, 296, 594); delayTime(1);
-                int dm_ret4 = dmae.CmpColor(240, 560, Settings.Default.BattleSelectColor, 0.7);
-                while(dm_ret4 == 1) { LeftClick(dmae, 200, 522, 296, 594); delayTime(1); dm_ret4 = dmae.CmpColor(240, 560, Settings.Default.BattleSelectColor, 0.7); }
-
-            }
-            if (battle == 5)//点击第五战役
-            {
-                LeftClick(dmae, 197, 622, 297, 688); delayTime(1);
-                int dm_ret5 = dmae.CmpColor(250, 613, Settings.Default.BattleSelectColor, 0.7);
-                while(dm_ret5 == 1) { LeftClick(dmae, 197, 622, 297, 688); delayTime(1); dm_ret5 = dmae.CmpColor(250, 613, Settings.Default.BattleSelectColor, 0.7); }
-            }
-
-            if (battle == 11)//点击夏活
-            {
-                WindowsFormsApplication1.BaseData.SystemInfo.AppState = "点击魔方行动";
-                int dm_ret0 = CheckActivityChoicePage(dmae);
-                while (dm_ret0 == 1)//1为不相等
+                while (true)
                 {
-                    LeftClick(dmae, 25, 400, 172, 460);
                     delayTime(1);
-                    dm_ret0 = CheckActivityChoicePage(dmae);
+                    string color0 = dmae.GetColor(500, 105);
+                    bool breakbool = false;
+                    for (int x = 0; x < 100; x++)
+                    {
+                        if (dmae.GetColor(500 + x, 105) != color0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            if (x == 99) { breakbool = true; break; }
+                        }
+                    }
+                    if (breakbool) break;
                 }
             }
+
+
+
+            SystemInfo.AppState = "选择战役";
+
+            //查找所需战役
+            //若无,则拉上定位0战役
+            //根据情况往下拉寻找所需的战役
+
+            string CombatMissionMColor = dmae.GetColor(102, 34);
+            result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+            if(result != -1)//-1没有找到
+            {
+                //找到直接点击完成任务
+                //通过判断X的坐标如果大于310则已经选中不需要再点击
+
+                while (Convert.ToInt32(intX) < 310)
+                {
+                    LeftClick(dmae, Convert.ToInt32(intX), Convert.ToInt32(intY), Convert.ToInt32(intX) + 5, Convert.ToInt32(intY) + 5);
+                    delayTime(1);
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                }
+            }
+            else
+            {
+                //若无,则拉上定位0战役
+                Random ran = new Random();
+                SystemInfo.AppState = "屏幕往上移动";
+                while (dmae.FindStr(197, 107, 395, 185, "00", CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY) == -1) 
+                {
+                    //206,115,304,163鼠标起始范围
+                    int tempx = ran.Next(206, 304);
+                    int tempy = ran.Next(115, 163);
+                    dmae.MoveTo(tempx, tempy);
+                    dmae.LeftDown();
+                    while (tempy < (300 + 163))
+                    {
+                        tempy++;
+                        dmae.MoveTo(tempx, tempy); delayTime(0.005);
+                    }
+                    dmae.LeftUp();
+                    delayTime(1,1);
+                }
+
+
+                if (Convert.ToInt32(battle.Substring(battle.Length - 1, 1)) < 6)
+                {
+                    //若所选战役00-05则不需要向下点
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                    while (Convert.ToInt32(intX) < 310)
+                    {
+                        LeftClick(dmae, Convert.ToInt32(intX), Convert.ToInt32(intY), Convert.ToInt32(intX) + 5, Convert.ToInt32(intY) + 5);
+                        delayTime(1);
+                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                    }
+                }
+                else
+                {
+                    //06-08则往下点
+                    //188,709,323,720鼠标起始范围
+                    LeftClick(dmae, 188, 713, 323, 720);
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                    while (Convert.ToInt32(intX) < 310)
+                    {
+                        LeftClick(dmae, 188, 709, 323, 720);
+                        delayTime(1,1);
+                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                    }
+                }
+
+
+            }
+
+            //if (battle == "00")//点击第零战役
+            //{
+
+            //    LeftClick(dmae, 203, 114, 294, 179);
+            //    delayTime(1);
+            //    int dm_ret0 = dmae.CmpColor(250, 188, Settings.Default.BattleSelectColor, 0.7);
+            //    while (dm_ret0 == 1) { LeftClick(dmae, 203, 114, 294, 179); delayTime(1); dm_ret0 = dmae.CmpColor(250, 188, Settings.Default.BattleSelectColor, 0.7); }
+
+            //}
+
+            //if (battle == "01")//点击第一战役
+            //{
+            //    LeftClick(dmae, 202, 213, 297, 285); delayTime(1);
+            //    int dm_ret1 = dmae.CmpColor(240, 240, Settings.Default.BattleSelectColor, 0.7);
+            //    while (dm_ret1 == 1) { LeftClick(dmae, 202, 213, 297, 285); delayTime(1); dm_ret1 = dmae.CmpColor(240, 240, Settings.Default.BattleSelectColor, 0.7); }
+            //}
+
+            //if (battle == "02")//点击第二战役
+            //{
+
+            //    LeftClick(dmae, 201, 315, 302, 387); delayTime(1);
+            //    int dm_ret2 = dmae.CmpColor(250, 350, Settings.Default.BattleSelectColor, 0.7);
+            //    while(dm_ret2 == 1) { LeftClick(dmae, 201, 315, 302, 387); delayTime(1); dm_ret2 = dmae.CmpColor(250, 350, Settings.Default.BattleSelectColor, 0.7); }
+
+            //}
+            //if (battle == "03")//点击第三战役
+            //{
+
+
+            //    LeftClick(dmae, 197, 411, 298, 494); delayTime(1);
+            //    int dm_ret3 = dmae.CmpColor(250, 455, Settings.Default.BattleSelectColor, 0.7);
+            //    while(dm_ret3 == 1 ) { LeftClick(dmae, 197, 411, 298, 494); delayTime(1); dm_ret3 = dmae.CmpColor(250, 455, Settings.Default.BattleSelectColor, 0.7); }
+
+            //}
+            //if (battle == "04")//点击第四战役
+            //{
+
+            //    LeftClick(dmae, 200, 522, 296, 594); delayTime(1);
+            //    int dm_ret4 = dmae.CmpColor(240, 560, Settings.Default.BattleSelectColor, 0.7);
+            //    while(dm_ret4 == 1) { LeftClick(dmae, 200, 522, 296, 594); delayTime(1); dm_ret4 = dmae.CmpColor(240, 560, Settings.Default.BattleSelectColor, 0.7); }
+
+            //}
+            //if (battle == "05")//点击第五战役
+            //{
+            //    LeftClick(dmae, 197, 622, 297, 688); delayTime(1);
+            //    int dm_ret5 = dmae.CmpColor(250, 613, Settings.Default.BattleSelectColor, 0.7);
+            //    while(dm_ret5 == 1) { LeftClick(dmae, 197, 622, 297, 688); delayTime(1); dm_ret5 = dmae.CmpColor(250, 613, Settings.Default.BattleSelectColor, 0.7); }
+            //}
+
+            //if (battle == "11")//点击夏活
+            //{
+            //    WindowsFormsApplication1.BaseData.SystemInfo.AppState = "点击魔方行动";
+            //    int dm_ret0 = CheckActivityChoicePage(dmae);
+            //    while (dm_ret0 == 1)//1为不相等
+            //    {
+            //        LeftClick(dmae, 25, 400, 172, 460);
+            //        delayTime(1);
+            //        dm_ret0 = CheckActivityChoicePage(dmae);
+            //    }
+            //}
         }
 
         public void ChooseDifficult(DmAe dmae, int difficult) //选择普通还是紧急0为普通 1为紧急 2为夜战
@@ -2055,6 +2150,55 @@ namespace testdm
             {
                 WriteLog.WriteError("准备点击第五任务");
                 LeftClick(dmae, 544, 706, 1030, 718);
+                delayTime(1);
+                //判断是否点击成功
+                int dm_ret = dmae.CmpColor(237, 83, "ffffff", 0.9);
+                while (dm_ret == 1)
+                {
+                    LeftClick(dmae, 428, 707, 1257, 715);
+                    delayTime(1);
+                    dm_ret = dmae.CmpColor(237, 83, "ffffff", 0.9);
+                }
+                WriteLog.WriteError("点击完成");
+            }
+            if (mission == 6)//点击第六个任务
+            {
+                //鼠标往下拉，检测关键点ffffff
+                WriteLog.WriteError("准备点击第六任务");
+
+                Random ran = new Random();
+                SystemInfo.AppState = "滑动鼠标选取战役";
+                while (true)
+                {
+                    int i = 1030;
+                    //446,567,1231,661鼠标起始范围
+                    int tempx = ran.Next(446, 1231);
+                    int tempy = ran.Next(567, 661);
+                    dmae.MoveTo(tempx, tempy);
+                    dmae.LeftDown();
+                    while (tempy > 200)
+                    {
+                        tempy--;
+                        dmae.MoveTo(tempx, tempy); delayTime(0.005);
+                    }
+                    dmae.LeftUp();
+                    delayTime(1,1);
+
+                    for(; i <= 1044; i++)
+                    {
+                        if(dmae.CmpColor(i, 571, "ffffff", 0.9) == 1)
+                        {
+                            break;//不相同在拉动一次
+                        }
+                    }
+                    if (i == 1045)
+                    {
+                        break;//相同 拉动成功 退出循环
+                    }
+                }
+
+
+                LeftClick(dmae, 575, 566, 1155, 623);
                 delayTime(1);
                 //判断是否点击成功
                 int dm_ret = dmae.CmpColor(237, 83, "ffffff", 0.9);
@@ -3231,6 +3375,7 @@ namespace testdm
 
             if (x99 == 1)
             {
+                delayTime(2, 1);
                 int case1 = 0;
 
                 //等待机遇窗口
@@ -4628,15 +4773,135 @@ namespace testdm
             return n;
         }
 
+        public void ClickVisitDormitory(DmAe dmae)
+        {
+            while (CheckMyDormitory(dmae) == false)
+            {
+                delayTime(1);
+            }
+            SystemInfo.AppState = "点击参观";
+            while (CheckMyDormitory(dmae))
+            {
+                delayTime(1);
+                LeftClick(dmae, 36, 662, 152, 701);
+            }
 
+        }
+        public void ClickMyFriendsList(DmAe dmae)
+        {
+            while (CheckFriendsListPage(dmae) == false)
+            {
+                delayTime(1);
+            }
+            SystemInfo.AppState = "点击我的好友";
+            while (CheckFriendsListPage(dmae))
+            {
+                if (CheckVisitFriendsTapge(dmae) == 2)
+                {
+                    break;
+                }
+                delayTime(1);
+                LeftClick(dmae, 436, 137, 561, 171);
+            }
 
-        
+        }
+        public void ClickRandomVisit(DmAe dmae)
+        {
+            while (CheckFriendsListPage(dmae) == false)
+            {
+                delayTime(1);
+            }
+            SystemInfo.AppState = "点击随机参观";
+            while (CheckFriendsListPage(dmae))
+            {
+                delayTime(1);
+                LeftClick(dmae, 1020, 622, 1173, 664);
+            }
 
+        }
+        public bool ClickVote(DmAe dmae)
+        {
+            while (CheckMyFriendDormitory(dmae) == -1)
+            {
+                delayTime(1);
+            }
+            SystemInfo.AppState = "点赞";
+            while (CheckMyFriendDormitory(dmae)==1)
+            {
+                LeftClick(dmae, 1125, 659, 1258, 703);
+                delayTime(2, 1);
+                //判断回应
 
+                if (im.mouse.CheckFriendsPointReward(dmae) == 0)
+                {
+                    LeftClick(dmae, 564, 497, 709, 546);
+                    delayTime(1, 1);
+                    //
+                    return true;
+                }
+                if (im.mouse.CheckFriendsPointReward(dmae) == 1)
+                {
+                    LeftClick(dmae, 564, 497, 709, 546);
+                    delayTime(1, 1);
+                    //
+                    return false;
+                }
+            }
+            return false;
+        }
+        public bool ClickGetFriendsPoint(DmAe dmae)
+        {
+            while (CheckFriendsPointReward(dmae) == -1)
+            {
+                delayTime(1);
+                return false;
+            }
+            SystemInfo.AppState = "点赞";
+            while (CheckFriendsPointReward(dmae) != -1) 
+            {
+                if (CheckFriendsPointReward(dmae) == 0)
+                {
+                    delayTime(1);
+                    LeftClick(dmae, 577, 505, 698, 531);
+                    return true;
+                }
+                if (CheckFriendsPointReward(dmae) == 1)
+                {
+                    delayTime(1);
+                    LeftClick(dmae, 577, 505, 698, 531);
+                    return false;
+                }
+            }
+            return false;
+        }
 
+        public void ClickBackTOmyDormitory(DmAe dmae)
+        {
+            while (CheckMyFriendDormitory(dmae)==1)
+            {
+                delayTime(1);
+            }
+            SystemInfo.AppState = "点赞";
+            while (CheckMyFriendDormitory(dmae)==0)
+            {
+                delayTime(1);
+                LeftClick(dmae, 13, 18, 126, 75);
+            }
+        }
 
-
-
+        public void ClickBackToHomeFromDomitory(DmAe dmae)
+        {
+            while (CheckMyDormitory(dmae) == false)
+            {
+                delayTime(1);
+            }
+            SystemInfo.AppState = "点赞";
+            while (CheckMyDormitory(dmae))
+            {
+                delayTime(1);
+                LeftClick(dmae, 16, 18, 125, 75);
+            }
+        }
 
 
 
@@ -5686,7 +5951,93 @@ namespace testdm
 
         }
 
+        public bool CheckMyDormitory(DmAe dmae)//检测是否在宿舍页面
+        {
+            //符合返回0不符合1
+            for (int x = 151, y = 13; x <= 354; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
 
+            }
+            return true;
+        }
+
+        public bool CheckFriendsListPage(DmAe dmae)//检测是否在好友列表页面
+        {
+            //符合返回0不符合1
+            for (int x = 199, y = 40; x <= 400; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+        }
+
+        public int CheckVisitFriendsTapge(DmAe dmae)//检测我的好友我的访客我的拜访3个页面
+        {
+            string color0 = dmae.GetColor(135, 130);
+            string color1 = dmae.GetColor(290, 130);
+            string color2 = dmae.GetColor(440, 130);
+            if (color0 == color1) { return 2; }
+            if (color0 == color2) { return 1; }
+            return 0;
+        }
+
+        public int CheckMyFriendDormitory(DmAe dmae)//检测是否打开好友宿舍
+        {
+            //符合返回0不符合1
+            for (int x = 1256, y = 54; y <= 74; y++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return -1;//检测左上角
+                }
+
+            }
+
+            for (int x = 1140, y = 650; x <= 1260; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return 0;//通过左上角检测右下角 0 没有右下角
+                }
+
+            }
+
+            return 1;//左上右下都有
+        }
+
+        public int CheckFriendsPointReward(DmAe dmae)//检测是否接收友情点数奖励或者本日次数已用完
+        {
+            //符合返回0不符合1
+
+            for (int x = 557, y = 488; x <= 722; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 0)
+                {
+                    if (x == 722) { return 0; }//获得友情点数可以继续
+                }
+                else { break; }
+
+            }
+
+            for (int x = 529, y = 369; x <= 549; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 0)
+                {
+                    if (x == 549) { return 1; }//本日友情点数以获取不用继续
+                }
+                else { break; }
+
+            }
+            return -1;//都不是需要重来
+        }
     }
 
 

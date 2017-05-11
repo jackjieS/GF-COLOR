@@ -60,6 +60,7 @@ namespace WindowsFormsApplication1.BaseData
         public static TaskListstruct AutoBattle = new TaskListstruct("自律作战", 16);
         public static TaskListstruct BuildEquipment = new TaskListstruct("装备建造", 17);
         public static TaskListstruct BuildGun = new TaskListstruct("人形建造", 18);
+        public static TaskListstruct VoteOthersDormitory = new TaskListstruct("宿舍点赞", 19);
         public static TaskListstruct WaitForLogistics = new TaskListstruct("等待后勤任务结束", 98);
         public static TaskListstruct Fix = new TaskListstruct("修复", 97);
         public static TaskListstruct Dismantlement = new TaskListstruct("拆除", 96);

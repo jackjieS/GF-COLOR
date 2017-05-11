@@ -94,23 +94,14 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Settings.Default.UrgentTask = dmae.GetColor(1030, 110);
-            Settings.Default.BattleSelectColor = dmae.GetColor(280, 270);
-            button4.Enabled = true;
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "00",1);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int dm_ret0 = dmae.CmpColor(1030, 110, Settings.Default.UrgentTask, 0.9);
-            //int dm_ret1 = dmae.CmpColor(280, 270, Settings.Default.BattleSelectColor, 0.9);
-            if (dm_ret0 == 0)
-            {
-                label4.Text = "当前为紧急任务";
-            }
-            else
-            {
-                label4.Text = "当前为普通任务";
-            }
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "01", 1);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -368,16 +359,8 @@ namespace WindowsFormsApplication1
 
         private void button17_Click(object sender, EventArgs e)
         {
-            object intX, intY;
-            int dm_ret0 = dmae.FindColor(192, 101, 379, 710, Settings.Default.BattleSelectColor, 1.0, 0,out intX,out intY);
-
-            if (Convert.ToInt16(intY) > 99 && Convert.ToInt16(intY) < 197) { label38.Text = "当前为第零战役"; }
-            else if (Convert.ToInt16(intY) > 203 && Convert.ToInt16(intY) < 296) { label38.Text = "当前为第一战役"; }
-            else if (Convert.ToInt16(intY) > 305 && Convert.ToInt16(intY) < 396) { label38.Text = "当前为第二战役"; }
-            else if (Convert.ToInt16(intY) > 405 && Convert.ToInt16(intY) < 500) { label38.Text = "当前为第三战役"; }
-            else if (Convert.ToInt16(intY) > 508 && Convert.ToInt16(intY) < 600) { label38.Text = "当前为第四战役"; }
-            else if (Convert.ToInt16(intY) > 600 && Convert.ToInt16(intY) < 711) { label38.Text = "当前为第五战役"; }
-            else { label38.Text = "无法识别当前战役"; }
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "02", 1);
 
         }
 
@@ -395,6 +378,42 @@ namespace WindowsFormsApplication1
         private void tabPage4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "03", 1);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "04", 1);
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "05", 1);
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "06", 1);
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "07", 1);
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            dmae.UseDict(5);
+            im.mouse.ChooseBattle(dmae, "08", 1);
         }
     }
 }

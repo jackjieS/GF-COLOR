@@ -179,8 +179,8 @@ namespace WindowsFormsApplication1
                         case "1":
                             {
 
-                                    im.time.ReadLogisticsTaskTime(dmae, im.mouse);
-                                    im.taskList.taskremove();
+                                im.time.ReadLogisticsTaskTime(dmae, im.mouse);
+                                im.taskList.taskremove();
 
 
 
@@ -437,18 +437,37 @@ namespace WindowsFormsApplication1
                             {
                                 if (im.gameData.GetOperationTime_60s() )
                                 {
+                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
                                     for (int i = 0; i < 4; i++)
-                                    {
-                                        if (im.gameData.User_operationInfo[i].OperationNeedTowait&& (im.gameData.User_operationInfo[i].Added==false))
+                                    { 
+                                        if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            im.User_OperationNumberNow.Add(i);
+                                            TimeDic.Add(i,im.gameData.User_operationInfo[i].OperationLastTime);
+
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
-                                            //返回时间
+                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
+                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    {
+                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                    }
+                                    //for (int i = 0; i < 4; i++)
+                                    //{
+                                    //    if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
+                                    //    {
+                                    //        im.User_OperationNumberNow.Add(i);
+                                    //        im.gameData.User_operationInfo[i].Lfinish = true;
+                                    //        im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                                    //        //返回时间
+                                    //        im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
+                                    //        im.gameData.User_operationInfo[i].Added = true;
+                                    //    }
+                                    //}
                                 }
                                 else
                                 {
@@ -485,7 +504,11 @@ namespace WindowsFormsApplication1
                                     im.gameData.User_battleInfo[0].BattleLoopTime++;
                                 }
 
-
+                                //判断最大循环最大次数，若相等则停止
+                                if (im.gameData.User_battleInfo[0].BattleLoopTime == im.gameData.User_battleInfo[0].LoopMaxTime)
+                                {
+                                    im.gameData.User_battleInfo[0].BattleLoopTime = 0; im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false;
+                                }
                                 if (im.gameData.User_battleInfo[0].Used == false) { im.mouse.BindWindowS(dmae, 0); }
                                 if (im.gameData.User_battleInfo[0].BattleLoopUnLockWindows == false) { im.mouse.BindWindowS(dmae, 0); }
                                 break;
@@ -553,6 +576,12 @@ namespace WindowsFormsApplication1
 
 
                                 }
+
+                                //判断最大循环最大次数，若相等则停止
+                                if (im.gameData.User_battleInfo[1].BattleLoopTime == im.gameData.User_battleInfo[1].LoopMaxTime)
+                                {
+                                    im.gameData.User_battleInfo[1].BattleLoopTime = 0; im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false;
+                                }
                                 if (im.gameData.User_battleInfo[1].Used == false) { im.mouse.BindWindowS(dmae, 0); }
                                 if (im.gameData.User_battleInfo[1].BattleLoopUnLockWindows == false) { im.mouse.BindWindowS(dmae, 0); }
                                 break;
@@ -611,6 +640,12 @@ namespace WindowsFormsApplication1
                                     }
                                     temp:
                                     im.gameData.User_battleInfo[2].BattleLoopTime++;
+                                }
+
+                                //判断最大循环最大次数，若相等则停止
+                                if (im.gameData.User_battleInfo[2].BattleLoopTime == im.gameData.User_battleInfo[2].LoopMaxTime)
+                                {
+                                    im.gameData.User_battleInfo[2].BattleLoopTime = 0; im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false;
                                 }
                                 if (im.gameData.User_battleInfo[2].Used == false) { im.mouse.BindWindowS(dmae, 0); }
                                 if (im.gameData.User_battleInfo[2].BattleLoopUnLockWindows == false) { im.mouse.BindWindowS(dmae, 0); }
@@ -672,6 +707,12 @@ namespace WindowsFormsApplication1
                                     temp:
                                     im.gameData.User_battleInfo[3].BattleLoopTime++;
 
+                                }
+
+                                //判断最大循环最大次数，若相等则停止
+                                if (im.gameData.User_battleInfo[3].BattleLoopTime == im.gameData.User_battleInfo[3].LoopMaxTime)
+                                {
+                                    im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false;
                                 }
                                 if (im.gameData.User_battleInfo[3].Used == false) { im.mouse.BindWindowS(dmae, 0); }
                                 if (im.gameData.User_battleInfo[3].BattleLoopUnLockWindows == false) { im.mouse.BindWindowS(dmae, 0); }
@@ -756,9 +797,16 @@ namespace WindowsFormsApplication1
                                 break;
 
                             }
+                        case "19":
+                            {
+                                im.mouse.BindWindowS(dmae, 1);
+                                im.dormitory.VoteDormitoryLoop(dmae);
+                                im.taskList.taskremove();
+                                im.mouse.BindWindowS(dmae, 0);
+                                break;
+                            }
                         case "94"://回到游戏
                             {
-
                                 break;
                             }
                         //case "95"://1-2换枪
@@ -846,22 +894,42 @@ namespace WindowsFormsApplication1
                             {
                                 if (im.gameData.GetOperationTime_60s())
                                 {
+                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
                                     for (int i = 0; i < 4; i++)
                                     {
-                                        if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
+                                        if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
-                                            //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
-                                            //im.gameData.User_operationInfo[i].Added = true;
-                                            im.User_OperationNumberNow.Add(i);
+                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
-                                            //返回时间
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
-
                                     }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
+                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    {
+                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                    }
+
+                                    //for (int i = 0; i < 4; i++)
+                                    //{
+                                    //    if (im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
+                                    //    {
+                                    //        //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                    //        //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
+                                    //        //im.gameData.User_operationInfo[i].Added = true;
+                                    //        im.User_OperationNumberNow.Add(i);
+                                    //        im.gameData.User_operationInfo[i].Lfinish = true;
+                                    //        im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                    //        //返回时间
+                                    //        im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
+                                    //        im.gameData.User_operationInfo[i].Added = true;
+                                    //    }
+
+                                    //}
                                 }
                                 else
                                 {

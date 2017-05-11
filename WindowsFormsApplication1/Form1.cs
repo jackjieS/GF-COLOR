@@ -203,6 +203,7 @@ namespace TaskList
                     im.Form1.button18.Enabled = true;
                     im.Form1.button19.Enabled = true;
                     im.Form1.button20.Enabled = true;
+                    im.Form1.button21.Enabled = true;
 
                     im.CountDown = new Thread(im.backGroundThread.CountDown);
                     im.CountDown.IsBackground = true;
@@ -336,7 +337,9 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            im.time.Team_S(dmae,im.mouse,"第十梯队");
+            //im.mouse.LeftClickHomeToBattle(dmae, "06", 0, 6);
+            im.dormitory.VoteDormitoryLoop(dmae);
+
             //bool i=im.mouse.CheckNewGunEquipmentPage(dmae);
             //int i1 = im.mouse.CheckBuildEquipmentS(dmae, 0);
             //int i2 = im.mouse.CheckBuildEquipmentS(dmae, 1);
@@ -462,7 +465,9 @@ namespace TaskList
             im.gameData.User_BuildingEquipmentInfo[2].BuildingFavoriteNumber = im.Form1.comboBox11.SelectedIndex;
         }
 
-
-
+        private void button21_Click(object sender, EventArgs e)
+        {
+            im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.VoteOthersDormitory);
+        }
     }
 }

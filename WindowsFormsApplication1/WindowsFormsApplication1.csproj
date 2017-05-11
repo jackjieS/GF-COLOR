@@ -126,6 +126,8 @@
     <Compile Include="BattleTaskList.cs" />
     <Compile Include="CDmSoft.cs" />
     <Compile Include="CommonHelp.cs" />
+    <Compile Include="Events\Battles.cs" />
+    <Compile Include="Events\Dormitory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

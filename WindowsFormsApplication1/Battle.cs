@@ -100,6 +100,7 @@ namespace testdm
                 im.gameData.User_battleInfo[0].TaskMianTeam = comboBox14.Text;
                 im.gameData.User_battleInfo[0].TaskSupportTeam1 = comboBox13.Text;
                 im.gameData.User_battleInfo[0].Team_SerrorTime = Int32.Parse(textBox8.Text);
+                im.gameData.User_battleInfo[0].LoopMaxTime = Int32.Parse(textBox10.Text);
 
                 im.gameData.User_battleInfo[0].ChoiceToFix = checkBox1.Checked;
                 im.gameData.User_battleInfo[0].ChoiceToSupply = checkBox2.Checked;
@@ -138,6 +139,7 @@ namespace testdm
                 im.gameData.User_battleInfo[1].TaskMianTeam = comboBox14.Text;
                 im.gameData.User_battleInfo[1].TaskSupportTeam1 = comboBox13.Text;
                 im.gameData.User_battleInfo[1].Team_SerrorTime = Int32.Parse(textBox8.Text);
+                im.gameData.User_battleInfo[1].LoopMaxTime = Int32.Parse(textBox10.Text);
 
                 im.gameData.User_battleInfo[1].ChoiceToFix = checkBox1.Checked;
                 im.gameData.User_battleInfo[1].ChoiceToSupply = checkBox2.Checked;
@@ -175,6 +177,7 @@ namespace testdm
                 im.gameData.User_battleInfo[2].TaskMianTeam = comboBox14.Text;
                 im.gameData.User_battleInfo[2].TaskSupportTeam1 = comboBox13.Text;
                 im.gameData.User_battleInfo[2].Team_SerrorTime = Int32.Parse(textBox8.Text);
+                im.gameData.User_battleInfo[2].LoopMaxTime = Int32.Parse(textBox10.Text);
 
                 im.gameData.User_battleInfo[2].ChoiceToFix = checkBox1.Checked;
                 im.gameData.User_battleInfo[2].ChoiceToSupply = checkBox2.Checked;
@@ -214,6 +217,7 @@ namespace testdm
                 im.gameData.User_battleInfo[3].TaskMianTeam = comboBox14.Text;
                 im.gameData.User_battleInfo[3].TaskSupportTeam1 = comboBox13.Text;
                 im.gameData.User_battleInfo[3].Team_SerrorTime = Int32.Parse(textBox8.Text);
+                im.gameData.User_battleInfo[3].LoopMaxTime = Int32.Parse(textBox10.Text);
 
                 im.gameData.User_battleInfo[3].ChoiceToFix = checkBox1.Checked;
                 im.gameData.User_battleInfo[3].ChoiceToSupply = checkBox2.Checked;
@@ -280,6 +284,7 @@ namespace testdm
                 //case "5_2": { label2.Visible = false;comboBox13.Visible = false; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = "5_2是连走2次随机点"; break; }
                 case "5_4": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 case "5_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为三战2为四战"; break; }
+                case "6_6": { label2.Visible = false; comboBox13.Visible = false; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 //case "魔方行动E4": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2","3" }); comboBox2.SelectedIndex = 0; label11.Text = "1为两战2为随机点\n3为4战"; break; }
                 default:
                     break;
