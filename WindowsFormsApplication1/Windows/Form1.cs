@@ -403,7 +403,7 @@ namespace TaskList
 
         private void button15_Click(object sender, EventArgs e)
         {
-            im.gameData.User_operationInfo[0].OperationLastTime = Convert.ToInt32(textBox21.Text);
+            im.gameData.User_operationInfo[0].OperationLastTime = Convert.ToInt32(textBox21.Text) * 60 + Convert.ToInt32(textBox28.Text);
         }
 
 
@@ -417,17 +417,17 @@ namespace TaskList
 
         private void button17_Click(object sender, EventArgs e)
         {
-            im.gameData.User_operationInfo[1].OperationLastTime = Convert.ToInt32(textBox21.Text);
+            im.gameData.User_operationInfo[1].OperationLastTime = Convert.ToInt32(textBox21.Text) * 60 + Convert.ToInt32(textBox28.Text);
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
-            im.gameData.User_operationInfo[2].OperationLastTime = Convert.ToInt32(textBox21.Text);
+            im.gameData.User_operationInfo[2].OperationLastTime = Convert.ToInt32(textBox21.Text) * 60 + Convert.ToInt32(textBox28.Text);
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
-            im.gameData.User_operationInfo[3].OperationLastTime = Convert.ToInt32(textBox21.Text);
+            im.gameData.User_operationInfo[3].OperationLastTime = Convert.ToInt32(textBox21.Text)*60 + Convert.ToInt32(textBox28.Text);
         }
 
 
@@ -468,6 +468,14 @@ namespace TaskList
         private void button21_Click(object sender, EventArgs e)
         {
             im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.VoteOthersDormitory);
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            var LogisticSupportSet = new LogisticSupportSet(im);
+            LogisticSupportSet.StartPosition = FormStartPosition.CenterParent;
+            LogisticSupportSet.ShowDialog(this);
+
         }
     }
 }

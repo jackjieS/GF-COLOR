@@ -49,72 +49,86 @@ namespace testdm
             mouse.ClickLogistics(dmae);
             mouse.delayTime(1);
             ////判断开了多少页
-            if (dmae.CmpColor(240, 240, "ffffff", 0.9) == 0 || dmae.CmpColor(240, 240, "f7ae00", 0.7) == 0 || dmae.CmpColor(240, 240, Settings.Default.BattleSelectColor, 0.7) == 0)   //第一战役
-                                                                                                                                                                                       //PageNumber += 1;
-            {
-                PageNumber += 1;
-            }
-            if (dmae.CmpColor(250, 350, "ffffff", 0.9) == 0 || dmae.CmpColor(250, 350, "f7ae00", 0.7) == 0 || dmae.CmpColor(250, 350, Settings.Default.BattleSelectColor, 0.7) == 0)//第二战役
-            {
-                PageNumber += 1;
-            }
+            //if (dmae.CmpColor(240, 240, "ffffff", 0.9) == 0 || dmae.CmpColor(240, 240, "f7ae00", 0.7) == 0 || dmae.CmpColor(240, 240, Settings.Default.BattleSelectColor, 0.7) == 0)   //第一战役
+            //                                                                                                                                                                           //PageNumber += 1;
+            //{
+            //    PageNumber += 1;
+            //}
+            //if (dmae.CmpColor(250, 350, "ffffff", 0.9) == 0 || dmae.CmpColor(250, 350, "f7ae00", 0.7) == 0 || dmae.CmpColor(250, 350, Settings.Default.BattleSelectColor, 0.7) == 0)//第二战役
+            //{
+            //    PageNumber += 1;
+            //}
 
-            if (dmae.CmpColor(250, 455, "ffffff", 0.9) == 0 || dmae.CmpColor(250, 455, "f7ae00", 0.7) == 0 || dmae.CmpColor(250, 455, Settings.Default.BattleSelectColor, 0.7) == 0)//第三战役
-            {
-                PageNumber += 1;
-            }
-            //PageNumber += 1;
-            if (dmae.CmpColor(240, 560, "ffffff", 0.9) == 0 || dmae.CmpColor(240, 560, "f7ae00", 0.7) == 0 || dmae.CmpColor(240, 560, Settings.Default.BattleSelectColor, 0.7) == 0)//第四战役
-            {
-                PageNumber += 1;
-            }
+            //if (dmae.CmpColor(250, 455, "ffffff", 0.9) == 0 || dmae.CmpColor(250, 455, "f7ae00", 0.7) == 0 || dmae.CmpColor(250, 455, Settings.Default.BattleSelectColor, 0.7) == 0)//第三战役
+            //{
+            //    PageNumber += 1;
+            //}
+            ////PageNumber += 1;
+            //if (dmae.CmpColor(240, 560, "ffffff", 0.9) == 0 || dmae.CmpColor(240, 560, "f7ae00", 0.7) == 0 || dmae.CmpColor(240, 560, Settings.Default.BattleSelectColor, 0.7) == 0)//第四战役
+            //{
+            //    PageNumber += 1;
+            //}
 
-            if (dmae.CmpColor(250, 613, "ffffff", 0.9) == 0 || dmae.CmpColor(250, 613, "f7ae00", 0.7) == 0 || dmae.CmpColor(250, 613, Settings.Default.BattleSelectColor, 0.7) == 0)//第五战役
-            {
+            //if (dmae.CmpColor(250, 613, "ffffff", 0.9) == 0 || dmae.CmpColor(250, 613, "f7ae00", 0.7) == 0 || dmae.CmpColor(250, 613, Settings.Default.BattleSelectColor, 0.7) == 0)//第五战役
+            //{
 
-                PageNumber += 1;
-            }
+            //    PageNumber += 1;
+            //}
 
-            if (dmae.CmpColor(250, 188, "ffffff", 0.9) == 0 || dmae.CmpColor(250, 188, "f7ae00", 0.7) == 0 || dmae.CmpColor(250, 188, Settings.Default.BattleSelectColor, 0.7) == 0)//判断0号战役如果打开了则zeropage为1;
-            {
-                PageNumber += 1; ZeroPage = 1;
-            }
+            //if (dmae.CmpColor(250, 188, "ffffff", 0.9) == 0 || dmae.CmpColor(250, 188, "f7ae00", 0.7) == 0 || dmae.CmpColor(250, 188, Settings.Default.BattleSelectColor, 0.7) == 0)//判断0号战役如果打开了则zeropage为1;
+            //{
+            //    PageNumber += 1; ZeroPage = 1;
+            //}
 
-            for (int i = -1; i < PageNumber + 1; i++)
+
+
+            for (int i = 0; i <= 8; i++) 
             {
-                if (ZeroPage == 1)
-                {
-                    mouse.ChooseBattle(dmae, "00",1);
-                    //mouse.delayTime(3,1);
-                    ZeroPage = 0;
-                }
                 if (i == 0)
                 {
-                    mouse.ChooseBattle(dmae, "01",1);
-                    //mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "00",1);
+                    mouse.delayTime(1, 1);
                 }
                 if (i == 1)
                 {
-                    mouse.ChooseBattle(dmae, "02", 1);
-                    //mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "01", 1);
+                    mouse.delayTime(1, 1);
                 }
                 if (i == 2)
                 {
-                    mouse.ChooseBattle(dmae, "03", 1);
-                    //mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "02", 1);
+                    mouse.delayTime(1, 1);
                 }
                 if (i == 3)
                 {
-                    mouse.ChooseBattle(dmae, "04", 1);
-                    //mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "03", 1);
+                    mouse.delayTime(1, 1);
                 }
                 if (i == 4)
                 {
-                    mouse.ChooseBattle(dmae, "05", 1);
-                    //mouse.delayTime(3, 1);
+                    mouse.ChooseBattle(dmae, "04", 1);
+                    mouse.delayTime(1, 1);
                 }
-
-
+                if (i == 5)
+                {
+                    mouse.ChooseBattle(dmae, "05", 1);
+                    mouse.delayTime(1, 1);
+                }
+                if (i == 6)
+                {
+                    mouse.ChooseBattle(dmae, "06", 1);
+                    mouse.delayTime(1, 1);
+                }
+                if (i == 7)
+                {
+                    mouse.ChooseBattle(dmae, "07", 1);
+                    mouse.delayTime(1, 1);
+                }
+                if (i == 8)
+                {
+                    mouse.ChooseBattle(dmae, "08", 1);
+                    mouse.delayTime(1, 1);
+                }
 
                 int dm_ret0 = dmae.FindColor(416, 518, 447, 551, "ffffff", 1, 0, out  intX, out  intY);//0:没找到1:找到
                 if (dm_ret0 == 0)
@@ -244,214 +258,18 @@ namespace testdm
 
 
         }
-        public string TeamNameTostring(int teamname)
-        {
-            switch (teamname)
-            {
-                case 0: return "第一梯队";
-                case 1: return "第二梯队";
-                case 2: return "第三梯队";
-                case 3: return "第四梯队";
-                case 4: return "第五梯队";
-                case 5: return "第六梯队";
-                case 6: return "第七梯队";
-                case 7: return "第八梯队";
-                case 8: return "第九梯队";
-                case 9: return "第十梯队";
-                default:return "";
-
-            }
-        }
-        public int TeamNameToInt(string teamname)
-        {
-            switch (teamname)
-            {
-                case "第一梯队":
-                    {
-                        return 0;
-                    }
-                case "第二梯队":
-                    {
-                        return 1;
-                    }
-                case "第三梯队":
-                    {
-                        return 2;
-                    }
-                case "第四梯队":
-                    {
-                        return 3;
-                    }
-                case "第五梯队":
-                    {
-                        return 4;
-                    }
-                case "第六梯队":
-                    {
-                        return 5;
-                    }
-                case "第七梯队":
-                    {
-                        return 6;
-                    }
-                case "第八梯队":
-                    {
-                        return 7;
-                    }
-                default:
-                    return 8;
-            }
-        }
-        //public int TaskTime(int page, string loc)
-        //{
-
-        //    if (page == -1)
-        //    {
-        //        switch (loc)
-        //        {
-        //            case "0":
-        //                {
-        //                    return 0;
-        //                }
-        //            case "1":
-        //                {
-        //                    return 1;
-        //                }
-        //            case "2":
-        //                {
-        //                    return 2;
-        //                }
-        //            case "3":
-        //                {
-        //                    return 3;
-        //                }
-        //        }
-        //    }
-
-        //    if (page == 0)
-        //    {
-        //        switch (loc)
-        //        {
-        //            case "0":
-        //                {
-        //                    return 4;
-        //                }
-        //            case "1":
-        //                {
-        //                    return 5;
-        //                }
-        //            case "2":
-        //                {
-        //                    return 6;
-        //                }
-        //            case "3":
-        //                {
-        //                    return 7;
-        //                }
-        //        }
-        //    }
-        //    if (page == 1)
-        //    {
-        //        switch (loc)
-        //        {
-        //            case "0":
-        //                {
-        //                    return 8;
-        //                }
-        //            case "1":
-        //                {
-        //                    return 9;
-        //                }
-        //            case "2":
-        //                {
-        //                    return 10;
-        //                }
-        //            case "3":
-        //                {
-        //                    return 11;
-        //                }
-        //        }
-        //    }
-        //    if (page == 2)
-        //    {
-        //        switch (loc)
-        //        {
-        //            case "0":
-        //                {
-        //                    return 12;
-        //                }
-        //            case "1":
-        //                {
-        //                    return 13;
-        //                }
-        //            case "2":
-        //                {
-        //                    return 14;
-        //                }
-        //            case "3":
-        //                {
-        //                    return 15;
-        //                }
-        //        }
-
-
-        //    }
-        //    if (page == 3)
-        //    {
-        //        switch (loc)
-        //        {
-        //            case "0":
-        //                {
-        //                    return 16;
-        //                }
-        //            case "1":
-        //                {
-        //                    return 17;
-        //                }
-        //            case "2":
-        //                {
-        //                    return 18;
-        //                }
-        //            case "3":
-        //                {
-        //                    return 19;
-        //                }
-        //        }
-
-
-        //    }
-        //    if (page == 4)
-        //    {
-        //        switch (loc)
-        //        {
-        //            case "0":
-        //                {
-        //                    return 20;
-        //                }
-        //            case "1":
-        //                {
-        //                    return 21;
-        //                }
-        //            case "2":
-        //                {
-        //                    return 22;
-        //                }
-        //            case "3":
-        //                {
-        //                    return 23;
-        //                }
-        //        }
-        //    }
-        //    return 99;
 
 
 
-        //}
+
+
+        
+        
 
         public string TaskTime(int page, string loc)
         {
 
-            if (page == -1)
+            if (page == 0)
             {
                 switch (loc)
                 {
@@ -465,7 +283,7 @@ namespace testdm
                         }
                     case "2":
                         {
-                            return "代号073";
+                            return "代号03";
                         }
                     case "3":
                         {
@@ -474,7 +292,7 @@ namespace testdm
                 }
             }
 
-            if (page == 0)
+            if (page == 1)
             {
                 switch (loc)
                 {
@@ -496,7 +314,7 @@ namespace testdm
                         }
                 }
             }
-            if (page == 1)
+            if (page == 2)
             {
                 switch (loc)
                 {
@@ -518,7 +336,7 @@ namespace testdm
                         }
                 }
             }
-            if (page == 2)
+            if (page == 3)
             {
                 switch (loc)
                 {
@@ -542,7 +360,7 @@ namespace testdm
 
 
             }
-            if (page == 3)
+            if (page == 4)
             {
                 switch (loc)
                 {
@@ -566,7 +384,7 @@ namespace testdm
 
 
             }
-            if (page == 4)
+            if (page == 5)
             {
                 switch (loc)
                 {
@@ -588,7 +406,7 @@ namespace testdm
                         }
                 }
             }
-            if (page == 5)
+            if (page == 6)
             {
                 switch (loc)
                 {
@@ -611,7 +429,7 @@ namespace testdm
                 }
             }
 
-            if (page == 6)
+            if (page == 7)
             {
                 switch (loc)
                 {
@@ -632,6 +450,34 @@ namespace testdm
                             return "代号32";
                         }
                 }
+
+
+            }
+
+
+            if (page == 8)
+            {
+                switch (loc)
+                {
+                    case "0":
+                        {
+                            return "代号33";
+                        }
+                    case "1":
+                        {
+                            return "代号34";
+                        }
+                    case "2":
+                        {
+                            return "代号35";
+                        }
+                    case "3":
+                        {
+                            return "代号36";
+                        }
+                }
+
+
             }
             return "";
 
@@ -3014,6 +2860,8 @@ namespace testdm
             mouse.LeftClickHomeToBattle(dmae, "06", 0, 6);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGun == true)  return; 
+
 
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)

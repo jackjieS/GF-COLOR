@@ -12,7 +12,11 @@ namespace WindowsFormsApplication1.BaseData
         public double BattleFixTime;//修复时间也是新的一轮所等的时间
         public bool BattleStart = false;//可以开始新的一轮或者等待修复
         public bool ChangeGunBattleTask;//换枪任务
+
         public int DismantlementGunCount = 24;//拆枪数量
+        public bool DismantleGun;
+        public bool NeetToDismantleGun = false;//是否需要拆枪
+
         public bool Used;//整个挂机任务是否使用
         public string TaskName;//地图名称如5-4E
         public int TaskNumber;
@@ -39,7 +43,7 @@ namespace WindowsFormsApplication1.BaseData
         public int RoundInterval;
         public int LoopMaxTime = -1;//循环最大次数达到这个数目则停止循环战斗 -1为无限次
         public bool BattleLoopUnLockWindows;
-        public bool DismantleGun;
+
         public bool ChangeGun;
         public bool SetMap = false;
 

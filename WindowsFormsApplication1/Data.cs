@@ -42,18 +42,19 @@ namespace WindowsFormsApplication1
 
 
     }
-        class UserData
+    class UserData
+    {
+        private InstanceManager im;
+        public UserData(InstanceManager im)
         {
-            private InstanceManager im;
-            public UserData(InstanceManager im)
-            {
-                this.im = im;
-            }
-        public int DismantlementGunCount = 0;
+            this.im = im;
+        }
+        public int DismantlementGunCount = 0;//改
         public int BattleFixNumber;
-        public bool NeedToFix = false;
-    }
 
 
     }
+
+
+}
 

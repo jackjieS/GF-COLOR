@@ -790,5 +790,29 @@ namespace WindowsFormsApplication1.Properties {
                 this["Team_SerrorTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int LogisticFinishWaittingTime {
+            get {
+                return ((int)(this["LogisticFinishWaittingTime"]));
+            }
+            set {
+                this["LogisticFinishWaittingTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LogisticLoopTimeMAX {
+            get {
+                return ((int)(this["LogisticLoopTimeMAX"]));
+            }
+            set {
+                this["LogisticLoopTimeMAX"] = value;
+            }
+        }
     }
 }

@@ -117,10 +117,10 @@
     <Compile Include="BaseData\UserBattleInfo.cs" />
     <Compile Include="BaseData\SystemInfo.cs" />
     <Compile Include="BaseData\UserOperationInfo.cs" />
-    <Compile Include="Battle.cs">
+    <Compile Include="Windows\Battle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Battle.designer.cs">
+    <Compile Include="Windows\Battle.designer.cs">
       <DependentUpon>Battle.cs</DependentUpon>
     </Compile>
     <Compile Include="BattleTaskList.cs" />
@@ -128,21 +128,27 @@
     <Compile Include="CommonHelp.cs" />
     <Compile Include="Events\Battles.cs" />
     <Compile Include="Events\Dormitory.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Windows\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Windows\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="check.cs">
+    <Compile Include="Windows\check.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="check.Designer.cs">
+    <Compile Include="Windows\check.Designer.cs">
       <DependentUpon>check.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
     <Compile Include="GetSetColor.cs" />
     <Compile Include="InstanceManager.cs" />
+    <Compile Include="Windows\LogisticSupportSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\LogisticSupportSet.Designer.cs">
+      <DependentUpon>LogisticSupportSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,30 +157,33 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SetColor.cs">
+    <Compile Include="Windows\SetColor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetColor.Designer.cs">
+    <Compile Include="Windows\SetColor.Designer.cs">
       <DependentUpon>SetColor.cs</DependentUpon>
     </Compile>
-    <Compile Include="setting.cs">
+    <Compile Include="Windows\setting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="setting.Designer.cs">
+    <Compile Include="Windows\setting.Designer.cs">
       <DependentUpon>setting.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="MixDmAe.cs" />
     <Compile Include="UIupdate.cs" />
-    <EmbeddedResource Include="Battle.resx">
+    <EmbeddedResource Include="Windows\Battle.resx">
       <DependentUpon>Battle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Windows\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="check.resx">
+    <EmbeddedResource Include="Windows\check.resx">
       <DependentUpon>check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\LogisticSupportSet.resx">
+      <DependentUpon>LogisticSupportSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -186,10 +195,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SetColor.resx">
+    <EmbeddedResource Include="Windows\SetColor.resx">
       <DependentUpon>SetColor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="setting.resx">
+    <EmbeddedResource Include="Windows\setting.resx">
       <DependentUpon>setting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">

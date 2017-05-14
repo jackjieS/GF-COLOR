@@ -1831,7 +1831,7 @@ namespace testdm
             //若无,则拉上定位0战役
             //根据情况往下拉寻找所需的战役
 
-            string CombatMissionMColor = dmae.GetColor(102, 34);
+            FirstTag: string CombatMissionMColor = dmae.GetColor(102, 34);
             result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
             if(result != -1)//-1没有找到
             {
@@ -1843,6 +1843,10 @@ namespace testdm
                     LeftClick(dmae, Convert.ToInt32(intX), Convert.ToInt32(intY), Convert.ToInt32(intX) + 5, Convert.ToInt32(intY) + 5);
                     delayTime(1);
                     result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                    if (result == -1)//点击失败，点击错误需要重来
+                    {
+                        goto FirstTag;
+                    }
                 }
             }
             else
@@ -2391,7 +2395,8 @@ namespace testdm
             if(Settings.Default.dismantlegun == true)
             {
                 //Task.Insert(0, Dismantlement);
-                im.gametasklist.Insert(0, WindowsFormsApplication1.BaseData.TaskList.Dismantlement);
+                userBattleInfo.NeetToDismantleGun = true;
+                im.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.Dismantlement);
             }
             else
             {
@@ -2553,22 +2558,25 @@ namespace testdm
             //战斗结果结算页面
             while (true)
             {
-                                if (CheckSystemRewardSupportPage(dmae))
+
+                if (CheckSystemRewardSupportPage(dmae))
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 589, 512, 692, 534);
                 }
-                if (CheckHomePage(dmae)==0)
-                {
-                    break;
-                }
+
                 if (CheckBattleResult(dmae))
                 {
                     SystemInfo.AppState = "战斗结算";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if(CheckNewGunEquipmentPage(dmae))
+                while (CheckWhiteM(dmae))
+                {
+                    delayTime(1, 1);
+                }
+
+                if (CheckNewGunEquipmentPage(dmae))
                 {
                     SystemInfo.AppState = "获取新人形";
                     LeftClick(dmae, 1107, 633, 1242, 691);
@@ -2577,13 +2585,17 @@ namespace testdm
                 if (CheckSystemNewsPapge(dmae))
                 {
                     SystemInfo.AppState = "系统公告重磅热点";
-                    LeftClick(dmae, 145,70,146,71);
+                    LeftClick(dmae, 145, 70, 146, 71);
                 }
 
                 if (CheckSystemActivistPage(dmae))
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 102, 95, 103, 96);
+                }
+                if (CheckHomePage(dmae) == 0)
+                {
+                    break;
                 }
                 delayTime(1);
 
@@ -3319,6 +3331,7 @@ namespace testdm
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "开始移动";
 
+            bool NeedRandomPoint = true;
             //找到返回0 找不到返回1
             WriteLog.WriteError("开始判断梯队选取状态");
             a: while (FindTeamSelectLine(dmae, x5, y5, x6, y6, x98) == 1)
@@ -3356,7 +3369,7 @@ namespace testdm
                 }
                 WriteLog.WriteError("将点击X3点");
                 LeftClick(dmae, x3, y3, x4, y4);
-                delayTime(1);
+                delayTime(1,1);
                 int dm_ret5 = dmae.CmpColor(714, 609, "ffffff", 0.9);
                 int dm_ret3 = dmae.CmpColor(1061, 609, "ffffff", 0.9);
                 int dm_ret4 = dmae.CmpColor(930, 638, "ffffff", 0.9);
@@ -3371,11 +3384,11 @@ namespace testdm
             }
 
             WriteLog.WriteError("完成移动命令");
-            //检测机遇点
 
-            if (x99 == 1)
+            //检测机遇点
+            if (x99 == 1 && NeedRandomPoint)
             {
-                delayTime(2, 1);
+                delayTime(1, 1);
                 int case1 = 0;
 
                 //等待机遇窗口
@@ -3453,7 +3466,7 @@ namespace testdm
                             }
 
                             //}
-
+                            NeedRandomPoint = false;
                             ran = null;
                                 break;
                         }
@@ -3464,7 +3477,7 @@ namespace testdm
                                 LeftClick(dmae, 413, 134, 982, 606);
                                 delayTime(1);
                             }
-
+                            NeedRandomPoint = false;
                             return 2;
                         }
                     default://乱七八糟的
@@ -3474,6 +3487,7 @@ namespace testdm
                                 LeftClick(dmae, 413, 134, 982, 606);
                                 delayTime(1, 1);
                             }
+                            NeedRandomPoint = false;
                             break;
                         }
 
@@ -6038,6 +6052,23 @@ namespace testdm
             }
             return -1;//都不是需要重来
         }
+
+        public bool CheckWhiteM(DmAe dmae)//检测屏幕是否白屏
+        {
+            for(int x = 1, y = 1; y < 720; y++)
+            {
+                for (; x < 1280; x++)
+                {
+                    if(dmae.CmpColor(x,y,"ffffff",0.9) == 1)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+
     }
 
 

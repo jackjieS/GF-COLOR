@@ -35,6 +35,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.LtabPage = new System.Windows.Forms.TabPage();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.button21 = new System.Windows.Forms.Button();
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
@@ -64,7 +68,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -126,7 +129,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -188,6 +190,9 @@
             // LtabPage
             // 
             this.LtabPage.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.LtabPage.Controls.Add(this.button22);
+            this.LtabPage.Controls.Add(this.button5);
+            this.LtabPage.Controls.Add(this.textBox28);
             this.LtabPage.Controls.Add(this.button21);
             this.LtabPage.Controls.Add(this.textBox21);
             this.LtabPage.Controls.Add(this.button14);
@@ -218,7 +223,6 @@
             this.LtabPage.Controls.Add(this.label9);
             this.LtabPage.Controls.Add(this.label8);
             this.LtabPage.Controls.Add(this.button7);
-            this.LtabPage.Controls.Add(this.button5);
             this.LtabPage.Controls.Add(this.button6);
             this.LtabPage.Controls.Add(this.button3);
             this.LtabPage.Controls.Add(this.button4);
@@ -231,13 +235,54 @@
             this.LtabPage.Text = "tabPage1";
             this.LtabPage.UseVisualStyleBackColor = true;
             // 
+            // button22
+            // 
+            this.button22.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button22.Location = new System.Drawing.Point(526, 38);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(51, 39);
+            this.button22.TabIndex = 177;
+            this.button22.Text = "后勤 设置";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button5
+            // 
+            this.button5.Enabled = false;
+            this.button5.Location = new System.Drawing.Point(118, 168);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(51, 39);
+            this.button5.TabIndex = 136;
+            this.button5.Text = "暂停";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(526, 143);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(45, 21);
+            this.textBox28.TabIndex = 176;
+            this.textBox28.Text = "秒";
+            // 
+            // button21
+            // 
+            this.button21.Enabled = false;
+            this.button21.Location = new System.Drawing.Point(367, 170);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(72, 23);
+            this.button21.TabIndex = 175;
+            this.button21.Text = "宿舍点赞";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
             // textBox21
             // 
             this.textBox21.Location = new System.Drawing.Point(475, 143);
             this.textBox21.Name = "textBox21";
             this.textBox21.Size = new System.Drawing.Size(45, 21);
             this.textBox21.TabIndex = 174;
-            this.textBox21.Text = "0";
+            this.textBox21.Text = "分";
             // 
             // button14
             // 
@@ -721,17 +766,6 @@
             this.button7.Text = "出列";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button5
-            // 
-            this.button5.Enabled = false;
-            this.button5.Location = new System.Drawing.Point(118, 168);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(51, 39);
-            this.button5.TabIndex = 136;
-            this.button5.Text = "暂停";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -1393,17 +1427,6 @@
             this.label2.TabIndex = 193;
             this.label2.Text = "任务队列";
             // 
-            // button21
-            // 
-            this.button21.Enabled = false;
-            this.button21.Location = new System.Drawing.Point(367, 170);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(72, 23);
-            this.button21.TabIndex = 175;
-            this.button21.Text = "宿舍点赞";
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1546,6 +1569,8 @@
         public System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.Label label31;
         public System.Windows.Forms.Button button21;
+        public System.Windows.Forms.TextBox textBox28;
+        public System.Windows.Forms.Button button22;
     }
 }
 
