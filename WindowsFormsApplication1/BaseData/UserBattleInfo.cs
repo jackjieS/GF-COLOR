@@ -31,15 +31,15 @@ namespace WindowsFormsApplication1.BaseData
         public string TaskSupportTeam8;
         public bool Team_Serror = false;
         public int Team_SerrorTime = 0;
-        public int TaskType=2;
+        public int TaskType = 2;
         public bool ChoiceToFix;//总设定是否修复
         public bool NeedToFix;
         public bool ChoiceToSupply;
-        public int FixType=2;
+        public int FixType = 2;
         public int FixMaxTime;
         public int FixMintime;
-        public int FixMaxPercentage=0;
-        public int FixMinPercentage=0;
+        public int FixMaxPercentage = 0;
+        public int FixMinPercentage = 0;
         public int RoundInterval;
         public int LoopMaxTime = -1;//循环最大次数达到这个数目则停止循环战斗 -1为无限次
         public bool BattleLoopUnLockWindows;
@@ -65,8 +65,8 @@ namespace WindowsFormsApplication1.BaseData
             this.BattleStart = tempBattleInfo.BattleStart;//可以开始新的一轮或者等待修复
             this.ChangeGunBattleTask = tempBattleInfo.ChangeGunBattleTask;//换枪任务
             this.DismantlementGunCount = tempBattleInfo.DismantlementGunCount;
-            this.Used=tempBattleInfo.Used;//整个挂机任务是否使用
-            this.TaskName=tempBattleInfo.TaskName;//地图名称如5-4E
+            this.Used = tempBattleInfo.Used;//整个挂机任务是否使用
+            this.TaskName = tempBattleInfo.TaskName;//地图名称如5-4E
             this.TaskNumber = tempBattleInfo.TaskNumber;
             this.TaskMianTeam = tempBattleInfo.TaskMianTeam;
             this.TaskSupportTeam1 = tempBattleInfo.TaskSupportTeam1;
@@ -91,13 +91,48 @@ namespace WindowsFormsApplication1.BaseData
             this.DismantleGun = tempBattleInfo.DismantleGun;
             this.ChangeGun = tempBattleInfo.ChangeGun;
             this.SetMap = tempBattleInfo.SetMap;
-    }
+        }
+
+        public void reSetBattleInfo()
+        {
+            this.BattleStart = false;
+            this.Team_Serror = false;
+            this.NeetToDismantleGun = false;
+            this.NeedToFix = false;
+        }
+
+        public void EndAtBattle(DmAe dmae)
+        {
+            if (this.Team_Serror)
+            {
+                this.BattleFixTime = this.Team_SerrorTime;
+            }
+
+
+            else //-----循环间隔
+            {
+                Random ran = new Random();
+                int temp0 = ran.Next(0, this.RoundInterval);
+                this.BattleFixTime = temp0 + 1;
+            }
+
+            if (this.BattleLoopTime == this.LoopMaxTime)
+            {
+                this.BattleLoopTime = 0; this.BattleFixTime = -1; this.Used = false;
+            }
+            if (this.Used == false) { CommonHelp.BindWindowS(dmae, 0); }
+            if (this.BattleLoopUnLockWindows == false) { CommonHelp.BindWindowS(dmae, 0); }
+
+
+
+            this.BattleLoopTime++;
+        }
 
     }
 
     public class UserAutoBattleInfo
     {
-        public bool AutoBattleUse=false;
+        public bool AutoBattleUse = false;
         public int AutoBattleStartTime;
         public int AutoBattleLastTime;
         public int AutoBattleLoopTime = 0;
@@ -110,6 +145,7 @@ namespace WindowsFormsApplication1.BaseData
         public string AutoBattleTeamName7;
         public string AutoBattleTeamName8;
         public bool AutoBattle_State;
+
         public void AutoBattleLastTimeCD(int c)
         {
             //c是所需要减的时间
@@ -128,8 +164,9 @@ namespace WindowsFormsApplication1.BaseData
 
 
 
-            
-        }
 
+        }
     }
 }
+
+

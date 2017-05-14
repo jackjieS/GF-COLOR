@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 {
     class BackgroundThread
     {
-        private InstanceManager im;
+        public InstanceManager im;
         public Action LAction;
         public BackgroundThread(InstanceManager im)
         {
@@ -408,41 +408,17 @@ namespace WindowsFormsApplication1
 
 
 
-
-                                //while (BaseData.SystemInfo.StayAtRecieveOperationPage)
-                                //{
-                                //    BaseData.SystemInfo.AppState = "等待后勤任务";
-                                //    //有一个不符合也要等，当全部相同时才退出循环
-                                //    im.mouse.delayTime(1, 1);
-                                //    count++;
-                                //    if (count == 10) goto a;
-                                //}
-                                //while (BaseData.SystemInfo.StayAtRecieveOperationPage)
-                                //{
-                                //    //全部相同才确定
-                                //    BaseData.SystemInfo.AppState = "接收后勤任务";
-                                //    im.mouse.delayTime(1, 1);
-                                //    im.mouse.LeftClick(dmae, 484, 258, 681, 459);
-                                //}
-                                //a: while (BaseData.SystemInfo.StayAtHomePage)
-                                //{
-                                //    im.mouse.delayTime(1, 1);
-                                //}
-                                //BaseData.SystemInfo.AppState = "回到主页";
-
-                                //im.taskList.taskremove();
-                                //break;
                             }
                         case "12"://0
                             {
-                                if (im.gameData.GetOperationTime_60s() )
+                                if (im.gameData.GetOperationTime_60s())
                                 {
                                     Dictionary<int, int> TimeDic = new Dictionary<int, int>();
                                     for (int i = 0; i < 4; i++)
-                                    { 
+                                    {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i,im.gameData.User_operationInfo[i].OperationLastTime);
+                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -459,47 +435,27 @@ namespace WindowsFormsApplication1
                                 }
                                 else
                                 {
-
-                                    im.gameData.User_battleInfo[0].BattleStart = false;
-                                    im.gameData.User_battleInfo[0].Team_Serror = false;
-                                    im.gameData.User_battleInfo[0].NeetToDismantleGun = false;
+                                    im.gameData.User_battleInfo[0].reSetBattleInfo();
                                     UserBattleInfo tempUserBattleInfo = new UserBattleInfo();
                                     tempUserBattleInfo = im.gameData.User_battleInfo[0];
+
                                     im.time.ChoseThebattle(dmae, im.mouse, ref tempUserBattleInfo);
+
                                     im.gameData.User_battleInfo[0] = tempUserBattleInfo;
+
                                     im.taskList.taskremove();
-
-
-                                    if (im.gameData.User_battleInfo[0].Team_Serror)
-                                    {
-                                        im.gameData.User_battleInfo[0].BattleFixTime = im.gameData.User_battleInfo[0].Team_SerrorTime;
-                                        goto temp;
-                                    }
 
                                     if (im.gameData.User_battleInfo[0].NeedToFix)
                                     {
                                         im.userData.BattleFixNumber = 1;
                                         im.gametasklist.Insert(0, BaseData.TaskList.Fix);
                                     }
-                                    else //-----循环间隔
-                                    {
-                                        Random ran = new Random();
-                                        int temp0 = ran.Next(0, im.gameData.User_battleInfo[0].RoundInterval);
-                                        im.gameData.User_battleInfo[0].BattleFixTime = temp0 + 1;
-                                        ran = null;
-                                    }
 
-                                    temp:
-                                    im.gameData.User_battleInfo[0].BattleLoopTime++;
+                                    im.gameData.User_battleInfo[0].EndAtBattle(dmae);
                                 }
 
-                                //判断最大循环最大次数，若相等则停止
-                                if (im.gameData.User_battleInfo[0].BattleLoopTime == im.gameData.User_battleInfo[0].LoopMaxTime)
-                                {
-                                    im.gameData.User_battleInfo[0].BattleLoopTime = 0; im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false;
-                                }
-                                if (im.gameData.User_battleInfo[0].Used == false) { im.mouse.BindWindowS(dmae, 0); }
-                                if (im.gameData.User_battleInfo[0].BattleLoopUnLockWindows == false) { im.mouse.BindWindowS(dmae, 0); }
+
+
                                 break;
                             }
 
@@ -532,50 +488,27 @@ namespace WindowsFormsApplication1
                                 else
                                 {
 
-                                    im.gameData.User_battleInfo[1].BattleStart = false;
-                                    im.gameData.User_battleInfo[1].Team_Serror = false;
-                                    im.gameData.User_battleInfo[1].NeetToDismantleGun = false;
+                                    im.gameData.User_battleInfo[1].reSetBattleInfo();
                                     UserBattleInfo tempUserBattleInfo = new UserBattleInfo();
                                     tempUserBattleInfo = im.gameData.User_battleInfo[1];
+
                                     im.time.ChoseThebattle(dmae, im.mouse, ref tempUserBattleInfo);
                                     im.gameData.User_battleInfo[1] = tempUserBattleInfo;
+
                                     im.taskList.taskremove();
 
-                                    if (im.gameData.User_battleInfo[1].Team_Serror)
-                                    {
-                                        im.gameData.User_battleInfo[1].BattleFixTime = im.gameData.User_battleInfo[1].Team_SerrorTime;
-                                        goto temp;
-                                    }
+
 
                                     if (im.gameData.User_battleInfo[1].NeedToFix == true)
                                     {
                                         im.userData.BattleFixNumber = 2;
                                         im.gametasklist.Insert(0, BaseData.TaskList.Fix);
                                     }
-                                    else//-----循环间隔
-                                    {
-                                        Random ran = new Random();
-                                        int temp0 = ran.Next(0, im.gameData.User_battleInfo[1].RoundInterval);
-                                        im.gameData.User_battleInfo[1].BattleFixTime = temp0 + 1;
-                                    }
-
-
-                                    temp:
-
-
-
-                                    im.gameData.User_battleInfo[1].BattleLoopTime++;
-
+                                    im.gameData.User_battleInfo[1].EndAtBattle(dmae);
 
                                 }
 
                                 //判断最大循环最大次数，若相等则停止
-                                if (im.gameData.User_battleInfo[1].BattleLoopTime == im.gameData.User_battleInfo[1].LoopMaxTime)
-                                {
-                                    im.gameData.User_battleInfo[1].BattleLoopTime = 0; im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false;
-                                }
-                                if (im.gameData.User_battleInfo[1].Used == false) { im.mouse.BindWindowS(dmae, 0); }
-                                if (im.gameData.User_battleInfo[1].BattleLoopUnLockWindows == false) { im.mouse.BindWindowS(dmae, 0); }
                                 break;
                             }
                         case "14":
@@ -605,46 +538,25 @@ namespace WindowsFormsApplication1
                                 else
                                 {
 
-                                    im.gameData.User_battleInfo[2].BattleStart = false;
-                                    im.gameData.User_battleInfo[2].Team_Serror = false;
-                                    im.gameData.User_battleInfo[2].NeetToDismantleGun = false;
+                                    im.gameData.User_battleInfo[2].reSetBattleInfo();
                                     UserBattleInfo tempUserBattleInfo = new UserBattleInfo();
                                     tempUserBattleInfo = im.gameData.User_battleInfo[2];
+
                                     im.time.ChoseThebattle(dmae, im.mouse, ref tempUserBattleInfo);
                                     im.gameData.User_battleInfo[2] = tempUserBattleInfo;
-                                    im.gameData.User_battleInfo[2].BattleLoopTime++;
+
                                     im.taskList.taskremove();
 
-
-                                    if (im.gameData.User_battleInfo[2].Team_Serror)
-                                    {
-                                        im.gameData.User_battleInfo[2].BattleFixTime = im.gameData.User_battleInfo[2].Team_SerrorTime;
-                                        goto temp;
-                                    }
                                     if (im.gameData.User_battleInfo[2].NeedToFix == true)
                                     {
                                         im.userData.BattleFixNumber = 3;
                                         im.gametasklist.Insert(0, BaseData.TaskList.Fix);
                                         //taskadd(Fix);
                                     }
-                                    else//-----循环间隔
-                                    {
-                                        Random ran = new Random();
-                                        int temp0 = ran.Next(0, im.gameData.User_battleInfo[2].RoundInterval);
-                                        im.gameData.User_battleInfo[2].BattleFixTime = temp0 + 1;
-                                        ran = null;
-                                    }
-                                    temp:
-                                    im.gameData.User_battleInfo[2].BattleLoopTime++;
-                                }
 
-                                //判断最大循环最大次数，若相等则停止
-                                if (im.gameData.User_battleInfo[2].BattleLoopTime == im.gameData.User_battleInfo[2].LoopMaxTime)
-                                {
-                                    im.gameData.User_battleInfo[2].BattleLoopTime = 0; im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false;
+                                    im.gameData.User_battleInfo[2].EndAtBattle(dmae);
+
                                 }
-                                if (im.gameData.User_battleInfo[2].Used == false) { im.mouse.BindWindowS(dmae, 0); }
-                                if (im.gameData.User_battleInfo[2].BattleLoopUnLockWindows == false) { im.mouse.BindWindowS(dmae, 0); }
                                 break;
                             }
                         case "15":
@@ -673,22 +585,15 @@ namespace WindowsFormsApplication1
                                 }
                                 else
                                 {
-                                    im.gameData.User_battleInfo[3].BattleStart = false;
-                                    im.gameData.User_battleInfo[3].Team_Serror = false;
-                                    im.gameData.User_battleInfo[3].NeetToDismantleGun = false;
+                                    im.gameData.User_battleInfo[3].reSetBattleInfo();
                                     UserBattleInfo tempUserBattleInfo = new UserBattleInfo();
                                     tempUserBattleInfo = im.gameData.User_battleInfo[3];
+
                                     im.time.ChoseThebattle(dmae, im.mouse, ref tempUserBattleInfo);
                                     im.gameData.User_battleInfo[3] = tempUserBattleInfo;
-                                    im.gameData.User_battleInfo[3].BattleLoopTime++;
                                     im.taskList.taskremove();
 
 
-                                    if (im.gameData.User_battleInfo[3].Team_Serror)
-                                    {
-                                        im.gameData.User_battleInfo[3].BattleFixTime = im.gameData.User_battleInfo[3].Team_SerrorTime;
-                                        goto temp;
-                                    }
 
                                     if (im.gameData.User_battleInfo[3].NeedToFix == true)
                                     {
@@ -696,26 +601,10 @@ namespace WindowsFormsApplication1
                                         im.gametasklist.Insert(0, BaseData.TaskList.Fix);
                                         //taskadd(Fix);
                                     }
-                                    else if (im.gameData.User_battleInfo[3].Team_Serror || im.gameData.User_battleInfo[3].NeedToFix == false)//-----循环间隔
-                                    {
-                                        Random ran = new Random();
-                                        int temp0 = ran.Next(0, im.gameData.User_battleInfo[3].RoundInterval);
-                                        im.gameData.User_battleInfo[3].BattleFixTime = temp0 + 1;
-                                        ran = null;
-                                    }
-                                    //战斗结束 判断是否需要加接收后勤任务到最前
-                                    temp:
-                                    im.gameData.User_battleInfo[3].BattleLoopTime++;
+                                    im.gameData.User_battleInfo[3].EndAtBattle(dmae);
 
                                 }
 
-                                //判断最大循环最大次数，若相等则停止
-                                if (im.gameData.User_battleInfo[3].BattleLoopTime == im.gameData.User_battleInfo[3].LoopMaxTime)
-                                {
-                                    im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false;
-                                }
-                                if (im.gameData.User_battleInfo[3].Used == false) { im.mouse.BindWindowS(dmae, 0); }
-                                if (im.gameData.User_battleInfo[3].BattleLoopUnLockWindows == false) { im.mouse.BindWindowS(dmae, 0); }
                                 break;
                             }
 

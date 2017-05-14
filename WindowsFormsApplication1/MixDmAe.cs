@@ -11,7 +11,8 @@ using System.IO;
 using System.Configuration;
 namespace WindowsFormsApplication1
 {
-    class DmAe
+
+    public class DmAe
     {
 
         public DmAe()

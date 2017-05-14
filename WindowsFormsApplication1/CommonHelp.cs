@@ -75,6 +75,7 @@ namespace WindowsFormsApplication1
             }
 
         }
+
         public bool CheckClientSize(DmAe dmae)
         {
             object width, height;
@@ -90,7 +91,23 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public static void BindWindowS(DmAe dmae, int B)
+        {
+            //windowsStat = 0 解锁 = 1 锁定
+            if (B == 0)//解锁
+            {
+                int dmae0 = dmae.BindWindowUnLock();
+                if (dmae0 == 1)
+                   BaseData.SystemInfo.WindowsState = 0;
+            }
+            if (B == 1)//锁死鼠标
+            {
 
+                int dmae0 = dmae.BindWindowLock();
+                if (dmae0 == 1)
+                    BaseData.SystemInfo.WindowsState = 1;
+            }
 
+        }
     }
 }
