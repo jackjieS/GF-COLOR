@@ -66,6 +66,7 @@ namespace WindowsFormsApplication1
             for(int i = 0; i < 4; i++)
             {
                 BaseData.UserBattleInfo user_battleinfo = new BaseData.UserBattleInfo();
+                user_battleinfo.Key = i + 1;
                 this.gameData.User_battleInfo.Add(i, user_battleinfo);
             }
 
@@ -91,8 +92,8 @@ namespace WindowsFormsApplication1
 
         }
         public Thread CountDown, CompleteMisson, ThreadT, MonitorPic;
-        public List<TaskListstruct> gametasklist = new List<TaskListstruct>();
-        public List<int> User_OperationNumberNow = new List<int>();
+        //public List<TaskListstruct> gametasklist = new List<TaskListstruct>();
+        //public List<int> User_OperationNumberNow = new List<int>();
         public List<int> ShowerTime = new List<int>();
     }
 }

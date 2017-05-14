@@ -297,7 +297,7 @@ namespace TaskList
             button6.Enabled = false;
             button1.Enabled = true;
             im.mouse.BindWindowS(dmae, 0);
-            im.gametasklist.Clear();
+            CommonHelp.gametasklist.Clear();
             WindowsFormsApplication1.BaseData.SystemInfo.ThreadTCase = 1;
 
 
@@ -459,7 +459,7 @@ namespace TaskList
 
         private void button20_Click(object sender, EventArgs e)
         {
-            im.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.BuildEquipment);
+            CommonHelp.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.BuildEquipment);
             im.gameData.User_BuildingEquipmentInfo[0].BuildingFavoriteNumber = im.Form1.comboBox9.SelectedIndex;
             im.gameData.User_BuildingEquipmentInfo[1].BuildingFavoriteNumber = im.Form1.comboBox10.SelectedIndex;
             im.gameData.User_BuildingEquipmentInfo[2].BuildingFavoriteNumber = im.Form1.comboBox11.SelectedIndex;

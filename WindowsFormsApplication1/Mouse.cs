@@ -2396,7 +2396,7 @@ namespace testdm
             {
                 //Task.Insert(0, Dismantlement);
                 userBattleInfo.NeetToDismantleGun = true;
-                im.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.Dismantlement);
+                CommonHelp.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.Dismantlement);
             }
             else
             {

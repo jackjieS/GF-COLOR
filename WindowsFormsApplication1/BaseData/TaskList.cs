@@ -72,12 +72,12 @@ namespace WindowsFormsApplication1.BaseData
         {
             //int temp = im.gametasklist.FindIndex(s => s.TaskNumber == 0);
             WriteLog.WriteError("添加任务 " + a.TaskName);
-            im.gametasklist.Add(a);
+            CommonHelp.gametasklist.Add(a);
         }
 
         public void taskremove()//出列
         {
-            im.gametasklist.RemoveAt(0);
+            CommonHelp.gametasklist.RemoveAt(0);
             WriteLog.WriteError("任务移除 ");
         }
 
@@ -90,7 +90,7 @@ namespace WindowsFormsApplication1.BaseData
             }
 
 
-            im.gametasklist.Insert(count, a);
+            CommonHelp.gametasklist.Insert(count, a);
         }
 
         public void OperationStartAdd(ref bool SetNeedToReceive, TaskListstruct a)
@@ -100,14 +100,14 @@ namespace WindowsFormsApplication1.BaseData
             //加入开始后勤任务
             //如果当前队列任务是空闲则加入接收和开始后勤任务
             //如果当前队列任务非空闲则加入开始后勤任务到最后(因为当前任务结束退到主页会检测，添加接收后期任务，故当前不需要添加接收后勤任务)
-            if (im.gametasklist.Any())
+            if (CommonHelp.gametasklist.Any())
             {
-                im.gametasklist.Add(a);
+                CommonHelp.gametasklist.Add(a);
             }
             else
             {
-                im.gametasklist.Add(BaseData.TaskList.ReceiveLogistics);
-                im.gametasklist.Add(a);
+                CommonHelp.gametasklist.Add(BaseData.TaskList.ReceiveLogistics);
+                CommonHelp.gametasklist.Add(a);
                 SetNeedToReceive = true;
             }
 

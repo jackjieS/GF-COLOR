@@ -6,7 +6,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static WindowsFormsApplication1.BaseData.TaskList;
+using TaskList;
 namespace WindowsFormsApplication1
 {
     class CommonHelp
@@ -90,6 +91,10 @@ namespace WindowsFormsApplication1
                 return true;
             }
         }
+
+        public static int BattleFixNumber;
+        public static List<TaskListstruct> gametasklist = new List<TaskListstruct>();
+        public static List<int> User_OperationNumberNow = new List<int>();
 
         public static void BindWindowS(DmAe dmae, int B)
         {

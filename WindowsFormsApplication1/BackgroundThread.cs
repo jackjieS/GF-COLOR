@@ -50,16 +50,16 @@ namespace WindowsFormsApplication1
                         //如果当前队列任务非空闲则加入开始后勤任务到最后(因为当前任务结束退到主页会检测，添加接收后期任务，故当前不需要添加接收后勤任务)
                         //如果当前队列任务是空闲则加入接收和开始后勤任务
 
-                        if (im.gametasklist.Any() && (im.gametasklist[0].TaskNumber != 98))
+                        if (CommonHelp.gametasklist.Any() && (CommonHelp.gametasklist[0].TaskNumber != 98))
                         {
                             im.gameData.User_operationInfo[i].ReceiveRightNow = true;
                         }
                         else
                         {
                             //需要把当前i传过去 靠队列
-                            im.User_OperationNumberNow.Add(i);
+                            CommonHelp.User_OperationNumberNow.Add(i);
                             im.gameData.User_operationInfo[i].Lfinish = true;
-                            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                            CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                             //返回时间
                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                             im.gameData.User_operationInfo[i].Added = true;
@@ -172,9 +172,9 @@ namespace WindowsFormsApplication1
                 //Stopwatch sw = new Stopwatch();
                 Now = DateTime.Now;
 
-                if (im.gametasklist.Any())
+                if (CommonHelp.gametasklist.Any())
                 {
-                    switch (im.gametasklist.ElementAt(0).TaskNumber.ToString())
+                    switch (CommonHelp.gametasklist.ElementAt(0).TaskNumber.ToString())
                     {
                         case "1":
                             {
@@ -227,9 +227,9 @@ namespace WindowsFormsApplication1
                                             //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             //im.gameData.User_operationInfo[i].Added = true;
                                             ////SystemInfo.LFinish = false;
-                                            im.User_OperationNumberNow.Add(i);
+                                            CommonHelp.User_OperationNumberNow.Add(i);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                                            CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                                             //返回时间
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
@@ -270,9 +270,9 @@ namespace WindowsFormsApplication1
                                             //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             //im.gameData.User_operationInfo[i].Added = true;
-                                            im.User_OperationNumberNow.Add(i);
+                                            CommonHelp.User_OperationNumberNow.Add(i);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                                            CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                                             //返回时间
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
@@ -311,9 +311,9 @@ namespace WindowsFormsApplication1
                                             //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             //im.gameData.User_operationInfo[i].Added = true;
-                                            im.User_OperationNumberNow.Add(i);
+                                            CommonHelp.User_OperationNumberNow.Add(i);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                                            CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                                             //返回时间
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
@@ -354,9 +354,9 @@ namespace WindowsFormsApplication1
                                             //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             //im.gameData.User_operationInfo[i].Added = true;
-                                            im.User_OperationNumberNow.Add(i);
+                                            CommonHelp.User_OperationNumberNow.Add(i);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                                            CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                                             //返回时间
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
@@ -421,7 +421,7 @@ namespace WindowsFormsApplication1
                                             TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
@@ -430,7 +430,7 @@ namespace WindowsFormsApplication1
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)
                                     {
-                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
                                     }
                                 }
                                 else
@@ -444,12 +444,6 @@ namespace WindowsFormsApplication1
                                     im.gameData.User_battleInfo[0] = tempUserBattleInfo;
 
                                     im.taskList.taskremove();
-
-                                    if (im.gameData.User_battleInfo[0].NeedToFix)
-                                    {
-                                        im.userData.BattleFixNumber = 1;
-                                        im.gametasklist.Insert(0, BaseData.TaskList.Fix);
-                                    }
 
                                     im.gameData.User_battleInfo[0].EndAtBattle(dmae);
                                 }
@@ -472,7 +466,7 @@ namespace WindowsFormsApplication1
                                             TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
@@ -481,7 +475,7 @@ namespace WindowsFormsApplication1
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)
                                     {
-                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
                                     }
 
                                 }
@@ -499,11 +493,6 @@ namespace WindowsFormsApplication1
 
 
 
-                                    if (im.gameData.User_battleInfo[1].NeedToFix == true)
-                                    {
-                                        im.userData.BattleFixNumber = 2;
-                                        im.gametasklist.Insert(0, BaseData.TaskList.Fix);
-                                    }
                                     im.gameData.User_battleInfo[1].EndAtBattle(dmae);
 
                                 }
@@ -523,7 +512,7 @@ namespace WindowsFormsApplication1
                                             TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
@@ -532,7 +521,7 @@ namespace WindowsFormsApplication1
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)
                                     {
-                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
                                     }
                                 }
                                 else
@@ -546,13 +535,6 @@ namespace WindowsFormsApplication1
                                     im.gameData.User_battleInfo[2] = tempUserBattleInfo;
 
                                     im.taskList.taskremove();
-
-                                    if (im.gameData.User_battleInfo[2].NeedToFix == true)
-                                    {
-                                        im.userData.BattleFixNumber = 3;
-                                        im.gametasklist.Insert(0, BaseData.TaskList.Fix);
-                                        //taskadd(Fix);
-                                    }
 
                                     im.gameData.User_battleInfo[2].EndAtBattle(dmae);
 
@@ -571,7 +553,7 @@ namespace WindowsFormsApplication1
                                             TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
@@ -580,7 +562,7 @@ namespace WindowsFormsApplication1
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)
                                     {
-                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
                                     }
                                 }
                                 else
@@ -594,13 +576,6 @@ namespace WindowsFormsApplication1
                                     im.taskList.taskremove();
 
 
-
-                                    if (im.gameData.User_battleInfo[3].NeedToFix == true)
-                                    {
-                                        im.userData.BattleFixNumber = 4;
-                                        im.gametasklist.Insert(0, BaseData.TaskList.Fix);
-                                        //taskadd(Fix);
-                                    }
                                     im.gameData.User_battleInfo[3].EndAtBattle(dmae);
 
                                 }
@@ -620,7 +595,7 @@ namespace WindowsFormsApplication1
                                             TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
@@ -629,7 +604,7 @@ namespace WindowsFormsApplication1
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)
                                     {
-                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
                                     }
                                 }
                                 else
@@ -660,7 +635,7 @@ namespace WindowsFormsApplication1
                                             TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
@@ -669,7 +644,7 @@ namespace WindowsFormsApplication1
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)
                                     {
-                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
                                     }
                                 }
                                 else
@@ -737,7 +712,7 @@ namespace WindowsFormsApplication1
                                             TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
@@ -746,7 +721,7 @@ namespace WindowsFormsApplication1
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)
                                     {
-                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
                                     }
                                 }
                                 else
@@ -778,7 +753,7 @@ namespace WindowsFormsApplication1
                                             TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
-                                            im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
@@ -787,7 +762,7 @@ namespace WindowsFormsApplication1
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)
                                     {
-                                        im.User_OperationNumberNow.Add(kvp.Key);
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
                                     }
 
 
@@ -861,8 +836,8 @@ namespace WindowsFormsApplication1
                                 end: im.taskList.taskremove();
                                 try
                                 {
-                                    im.gameData.User_operationInfo[im.User_OperationNumberNow[0]].Lfinish = false;
-                                    im.User_OperationNumberNow.RemoveAt(0);//出列
+                                    im.gameData.User_operationInfo[CommonHelp.User_OperationNumberNow[0]].Lfinish = false;
+                                    CommonHelp.User_OperationNumberNow.RemoveAt(0);//出列
                                 }
                                 catch (Exception)
                                 {
@@ -907,7 +882,7 @@ namespace WindowsFormsApplication1
                             im.gameData.User_battleInfo[3].Used = false;
 
                             im.CompleteMisson.Abort();
-                            im.gametasklist.Clear();
+                            CommonHelp.gametasklist.Clear();
 
                             im.CompleteMisson = new Thread(CompleteMisson);
                             im.CompleteMisson.IsBackground = true;

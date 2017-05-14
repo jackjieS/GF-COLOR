@@ -212,7 +212,7 @@ namespace WindowsFormsApplication1
                 //SetText("label6", "");
                 //SetText("label7", "");
                 int i = 3;
-                foreach (var item in im.gametasklist)
+                foreach (var item in CommonHelp.gametasklist)
                 {
                     SetText("label" + i.ToString(), item.TaskName);
                     i++;

@@ -8,6 +8,8 @@ namespace WindowsFormsApplication1.BaseData
 {
     public class UserBattleInfo
     {
+        public int Key;//字典本事key键
+
         public int BattleLoopTime = 0;
         public double BattleFixTime;//修复时间也是新的一轮所等的时间
         public bool BattleStart = false;//可以开始新的一轮或者等待修复
@@ -107,13 +109,17 @@ namespace WindowsFormsApplication1.BaseData
             {
                 this.BattleFixTime = this.Team_SerrorTime;
             }
-
-
             else //-----循环间隔
             {
                 Random ran = new Random();
                 int temp0 = ran.Next(0, this.RoundInterval);
                 this.BattleFixTime = temp0 + 1;
+            }
+
+            if (this.NeedToFix)
+            {
+                CommonHelp.BattleFixNumber = Key;
+                CommonHelp.gametasklist.Insert(0, TaskList.Fix);
             }
 
             if (this.BattleLoopTime == this.LoopMaxTime)
