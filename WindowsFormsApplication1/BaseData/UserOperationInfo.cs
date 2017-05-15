@@ -9,7 +9,6 @@ namespace WindowsFormsApplication1.BaseData
     public class UserOperationInfo//模板
     {
 
-
         public string OperationName ;
         public string OperationTeamName;
         public double OperationTotalTime;

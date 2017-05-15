@@ -128,9 +128,6 @@
     <Setting Name="TeamListSelect3" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="dismantlegun" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="ChangeGun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>

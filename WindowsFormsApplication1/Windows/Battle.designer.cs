@@ -36,8 +36,6 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -89,6 +87,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -120,8 +122,6 @@
             this.tabPage1.Controls.Add(this.textBox8);
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.checkBox6);
-            this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.textBox4);
             this.tabPage1.Controls.Add(this.checkBox5);
             this.tabPage1.Controls.Add(this.checkBox4);
             this.tabPage1.Controls.Add(this.checkBox3);
@@ -189,24 +189,6 @@
             this.checkBox6.Text = "缩放地图(测试)";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(103, 93);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(59, 12);
-            this.label18.TabIndex = 130;
-            this.label18.Text = "拆解数量:";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(162, 88);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(48, 21);
-            this.textBox4.TabIndex = 129;
-            this.textBox4.Text = "24";
-            // 
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
@@ -222,9 +204,9 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(11, 92);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(96, 16);
+            this.checkBox4.Size = new System.Drawing.Size(84, 16);
             this.checkBox4.TabIndex = 127;
-            this.checkBox4.Text = "阵营满自动拆";
+            this.checkBox4.Text = "拆解或强化";
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
@@ -811,6 +793,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.textBox4);
+            this.tabPage3.Controls.Add(this.label31);
+            this.tabPage3.Controls.Add(this.comboBox8);
+            this.tabPage3.Controls.Add(this.label30);
             this.tabPage3.Controls.Add(this.label28);
             this.tabPage3.Controls.Add(this.textBox9);
             this.tabPage3.Controls.Add(this.label27);
@@ -823,10 +809,60 @@
             this.tabPage3.Text = "测试";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(87, 10);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(48, 21);
+            this.textBox4.TabIndex = 130;
+            this.textBox4.Text = "24";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(10, 197);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(149, 12);
+            this.label31.TabIndex = 7;
+            this.label31.Text = "注意强化使用所有两星装备";
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Items.AddRange(new object[] {
+            "芯片",
+            "外骨骼",
+            "防弹插板",
+            "勋章",
+            "弹链箱",
+            "伪装披风",
+            "穿甲弹",
+            "状态弹",
+            "霰弹",
+            "高速弹",
+            "光学瞄具",
+            "全息瞄具",
+            "红点瞄具",
+            "夜战装备",
+            "消音器"});
+            this.comboBox8.Location = new System.Drawing.Point(72, 135);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(121, 20);
+            this.comboBox8.TabIndex = 6;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(10, 138);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(59, 12);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "强化类型:";
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(109, 139);
+            this.label28.Location = new System.Drawing.Point(109, 167);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(65, 12);
             this.label28.TabIndex = 4;
@@ -834,7 +870,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(77, 135);
+            this.textBox9.Location = new System.Drawing.Point(77, 163);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(26, 21);
             this.textBox9.TabIndex = 3;
@@ -843,7 +879,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(10, 139);
+            this.label27.Location = new System.Drawing.Point(10, 167);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(65, 12);
             this.label27.TabIndex = 2;
@@ -856,19 +892,19 @@
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(71, 16);
             this.radioButton4.TabIndex = 1;
-            this.radioButton4.TabStop = true;
             this.radioButton4.Text = "装备强化";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
             this.radioButton3.Location = new System.Drawing.Point(10, 11);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(71, 16);
+            this.radioButton3.Size = new System.Drawing.Size(83, 16);
             this.radioButton3.TabIndex = 0;
             this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "人形强化";
+            this.radioButton3.Text = "人形拆除：";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // Battle
@@ -938,8 +974,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label19;
@@ -962,5 +996,9 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

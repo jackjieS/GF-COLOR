@@ -93,6 +93,7 @@ namespace WindowsFormsApplication1
         }
 
         public static int BattleFixNumber;
+        public static int BattleEquipmentOrGunNumber;//枪满或者装备满当前IDkey
         public static List<TaskListstruct> gametasklist = new List<TaskListstruct>();
         public static List<int> User_OperationNumberNow = new List<int>();
 
@@ -114,5 +115,10 @@ namespace WindowsFormsApplication1
             }
 
         }
+
+
+
+
+
     }
 }

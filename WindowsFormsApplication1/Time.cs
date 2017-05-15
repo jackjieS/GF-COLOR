@@ -1817,6 +1817,7 @@ namespace testdm
             mouse.LeftClickHomeToBattle(dmae, "02", 1, 4);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
             mouse.delayTime(4);
 
 
@@ -1969,6 +1970,8 @@ namespace testdm
             mouse.LeftClickHomeToBattle(dmae, "03", 1, 4);
 
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
+
             mouse.delayTime(4);
 
             if (userBattleInfo.SetMap == true)
@@ -2079,6 +2082,7 @@ namespace testdm
             mouse.LeftClickHomeToBattle(dmae, "04", 1, 4);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
 
             mouse.delayTime(4);
 
@@ -2334,6 +2338,7 @@ namespace testdm
             mouse.LeftClickHomeToBattle(dmae, "00", 0, 1);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
 
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
@@ -2389,7 +2394,7 @@ namespace testdm
             mouse.LeftClickHomeToBattle(dmae, "03", 2, 2);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
-
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
             mouse.delayTime(4);
 
 
@@ -2482,7 +2487,7 @@ namespace testdm
             mouse.LeftClickHomeToBattle(dmae, "05", 0, 4);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
-
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
 
 
             mouse.delayTime(4);
@@ -2611,7 +2616,7 @@ namespace testdm
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
 
-
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
 
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
@@ -2860,7 +2865,7 @@ namespace testdm
             mouse.LeftClickHomeToBattle(dmae, "06", 0, 6);
             mouse.delayTime(1);
             mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
-            if (userBattleInfo.NeetToDismantleGun == true)  return; 
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true)  return; 
 
 
             mouse.delayTime(4);

@@ -504,6 +504,7 @@ namespace WindowsFormsApplication1
                             {
                                 if (im.gameData.GetOperationTime_60s())
                                 {
+                                    
                                     Dictionary<int, int> TimeDic = new Dictionary<int, int>();
                                     for (int i = 0; i < 4; i++)
                                     {
@@ -665,6 +666,57 @@ namespace WindowsFormsApplication1
                                 im.mouse.BindWindowS(dmae, 0);
                                 break;
                             }
+
+                        case "20"://装备强化
+                            {
+                                if (im.gameData.GetOperationTime_60s())
+                                {
+                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    for (int i = 0; i < 4; i++)
+                                    {
+                                        if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
+                                        {
+                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+
+                                            im.gameData.User_operationInfo[i].Lfinish = true;
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
+                                            im.gameData.User_operationInfo[i].Added = true;
+                                        }
+                                    }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
+                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    {
+                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                    }
+                                }
+                                else
+                                {
+
+                                    //拆枪代码
+                                    im.equipment.EquipmentUpdate(dmae,im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber].EquipmentType, im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber].EquipmentUpdatePostion);
+                                    im.taskList.taskremove();
+
+                                }
+
+
+                                im.mouse.BindWindowS(dmae, 0);
+
+
+
+                                break;
+                            }
+
+
+
+
+
+
+
+
+
+
                         case "94"://回到游戏
                             {
                                 break;

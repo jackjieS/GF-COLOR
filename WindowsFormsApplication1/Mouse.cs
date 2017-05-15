@@ -552,6 +552,188 @@ namespace testdm
             WriteLog.WriteError("点击主页战场按钮成功");
         }
 
+        public void ClickHomeResearch(DmAe dmae)
+        {
+            while (CheckHomePage(dmae) == 1)
+            {
+                delayTime(0.5, 1);
+            }
+            while (CheckHomePage(dmae) == 0)
+            {
+                BindWindowS(dmae, 1);
+                LeftClick(dmae, 831, 322, 1019, 397);
+            }
+
+        }
+
+        public void ClickEquipmentStrengthen(DmAe dmae)
+        {
+            while (CheckResearchPageReady(dmae) == false)
+            {
+                delayTime(0.5, 1);
+            }
+            while (CheckResearchPageReady(dmae) == true)
+            {
+
+                LeftClick(dmae, 32, 230, 174, 279);
+            }
+        }
+
+        public void ClickEquipmentSelect(DmAe dmae)
+        {
+            while (CheckEquipmentSelectPageReady(dmae) == false)
+            {
+                delayTime(0.5, 1);
+            }
+            while (CheckEquipmentSelectPageReady(dmae) == true)
+            {
+
+                LeftClick(dmae, 291, 352, 356, 427);
+            }
+        }
+
+        public void ClickEquipmentTab(DmAe dmae)
+        {
+            while (CheckSelectOneEquipmentPageReady(dmae) == false)
+            {
+                delayTime(0.5, 1);
+            }
+            while (CheckSelectOneEquipmentPageReady(dmae) == true)
+            {
+
+                LeftClick(dmae, 1112, 127, 1260, 217);
+            }
+        }
+
+        public void ClickEquipmentType(DmAe dmae,int i)
+        {
+            while (CheckEquipmentTabPageReady(dmae) == false)
+            {
+                delayTime(0.5, 1);
+            }
+            while (CheckEquipmentTabPageReady(dmae) == true)
+            {
+                switch (i)
+                {
+                    case 0: { LeftClick(dmae, 544, 121, 687, 174); break; }
+                    case 1: { LeftClick(dmae, 716, 127, 872, 178); break; }
+                    case 2: { LeftClick(dmae, 896, 117, 1048, 180); break; }
+                    case 3: { LeftClick(dmae, 539, 209, 688, 267); break; }
+                    case 4: { LeftClick(dmae, 719, 207, 868, 265); break; }
+                    case 5: { LeftClick(dmae, 898, 209, 1041, 264); break; }
+                    case 6: { LeftClick(dmae, 540, 316, 678, 372); break; }
+                    case 7: { LeftClick(dmae, 719, 312, 861, 365); break; }
+                    case 8: { LeftClick(dmae, 893, 319, 1040, 367); break; }
+                    case 9: { LeftClick(dmae, 531, 402, 686, 465); break; }
+                    case 10: { LeftClick(dmae, 528, 503, 688, 563); break; }
+                    case 11: { LeftClick(dmae, 713, 510, 867, 570); break; }
+                    case 12: { LeftClick(dmae, 892, 508, 1040, 564); break; }
+                    case 13: { LeftClick(dmae, 529, 599, 684, 650); break; }
+                    case 14: { LeftClick(dmae, 713, 589, 859, 651); break; }
+
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void ClickEquipmentTabToClose(DmAe dmae)
+        {
+            while(CheckEquipmentTabReadyClose(dmae) == false)
+            {
+                delayTime(1);
+            }
+
+            while (CheckEquipmentTabReadyClose(dmae) == true)
+            {
+                LeftClick(dmae, 1111, 163, 1247, 213);
+            }
+
+        }
+
+        public void ClickEquipmentToUpdate(DmAe dmae,int i)
+        {
+            while (CheckEquipmentTabPageReady(dmae) == true)
+            {
+                //如果页面还zai就要报警了
+                delayTime(1);
+            }
+            while (CheckEquipmentLock(dmae) == true)//需要修改
+            {
+                switch (i)
+                {
+                    case 1: { LeftClick(dmae, 20, 152, 161, 265); break; }
+                    case 2: { LeftClick(dmae, 209, 157, 342, 268); break; }
+                    case 3: { LeftClick(dmae, 377, 148, 515, 266); break; }
+                    case 4: { LeftClick(dmae, 555, 123, 694, 275); break; }
+                    case 5: { LeftClick(dmae, 737, 153, 875, 256); break; }
+                    case 6: { LeftClick(dmae, 919, 157, 1058, 253); break; }
+                    case 7: { LeftClick(dmae, 17, 448, 156, 560); break; }
+                    case 8: { LeftClick(dmae, 205, 441, 329, 561); break; }
+                    case 9: { LeftClick(dmae, 376, 450, 504, 558); break; }
+                    case 10: { LeftClick(dmae, 560, 460, 687, 558); break; }
+                    case 11: { LeftClick(dmae, 741, 457, 861, 556); break; }
+                    case 12: { LeftClick(dmae, 921, 451, 1036, 555); break; }
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void ClickEquipmentADDButton(DmAe dmae)
+        {
+            while (CheckEquipmentReadyToUpdate(dmae) == false)
+            {
+                delayTime(1);
+            }
+            while (CheckEquipmentReadyToUpdate(dmae) == true)
+            {
+                LeftClick(dmae, 474, 181, 608, 249);
+            }
+
+        }
+        public void ClickAll2Start(DmAe dmae)
+        {
+            while (CheckEquipment2Start(dmae) == false)
+            {
+                delayTime(1);
+            }
+
+            while(CheckEquipment2Start(dmae)== true)
+            {
+                LeftClick(dmae, 1104, 342, 1136, 379);
+                delayTime(1);
+            }
+
+        }
+
+        public void ClickEquipmentConfirm(DmAe dmae)
+        {
+            while (CheckEquipmentSelected(dmae) == false)
+            {
+                delayTime(1);
+            }
+            while (CheckEquipmentSelected(dmae) == true)
+            {
+                LeftClick(dmae, 1102, 552, 1234, 624);
+                delayTime(1);
+            }
+        }
+
+        public void ClickEquipmentUpdateConfirmButton(DmAe dmae)
+        {
+            while (CheckEquipmentConfirmButton(dmae) == false)
+            {
+                delayTime(1);
+            }
+            while (CheckEquipmentConfirmButton(dmae) == true)
+            {
+                LeftClick(dmae, 1079, 620, 1209, 657);
+                delayTime(1);
+            }
+        }
+
+
         public void ClickHomeDormitory(DmAe dmae)
         {
             while (CheckHomePage(dmae) == 1)
@@ -562,6 +744,7 @@ namespace testdm
             {
                 BindWindowS(dmae, 1);
                 LeftClick(dmae, 1074, 184, 1243, 252);
+                delayTime(1);
             }
         }
 
@@ -697,8 +880,6 @@ namespace testdm
 
         public void ClickBuildingArea(DmAe dmae,int area)
         {
-
-
             while (dmae.CmpColor(520, 220, "ffffff", 1) == 0)
             {
                 switch (area)
@@ -2366,6 +2547,7 @@ namespace testdm
 
             while (dm_ret0 == 0 && dm_ret1 == 0)
             {
+
                 LeftClick(dmae, 563, 494, 713, 545);
                 delayTime(1);
                 dm_ret0 = dmae.CmpColor(560, 500, "ffffff", 0.9);
@@ -2392,11 +2574,26 @@ namespace testdm
 
             LeftClickBackHome(dmae);
 
-            if(Settings.Default.dismantlegun == true)
+            if(userBattleInfo.DismantleGunOrEquipment == true)
             {
                 //Task.Insert(0, Dismantlement);
-                userBattleInfo.NeetToDismantleGun = true;
-                CommonHelp.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.Dismantlement);
+                CommonHelp.BattleEquipmentOrGunNumber = userBattleInfo.Key;
+                userBattleInfo.NeetToDismantleGunOrEquipment = true;
+                switch (userBattleInfo.DismantleType)//选择拆除形式是人形还是装备
+                {
+                    case 0:
+                        {
+                            CommonHelp.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.Dismantlement);
+                            break;
+                        }
+                    case 1:
+                        {
+                            CommonHelp.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.EquipmentUpdate);
+                            break;
+                        }
+                    default:
+                        break;
+                }
             }
             else
             {
@@ -6051,6 +6248,151 @@ namespace testdm
 
             }
             return -1;//都不是需要重来
+        }
+
+        public bool CheckResearchPageReady(DmAe dmae)
+        {
+            for(int x = 50,y = 215; x <= 180; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                    return false;
+            }
+            return true;
+        }
+
+        public bool CheckEquipmentSelectPageReady(DmAe dmae)
+        {
+            for(int x = 300, y = 380; x <= 345; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            for(int x=320,y=360;y<=405; y++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool CheckSelectOneEquipmentPageReady(DmAe dmae)
+        {
+            for(int x = 1099,y = 242; x <= 1266; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CheckEquipmentTabPageReady(DmAe dmae)
+        {
+            for (int x = 530, y = 115; x <= 680; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            for (int x = 710, y = 115; x <= 860; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            for (int x = 890, y = 115; x <= 1035; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool CheckEquipmentTabReadyClose(DmAe dmae)
+        {
+            string color0 = dmae.GetColor(530, 120);
+            for(int x = 530, y = 120; x <= 680; x++)
+            {
+                if (dmae.CmpColor(x, y, color0, 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool CheckEquipmentLock(DmAe dmae)
+        {
+
+            for (int x = 1099, y = 242; x <= 1265; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool CheckEquipmentReadyToUpdate(DmAe dmae)
+        {
+            for (int x = 485, y = 202; x <= 530; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CheckEquipment2Start(DmAe dmae)
+        {
+            for(int x = 1095, y = 341; x <= 1140; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CheckEquipmentConfirmButton(DmAe dmae)
+        {
+            for (int x = 1070, y = 530; x <= 1220; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CheckEquipmentSelected(DmAe dmae)
+        {
+            object intX, intY;
+            if(dmae.FindColor(1116, 410, 1251, 442,"ffffff",1,0,out intX,out intY)==1)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool CheckWhiteM(DmAe dmae)//检测屏幕是否白屏

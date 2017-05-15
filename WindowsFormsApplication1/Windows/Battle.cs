@@ -25,10 +25,9 @@ namespace testdm
             checkBox1.Checked = Settings.Default.Fix;
             checkBox2.Checked = Settings.Default.supplies;
             checkBox3.Checked = Settings.Default.BattleLoopUnLockWindows;
-            checkBox4.Checked = Settings.Default.dismantlegun;
+
             checkBox6.Checked = true;
-            if (checkBox4.Checked == false) { label18.Visible = false; textBox4.Visible = false; }
-            else { label18.Visible = true; textBox4.Visible = true; }
+
 
             if(Settings.Default.FixType == 1)
             {
@@ -72,7 +71,7 @@ namespace testdm
             Settings.Default.Fix = checkBox1.Checked;
             Settings.Default.supplies = checkBox2.Checked;
             Settings.Default.BattleLoopUnLockWindows = checkBox3.Checked;
-            Settings.Default.dismantlegun = checkBox4.Checked;
+
             Settings.Default.ChangeGun = checkBox5.Checked;
             Settings.Default.Team_SerrorTime = Int32.Parse(textBox8.Text);
             Settings.Default.Fixmaxtime = Int32.Parse(textBox1.Text);
@@ -105,7 +104,8 @@ namespace testdm
                 im.gameData.User_battleInfo[0].ChoiceToFix = checkBox1.Checked;
                 im.gameData.User_battleInfo[0].ChoiceToSupply = checkBox2.Checked;
                 im.gameData.User_battleInfo[0].BattleLoopUnLockWindows = checkBox3.Checked;
-                im.gameData.User_battleInfo[0].DismantleGun = checkBox4.Checked;
+
+                im.gameData.User_battleInfo[0].DismantleGunOrEquipment = checkBox4.Checked;
                 im.gameData.User_battleInfo[0].ChangeGun = checkBox5.Checked;
                 im.gameData.User_battleInfo[0].SetMap = checkBox6.Checked;
 
@@ -126,6 +126,23 @@ namespace testdm
                     im.gameData.User_battleInfo[0].FixType = 2;
                 }
 
+                //拆解或装备强化设置
+                if (checkBox4.Checked == true)
+                {
+                    im.gameData.User_battleInfo[0].DismantleGunOrEquipment = true;
+                    if (radioButton3.Checked == true)
+                    {
+                        im.gameData.User_battleInfo[0].DismantleType = 0;
+                        im.gameData.User_battleInfo[0].DismantlementGunCount = Convert.ToInt32(textBox4.Text);
+                    }
+                    if (radioButton4.Checked == true)
+                    {
+                        im.gameData.User_battleInfo[0].DismantleType = 1;
+                        im.gameData.User_battleInfo[0].EquipmentType = comboBox8.SelectedIndex;
+                        im.gameData.User_battleInfo[0].EquipmentUpdatePostion = Convert.ToInt32(textBox9.Text);
+                    }
+                }
+
                 im.gameData.User_battleInfo[0].Used = true;
                 im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.Battle1);
 
@@ -144,7 +161,7 @@ namespace testdm
                 im.gameData.User_battleInfo[1].ChoiceToFix = checkBox1.Checked;
                 im.gameData.User_battleInfo[1].ChoiceToSupply = checkBox2.Checked;
                 im.gameData.User_battleInfo[1].BattleLoopUnLockWindows = checkBox3.Checked;
-                im.gameData.User_battleInfo[1].DismantleGun = checkBox4.Checked;
+                im.gameData.User_battleInfo[1].DismantleGunOrEquipment = checkBox4.Checked;
                 im.gameData.User_battleInfo[1].ChangeGun = checkBox5.Checked;
                 im.gameData.User_battleInfo[1].SetMap = checkBox6.Checked;
 
@@ -164,6 +181,24 @@ namespace testdm
                     im.gameData.User_battleInfo[1].FixType = 2;
                 }
 
+                //拆解或装备强化设置
+                if (checkBox4.Checked == true)
+                {
+                    im.gameData.User_battleInfo[1].DismantleGunOrEquipment = true;
+                    if (radioButton3.Checked == true)
+                    {
+                        im.gameData.User_battleInfo[1].DismantleType = 0;
+                        im.gameData.User_battleInfo[1].DismantlementGunCount = Convert.ToInt32(textBox4.Text);
+                    }
+                    if (radioButton4.Checked == true)
+                    {
+                        im.gameData.User_battleInfo[1].DismantleType = 1;
+                        im.gameData.User_battleInfo[1].EquipmentType = comboBox8.SelectedIndex;
+                        im.gameData.User_battleInfo[1].EquipmentUpdatePostion = Convert.ToInt32(textBox9.Text);
+                    }
+                }
+
+
                 im.gameData.User_battleInfo[1].TaskType = Int32.Parse(comboBox2.Text);
                 im.gameData.User_battleInfo[1].Used = true;
                 im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.Battle2);
@@ -182,7 +217,7 @@ namespace testdm
                 im.gameData.User_battleInfo[2].ChoiceToFix = checkBox1.Checked;
                 im.gameData.User_battleInfo[2].ChoiceToSupply = checkBox2.Checked;
                 im.gameData.User_battleInfo[2].BattleLoopUnLockWindows = checkBox3.Checked;
-                im.gameData.User_battleInfo[2].DismantleGun = checkBox4.Checked;
+                im.gameData.User_battleInfo[2].DismantleGunOrEquipment = checkBox4.Checked;
                 im.gameData.User_battleInfo[2].ChangeGun = checkBox5.Checked;
                 im.gameData.User_battleInfo[2].SetMap = checkBox6.Checked;
 
@@ -203,6 +238,25 @@ namespace testdm
                     im.gameData.User_battleInfo[2].FixType = 2;
                 }
 
+                //拆解或装备强化设置
+                if (checkBox4.Checked == true)
+                {
+                    im.gameData.User_battleInfo[2].DismantleGunOrEquipment = true;
+                    if (radioButton3.Checked == true)
+                    {
+                        im.gameData.User_battleInfo[2].DismantleType = 0;
+                        im.gameData.User_battleInfo[2].DismantlementGunCount = Convert.ToInt32(textBox4.Text);
+                    }
+                    if (radioButton4.Checked == true)
+                    {
+                        im.gameData.User_battleInfo[2].DismantleType = 1;
+                        im.gameData.User_battleInfo[2].EquipmentType = comboBox8.SelectedIndex;
+                        im.gameData.User_battleInfo[2].EquipmentUpdatePostion = Convert.ToInt32(textBox9.Text);
+                    }
+                }
+
+
+
 
                 im.gameData.User_battleInfo[2].TaskType = Int32.Parse(comboBox2.Text);
                 im.gameData.User_battleInfo[2].Used = true;
@@ -222,7 +276,7 @@ namespace testdm
                 im.gameData.User_battleInfo[3].ChoiceToFix = checkBox1.Checked;
                 im.gameData.User_battleInfo[3].ChoiceToSupply = checkBox2.Checked;
                 im.gameData.User_battleInfo[3].BattleLoopUnLockWindows = checkBox3.Checked;
-                im.gameData.User_battleInfo[3].DismantleGun = checkBox4.Checked;
+                im.gameData.User_battleInfo[3].DismantleGunOrEquipment = checkBox4.Checked;
                 im.gameData.User_battleInfo[3].ChangeGun = checkBox5.Checked;
                 im.gameData.User_battleInfo[3].SetMap = checkBox6.Checked;
 
@@ -239,6 +293,23 @@ namespace testdm
                 else if (radioButton2.Checked == true)
                 {
                     im.gameData.User_battleInfo[3].FixType = 2;
+                }
+
+                //拆解或装备强化设置
+                if (checkBox4.Checked == true)
+                {
+                    im.gameData.User_battleInfo[3].DismantleGunOrEquipment = true;
+                    if (radioButton3.Checked == true)
+                    {
+                        im.gameData.User_battleInfo[3].DismantleType = 0;
+                        im.gameData.User_battleInfo[3].DismantlementGunCount = Convert.ToInt32(textBox4.Text);
+                    }
+                    if (radioButton4.Checked == true)
+                    {
+                        im.gameData.User_battleInfo[3].DismantleType = 1;
+                        im.gameData.User_battleInfo[3].EquipmentType = comboBox8.SelectedIndex;
+                        im.gameData.User_battleInfo[3].EquipmentUpdatePostion = Convert.ToInt32(textBox9.Text);
+                    }
                 }
 
 
@@ -303,8 +374,7 @@ namespace testdm
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox4.Checked == false) { label18.Visible = false; textBox4.Visible = false; }
-            else {  label18.Visible = true; textBox4.Visible = true; }
+
         }
 
         private void tabPage4_Click(object sender, EventArgs e)

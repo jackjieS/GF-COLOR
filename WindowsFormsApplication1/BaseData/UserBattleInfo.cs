@@ -16,8 +16,12 @@ namespace WindowsFormsApplication1.BaseData
         public bool ChangeGunBattleTask;//换枪任务
 
         public int DismantlementGunCount = 24;//拆枪数量
-        public bool DismantleGun;
-        public bool NeetToDismantleGun = false;//是否需要拆枪
+
+        public bool DismantleGunOrEquipment;//这个变量决定枪满装备满是否拆除或者停止脚本
+        public int DismantleType;//=0表示拆的是枪，1是装备升级
+        public bool NeetToDismantleGunOrEquipment = false;//是否需要拆枪
+        public int EquipmentType;//升级装备所选贼装备的类型
+        public int EquipmentUpdatePostion;
 
         public bool Used;//整个挂机任务是否使用
         public string TaskName;//地图名称如5-4E
@@ -60,46 +64,13 @@ namespace WindowsFormsApplication1.BaseData
             }
         }
 
-        public void BattleInfoChange(UserBattleInfo tempBattleInfo)
-        {
-            this.BattleLoopTime = tempBattleInfo.BattleLoopTime;
-            this.BattleFixTime = tempBattleInfo.BattleFixTime;//修复时间也是新的一轮所等的时间
-            this.BattleStart = tempBattleInfo.BattleStart;//可以开始新的一轮或者等待修复
-            this.ChangeGunBattleTask = tempBattleInfo.ChangeGunBattleTask;//换枪任务
-            this.DismantlementGunCount = tempBattleInfo.DismantlementGunCount;
-            this.Used = tempBattleInfo.Used;//整个挂机任务是否使用
-            this.TaskName = tempBattleInfo.TaskName;//地图名称如5-4E
-            this.TaskNumber = tempBattleInfo.TaskNumber;
-            this.TaskMianTeam = tempBattleInfo.TaskMianTeam;
-            this.TaskSupportTeam1 = tempBattleInfo.TaskSupportTeam1;
-            this.TaskSupportTeam2 = tempBattleInfo.TaskSupportTeam2;
-            this.TaskSupportTeam3 = tempBattleInfo.TaskSupportTeam3;
-            this.TaskSupportTeam4 = tempBattleInfo.TaskSupportTeam4;
-            this.TaskSupportTeam5 = tempBattleInfo.TaskSupportTeam5;
-            this.TaskSupportTeam6 = tempBattleInfo.TaskSupportTeam6;
-            this.TaskSupportTeam7 = tempBattleInfo.TaskSupportTeam7;
-            this.TaskSupportTeam8 = tempBattleInfo.TaskSupportTeam8;
-            this.TaskType = tempBattleInfo.TaskType;
-            this.ChoiceToFix = tempBattleInfo.ChoiceToFix;
-            this.NeedToFix = tempBattleInfo.NeedToFix;
-            this.ChoiceToSupply = tempBattleInfo.ChoiceToSupply;
-            this.FixType = tempBattleInfo.FixType;
-            this.FixMaxTime = tempBattleInfo.FixMaxTime;
-            this.FixMintime = tempBattleInfo.FixMintime;
-            this.FixMaxPercentage = tempBattleInfo.FixMaxPercentage;
-            this.FixMinPercentage = tempBattleInfo.FixMinPercentage;
-            this.RoundInterval = tempBattleInfo.RoundInterval;
-            this.BattleLoopUnLockWindows = tempBattleInfo.BattleLoopUnLockWindows;
-            this.DismantleGun = tempBattleInfo.DismantleGun;
-            this.ChangeGun = tempBattleInfo.ChangeGun;
-            this.SetMap = tempBattleInfo.SetMap;
-        }
+       
 
         public void reSetBattleInfo()
         {
             this.BattleStart = false;
             this.Team_Serror = false;
-            this.NeetToDismantleGun = false;
+            this.NeetToDismantleGunOrEquipment = false;
             this.NeedToFix = false;
         }
 

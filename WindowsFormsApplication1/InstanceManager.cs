@@ -32,7 +32,8 @@ namespace WindowsFormsApplication1
         public GameeData gameData;
         public UserData userData;
 
-        public events.Dormitory dormitory;
+        public Events.Dormitory dormitory;
+        public Events.Equipment equipment;
 
         public Object  BattleInfoLock;
 
@@ -53,7 +54,8 @@ namespace WindowsFormsApplication1
 
             this.gameData = new GameeData(this);
             this.userData = new UserData(this);
-            this.dormitory = new events.Dormitory(this);
+            this.dormitory = new Events.Dormitory(this);
+            this.equipment = new Events.Equipment(this);
 
             this.BattleInfoLock = new Object();
 
