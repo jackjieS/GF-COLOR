@@ -248,10 +248,10 @@ namespace TaskList
 
         private void button2_Click(object sender, EventArgs e)//停止战斗任务从尾开始
         {
-            if (im.gameData.User_battleInfo[3].Used == true) { im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; return; }
-            if (im.gameData.User_battleInfo[2].Used == true) { im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; return; }
-            if (im.gameData.User_battleInfo[1].Used == true) { im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; return; }
-            if (im.gameData.User_battleInfo[0].Used == true) { im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; return; }
+            if (im.gameData.User_battleInfo[3].Used == true) { im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; return; }
+            if (im.gameData.User_battleInfo[2].Used == true) { im.gameData.User_battleInfo[2].BattleLoopTime = 0; im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; return; }
+            if (im.gameData.User_battleInfo[1].Used == true) { im.gameData.User_battleInfo[1].BattleLoopTime = 0; im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; return; }
+            if (im.gameData.User_battleInfo[0].Used == true) { im.gameData.User_battleInfo[0].BattleLoopTime = 0; im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; return; }
         }
 
         private void button3_Click(object sender, EventArgs e)//截图
@@ -338,7 +338,7 @@ namespace TaskList
         private void button14_Click_1(object sender, EventArgs e)
         {
             //im.mouse.LeftClickHomeToBattle(dmae, "06", 0, 6);
-            im.dormitory.VoteDormitoryLoop(dmae);
+            im.equipment.EquipmentUpdate(dmae, 1,1);
 
             //bool i=im.mouse.CheckNewGunEquipmentPage(dmae);
             //int i1 = im.mouse.CheckBuildEquipmentS(dmae, 0);

@@ -1431,6 +1431,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
             this.ClientSize = new System.Drawing.Size(664, 281);
             this.Controls.Add(this.label7);

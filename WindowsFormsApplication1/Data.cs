@@ -50,8 +50,6 @@ namespace WindowsFormsApplication1
             this.im = im;
         }
         public int DismantlementGunCount = 0;//改
-        public int BattleFixNumber;
-
 
     }
 

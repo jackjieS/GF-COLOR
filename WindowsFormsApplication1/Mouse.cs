@@ -598,7 +598,7 @@ namespace testdm
             {
                 delayTime(0.5, 1);
             }
-            while (CheckSelectOneEquipmentPageReady(dmae) == true)
+            while (CheckEquipmentTabPageReady(dmae) == false)
             {
 
                 LeftClick(dmae, 1112, 127, 1260, 217);
@@ -611,7 +611,7 @@ namespace testdm
             {
                 delayTime(0.5, 1);
             }
-            while (CheckEquipmentTabPageReady(dmae) == true)
+            while (CheckEquipmentSelectdReady(dmae,i) == false)
             {
                 switch (i)
                 {
@@ -702,7 +702,7 @@ namespace testdm
             while(CheckEquipment2Start(dmae)== true)
             {
                 LeftClick(dmae, 1104, 342, 1136, 379);
-                delayTime(1);
+                delayTime(2,1);
             }
 
         }
@@ -712,6 +712,15 @@ namespace testdm
             while (CheckEquipmentSelected(dmae) == false)
             {
                 delayTime(1);
+
+                if (CheckEquipmentUpdate50MaxCount(dmae) == true)
+                {
+                    LeftClick(dmae, 570, 496, 704, 541);
+                    delayTime(1);
+                }
+
+
+
             }
             while (CheckEquipmentSelected(dmae) == true)
             {
@@ -6302,7 +6311,7 @@ namespace testdm
                 }
             }
 
-            for (int x = 710, y = 115; x <= 860; x++)
+            for (int x = 710, y = 115; x <= 520; x++)
             {
                 if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
                 {
@@ -6319,6 +6328,136 @@ namespace testdm
             }
 
             return true;
+        }
+
+        public bool CheckEquipmentSelectdReady(DmAe dmae,int i)
+        {
+            switch (i)
+            {
+                case 0:
+                    {
+                        if(dmae.CmpColor(600, 125, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 1:
+                    {
+                        if (dmae.CmpColor(800, 130, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 2:
+                    {
+                        if (dmae.CmpColor(1000, 130, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 3:
+                    {
+                        if (dmae.CmpColor(600, 200, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 4:
+                    {
+                        if (dmae.CmpColor(800, 200, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 5:
+                    {
+                        if (dmae.CmpColor(1000, 200, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 6:
+                    {
+                        if (dmae.CmpColor(600, 310, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 7:
+                    {
+                        if (dmae.CmpColor(800, 310, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 8:
+                    {
+                        if (dmae.CmpColor(1000, 310, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 9:
+                    {
+                        if (dmae.CmpColor(600, 400, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 10:
+                    {
+                        if (dmae.CmpColor(600, 510, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 11:
+                    {
+                        if (dmae.CmpColor(800, 510, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 12:
+                    {
+                        if (dmae.CmpColor(1000, 510, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 13:
+                    {
+                        if (dmae.CmpColor(600, 600, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                case 14:
+                    {
+                        if (dmae.CmpColor(800, 600, "ffffff", 1) == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                default:
+                    break;
+            }
+            return false;
         }
 
         public bool CheckEquipmentTabReadyClose(DmAe dmae)
@@ -6351,7 +6490,15 @@ namespace testdm
 
         public bool CheckEquipmentReadyToUpdate(DmAe dmae)
         {
-            for (int x = 485, y = 202; x <= 530; x++)
+            for (int x = 485, y = 202; x <= 505; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            for (int x = 516, y = 202; x <= 537; x++)
             {
                 if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
                 {
@@ -6393,6 +6540,20 @@ namespace testdm
                 return true;
             }
             return false;
+        }
+
+        public bool CheckEquipmentUpdate50MaxCount (DmAe dmae)
+        {
+            for(int x = 560, y = 490; x <= 720; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+
+
         }
 
         public bool CheckWhiteM(DmAe dmae)//检测屏幕是否白屏

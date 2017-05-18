@@ -101,11 +101,15 @@
     <Reference Include="System.Drawing">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundThread.cs" />
@@ -117,7 +121,14 @@
     <Compile Include="BaseData\UserBattleInfo.cs" />
     <Compile Include="BaseData\SystemInfo.cs" />
     <Compile Include="BaseData\UserOperationInfo.cs" />
+    <Compile Include="CDmSoft.cs" />
     <Compile Include="Events\Equipment.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Windows\Battle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,7 +136,6 @@
       <DependentUpon>Battle.cs</DependentUpon>
     </Compile>
     <Compile Include="BattleTaskList.cs" />
-    <Compile Include="CDmSoft.cs" />
     <Compile Include="CommonHelp.cs" />
     <Compile Include="Events\Battles.cs" />
     <Compile Include="Events\Dormitory.cs" />
@@ -142,7 +152,6 @@
       <DependentUpon>check.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
-    <Compile Include="GetSetColor.cs" />
     <Compile Include="InstanceManager.cs" />
     <Compile Include="Windows\LogisticSupportSet.cs">
       <SubType>Form</SubType>
@@ -170,7 +179,6 @@
     <Compile Include="Windows\setting.Designer.cs">
       <DependentUpon>setting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="MixDmAe.cs" />
     <Compile Include="UIupdate.cs" />
@@ -187,15 +195,10 @@
       <DependentUpon>LogisticSupportSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Windows\SetColor.resx">
       <DependentUpon>SetColor.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,19 +231,13 @@
     <None Include="Resources\dm_soft1.txt" />
     <None Include="Resources\dm_soft2.txt" />
     <None Include="Resources\bg_center4.bmp" />
-    <None Include="Resources\UrgentTask.jpg" />
-    <None Include="Resources\HomePage.jpg" />
     <None Include="Resources\dm_soft0.txt" />
-    <None Include="Resources\FightType.jpg" />
-    <None Include="Resources\Battle.jpg" />
-    <None Include="Resources\20160630081314.bmp" />
-    <None Include="Resources\TeamS.jpg" />
-    <None Include="Resources\Logistics.jpg" />
-    <None Include="Resources\BattleTeamList.jpg" />
-    <None Include="Resources\2.jpg" />
-    <None Include="Resources\1.jpg" />
-    <None Include="Resources\A.bmp" />
-    <None Include="Resources\A.jpg" />
+    <None Include="bin\Debug\dm.dll" />
+    <None Include="bin\Debug\dmc.dll" />
+    <None Include="bin\Debug\EyLogin.dll" />
+    <None Include="Resources\dm.dll" />
+    <None Include="Resources\EyLogin.dll" />
+    <None Include="Resources\dmc.dll" />
     <Content Include="项目4.ico" />
   </ItemGroup>
   <ItemGroup>

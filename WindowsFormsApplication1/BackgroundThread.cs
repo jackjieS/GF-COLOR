@@ -693,7 +693,6 @@ namespace WindowsFormsApplication1
                                 }
                                 else
                                 {
-
                                     //拆枪代码
                                     im.equipment.EquipmentUpdate(dmae,im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber].EquipmentType, im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber].EquipmentUpdatePostion);
                                     im.taskList.taskremove();
@@ -780,7 +779,16 @@ namespace WindowsFormsApplication1
                                 {
 
                                     //拆枪代码
-                                    im.time.DismantlementGun(dmae, im.mouse, im.userData.DismantlementGunCount);
+                                    switch (CommonHelp.BattleEquipmentOrGunNumber)
+                                    {
+                                        case 1: { im.time.DismantlementGun(dmae, im.mouse, im.gameData.User_battleInfo[0].DismantlementGunCount);  break; }
+                                        case 2: { im.time.DismantlementGun(dmae, im.mouse, im.gameData.User_battleInfo[1].DismantlementGunCount); break; }
+                                        case 3: { im.time.DismantlementGun(dmae, im.mouse, im.gameData.User_battleInfo[2].DismantlementGunCount); break; }
+                                        case 4: { im.time.DismantlementGun(dmae, im.mouse, im.gameData.User_battleInfo[3].DismantlementGunCount); break; }
+
+                                        default:
+                                            break;
+                                    }
                                     im.taskList.taskremove();
 
                                 }
@@ -821,7 +829,7 @@ namespace WindowsFormsApplication1
                                 }
                                 else
                                 {
-                                    switch (im.userData.BattleFixNumber)
+                                    switch (CommonHelp.BattleFixNumber)
                                     {
                                         case 1: { im.gameData.User_battleInfo[0].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[0]); break; }
                                         case 2: { im.gameData.User_battleInfo[1].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[0]); break; }
@@ -927,7 +935,7 @@ namespace WindowsFormsApplication1
                     //重启处理任务的线程;
                     case 1:
                         {
-                            im.userData.BattleFixNumber = 0;
+
                             im.gameData.User_battleInfo[0].Used = false;
                             im.gameData.User_battleInfo[1].Used = false;
                             im.gameData.User_battleInfo[2].Used = false;
@@ -979,6 +987,10 @@ namespace WindowsFormsApplication1
 
             while (true)
             {
+
+                Thread.Sleep(Settings.Default.SimulatorHomeCheckTime * 10);
+
+
                 //sw.Start();
                 if (dmae.FindPic(Settings.Default.SimulatorHomeCheckX1, Settings.Default.SimulatorHomeCheckY1, Settings.Default.SimulatorHomeCheckX2, Settings.Default.SimulatorHomeCheckY2, "A.bmp", "000000", 1, 0, out intX, out intY) == 0)//用户自定义检测范围
                 {
@@ -1026,10 +1038,12 @@ namespace WindowsFormsApplication1
 
                     BaseData.SystemInfo.StayAtHomePage = true;
                     BaseData.SystemInfo.PageCheck = "主页";
+                    continue;
                 }
                 else
                 {
                     BaseData.SystemInfo.StayAtHomePage = false;
+                    BaseData.SystemInfo.PageCheck = "";
                 }
 
                 if (im.mouse.CheckBattleResult(dmae))
@@ -1044,8 +1058,6 @@ namespace WindowsFormsApplication1
                 }
 
 
-
-                Thread.Sleep(Settings.Default.SimulatorHomeCheckTime * 10);
 
             }
 

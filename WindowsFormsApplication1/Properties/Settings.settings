@@ -197,5 +197,11 @@
     <Setting Name="LogisticLoopTimeMAX" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="EquipmentUpdateType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">外骨骼</Value>
+    </Setting>
+    <Setting Name="EquipmentUpdatePostion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

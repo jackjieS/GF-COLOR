@@ -76,21 +76,23 @@ namespace WindowsFormsApplication1.BaseData
 
         public void EndAtBattle(DmAe dmae)
         {
+            this.BattleLoopTime++;
             if (this.Team_Serror)
             {
                 this.BattleFixTime = this.Team_SerrorTime;
-            }
-            else //-----循环间隔
-            {
-                Random ran = new Random();
-                int temp0 = ran.Next(0, this.RoundInterval);
-                this.BattleFixTime = temp0 + 1;
+                return;
             }
 
             if (this.NeedToFix)
             {
                 CommonHelp.BattleFixNumber = Key;
                 CommonHelp.gametasklist.Insert(0, TaskList.Fix);
+            }
+            else //-----循环间隔
+            {
+                Random ran = new Random();
+                int temp0 = ran.Next(0, this.RoundInterval);
+                this.BattleFixTime = temp0 + 1;
             }
 
             if (this.BattleLoopTime == this.LoopMaxTime)
@@ -102,7 +104,7 @@ namespace WindowsFormsApplication1.BaseData
 
 
 
-            this.BattleLoopTime++;
+
         }
 
     }

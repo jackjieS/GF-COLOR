@@ -16,6 +16,8 @@ namespace testdm
 
         private void Battle_Load(object sender, EventArgs e)
         {
+            label18.Visible = false; comboBox9.Visible = false;
+
             comboBox1.Text = Settings.Default.battlemap;
 
             comboBox2.Text = im.gameData.User_battleInfo[0].TaskType.ToString();
@@ -50,6 +52,7 @@ namespace testdm
             textBox6.Text = Settings.Default.FixMinPercentage.ToString();
             textBox7.Text = Settings.Default.FixMaxPercentage.ToString();
             textBox8.Text = Settings.Default.Team_SerrorTime.ToString();
+            textBox9.Text = Settings.Default.EquipmentUpdatePostion;
             //page2
 
 
@@ -58,6 +61,7 @@ namespace testdm
             comboBox5.Text = Settings.Default.AutoTeam3;
             comboBox6.Text = Settings.Default.AutoTeam4;
             comboBox7.Text = Settings.Default.AutoMap;
+            comboBox8.Text = Settings.Default.EquipmentUpdateType;
 
         }
 
@@ -79,6 +83,8 @@ namespace testdm
             Settings.Default.FixMinPercentage = Int32.Parse(textBox6.Text);
             Settings.Default.FixMaxPercentage = int.Parse(textBox7.Text);
 
+            Settings.Default.EquipmentUpdateType = comboBox8.Text;
+            Settings.Default.EquipmentUpdatePostion = textBox9.Text;
 
 
             if(radioButton1.Checked == true)
@@ -98,6 +104,7 @@ namespace testdm
                 im.gameData.User_battleInfo[0].TaskName = comboBox1.Text;
                 im.gameData.User_battleInfo[0].TaskMianTeam = comboBox14.Text;
                 im.gameData.User_battleInfo[0].TaskSupportTeam1 = comboBox13.Text;
+                im.gameData.User_battleInfo[0].TaskSupportTeam2 = comboBox9.Text;
                 im.gameData.User_battleInfo[0].Team_SerrorTime = Int32.Parse(textBox8.Text);
                 im.gameData.User_battleInfo[0].LoopMaxTime = Int32.Parse(textBox10.Text);
 
@@ -155,6 +162,7 @@ namespace testdm
                 im.gameData.User_battleInfo[1].TaskName = comboBox1.Text;
                 im.gameData.User_battleInfo[1].TaskMianTeam = comboBox14.Text;
                 im.gameData.User_battleInfo[1].TaskSupportTeam1 = comboBox13.Text;
+                im.gameData.User_battleInfo[1].TaskSupportTeam2 = comboBox9.Text;
                 im.gameData.User_battleInfo[1].Team_SerrorTime = Int32.Parse(textBox8.Text);
                 im.gameData.User_battleInfo[1].LoopMaxTime = Int32.Parse(textBox10.Text);
 
@@ -211,6 +219,7 @@ namespace testdm
                 im.gameData.User_battleInfo[2].TaskName = comboBox1.Text;
                 im.gameData.User_battleInfo[2].TaskMianTeam = comboBox14.Text;
                 im.gameData.User_battleInfo[2].TaskSupportTeam1 = comboBox13.Text;
+                im.gameData.User_battleInfo[2].TaskSupportTeam2 = comboBox9.Text;
                 im.gameData.User_battleInfo[2].Team_SerrorTime = Int32.Parse(textBox8.Text);
                 im.gameData.User_battleInfo[2].LoopMaxTime = Int32.Parse(textBox10.Text);
 
@@ -270,6 +279,7 @@ namespace testdm
                 im.gameData.User_battleInfo[3].TaskName = comboBox1.Text;
                 im.gameData.User_battleInfo[3].TaskMianTeam = comboBox14.Text;
                 im.gameData.User_battleInfo[3].TaskSupportTeam1 = comboBox13.Text;
+                im.gameData.User_battleInfo[3].TaskSupportTeam2 = comboBox9.Text;
                 im.gameData.User_battleInfo[3].Team_SerrorTime = Int32.Parse(textBox8.Text);
                 im.gameData.User_battleInfo[3].LoopMaxTime = Int32.Parse(textBox10.Text);
 
@@ -343,7 +353,7 @@ namespace testdm
                 //case "0_4": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 case "0_1": { label2.Visible = false; comboBox13.Visible = false; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1"}); comboBox2.SelectedIndex = 0; label11.Text = "两战结束"; break; }
                 //case "1_2": { label2.Visible = false; comboBox13.Visible = false; checkBox5.Visible = true; checkBox5.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
-                //case "1_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
+                case "1_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = "";label18.Visible = true;comboBox9.Visible = true; break; }
                 //case "2_1E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 case "2_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 case "3_2N": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为俩战2为三战"; break; }

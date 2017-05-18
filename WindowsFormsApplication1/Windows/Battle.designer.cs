@@ -96,6 +96,8 @@
             this.label27 = new System.Windows.Forms.Label();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -117,6 +119,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label18);
+            this.tabPage1.Controls.Add(this.comboBox9);
             this.tabPage1.Controls.Add(this.textBox10);
             this.tabPage1.Controls.Add(this.label29);
             this.tabPage1.Controls.Add(this.textBox8);
@@ -283,6 +287,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "0_1",
             "0_4",
+            "1_4E",
             "2_4E",
             "3_2N",
             "3_4E",
@@ -907,6 +912,35 @@
             this.radioButton3.Text = "人形拆除：";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(148, 63);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 12);
+            this.label18.TabIndex = 137;
+            this.label18.Text = "辅助梯队";
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Items.AddRange(new object[] {
+            "第一梯队",
+            "第二梯队",
+            "第三梯队",
+            "第四梯队",
+            "第五梯队",
+            "第六梯队",
+            "第七梯队",
+            "第八梯队",
+            "第九梯队",
+            "第十梯队"});
+            this.comboBox9.Location = new System.Drawing.Point(202, 58);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(77, 20);
+            this.comboBox9.TabIndex = 136;
+            // 
             // Battle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1000,5 +1034,7 @@
         private System.Windows.Forms.ComboBox comboBox8;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox comboBox9;
     }
 }
