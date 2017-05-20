@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -78,7 +79,8 @@ namespace TaskList
 
         private void Form1_Load(object sender, EventArgs e)//初始化
         {
-
+            im.dormitory.ReadLogFriendListFromStart();
+            im.dormitory.ReadtempFriendListFromStart();
             im.gameData.User_operationInfo[0].OperationName = Settings.Default.LogisticsTask1;
             im.gameData.User_operationInfo[1].OperationName = Settings.Default.LogisticsTask2;
             im.gameData.User_operationInfo[2].OperationName = Settings.Default.LogisticsTask3;
@@ -155,6 +157,11 @@ namespace TaskList
         private void label28_Click(object sender, EventArgs e)
         {
             im.Form1.tabControl1.SelectedIndex = 4;
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+            im.Form1.tabControl1.SelectedIndex = 5;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -337,66 +344,10 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            //im.mouse.LeftClickHomeToBattle(dmae, "06", 0, 6);
-            im.equipment.EquipmentUpdate(dmae, 1,1);
 
-            //bool i=im.mouse.CheckNewGunEquipmentPage(dmae);
-            //int i1 = im.mouse.CheckBuildEquipmentS(dmae, 0);
-            //int i2 = im.mouse.CheckBuildEquipmentS(dmae, 1);
-            //int i = dmae.UseDict(4);
-            //string time= dmae.Ocr(444, 177, 607, 222, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100));
-            //im.mouse.MapSet(dmae, 905, 571, 904, 566, 961, 566, 88, 613);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
-            //im.mouse.MapSet(dmae, 183, 121, 751, 172, 571, 473, 88, 613);
-            //int y=0;
-            ////317,103
-            ////86
-            //for(int y1 = 103; y1 < 720; y1++)
-            //{
-            //    string tempcolor1 = dmae.GetColor(317, y1);
-            //    if (tempcolor1 == "ffffff")
-            //    {
-            //        for(int y2 = y1; y2 <= y1 + 68; y2++)
-            //        {
-            //            int result = dmae.CmpColor(317, y2,"ffffff",1);
-            //            if (result == 0)//0=颜色匹配
-            //            {
-            //                if (y2 == y1 + 68)
-            //                {
-            //                    y = y1;
-            //                    goto a;
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
 
-            //a: List<LMainColor> Lmaincolor = new List<LMainColor>();
-            //Lmaincolor.Add(new LMainColor("", 0));
-            //string tempcolor;
-            //for (int y1 = y; y1 <= y+69; y1++)
-            //{
-            //    for (int x1 = 256; x1 <= 314; x1++)
-            //    {
-            //        tempcolor = dmae.GetColor(x1, y1);
-            //        for (int i = 0; i < Lmaincolor.Count(); i++)
-            //        {
-            //            if (tempcolor == Lmaincolor[i].Color)
-            //            {
-            //                Lmaincolor[i].Count++;
-            //                break;
-            //            }
-            //            if (i+1 == Lmaincolor.Count())
-            //            {
-            //                Lmaincolor.Add(new LMainColor(tempcolor,1));
-            //                break;
-            //            }
-            //        }
-            //    }
-            //}
-            //Lmaincolor.Sort((LMainColor l1, LMainColor l2) =>
-            //{
-            //    return l2.Count.CompareTo(l1.Count);
-            //});
+
+
         }
 
 
@@ -476,6 +427,142 @@ namespace TaskList
             LogisticSupportSet.StartPosition = FormStartPosition.CenterParent;
             LogisticSupportSet.ShowDialog(this);
 
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.ReadAndSaveFriendsDormitoryList);
+        }
+
+        private void button23_Click(object sender, EventArgs e)//上一张图片
+        {
+            try
+            {
+                if (CommonHelp.PictureBox1Count != 1)
+                {
+                    CommonHelp.PictureBox1Count--;
+                    im.Form1.pictureBox1.Image = im.Form1.imageList1.Images[CommonHelp.PictureBox1Count-1];
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CommonHelp.PictureBox1Count < im.Form1.imageList1.Images.Count)
+                {
+                    CommonHelp.PictureBox1Count++;
+                    im.Form1.pictureBox1.Image = im.Form1.imageList1.Images[CommonHelp.PictureBox1Count-1];
+                }
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            //复制图片到正式名字 NOX.BMP
+            string path1, path2;
+            path1 = Application.StartupPath + "\\FriendList\\temp" + CommonHelp.PictureBox1Count.ToString() + ".bmp";
+            path2 = Application.StartupPath + "\\FriendList\\NO" + (CommonHelp.PictureBox2Count+1).ToString() + ".bmp";
+            im.Form1.imageList2.Images.Add(im.Form1.imageList1.Images[CommonHelp.PictureBox1Count - 1]);
+            File.Copy(path1, path2, true);
+
+
+
+
+            if (im.Form1.pictureBox2.Image != null)
+            {
+                //有图片     
+            }
+            else
+            {
+                CommonHelp.PictureBox2Count = 1;
+                im.Form1.pictureBox2.Image = im.Form1.imageList2.Images[0];
+                //无图片     
+            }
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CommonHelp.PictureBox2Count >1)
+                {
+                    CommonHelp.PictureBox2Count--;
+                    im.Form1.pictureBox2.Image = im.Form1.imageList2.Images[CommonHelp.PictureBox2Count - 1];
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CommonHelp.PictureBox2Count < im.Form1.imageList2.Images.Count)
+                {
+                    CommonHelp.PictureBox2Count++;
+                    im.Form1.pictureBox2.Image = im.Form1.imageList2.Images[CommonHelp.PictureBox2Count - 1];
+                }
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                im.Form1.imageList2.Images.RemoveAt(CommonHelp.PictureBox2Count - 1);
+                File.Delete(Application.StartupPath+ @"\FriendList\NO"+CommonHelp.PictureBox2Count.ToString()+".bmp");
+
+
+
+                if (im.Form1.imageList2.Images.Count == 0) { im.Form1.pictureBox2.Image = null; CommonHelp.PictureBox2Count = 0; }
+                else
+                {
+                    CommonHelp.PictureBox2Count--;
+                }
+                im.Form1.pictureBox2.Image = im.Form1.imageList2.Images[CommonHelp.PictureBox2Count - 1];
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            im.dormitory.CleanALLtempPic();
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            im.dormitory.CleanALLLogPic();
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
         }
     }
 }

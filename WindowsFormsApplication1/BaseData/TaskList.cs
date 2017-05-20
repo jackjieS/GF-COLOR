@@ -64,6 +64,9 @@ namespace WindowsFormsApplication1.BaseData
 
         public static TaskListstruct EquipmentUpdate = new TaskListstruct("装备强化", 20);
         public static TaskListstruct Update = new TaskListstruct("人形强化", 21);
+
+        public static TaskListstruct ReadAndSaveFriendsDormitoryList = new TaskListstruct("读取宿舍", 22);
+        public static TaskListstruct GetFriendDormitoryBattery = new TaskListstruct("领取电池", 23);
         public static TaskListstruct WaitForLogistics = new TaskListstruct("等待后勤任务结束", 98);
         public static TaskListstruct Fix = new TaskListstruct("修复", 97);
         public static TaskListstruct Dismantlement = new TaskListstruct("拆除", 96);

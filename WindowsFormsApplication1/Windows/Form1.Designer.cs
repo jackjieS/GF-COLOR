@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label99 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -118,6 +119,29 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.GunBtabPage = new System.Windows.Forms.TabPage();
+            this.FriendSDormitory = new System.Windows.Forms.TabPage();
+            this.button28 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.button32 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
+            this.button26 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.button25 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.button31 = new System.Windows.Forms.Button();
+            this.button29 = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -129,12 +153,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
             this.BattletabPage.SuspendLayout();
             this.FixtabPage.SuspendLayout();
             this.EQtabPage.SuspendLayout();
+            this.FriendSDormitory.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label99
@@ -181,6 +213,7 @@
             this.tabControl1.Controls.Add(this.FixtabPage);
             this.tabControl1.Controls.Add(this.EQtabPage);
             this.tabControl1.Controls.Add(this.GunBtabPage);
+            this.tabControl1.Controls.Add(this.FriendSDormitory);
             this.tabControl1.Location = new System.Drawing.Point(0, -50);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1312,6 +1345,242 @@
             this.GunBtabPage.Text = "tabPage1";
             this.GunBtabPage.UseVisualStyleBackColor = true;
             // 
+            // FriendSDormitory
+            // 
+            this.FriendSDormitory.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.FriendSDormitory.Controls.Add(this.button28);
+            this.FriendSDormitory.Controls.Add(this.panel3);
+            this.FriendSDormitory.Controls.Add(this.button25);
+            this.FriendSDormitory.Controls.Add(this.panel2);
+            this.FriendSDormitory.Location = new System.Drawing.Point(4, 22);
+            this.FriendSDormitory.Name = "FriendSDormitory";
+            this.FriendSDormitory.Size = new System.Drawing.Size(685, 351);
+            this.FriendSDormitory.TabIndex = 5;
+            this.FriendSDormitory.Text = "FriendSDormitory";
+            this.FriendSDormitory.UseVisualStyleBackColor = true;
+            // 
+            // button28
+            // 
+            this.button28.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button28.Location = new System.Drawing.Point(190, 194);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(50, 50);
+            this.button28.TabIndex = 7;
+            this.button28.Text = "领取";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label40);
+            this.panel3.Controls.Add(this.label38);
+            this.panel3.Controls.Add(this.button32);
+            this.panel3.Controls.Add(this.button30);
+            this.panel3.Controls.Add(this.label35);
+            this.panel3.Controls.Add(this.button26);
+            this.panel3.Controls.Add(this.button27);
+            this.panel3.Controls.Add(this.pictureBox2);
+            this.panel3.Controls.Add(this.label36);
+            this.panel3.Location = new System.Drawing.Point(326, 52);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(186, 127);
+            this.panel3.TabIndex = 6;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(159, 15);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(0, 12);
+            this.label40.TabIndex = 9;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(121, 15);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(35, 12);
+            this.label38.TabIndex = 8;
+            this.label38.Text = "总数:";
+            // 
+            // button32
+            // 
+            this.button32.Location = new System.Drawing.Point(14, 101);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(75, 23);
+            this.button32.TabIndex = 7;
+            this.button32.Text = "清空";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+            // 
+            // button30
+            // 
+            this.button30.Location = new System.Drawing.Point(101, 101);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(75, 23);
+            this.button30.TabIndex = 6;
+            this.button30.Text = "移除";
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(49, 15);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(0, 12);
+            this.label35.TabIndex = 5;
+            // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(101, 71);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(78, 25);
+            this.button26.TabIndex = 4;
+            this.button26.Text = ">>";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(14, 71);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(78, 25);
+            this.button27.TabIndex = 3;
+            this.button27.Text = "<<";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(14, 30);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(165, 35);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(12, 15);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(35, 12);
+            this.label36.TabIndex = 0;
+            this.label36.Text = "序号:";
+            // 
+            // button25
+            // 
+            this.button25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button25.Location = new System.Drawing.Point(134, 194);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(50, 50);
+            this.button25.TabIndex = 1;
+            this.button25.Text = "读取";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label39);
+            this.panel2.Controls.Add(this.label37);
+            this.panel2.Controls.Add(this.button31);
+            this.panel2.Controls.Add(this.button29);
+            this.panel2.Controls.Add(this.label34);
+            this.panel2.Controls.Add(this.button24);
+            this.panel2.Controls.Add(this.button23);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.label33);
+            this.panel2.Location = new System.Drawing.Point(120, 52);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(186, 127);
+            this.panel2.TabIndex = 0;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(153, 15);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(0, 12);
+            this.label39.TabIndex = 9;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(123, 15);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(35, 12);
+            this.label37.TabIndex = 8;
+            this.label37.Text = "总数:";
+            // 
+            // button31
+            // 
+            this.button31.Location = new System.Drawing.Point(14, 101);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(75, 23);
+            this.button31.TabIndex = 7;
+            this.button31.Text = "清空";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
+            // button29
+            // 
+            this.button29.Location = new System.Drawing.Point(101, 101);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(75, 23);
+            this.button29.TabIndex = 6;
+            this.button29.Text = "添加";
+            this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(49, 15);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(0, 12);
+            this.label34.TabIndex = 5;
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(101, 71);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(78, 25);
+            this.button24.TabIndex = 4;
+            this.button24.Text = ">>";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(14, 71);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(78, 25);
+            this.button23.TabIndex = 3;
+            this.button23.Text = "<<";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(165, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(12, 15);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(35, 12);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "序号:";
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -1427,13 +1696,36 @@
             this.label2.TabIndex = 193;
             this.label2.Text = "任务队列";
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Location = new System.Drawing.Point(324, 8);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(53, 12);
+            this.label32.TabIndex = 199;
+            this.label32.Text = "好友宿舍";
+            this.label32.Click += new System.EventHandler(this.label32_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(165, 35);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // imageList2
+            // 
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(165, 35);
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
             this.ClientSize = new System.Drawing.Size(664, 281);
+            this.Controls.Add(this.label32);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -1466,6 +1758,13 @@
             this.FixtabPage.PerformLayout();
             this.EQtabPage.ResumeLayout(false);
             this.EQtabPage.PerformLayout();
+            this.FriendSDormitory.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1572,6 +1871,32 @@
         public System.Windows.Forms.Button button21;
         public System.Windows.Forms.TextBox textBox28;
         public System.Windows.Forms.Button button22;
+        private System.Windows.Forms.TabPage FriendSDormitory;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button button23;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button27;
+        public System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button29;
+        public System.Windows.Forms.ImageList imageList1;
+        public System.Windows.Forms.Label label34;
+        public System.Windows.Forms.Label label35;
+        public System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button button31;
+        public System.Windows.Forms.Label label40;
+        public System.Windows.Forms.Label label39;
     }
 }
 

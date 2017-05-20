@@ -73,6 +73,11 @@ namespace WindowsFormsApplication1
                 case "textBox25": { if (im.Form1.textBox25.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox25.Text = text; } break; }
                 case "textBox26": { if (im.Form1.textBox26.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox26.Text = text; } break; }
                 case "textBox27": { if (im.Form1.textBox27.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox27.Text = text; } break; }
+                case "label34":{ if (im.Form1.label34.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.label34.Text = text; } break; }
+                case "label35": { if (im.Form1.label35.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.label35.Text = text; } break; }
+                case "label39": { if (im.Form1.label39.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.label39.Text = text; } break; }
+                case "label40": { if (im.Form1.label40.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.label40.Text = text; } break; }
+
                 default:
                     break;
             }
@@ -112,6 +117,11 @@ namespace WindowsFormsApplication1
                 SetText("textBox2", Convert.ToInt32(im.gameData.User_operationInfo[1].OperationLastTime).ToString());
                 SetText("textBox3", Convert.ToInt32(im.gameData.User_operationInfo[2].OperationLastTime).ToString());
                 SetText("textBox4", Convert.ToInt32(im.gameData.User_operationInfo[3].OperationLastTime).ToString());
+
+                SetText("label34", CommonHelp.PictureBox1Count.ToString());
+                SetText("label35", CommonHelp.PictureBox2Count.ToString());
+                SetText("label39", im.Form1.imageList1.Images.Count.ToString());
+                SetText("label40", im.Form1.imageList2.Images.Count.ToString());
             }
             catch (Exception)
             {

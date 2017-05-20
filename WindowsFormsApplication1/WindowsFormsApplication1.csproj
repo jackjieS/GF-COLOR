@@ -135,7 +135,6 @@
     <Compile Include="Windows\Battle.designer.cs">
       <DependentUpon>Battle.cs</DependentUpon>
     </Compile>
-    <Compile Include="BattleTaskList.cs" />
     <Compile Include="CommonHelp.cs" />
     <Compile Include="Events\Battles.cs" />
     <Compile Include="Events\Dormitory.cs" />

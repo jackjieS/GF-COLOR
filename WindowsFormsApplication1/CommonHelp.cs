@@ -96,7 +96,8 @@ namespace WindowsFormsApplication1
         public static int BattleEquipmentOrGunNumber;//枪满或者装备满当前IDkey
         public static List<TaskListstruct> gametasklist = new List<TaskListstruct>();
         public static List<int> User_OperationNumberNow = new List<int>();
-
+        public static int PictureBox1Count = 1;
+        public static int PictureBox2Count = 0;
         public static void BindWindowS(DmAe dmae, int B)
         {
             //windowsStat = 0 解锁 = 1 锁定

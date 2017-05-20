@@ -726,6 +726,7 @@ namespace testdm
             }
             //count = countlist.Max();
             //countlist.Remove(count);
+            countlist.Sort();
             count = countlist.Max();
             count = countlist.FindIndex(s => s == count);
             return colorlist[count];

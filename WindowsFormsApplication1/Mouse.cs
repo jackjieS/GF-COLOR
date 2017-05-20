@@ -2536,7 +2536,7 @@ namespace testdm
                 {
                     //dm_ret = dmae.FindColor(428, 527, 885, 664, "ffba00" + "|" + Settings.Default.normal, 0.9, 0, out intX, out intY);
 
-                    LeftClick(dmae, 800,542,825,616);
+                    LeftClick(dmae, 564, 547, 699, 611);
 
                     delayTime(1,1);
 
@@ -4993,6 +4993,51 @@ namespace testdm
             return n;
         }
 
+        public void ClickRestDormitoryMLeft(DmAe dmae)
+        {
+            while (CheckDormitoryMLeft(dmae) == false)
+            {
+                Random random = new Random();
+                int x1 = 56;
+                int y1 = random.Next(127, 192);
+                dmae.MoveTo(x1, y1);
+                delayTime(1);
+                dmae.LeftDown();
+                for (; x1 < 290; x1++)
+                {
+                    dmae.MoveTo(x1, y1);
+                    delayTime(0.05, 1);
+                }
+                delayTime(1);
+                dmae.LeftUp();
+                delayTime(1);
+            }
+        }
+
+        public void ClickFriendDormitoryBattery(DmAe dmae)
+        {
+            while (CheckFriendDormitoryBattery(dmae) == true)
+            {
+                LeftClick(dmae, 365, 412, 419, 464);
+                delayTime(1, 1);
+            }
+            //弹窗
+        }
+
+
+        public void ClickFriendDormitoryBatteryWindow(DmAe dmae)
+        {
+            while(CheckDormitoryBatteryWindow(dmae) == false)
+            {
+                delayTime(1);
+            }
+            while (CheckDormitoryBatteryWindow(dmae) == true)
+            {
+                LeftClick(dmae, 570, 497, 703, 536);
+                delayTime(1);
+            }
+
+        }
         public void ClickVisitDormitory(DmAe dmae)
         {
             while (CheckMyDormitory(dmae) == false)
@@ -5037,8 +5082,28 @@ namespace testdm
                 delayTime(1);
                 LeftClick(dmae, 1020, 622, 1173, 664);
             }
-
         }
+
+        public void ClickFirstFriendsDormitory(DmAe dmae)
+        {
+            while (CheckFriendsListPage(dmae) == false)
+            {
+                delayTime(1);
+            }
+            SystemInfo.AppState = "点击第一位好友";
+            while (CheckFriendsListPage(dmae))
+            {
+                delayTime(1);
+                LeftClick(dmae, 981, 222, 1137, 265);
+            }
+        }
+
+
+
+
+
+
+
         public bool ClickVote(DmAe dmae)
         {
             while (CheckMyFriendDormitory(dmae) == -1)
@@ -5097,15 +5162,29 @@ namespace testdm
 
         public void ClickBackTOmyDormitory(DmAe dmae)
         {
-            while (CheckMyFriendDormitory(dmae)==1)
+            while (CheckMyFriendDormitory(dmae)==-1)
             {
                 delayTime(1);
             }
-            SystemInfo.AppState = "点赞";
-            while (CheckMyFriendDormitory(dmae)==0)
+            SystemInfo.AppState = "返回";
+            while (CheckMyFriendDormitory(dmae)!=-1)
             {
                 delayTime(1);
                 LeftClick(dmae, 13, 18, 126, 75);
+            }
+        }
+
+        public void ClickNextFriendDormitory(DmAe dmae)
+        {
+            while (CheckMyFriendDormitory(dmae) == -1)
+            {
+                delayTime(1);
+            }
+            SystemInfo.AppState = "点击Next";
+            while (CheckMyFriendDormitory(dmae) != -1)
+            {
+                delayTime(1);
+                LeftClick(dmae, 191, 654, 245, 702);
             }
         }
 
@@ -6211,7 +6290,7 @@ namespace testdm
 
         public int CheckMyFriendDormitory(DmAe dmae)//检测是否打开好友宿舍
         {
-            //符合返回0不符合1
+
             for (int x = 1256, y = 54; y <= 74; y++)
             {
                 if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
@@ -6231,6 +6310,59 @@ namespace testdm
             }
 
             return 1;//左上右下都有
+        }
+
+        public bool CheckFriendDormitoryBattery(DmAe dmae)
+        {
+            if(dmae.CmpColor(420, 459,"ffffff",1) == 1)
+            {
+                return false;
+            }
+
+            if (dmae.CmpColor(419, 460, "ffffff", 1) == 1)
+            {
+                return false;
+            }
+            if (dmae.CmpColor(418, 462, "ffffff", 1) == 1)
+            {
+                return false;
+            }
+            if (dmae.CmpColor(371, 404, "ffffff", 1) == 1)
+            {
+                return false;
+            }
+            if (dmae.CmpColor(368, 404, "ffffff", 1) == 1)
+            {
+                return false;
+            }
+            if (dmae.CmpColor(365, 408, "ffffff", 1) == 1)
+            {
+                return false;
+            }
+            if (dmae.CmpColor(363, 410, "ffffff", 1) == 1)
+            {
+                return false;
+            }
+            if (dmae.CmpColor(362, 411, "ffffff", 1) == 1)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
+        public bool CheckDormitoryBatteryWindow(DmAe dmae)
+        {
+            for(int x = 559, y = 487; x <= 719; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+
+
         }
 
         public int CheckFriendsPointReward(DmAe dmae)//检测是否接收友情点数奖励或者本日次数已用完
@@ -6571,7 +6703,17 @@ namespace testdm
             return true;
         }
 
-
+        public bool CheckDormitoryMLeft(DmAe dmae)//检测屏幕是否白屏
+        {
+            for (int x = 1, y = 1; x < 50; x++)
+            {
+                if (dmae.CmpColor(x, y, "000000", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
 

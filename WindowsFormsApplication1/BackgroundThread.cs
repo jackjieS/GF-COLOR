@@ -708,8 +708,28 @@ namespace WindowsFormsApplication1
                             }
 
 
+                        case "22"://读取和保存好友宿舍的名单
+                            {
+
+                                im.dormitory.ReadAndSaveFriendsDormitoryList(dmae);
+                                im.taskList.taskremove();
 
 
+
+                                im.mouse.BindWindowS(dmae, 0);
+                                break;
+                            }
+                        case "23"://读取和保存好友宿舍的名单
+                            {
+
+                                im.dormitory.GetFriendBattery(dmae);
+                                im.taskList.taskremove();
+
+
+
+                                im.mouse.BindWindowS(dmae, 0);
+                                break;
+                            }
 
 
 
