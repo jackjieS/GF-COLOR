@@ -826,5 +826,41 @@ namespace WindowsFormsApplication1.Properties {
                 this["EquipmentUpdatePostion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GetFriendBatteryAuto {
+            get {
+                return ((bool)(this["GetFriendBatteryAuto"]));
+            }
+            set {
+                this["GetFriendBatteryAuto"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GetFriendBatterySecondLoop {
+            get {
+                return ((bool)(this["GetFriendBatterySecondLoop"]));
+            }
+            set {
+                this["GetFriendBatterySecondLoop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GetFriendBatteryCapt {
+            get {
+                return ((bool)(this["GetFriendBatteryCapt"]));
+            }
+            set {
+                this["GetFriendBatteryCapt"] = value;
+            }
+        }
     }
 }

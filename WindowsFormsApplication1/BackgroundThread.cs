@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         public void CountDown()//倒计时
         {
             DateTime Now = DateTime.Now;
+            DateTime BeijingTime = CommonHelp.PSTConvertToGMT(Now);
             int c;
             Thread.Sleep(200);
             int BattleStartCount;
@@ -32,6 +33,16 @@ namespace WindowsFormsApplication1
             {
                 c = Convert.ToInt32((DateTime.Now - Now).TotalSeconds);
                 Now = DateTime.Now;
+
+
+                //如果12点过了则添加
+                BeijingTime = CommonHelp.PSTConvertToGMT(Now);
+                if (BeijingTime.Hour == 0 && BeijingTime.Minute < 1 && CommonHelp.GetDormitoryDateTime.Day<BeijingTime.Day && im.Form1.checkBox1.Checked==true)
+                {
+                    im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
+                    CommonHelp.GetDormitoryDateTime = CommonHelp.PSTConvertToGMT(Now);
+
+                }
 
                 im.gameData.User_operationInfo[0].OperationLastTimeCD(c);
                 im.gameData.User_operationInfo[1].OperationLastTimeCD(c);

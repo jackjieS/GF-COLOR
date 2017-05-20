@@ -5033,6 +5033,11 @@ namespace testdm
             }
             while (CheckDormitoryBatteryWindow(dmae) == true)
             {
+                if (im.Form1.checkBox3.Checked)
+                {
+                    dmae.Capture(0, 0, 2000, 200, "\\FriendList\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
+                }
+
                 LeftClick(dmae, 570, 497, 703, 536);
                 delayTime(1);
             }

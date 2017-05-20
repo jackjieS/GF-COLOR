@@ -156,6 +156,9 @@
             this.label32 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -1348,6 +1351,9 @@
             // FriendSDormitory
             // 
             this.FriendSDormitory.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.FriendSDormitory.Controls.Add(this.checkBox3);
+            this.FriendSDormitory.Controls.Add(this.checkBox2);
+            this.FriendSDormitory.Controls.Add(this.checkBox1);
             this.FriendSDormitory.Controls.Add(this.button28);
             this.FriendSDormitory.Controls.Add(this.panel3);
             this.FriendSDormitory.Controls.Add(this.button25);
@@ -1719,6 +1725,40 @@
             this.imageList2.ImageSize = new System.Drawing.Size(165, 35);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(518, 53);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(96, 16);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "12点自动领取";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(518, 72);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(66, 16);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "2次循环";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(518, 94);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(48, 16);
+            this.checkBox3.TabIndex = 10;
+            this.checkBox3.Text = "截图";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1759,6 +1799,7 @@
             this.EQtabPage.ResumeLayout(false);
             this.EQtabPage.PerformLayout();
             this.FriendSDormitory.ResumeLayout(false);
+            this.FriendSDormitory.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1897,6 +1938,9 @@
         private System.Windows.Forms.Button button31;
         public System.Windows.Forms.Label label40;
         public System.Windows.Forms.Label label39;
+        public System.Windows.Forms.CheckBox checkBox2;
+        public System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.CheckBox checkBox3;
     }
 }
 

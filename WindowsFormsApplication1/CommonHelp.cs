@@ -98,6 +98,7 @@ namespace WindowsFormsApplication1
         public static List<int> User_OperationNumberNow = new List<int>();
         public static int PictureBox1Count = 1;
         public static int PictureBox2Count = 0;
+        public static DateTime GetDormitoryDateTime = PSTConvertToGMT(DateTime.Now);
         public static void BindWindowS(DmAe dmae, int B)
         {
             //windowsStat = 0 解锁 = 1 锁定
@@ -116,6 +117,21 @@ namespace WindowsFormsApplication1
             }
 
         }
+
+
+
+        /// <summary>  
+        /// 转化PST时间为GMT（也就是UTC时间）  
+        /// </summary>  
+        /// <param name="dateTime"></param>  
+        /// <returns></returns>  
+        public static DateTime PSTConvertToGMT(DateTime dateTime)
+        {
+            TimeZoneInfo timeZoneSource = TimeZoneInfo.Local;
+            TimeZoneInfo timeZoneDestination = TimeZoneInfo.FindSystemTimeZoneById("China Standard Time");
+            return TimeZoneInfo.ConvertTime(dateTime, timeZoneSource, timeZoneDestination);
+        }
+
 
 
 

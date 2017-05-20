@@ -81,6 +81,10 @@ namespace TaskList
         {
             im.dormitory.ReadLogFriendListFromStart();
             im.dormitory.ReadtempFriendListFromStart();
+            im.Form1.checkBox1.Checked = Settings.Default.GetFriendBatteryAuto;
+            im.Form1.checkBox2.Checked = Settings.Default.GetFriendBatterySecondLoop;
+            im.Form1.checkBox3.Checked = Settings.Default.GetFriendBatteryCapt;
+
             im.gameData.User_operationInfo[0].OperationName = Settings.Default.LogisticsTask1;
             im.gameData.User_operationInfo[1].OperationName = Settings.Default.LogisticsTask2;
             im.gameData.User_operationInfo[2].OperationName = Settings.Default.LogisticsTask3;
@@ -390,6 +394,11 @@ namespace TaskList
             Settings.Default.LogisticsTask2 = comboBox6.Text;
             Settings.Default.LogisticsTask3 = comboBox7.Text;
             Settings.Default.LogisticsTask4 = comboBox8.Text;
+
+            Settings.Default.GetFriendBatteryAuto = im.Form1.checkBox1.Checked;
+            Settings.Default.GetFriendBatterySecondLoop = im.Form1.checkBox2.Checked;
+            Settings.Default.GetFriendBatteryCapt = im.Form1.checkBox3.Checked;
+
             Settings.Default.Save();
             int ret = im.eyLogin.LogOut();
             int dm_ret0 = dmae.UnBindWindow();

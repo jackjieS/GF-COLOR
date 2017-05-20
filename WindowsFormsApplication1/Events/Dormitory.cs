@@ -118,6 +118,7 @@ namespace WindowsFormsApplication1.Events
             int count = 1;
             object intX = 0, intY = 0;
             bool FirstName = true;
+            bool SecondTime = im.Form1.checkBox2.Checked;
             string Name= GetMyLogFriendName(dmae);
             im.mouse.ClickHomeDormitory(dmae);
 
@@ -142,7 +143,7 @@ namespace WindowsFormsApplication1.Events
                 {
                     SaveFriendName(dmae, 1);
                 }
-
+                FirstName = false;
                 //开始比较如果名字符合则检查是否有电池
                 //重置镜头
                 im.mouse.ClickRestDormitoryMLeft(dmae);
@@ -158,16 +159,26 @@ namespace WindowsFormsApplication1.Events
                     }
 
                 }
-                count++;
-                FirstName = false;
+                //二次循环
+                if (im.mouse.CheckFriendDormitoryBattery(dmae) == true && SecondTime ==true)
+                {
+                    im.mouse.ClickFriendDormitoryBattery(dmae);
+                    im.mouse.ClickFriendDormitoryBatteryWindow(dmae);
+                }
+
+
                 //点击NEXT
                 im.mouse.ClickNextFriendDormitory(dmae);
                 
                 //如果当前名字和temp一样则退出循环
                 //二次循环检查
-                if (ComPFirstFriendName(dmae) == true)
+                if (ComPFirstFriendName(dmae) == true && SecondTime ==true)
                 {
                     break;
+                }
+                if (ComPFirstFriendName(dmae) == true && SecondTime == false)
+                {
+                    SecondTime = true;
                 }
             }
 
@@ -293,6 +304,7 @@ namespace WindowsFormsApplication1.Events
                 {
                     File.Delete(Application.StartupPath + "\\FriendList\\temp" + i.ToString() + ".bmp");
                 }
+                i++;
             }
         }
 
@@ -307,6 +319,7 @@ namespace WindowsFormsApplication1.Events
                 {
                     File.Delete(Application.StartupPath + "\\FriendList\\NO" + i.ToString() + ".bmp");
                 }
+                i++;
 
             }
         }
