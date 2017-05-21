@@ -120,6 +120,9 @@
             this.label29 = new System.Windows.Forms.Label();
             this.GunBtabPage = new System.Windows.Forms.TabPage();
             this.FriendSDormitory = new System.Windows.Forms.TabPage();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button28 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label40 = new System.Windows.Forms.Label();
@@ -156,9 +159,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button33 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -1365,6 +1366,40 @@
             this.FriendSDormitory.Text = "FriendSDormitory";
             this.FriendSDormitory.UseVisualStyleBackColor = true;
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(518, 94);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(48, 16);
+            this.checkBox3.TabIndex = 10;
+            this.checkBox3.Text = "截图";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(518, 72);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(66, 16);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "2次循环";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(518, 53);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(96, 16);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "12点自动领取";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // button28
             // 
             this.button28.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1489,6 +1524,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button33);
             this.panel2.Controls.Add(this.label39);
             this.panel2.Controls.Add(this.label37);
             this.panel2.Controls.Add(this.button31);
@@ -1524,7 +1560,7 @@
             // 
             this.button31.Location = new System.Drawing.Point(14, 101);
             this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(75, 23);
+            this.button31.Size = new System.Drawing.Size(50, 23);
             this.button31.TabIndex = 7;
             this.button31.Text = "清空";
             this.button31.UseVisualStyleBackColor = true;
@@ -1532,9 +1568,9 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(101, 101);
+            this.button29.Location = new System.Drawing.Point(128, 102);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(75, 23);
+            this.button29.Size = new System.Drawing.Size(50, 23);
             this.button29.TabIndex = 6;
             this.button29.Text = "添加";
             this.button29.UseVisualStyleBackColor = true;
@@ -1725,39 +1761,15 @@
             this.imageList2.ImageSize = new System.Drawing.Size(165, 35);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // checkBox1
+            // button33
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(518, 53);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(96, 16);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "12点自动领取";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(518, 72);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(66, 16);
-            this.checkBox2.TabIndex = 9;
-            this.checkBox2.Text = "2次循环";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(518, 94);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(48, 16);
-            this.checkBox3.TabIndex = 10;
-            this.checkBox3.Text = "截图";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.button33.Location = new System.Drawing.Point(71, 102);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(50, 23);
+            this.button33.TabIndex = 10;
+            this.button33.Text = "截图";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
             // 
             // Form1
             // 
@@ -1941,6 +1953,7 @@
         public System.Windows.Forms.CheckBox checkBox2;
         public System.Windows.Forms.CheckBox checkBox1;
         public System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button button33;
     }
 }
 

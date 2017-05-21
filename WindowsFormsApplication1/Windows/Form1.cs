@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -572,6 +573,24 @@ namespace TaskList
         private void button28_Click(object sender, EventArgs e)
         {
             im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //获取当前数目
+                int count = im.Form1.imageList1.Images.Count;
+                //截图
+                int dm_retsave = dmae.Capture(900, 15, 1065, 50, "\\FriendList\\temp" + count.ToString() + ".bmp");
+                //入队
+                im.Form1.imageList1.Images.Add(Image.FromFile(Application.StartupPath + "\\FriendList\\temp" + count.ToString() + ".bmp"));
+            }
+            catch (Exception)
+            {
+
+
+            }
         }
     }
 }
