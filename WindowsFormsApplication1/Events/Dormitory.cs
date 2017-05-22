@@ -118,7 +118,7 @@ namespace WindowsFormsApplication1.Events
         {
             object intX = 0, intY = 0;
             bool FirstName = true;
-            bool SecondTime = im.Form1.checkBox2.Checked;
+            bool SecondTime = false;
             string Name= GetMyLogFriendName(dmae);
             im.mouse.ClickHomeDormitory(dmae);
 
@@ -185,7 +185,10 @@ namespace WindowsFormsApplication1.Events
                 if (ComPFirstFriendName(dmae) == true && SecondTime == false)
                 {
                     SystemInfo.AppState = "二次循环";
-                    SecondTime = true;
+                    if (im.Form1.checkBox2.Checked == true)
+                    {
+                        SecondTime = true;
+                    }
                 }
             }
 
