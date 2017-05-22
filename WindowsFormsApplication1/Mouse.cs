@@ -5035,7 +5035,7 @@ namespace testdm
             {
                 if (im.Form1.checkBox3.Checked)
                 {
-                    dmae.Capture(0, 0, 2000, 200, "\\FriendList\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
+                    dmae.Capture(0, 0, 2000, 2000, "\\FriendList\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
                 }
 
                 LeftClick(dmae, 570, 497, 703, 536);
@@ -5199,13 +5199,61 @@ namespace testdm
             {
                 delayTime(1);
             }
-            SystemInfo.AppState = "点赞";
+            SystemInfo.AppState = "返回主页";
             while (CheckMyDormitory(dmae))
             {
                 delayTime(1);
                 LeftClick(dmae, 16, 18, 125, 75);
             }
+            while (true)
+            {
+
+                if (CheckSystemRewardSupportPage(dmae))
+                {
+                    SystemInfo.AppState = "系统奖励";
+                    LeftClick(dmae, 589, 512, 692, 534);
+                }
+
+                if (CheckBattleResult(dmae))
+                {
+                    SystemInfo.AppState = "战斗结算";
+                    LeftClick(dmae, 1107, 633, 1242, 691);
+                }
+
+                while (CheckWhiteM(dmae))
+                {
+                    delayTime(1, 1);
+                }
+
+                if (CheckNewGunEquipmentPage(dmae))
+                {
+                    SystemInfo.AppState = "获取新人形";
+                    LeftClick(dmae, 1107, 633, 1242, 691);
+                }
+
+                if (CheckSystemNewsPapge(dmae))
+                {
+                    SystemInfo.AppState = "系统公告重磅热点";
+                    LeftClick(dmae, 145, 70, 146, 71);
+                }
+
+                if (CheckSystemActivistPage(dmae))
+                {
+                    SystemInfo.AppState = "系统奖励";
+                    LeftClick(dmae, 102, 95, 103, 96);
+                }
+                if (CheckHomePage(dmae) == 0)
+                {
+                    return
+                        ;
+                }
+                delayTime(1);
+
+            }
         }
+
+
+
 
 
 
