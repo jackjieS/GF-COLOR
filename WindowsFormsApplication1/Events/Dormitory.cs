@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication1.BaseData;
 
 namespace WindowsFormsApplication1.Events
 {
@@ -115,7 +116,6 @@ namespace WindowsFormsApplication1.Events
 
         public void GetFriendBattery(DmAe dmae)
         {
-            int count = 1;
             object intX = 0, intY = 0;
             bool FirstName = true;
             bool SecondTime = im.Form1.checkBox2.Checked;
@@ -138,12 +138,18 @@ namespace WindowsFormsApplication1.Events
             while (true)
             {
 
+                while (im.mouse.CheckDormitoryLoad(dmae) == false)
+                {
+                    im.mouse.delayTime(1);
+                }
+
                 //保存图片
                 if (FirstName)
                 {
-                    SaveFriendName(dmae, 1);
+                    SaveFriendName(dmae, 0);
+                    FirstName = false;
                 }
-                FirstName = false;
+
                 //开始比较如果名字符合则检查是否有电池
                 //重置镜头
                 im.mouse.ClickRestDormitoryMLeft(dmae);
@@ -178,6 +184,7 @@ namespace WindowsFormsApplication1.Events
                 }
                 if (ComPFirstFriendName(dmae) == true && SecondTime == false)
                 {
+                    SystemInfo.AppState = "二次循环";
                     SecondTime = true;
                 }
             }
@@ -196,13 +203,12 @@ namespace WindowsFormsApplication1.Events
 
         public void SaveFriendName(DmAe dmae,int count)
         {
-            object intX, intY;
             while (im.mouse.CheckMyFriendDormitory(dmae) == -1)
             {
                 im.mouse.delayTime(1);
             }
 
-            while (dmae.FindColor(900, 15, 1065, 50,"ffffff",0.9,0,out intX,out intY) == 0)
+            while (im.mouse.CheckDormitoryLoad(dmae)==false)
             {
                 im.mouse.delayTime(1);
             }
@@ -235,7 +241,7 @@ namespace WindowsFormsApplication1.Events
                 im.mouse.delayTime(1);
             }
 
-            if (dmae.FindPic(899, 14, 1066, 51, "\\FriendList\\temp1.bmp", "000000", 0.9, 0, out intX, out intY) != -1)
+            if (dmae.FindPic(899, 14, 1066, 51, "\\FriendList\\temp0.bmp", "000000", 0.9, 0, out intX, out intY) != -1)
             {
                 return true;
             }

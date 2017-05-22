@@ -80,11 +80,15 @@ namespace TaskList
 
         private void Form1_Load(object sender, EventArgs e)//初始化
         {
+
+
+
             im.dormitory.ReadLogFriendListFromStart();
             im.dormitory.ReadtempFriendListFromStart();
             im.Form1.checkBox1.Checked = Settings.Default.GetFriendBatteryAuto;
             im.Form1.checkBox2.Checked = Settings.Default.GetFriendBatterySecondLoop;
             im.Form1.checkBox3.Checked = Settings.Default.GetFriendBatteryCapt;
+            im.Form1.textBox29.Text = Settings.Default.GetFriendBattleryDelayM.ToString();
 
             im.gameData.User_operationInfo[0].OperationName = Settings.Default.LogisticsTask1;
             im.gameData.User_operationInfo[1].OperationName = Settings.Default.LogisticsTask2;
@@ -215,7 +219,7 @@ namespace TaskList
                     im.Form1.button18.Enabled = true;
                     im.Form1.button19.Enabled = true;
                     im.Form1.button20.Enabled = true;
-                    im.Form1.button21.Enabled = true;
+
 
                     im.CountDown = new Thread(im.backGroundThread.CountDown);
                     im.CountDown.IsBackground = true;
@@ -399,6 +403,7 @@ namespace TaskList
             Settings.Default.GetFriendBatteryAuto = im.Form1.checkBox1.Checked;
             Settings.Default.GetFriendBatterySecondLoop = im.Form1.checkBox2.Checked;
             Settings.Default.GetFriendBatteryCapt = im.Form1.checkBox3.Checked;
+            Settings.Default.GetFriendBattleryDelayM = Convert.ToInt32(im.Form1.textBox29.Text);
 
             Settings.Default.Save();
             int ret = im.eyLogin.LogOut();
@@ -424,11 +429,6 @@ namespace TaskList
             im.gameData.User_BuildingEquipmentInfo[0].BuildingFavoriteNumber = im.Form1.comboBox9.SelectedIndex;
             im.gameData.User_BuildingEquipmentInfo[1].BuildingFavoriteNumber = im.Form1.comboBox10.SelectedIndex;
             im.gameData.User_BuildingEquipmentInfo[2].BuildingFavoriteNumber = im.Form1.comboBox11.SelectedIndex;
-        }
-
-        private void button21_Click(object sender, EventArgs e)
-        {
-            im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.VoteOthersDormitory);
         }
 
         private void button22_Click(object sender, EventArgs e)
@@ -592,5 +592,16 @@ namespace TaskList
 
             }
         }
+
+
+        private void textBox29_TextChanged(object sender, EventArgs e)
+        {
+            int min = Convert.ToInt32(textBox29.Text);
+            Settings.Default.GetFriendBattleryDelayH = min / 60;
+            Settings.Default.GetFriendBattleryDelayM = min % 60;
+            if (Settings.Default.GetFriendBattleryDelayH >= 24) { MessageBox.Show("延迟24小时?mdzz"); textBox29.Text = "0"; }
+        }
+
+     
     }
 }

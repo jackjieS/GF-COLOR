@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
 
                 //如果12点过了则添加
                 BeijingTime = CommonHelp.PSTConvertToGMT(Now);
-                if (BeijingTime.Hour == 0 && BeijingTime.Minute < 1 && CommonHelp.GetDormitoryDateTime.Day<BeijingTime.Day && im.Form1.checkBox1.Checked==true)
+                if ((BeijingTime.Hour*60 + BeijingTime.Minute > Settings.Default.GetFriendBattleryDelayH*60+Settings.Default.GetFriendBattleryDelayM) && CommonHelp.GetDormitoryDateTime.Day<BeijingTime.Day && im.Form1.checkBox1.Checked==true)
                 {
                     im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
                     CommonHelp.GetDormitoryDateTime = CommonHelp.PSTConvertToGMT(Now);

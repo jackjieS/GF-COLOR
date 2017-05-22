@@ -5003,7 +5003,7 @@ namespace testdm
                 dmae.MoveTo(x1, y1);
                 delayTime(1);
                 dmae.LeftDown();
-                for (; x1 < 290; x1++)
+                for (; x1 < 290; x1+=2)
                 {
                     dmae.MoveTo(x1, y1);
                     delayTime(0.05, 1);
@@ -5240,7 +5240,7 @@ namespace testdm
                 if (CheckSystemActivistPage(dmae))
                 {
                     SystemInfo.AppState = "系统奖励";
-                    LeftClick(dmae, 102, 95, 103, 96);
+                    LeftClick(dmae, 102, 95, 103, 96); 
                 }
                 if (CheckHomePage(dmae) == 0)
                 {
@@ -6754,6 +6754,16 @@ namespace testdm
                 }
             }
             return true;
+        }
+
+        public bool CheckDormitoryLoad(DmAe dmae)//等待宿舍加载完毕，检查右上方的名字
+        {
+            while (dmae.FindColor(900, 15, 1065, 50, "ffffff", 0.9, 0, out object intX, out object intY) == 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public bool CheckDormitoryMLeft(DmAe dmae)//检测屏幕是否白屏

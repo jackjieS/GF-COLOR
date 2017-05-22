@@ -1,4 +1,7 @@
-﻿namespace TaskList
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace TaskList
 {
     partial class Form1
     {
@@ -39,7 +42,6 @@
             this.button22 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox28 = new System.Windows.Forms.TextBox();
-            this.button21 = new System.Windows.Forms.Button();
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
@@ -120,6 +122,8 @@
             this.label29 = new System.Windows.Forms.Label();
             this.GunBtabPage = new System.Windows.Forms.TabPage();
             this.FriendSDormitory = new System.Windows.Forms.TabPage();
+            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -136,6 +140,7 @@
             this.label36 = new System.Windows.Forms.Label();
             this.button25 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button33 = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.button31 = new System.Windows.Forms.Button();
@@ -159,7 +164,6 @@
             this.label32 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.button33 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -226,11 +230,10 @@
             // 
             // LtabPage
             // 
-            this.LtabPage.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.LtabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LtabPage.BackgroundImage")));
             this.LtabPage.Controls.Add(this.button22);
             this.LtabPage.Controls.Add(this.button5);
             this.LtabPage.Controls.Add(this.textBox28);
-            this.LtabPage.Controls.Add(this.button21);
             this.LtabPage.Controls.Add(this.textBox21);
             this.LtabPage.Controls.Add(this.button14);
             this.LtabPage.Controls.Add(this.button13);
@@ -301,17 +304,6 @@
             this.textBox28.Size = new System.Drawing.Size(45, 21);
             this.textBox28.TabIndex = 176;
             this.textBox28.Text = "秒";
-            // 
-            // button21
-            // 
-            this.button21.Enabled = false;
-            this.button21.Location = new System.Drawing.Point(367, 170);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(72, 23);
-            this.button21.TabIndex = 175;
-            this.button21.Text = "宿舍点赞";
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // textBox21
             // 
@@ -848,7 +840,7 @@
             // 
             // BattletabPage
             // 
-            this.BattletabPage.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.BattletabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BattletabPage.BackgroundImage")));
             this.BattletabPage.Controls.Add(this.textBox19);
             this.BattletabPage.Controls.Add(this.textBox20);
             this.BattletabPage.Controls.Add(this.label1);
@@ -1042,7 +1034,7 @@
             // 
             // FixtabPage
             // 
-            this.FixtabPage.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.FixtabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FixtabPage.BackgroundImage")));
             this.FixtabPage.Controls.Add(this.textBox9);
             this.FixtabPage.Controls.Add(this.textBox10);
             this.FixtabPage.Controls.Add(this.textBox11);
@@ -1184,7 +1176,7 @@
             // 
             // EQtabPage
             // 
-            this.EQtabPage.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.EQtabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EQtabPage.BackgroundImage")));
             this.EQtabPage.Controls.Add(this.comboBox11);
             this.EQtabPage.Controls.Add(this.textBox26);
             this.EQtabPage.Controls.Add(this.textBox27);
@@ -1341,7 +1333,7 @@
             // 
             // GunBtabPage
             // 
-            this.GunBtabPage.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.GunBtabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GunBtabPage.BackgroundImage")));
             this.GunBtabPage.Location = new System.Drawing.Point(4, 22);
             this.GunBtabPage.Name = "GunBtabPage";
             this.GunBtabPage.Size = new System.Drawing.Size(685, 351);
@@ -1351,7 +1343,9 @@
             // 
             // FriendSDormitory
             // 
-            this.FriendSDormitory.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.FriendSDormitory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FriendSDormitory.BackgroundImage")));
+            this.FriendSDormitory.Controls.Add(this.textBox29);
+            this.FriendSDormitory.Controls.Add(this.label41);
             this.FriendSDormitory.Controls.Add(this.checkBox3);
             this.FriendSDormitory.Controls.Add(this.checkBox2);
             this.FriendSDormitory.Controls.Add(this.checkBox1);
@@ -1366,12 +1360,30 @@
             this.FriendSDormitory.Text = "FriendSDormitory";
             this.FriendSDormitory.UseVisualStyleBackColor = true;
             // 
+            // textBox29
+            // 
+            this.textBox29.Location = new System.Drawing.Point(577, 69);
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(35, 21);
+            this.textBox29.TabIndex = 12;
+            this.textBox29.Text = "0";
+            this.textBox29.TextChanged += new System.EventHandler(this.textBox29_TextChanged);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(518, 74);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(59, 12);
+            this.label41.TabIndex = 11;
+            this.label41.Text = "延迟(分):";
+            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Checked = true;
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(518, 94);
+            this.checkBox3.Location = new System.Drawing.Point(518, 112);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(48, 16);
             this.checkBox3.TabIndex = 10;
@@ -1381,7 +1393,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(518, 72);
+            this.checkBox2.Location = new System.Drawing.Point(518, 91);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(66, 16);
             this.checkBox2.TabIndex = 9;
@@ -1538,6 +1550,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(186, 127);
             this.panel2.TabIndex = 0;
+            // 
+            // button33
+            // 
+            this.button33.Location = new System.Drawing.Point(71, 102);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(50, 23);
+            this.button33.TabIndex = 10;
+            this.button33.Text = "截图";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
             // 
             // label39
             // 
@@ -1761,21 +1783,11 @@
             this.imageList2.ImageSize = new System.Drawing.Size(165, 35);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // button33
-            // 
-            this.button33.Location = new System.Drawing.Point(71, 102);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(50, 23);
-            this.button33.TabIndex = 10;
-            this.button33.Text = "截图";
-            this.button33.UseVisualStyleBackColor = true;
-            this.button33.Click += new System.EventHandler(this.button33_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg_center4;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(664, 281);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label7);
@@ -1921,7 +1933,6 @@
         public System.Windows.Forms.TextBox textBox26;
         public System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.Label label31;
-        public System.Windows.Forms.Button button21;
         public System.Windows.Forms.TextBox textBox28;
         public System.Windows.Forms.Button button22;
         private System.Windows.Forms.TabPage FriendSDormitory;
@@ -1954,6 +1965,8 @@
         public System.Windows.Forms.CheckBox checkBox1;
         public System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Label label41;
+        public System.Windows.Forms.TextBox textBox29;
     }
 }
 

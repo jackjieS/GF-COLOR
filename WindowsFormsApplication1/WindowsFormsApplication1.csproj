@@ -81,34 +81,37 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp">
-      <Private>True</Private>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimpleUpdater">
+      <HintPath>Resources\SimpleUpdater.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Core">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Data">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Deployment">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Drawing">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Web">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Windows.Forms">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -227,16 +230,6 @@
     <None Include="res\app.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\dm_soft1.txt" />
-    <None Include="Resources\dm_soft2.txt" />
-    <None Include="Resources\bg_center4.bmp" />
-    <None Include="Resources\dm_soft0.txt" />
-    <None Include="bin\Debug\dm.dll" />
-    <None Include="bin\Debug\dmc.dll" />
-    <None Include="bin\Debug\EyLogin.dll" />
-    <None Include="Resources\dm.dll" />
-    <None Include="Resources\EyLogin.dll" />
-    <None Include="Resources\dmc.dll" />
     <Content Include="项目4.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +243,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Dm">
