@@ -245,7 +245,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public int SetWindowSize(int hwnd, int width,int height)
+        public int SetWindowSize(int hwnd, int width, int height)
         {
             switch (Properties.Settings.Default.BindWindowsType)
             {
@@ -587,7 +587,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public int FindPic(int x1,int y1,int x2,int y2,string pic_name,string delta_color,double sim,int dir,out object intX,out object intY)//返回找到的图片的序号,从0开始索引.如果没找到返回-1
+        public int FindPic(int x1, int y1, int x2, int y2, string pic_name, string delta_color, double sim, int dir, out object intX, out object intY)//返回找到的图片的序号,从0开始索引.如果没找到返回-1
         {
             //返回找到的图片的序号,从0开始索引.如果没找到返回-1
             intX = intY = -1;
@@ -595,7 +595,7 @@ namespace WindowsFormsApplication1
             {
                 case 1://1是大漠2是AE
                     {
-                        return dm.FindPic(x1,y1,x2,y2,pic_name,delta_color,sim,dir,out intX, out intY);
+                        return dm.FindPic(x1, y1, x2, y2, pic_name, delta_color, sim, dir, out intX, out intY);
                     }
                 case 2:
                     {
@@ -623,7 +623,55 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public string FindMultiColorEx(int x1, int y1, int x2, int y2, string first_color, string offset_color, double sim, int dir)
+        {
+            switch (Properties.Settings.Default.BindWindowsType)
+            {
+                case 1://1是大漠2是AE
+                    {
+                        return dm.FindMultiColorEx(x1, y1, x2, y2, first_color, offset_color, sim, dir);
+                    }
+                case 2:
+                    {
+                        return dm.FindMultiColorEx(x1, y1, x2, y2, first_color, offset_color, sim, dir);
+                    }
+                default:
+                    return "false";
+            }
+        }
+        public long GetResultCount(string ret)
+        {
+            switch (Properties.Settings.Default.BindWindowsType)
+            {
+                case 1://1是大漠2是AE
+                    {
+                        return dm.GetResultCount(ret);
+                    }
+                case 2:
+                    {
+                        return dm.GetResultCount(ret);
+                    }
+                default:
+                    return 0;
+            }
+        }
 
+        public string FindColorEx(int x1,int y1,int x2,int  y2,string color,double sim,int dir)
+        {
+            switch (Properties.Settings.Default.BindWindowsType)
+            {
+                case 1://1是大漠2是AE
+                    {
+                        return FindColorEx(x1, y1, x2, y2, color, sim, dir);
+                    }
+                case 2:
+                    {
+                        return FindColorEx(x1, y1, x2, y2, color, sim, dir);
+                    }
+                default:
+                    return "false";
+            }
+        }
 
         public int FindStr(int x1, int y1, int x2, int y2, string str, string color_format, double sim, out object intX, out object intY)
         {

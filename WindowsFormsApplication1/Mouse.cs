@@ -563,7 +563,7 @@ namespace testdm
                 BindWindowS(dmae, 1);
                 LeftClick(dmae, 831, 322, 1019, 397);
             }
-
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentStrengthen(DmAe dmae)
@@ -577,6 +577,7 @@ namespace testdm
 
                 LeftClick(dmae, 32, 230, 174, 279);
             }
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentSelect(DmAe dmae)
@@ -590,6 +591,7 @@ namespace testdm
 
                 LeftClick(dmae, 291, 352, 356, 427);
             }
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentTab(DmAe dmae)
@@ -603,6 +605,7 @@ namespace testdm
 
                 LeftClick(dmae, 1112, 127, 1260, 217);
             }
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentType(DmAe dmae,int i)
@@ -635,6 +638,7 @@ namespace testdm
                         break;
                 }
             }
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentTabToClose(DmAe dmae)
@@ -648,7 +652,7 @@ namespace testdm
             {
                 LeftClick(dmae, 1111, 163, 1247, 213);
             }
-
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentToUpdate(DmAe dmae,int i)
@@ -678,6 +682,7 @@ namespace testdm
                         break;
                 }
             }
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentADDButton(DmAe dmae)
@@ -690,7 +695,7 @@ namespace testdm
             {
                 LeftClick(dmae, 474, 181, 608, 249);
             }
-
+            im.mouse.delayTime(1, 1);
         }
         public void ClickAll2Start(DmAe dmae)
         {
@@ -704,7 +709,7 @@ namespace testdm
                 LeftClick(dmae, 1104, 342, 1136, 379);
                 delayTime(2,1);
             }
-
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentConfirm(DmAe dmae)
@@ -727,6 +732,7 @@ namespace testdm
                 LeftClick(dmae, 1102, 552, 1234, 624);
                 delayTime(1);
             }
+            im.mouse.delayTime(1, 1);
         }
 
         public void ClickEquipmentUpdateConfirmButton(DmAe dmae)
@@ -740,6 +746,7 @@ namespace testdm
                 LeftClick(dmae, 1079, 620, 1209, 657);
                 delayTime(1);
             }
+            im.mouse.delayTime(1, 1);
         }
 
 
@@ -2510,8 +2517,8 @@ namespace testdm
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "选择作战方式";
             WriteLog.WriteError("准备选择作战方式");
-            object intX, intY;
-            int dm_ret;
+
+
             if (s1 == "self-discipline")
             {
                 while (dmae.CmpColor(525, 90, "ffffff", 0.9) == 0 && dmae.CmpColor(210, 90, "ffffff", 0.9) == 0)
@@ -2764,6 +2771,18 @@ namespace testdm
             //战斗结果结算页面
             while (true)
             {
+                while (CheckWhiteM(dmae))
+                {
+                    delayTime(1, 1);
+                    continue;
+                }
+                while (CheckInternetTransfer(dmae))//网络传输
+                {
+                    delayTime(0.3, 1);
+                    continue;
+                }
+
+
 
                 if (CheckSystemRewardSupportPage(dmae))
                 {
@@ -2775,11 +2794,6 @@ namespace testdm
                 {
                     SystemInfo.AppState = "战斗结算";
                     LeftClick(dmae, 1107, 633, 1242, 691);
-                }
-
-                while (CheckWhiteM(dmae))
-                {
-                    delayTime(1, 1);
                 }
 
                 if (CheckNewGunEquipmentPage(dmae))
@@ -2799,6 +2813,14 @@ namespace testdm
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 102, 95, 103, 96);
                 }
+
+                if (CheckNewAchievement(dmae))
+                {
+                    SystemInfo.AppState = "新成就";
+                    im.time.SaveBmp(dmae, 0, 0, 2000, 2000, "\\PicRecord\\");
+                    LeftClick(dmae, 567, 497, 699, 541);
+                }
+
                 if (CheckHomePage(dmae) == 0)
                 {
                     break;
@@ -3854,17 +3876,28 @@ namespace testdm
                 LeftClick(dmae, 716, 465, 860, 508);//直接返回主页
                 delayTime(1,1);
             }
+            //战斗结果结算页面
             while (true)
             {
+                while (CheckWhiteM(dmae))
+                {
+                    delayTime(1, 1);
+                    continue;
+                }
+                while (CheckInternetTransfer(dmae))//网络传输
+                {
+                    delayTime(0.3, 1);
+                    continue;
+                }
+
+
+
                 if (CheckSystemRewardSupportPage(dmae))
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 589, 512, 692, 534);
                 }
-                if (CheckHomePage(dmae) == 0)
-                {
-                    break;
-                }
+
                 if (CheckBattleResult(dmae))
                 {
                     SystemInfo.AppState = "战斗结算";
@@ -3887,6 +3920,18 @@ namespace testdm
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 102, 95, 103, 96);
+                }
+
+                if (CheckNewAchievement(dmae))
+                {
+                    SystemInfo.AppState = "新成就";
+                    im.time.SaveBmp(dmae, 0, 0, 2000, 2000, "\\PicRecord\\");
+                    LeftClick(dmae, 567, 497, 699, 541);
+                }
+
+                if (CheckHomePage(dmae) == 0)
+                {
+                    break;
                 }
                 delayTime(1);
 
@@ -3927,19 +3972,39 @@ namespace testdm
 
             while (true)
             {
+                while (CheckWhiteM(dmae))
+                {
+                    delayTime(1, 1);
+                    continue;
+                }
+                while (CheckInternetTransfer(dmae))//网络传输
+                {
+                    delayTime(0.3, 1);
+                    continue;
+                }
+                if (dmae.CmpColor(138, 2, "ffffff", 0.9) == 0 && dmae.CmpColor(1140, 20, "ffffff", 0.9) == 0)
+                {
+                    LeftClick(dmae, 54, 6, 133, 19);
+                }
+
+
+
                 if (CheckSystemRewardSupportPage(dmae))
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 589, 512, 692, 534);
                 }
 
-                if (CheckHomePage(dmae) == 0)
+                if (CheckBattleResult(dmae))
                 {
-                    break;
+                    SystemInfo.AppState = "战斗结算";
+                    LeftClick(dmae, 1107, 633, 1242, 691);
                 }
-                if (dmae.CmpColor(138, 2, "ffffff", 0.9) == 0 && dmae.CmpColor(1140, 20, "ffffff", 0.9) == 0)
+
+                if (CheckNewGunEquipmentPage(dmae))
                 {
-                    LeftClick(dmae, 54, 6, 133, 19);
+                    SystemInfo.AppState = "获取新人形";
+                    LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
                 if (CheckSystemNewsPapge(dmae))
@@ -3953,7 +4018,6 @@ namespace testdm
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 102, 95, 103, 96);
                 }
-                delayTime(1);
 
                 if (CheckNewAchievement(dmae))
                 {
@@ -3962,6 +4026,11 @@ namespace testdm
                     LeftClick(dmae, 567, 497, 699, 541);
                 }
 
+                if (CheckHomePage(dmae) == 0)
+                {
+                    break;
+                }
+                delayTime(1);
 
             }
 
@@ -5207,6 +5276,18 @@ namespace testdm
             }
             while (true)
             {
+                while (CheckWhiteM(dmae))
+                {
+                    delayTime(1, 1);
+                    continue;
+                }
+                while (CheckInternetTransfer(dmae))//网络传输
+                {
+                    delayTime(0.3, 1);
+                    continue;
+                }
+
+
 
                 if (CheckSystemRewardSupportPage(dmae))
                 {
@@ -5218,11 +5299,6 @@ namespace testdm
                 {
                     SystemInfo.AppState = "战斗结算";
                     LeftClick(dmae, 1107, 633, 1242, 691);
-                }
-
-                while (CheckWhiteM(dmae))
-                {
-                    delayTime(1, 1);
                 }
 
                 if (CheckNewGunEquipmentPage(dmae))
@@ -5240,12 +5316,19 @@ namespace testdm
                 if (CheckSystemActivistPage(dmae))
                 {
                     SystemInfo.AppState = "系统奖励";
-                    LeftClick(dmae, 102, 95, 103, 96); 
+                    LeftClick(dmae, 102, 95, 103, 96);
                 }
+
+                if (CheckNewAchievement(dmae))
+                {
+                    SystemInfo.AppState = "新成就";
+                    im.time.SaveBmp(dmae, 0, 0, 2000, 2000, "\\PicRecord\\");
+                    LeftClick(dmae, 567, 497, 699, 541);
+                }
+
                 if (CheckHomePage(dmae) == 0)
                 {
-                    return
-                        ;
+                    break;
                 }
                 delayTime(1);
 
@@ -6152,9 +6235,6 @@ namespace testdm
             }
             return true;
 
-
-
-
         }
         public int CheckBattlePage(DmAe dmae, int x1 = 986, int y1 = 30, int x2 = 5, int y2 = 94, int x3 = 138, int y3 = 94, int x4 = 138, int y4 = 1)
         {
@@ -6756,9 +6836,34 @@ namespace testdm
             return true;
         }
 
+        public bool CheckInternetTransfer(DmAe dmae)
+        {
+
+            int x1, y1;
+            int dm_ret = 0;
+            for (x1 = 1160, y1 = 574; y1 <= 639; y1++)
+            {
+                for (x1 = 1160; x1 <= 1185; x1++)
+                {
+                    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+                    {
+                        dm_ret = dm_ret + 1;
+                    }
+                }
+            }
+            if (dm_ret >= 90 && dm_ret<=300)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public bool CheckDormitoryLoad(DmAe dmae)//等待宿舍加载完毕，检查右上方的名字
         {
-            while (dmae.FindColor(900, 15, 1065, 50, "ffffff", 0.9, 0, out object intX, out object intY) == 0)
+            while (dmae.FindColor(900, 15, 1065, 50, "ffffff", 0.9, 0, out object intX, out object intY) == 1)
             {
                 return true;
             }

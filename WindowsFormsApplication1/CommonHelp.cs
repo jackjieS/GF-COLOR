@@ -99,6 +99,7 @@ namespace WindowsFormsApplication1
         public static int PictureBox1Count = 1;
         public static int PictureBox2Count = 0;
         public static DateTime GetDormitoryDateTime = PSTConvertToGMT(DateTime.Now);
+
         public static void BindWindowS(DmAe dmae, int B)
         {
             //windowsStat = 0 解锁 = 1 锁定
@@ -132,6 +133,18 @@ namespace WindowsFormsApplication1
             return TimeZoneInfo.ConvertTime(dateTime, timeZoneSource, timeZoneDestination);
         }
 
+        public static Double SecondToHourMS(int second,string Type)
+        {
+            TimeSpan ts = new TimeSpan(0,0,second);
+            switch (Type)
+            {
+                case "H": { return ts.Hours; }
+                case "M": { return ts.Minutes; }
+                case "S": { return ts.Seconds; }
+                default:
+                    return ts.TotalSeconds;
+            }
+        }
 
 
 

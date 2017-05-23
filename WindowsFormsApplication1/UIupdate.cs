@@ -78,6 +78,16 @@ namespace WindowsFormsApplication1
                 case "label39": { if (im.Form1.label39.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.label39.Text = text; } break; }
                 case "label40": { if (im.Form1.label40.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.label40.Text = text; } break; }
 
+
+                case "textBox30": { if (im.Form1.textBox30.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox30.Text = text; } break; }
+                case "textBox31": { if (im.Form1.textBox31.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox31.Text = text; } break; }
+                case "textBox32": { if (im.Form1.textBox32.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox32.Text = text; } break; }
+                case "textBox33": { if (im.Form1.textBox33.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox33.Text = text; } break; }
+                case "textBox34": { if (im.Form1.textBox34.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox34.Text = text; } break; }
+                case "textBox35": { if (im.Form1.textBox35.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox35.Text = text; } break; }
+                case "textBox36": { if (im.Form1.textBox36.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox36.Text = text; } break; }
+                case "textBox37": { if (im.Form1.textBox37.InvokeRequired) { SetTextCallback d = new SetTextCallback(SetText); im.Form1.Invoke(d, new object[] { name, text }); } else { im.Form1.textBox37.Text = text; } break; }
+
                 default:
                     break;
             }
@@ -113,10 +123,25 @@ namespace WindowsFormsApplication1
                 SetText("comboBox6", im.gameData.User_operationInfo[1].OperationName);
                 SetText("comboBox7", im.gameData.User_operationInfo[2].OperationName);
                 SetText("comboBox8", im.gameData.User_operationInfo[3].OperationName);
-                SetText("textBox1", Convert.ToInt32(im.gameData.User_operationInfo[0].OperationLastTime).ToString());
-                SetText("textBox2", Convert.ToInt32(im.gameData.User_operationInfo[1].OperationLastTime).ToString());
-                SetText("textBox3", Convert.ToInt32(im.gameData.User_operationInfo[2].OperationLastTime).ToString());
-                SetText("textBox4", Convert.ToInt32(im.gameData.User_operationInfo[3].OperationLastTime).ToString());
+
+
+                SetText("textBox1", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[0].OperationLastTime, "H").ToString());
+                SetText("textBox33", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[0].OperationLastTime, "M").ToString());
+                SetText("textBox37", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[0].OperationLastTime, "S").ToString());
+
+                SetText("textBox2", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[1].OperationLastTime, "H").ToString());
+                SetText("textBox32", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[1].OperationLastTime, "M").ToString());
+                SetText("textBox36", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[1].OperationLastTime, "S").ToString());
+
+                SetText("textBox3", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[2].OperationLastTime, "H").ToString());
+                SetText("textBox31", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[2].OperationLastTime, "M").ToString());
+                SetText("textBox35", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[2].OperationLastTime, "S").ToString());
+
+                SetText("textBox4", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[3].OperationLastTime, "H").ToString());
+                SetText("textBox30", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[3].OperationLastTime, "M").ToString());
+                SetText("textBox34", CommonHelp.SecondToHourMS(im.gameData.User_operationInfo[3].OperationLastTime, "S").ToString());
+
+
 
                 SetText("label34", CommonHelp.PictureBox1Count.ToString());
                 SetText("label35", CommonHelp.PictureBox2Count.ToString());

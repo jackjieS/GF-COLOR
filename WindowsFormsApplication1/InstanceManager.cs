@@ -68,7 +68,7 @@ namespace WindowsFormsApplication1
             for(int i = 0; i < 4; i++)
             {
                 BaseData.UserBattleInfo user_battleinfo = new BaseData.UserBattleInfo();
-                user_battleinfo.Key = i + 1;
+                user_battleinfo.Key = i;
                 this.gameData.User_battleInfo.Add(i, user_battleinfo);
             }
 

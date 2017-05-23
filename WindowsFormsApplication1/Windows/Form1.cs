@@ -353,9 +353,26 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
+            //右下角白点转圈
+            //1157,546,1279,665
+            //1160,574,1185,639
+            int x1, y1;
+            while (true)
+            {
+                int dm_ret = 0;
 
-
-
+                for (x1 = 1160, y1 = 574; y1 <= 639; y1++)
+                {
+                    for (x1 = 1160; x1 <= 1185; x1++)
+                    {
+                        if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+                        {
+                            dm_ret = dm_ret + 1;
+                        }
+                    }
+                }
+                MessageBox.Show(string.Format("WhiteCount = {0}", dm_ret.ToString()));
+            }
 
         }
 

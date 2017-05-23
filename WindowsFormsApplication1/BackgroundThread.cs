@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
         public void CountDown()//倒计时
         {
             DateTime Now = DateTime.Now;
-            DateTime BeijingTime = CommonHelp.PSTConvertToGMT(Now);
+            DateTime BeijingTimeNow = CommonHelp.PSTConvertToGMT(Now);
             int c;
             Thread.Sleep(200);
             int BattleStartCount;
@@ -34,15 +34,24 @@ namespace WindowsFormsApplication1
                 c = Convert.ToInt32((DateTime.Now - Now).TotalSeconds);
                 Now = DateTime.Now;
 
-
+                BeijingTimeNow = CommonHelp.PSTConvertToGMT(Now);
                 //如果12点过了则添加
-                BeijingTime = CommonHelp.PSTConvertToGMT(Now);
-                if ((BeijingTime.Hour*60 + BeijingTime.Minute > Settings.Default.GetFriendBattleryDelayH*60+Settings.Default.GetFriendBattleryDelayM) && CommonHelp.GetDormitoryDateTime.Day<BeijingTime.Day && im.Form1.checkBox1.Checked==true)
+                if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute <(Settings.Default.GetFriendBattleryDelayM)) && im.Form1.checkBox1.Checked == true)
                 {
                     im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
-                    CommonHelp.GetDormitoryDateTime = CommonHelp.PSTConvertToGMT(Now);
+                    im.Form1.checkBox1.Checked = false;
+                }
+                //3点
+                if(BeijingTimeNow.Hour*60+BeijingTimeNow.Minute <= (60 * 3 + (Settings.Default.GetFriendBattleryDelayM)))
+                {
+                    if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute > (60 * 3 + (Settings.Default.GetFriendBattleryDelayM))) && im.Form1.checkBox4.Checked == true)
+                    {
+                        im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
+                        im.Form1.checkBox4.Checked = false;
+                    }
 
                 }
+
 
                 im.gameData.User_operationInfo[0].OperationLastTimeCD(c);
                 im.gameData.User_operationInfo[1].OperationLastTimeCD(c);
@@ -437,6 +446,8 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+
+
 
                                     var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
                                     foreach (KeyValuePair<int, int> kvp in dicSort)

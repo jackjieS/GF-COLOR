@@ -164,6 +164,27 @@ namespace TaskList
             this.label32 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.textBox37 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -231,6 +252,26 @@ namespace TaskList
             // LtabPage
             // 
             this.LtabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LtabPage.BackgroundImage")));
+            this.LtabPage.Controls.Add(this.label50);
+            this.LtabPage.Controls.Add(this.label51);
+            this.LtabPage.Controls.Add(this.label52);
+            this.LtabPage.Controls.Add(this.label53);
+            this.LtabPage.Controls.Add(this.textBox34);
+            this.LtabPage.Controls.Add(this.textBox35);
+            this.LtabPage.Controls.Add(this.textBox36);
+            this.LtabPage.Controls.Add(this.textBox37);
+            this.LtabPage.Controls.Add(this.label46);
+            this.LtabPage.Controls.Add(this.label47);
+            this.LtabPage.Controls.Add(this.label48);
+            this.LtabPage.Controls.Add(this.label49);
+            this.LtabPage.Controls.Add(this.textBox30);
+            this.LtabPage.Controls.Add(this.textBox31);
+            this.LtabPage.Controls.Add(this.textBox32);
+            this.LtabPage.Controls.Add(this.textBox33);
+            this.LtabPage.Controls.Add(this.label45);
+            this.LtabPage.Controls.Add(this.label44);
+            this.LtabPage.Controls.Add(this.label43);
+            this.LtabPage.Controls.Add(this.label42);
             this.LtabPage.Controls.Add(this.button22);
             this.LtabPage.Controls.Add(this.button5);
             this.LtabPage.Controls.Add(this.textBox28);
@@ -278,7 +319,7 @@ namespace TaskList
             // button22
             // 
             this.button22.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button22.Location = new System.Drawing.Point(526, 38);
+            this.button22.Location = new System.Drawing.Point(608, 39);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(51, 39);
             this.button22.TabIndex = 177;
@@ -304,6 +345,7 @@ namespace TaskList
             this.textBox28.Size = new System.Drawing.Size(45, 21);
             this.textBox28.TabIndex = 176;
             this.textBox28.Text = "秒";
+            this.textBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox21
             // 
@@ -312,6 +354,7 @@ namespace TaskList
             this.textBox21.Size = new System.Drawing.Size(45, 21);
             this.textBox21.TabIndex = 174;
             this.textBox21.Text = "分";
+            this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button14
             // 
@@ -348,7 +391,7 @@ namespace TaskList
             // button19
             // 
             this.button19.Enabled = false;
-            this.button19.Location = new System.Drawing.Point(506, 114);
+            this.button19.Location = new System.Drawing.Point(593, 115);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(14, 20);
             this.button19.TabIndex = 163;
@@ -359,7 +402,7 @@ namespace TaskList
             // button18
             // 
             this.button18.Enabled = false;
-            this.button18.Location = new System.Drawing.Point(506, 88);
+            this.button18.Location = new System.Drawing.Point(593, 89);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(14, 20);
             this.button18.TabIndex = 162;
@@ -370,7 +413,7 @@ namespace TaskList
             // button17
             // 
             this.button17.Enabled = false;
-            this.button17.Location = new System.Drawing.Point(506, 63);
+            this.button17.Location = new System.Drawing.Point(593, 64);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(14, 20);
             this.button17.TabIndex = 161;
@@ -381,7 +424,7 @@ namespace TaskList
             // button15
             // 
             this.button15.Enabled = false;
-            this.button15.Location = new System.Drawing.Point(506, 38);
+            this.button15.Location = new System.Drawing.Point(593, 39);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(14, 20);
             this.button15.TabIndex = 160;
@@ -394,41 +437,45 @@ namespace TaskList
             this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(417, 112);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(45, 21);
+            this.textBox4.Size = new System.Drawing.Size(31, 21);
             this.textBox4.TabIndex = 158;
             this.textBox4.Text = "0";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox3
             // 
             this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(417, 87);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(45, 21);
+            this.textBox3.Size = new System.Drawing.Size(31, 21);
             this.textBox3.TabIndex = 157;
             this.textBox3.Text = "0";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox2
             // 
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(417, 62);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(45, 21);
+            this.textBox2.Size = new System.Drawing.Size(31, 21);
             this.textBox2.TabIndex = 156;
             this.textBox2.Text = "0";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1
             // 
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(417, 38);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(45, 21);
+            this.textBox1.Size = new System.Drawing.Size(31, 21);
             this.textBox1.TabIndex = 155;
             this.textBox1.Text = "0";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button11
             // 
             this.button11.Enabled = false;
-            this.button11.Location = new System.Drawing.Point(466, 113);
+            this.button11.Location = new System.Drawing.Point(553, 114);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(40, 20);
             this.button11.TabIndex = 154;
@@ -439,7 +486,7 @@ namespace TaskList
             // button10
             // 
             this.button10.Enabled = false;
-            this.button10.Location = new System.Drawing.Point(466, 88);
+            this.button10.Location = new System.Drawing.Point(553, 89);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(40, 20);
             this.button10.TabIndex = 153;
@@ -450,7 +497,7 @@ namespace TaskList
             // button9
             // 
             this.button9.Enabled = false;
-            this.button9.Location = new System.Drawing.Point(466, 63);
+            this.button9.Location = new System.Drawing.Point(553, 64);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(40, 20);
             this.button9.TabIndex = 152;
@@ -461,7 +508,7 @@ namespace TaskList
             // button8
             // 
             this.button8.Enabled = false;
-            this.button8.Location = new System.Drawing.Point(466, 38);
+            this.button8.Location = new System.Drawing.Point(553, 39);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(40, 20);
             this.button8.TabIndex = 151;
@@ -1344,6 +1391,7 @@ namespace TaskList
             // FriendSDormitory
             // 
             this.FriendSDormitory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FriendSDormitory.BackgroundImage")));
+            this.FriendSDormitory.Controls.Add(this.checkBox4);
             this.FriendSDormitory.Controls.Add(this.textBox29);
             this.FriendSDormitory.Controls.Add(this.label41);
             this.FriendSDormitory.Controls.Add(this.checkBox3);
@@ -1362,7 +1410,7 @@ namespace TaskList
             // 
             // textBox29
             // 
-            this.textBox29.Location = new System.Drawing.Point(577, 69);
+            this.textBox29.Location = new System.Drawing.Point(577, 90);
             this.textBox29.Name = "textBox29";
             this.textBox29.Size = new System.Drawing.Size(35, 21);
             this.textBox29.TabIndex = 12;
@@ -1372,7 +1420,7 @@ namespace TaskList
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(518, 74);
+            this.label41.Location = new System.Drawing.Point(518, 95);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(59, 12);
             this.label41.TabIndex = 11;
@@ -1383,7 +1431,7 @@ namespace TaskList
             this.checkBox3.AutoSize = true;
             this.checkBox3.Checked = true;
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(518, 112);
+            this.checkBox3.Location = new System.Drawing.Point(518, 133);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(48, 16);
             this.checkBox3.TabIndex = 10;
@@ -1393,7 +1441,7 @@ namespace TaskList
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(518, 91);
+            this.checkBox2.Location = new System.Drawing.Point(518, 112);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(66, 16);
             this.checkBox2.TabIndex = 9;
@@ -1783,6 +1831,206 @@ namespace TaskList
             this.imageList2.ImageSize = new System.Drawing.Size(165, 35);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox4.Location = new System.Drawing.Point(518, 72);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(90, 16);
+            this.checkBox4.TabIndex = 13;
+            this.checkBox4.Text = "3点自动领取";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(449, 41);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(11, 12);
+            this.label42.TabIndex = 178;
+            this.label42.Text = "H";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(449, 66);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(11, 12);
+            this.label43.TabIndex = 179;
+            this.label43.Text = "H";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(449, 91);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(11, 12);
+            this.label44.TabIndex = 180;
+            this.label44.Text = "H";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(449, 116);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(11, 12);
+            this.label45.TabIndex = 181;
+            this.label45.Text = "H";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(497, 116);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(11, 12);
+            this.label46.TabIndex = 189;
+            this.label46.Text = "M";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(497, 91);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(11, 12);
+            this.label47.TabIndex = 188;
+            this.label47.Text = "M";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(497, 66);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(11, 12);
+            this.label48.TabIndex = 187;
+            this.label48.Text = "M";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(497, 41);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(11, 12);
+            this.label49.TabIndex = 186;
+            this.label49.Text = "M";
+            // 
+            // textBox30
+            // 
+            this.textBox30.Enabled = false;
+            this.textBox30.Location = new System.Drawing.Point(464, 112);
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(31, 21);
+            this.textBox30.TabIndex = 185;
+            this.textBox30.Text = "0";
+            this.textBox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox31
+            // 
+            this.textBox31.Enabled = false;
+            this.textBox31.Location = new System.Drawing.Point(464, 87);
+            this.textBox31.Name = "textBox31";
+            this.textBox31.Size = new System.Drawing.Size(31, 21);
+            this.textBox31.TabIndex = 184;
+            this.textBox31.Text = "0";
+            this.textBox31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox32
+            // 
+            this.textBox32.Enabled = false;
+            this.textBox32.Location = new System.Drawing.Point(464, 62);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.Size = new System.Drawing.Size(31, 21);
+            this.textBox32.TabIndex = 183;
+            this.textBox32.Text = "0";
+            this.textBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox33
+            // 
+            this.textBox33.Enabled = false;
+            this.textBox33.Location = new System.Drawing.Point(464, 38);
+            this.textBox33.Name = "textBox33";
+            this.textBox33.Size = new System.Drawing.Size(31, 21);
+            this.textBox33.TabIndex = 182;
+            this.textBox33.Text = "0";
+            this.textBox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(542, 117);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(11, 12);
+            this.label50.TabIndex = 197;
+            this.label50.Text = "S";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(542, 92);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(11, 12);
+            this.label51.TabIndex = 196;
+            this.label51.Text = "S";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(542, 67);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(11, 12);
+            this.label52.TabIndex = 195;
+            this.label52.Text = "S";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(542, 42);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(11, 12);
+            this.label53.TabIndex = 194;
+            this.label53.Text = "S";
+            // 
+            // textBox34
+            // 
+            this.textBox34.Enabled = false;
+            this.textBox34.Location = new System.Drawing.Point(510, 113);
+            this.textBox34.Name = "textBox34";
+            this.textBox34.Size = new System.Drawing.Size(31, 21);
+            this.textBox34.TabIndex = 193;
+            this.textBox34.Text = "0";
+            this.textBox34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox35
+            // 
+            this.textBox35.Enabled = false;
+            this.textBox35.Location = new System.Drawing.Point(510, 88);
+            this.textBox35.Name = "textBox35";
+            this.textBox35.Size = new System.Drawing.Size(31, 21);
+            this.textBox35.TabIndex = 192;
+            this.textBox35.Text = "0";
+            this.textBox35.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox36
+            // 
+            this.textBox36.Enabled = false;
+            this.textBox36.Location = new System.Drawing.Point(510, 63);
+            this.textBox36.Name = "textBox36";
+            this.textBox36.Size = new System.Drawing.Size(31, 21);
+            this.textBox36.TabIndex = 191;
+            this.textBox36.Text = "0";
+            this.textBox36.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox37
+            // 
+            this.textBox37.Enabled = false;
+            this.textBox37.Location = new System.Drawing.Point(510, 39);
+            this.textBox37.Name = "textBox37";
+            this.textBox37.Size = new System.Drawing.Size(31, 21);
+            this.textBox37.TabIndex = 190;
+            this.textBox37.Text = "0";
+            this.textBox37.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1967,6 +2215,27 @@ namespace TaskList
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.Label label41;
         public System.Windows.Forms.TextBox textBox29;
+        public CheckBox checkBox4;
+        private Label label50;
+        private Label label51;
+        private Label label52;
+        private Label label53;
+        public TextBox textBox34;
+        public TextBox textBox35;
+        public TextBox textBox36;
+        public TextBox textBox37;
+        private Label label46;
+        private Label label47;
+        private Label label48;
+        private Label label49;
+        public TextBox textBox30;
+        public TextBox textBox31;
+        public TextBox textBox32;
+        public TextBox textBox33;
+        private Label label45;
+        private Label label44;
+        private Label label43;
+        private Label label42;
     }
 }
 

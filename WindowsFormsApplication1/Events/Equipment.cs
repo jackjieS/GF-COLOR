@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1.Events
         {
             //点击研发按钮
             im.mouse.ClickHomeResearch(dmae);
+
             //点击装备强化
             im.mouse.ClickEquipmentStrengthen(dmae);
             //选择装备
