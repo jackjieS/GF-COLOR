@@ -85,7 +85,7 @@ namespace WindowsFormsApplication1.BaseData
 
             if (this.NeedToFix)
             {
-                CommonHelp.BattleFixNumber = Key;
+                CommonHelp.BattleFixNumber = Key+1;
                 CommonHelp.gametasklist.Insert(0, TaskList.Fix);
             }
             else //-----循环间隔

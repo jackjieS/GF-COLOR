@@ -81,7 +81,8 @@ namespace TaskList
         private void Form1_Load(object sender, EventArgs e)//初始化
         {
 
-
+            CommonHelp.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
+            CommonHelp.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
 
             im.dormitory.ReadLogFriendListFromStart();
             im.dormitory.ReadtempFriendListFromStart();
@@ -177,8 +178,9 @@ namespace TaskList
         {
             WriteLog.WriteError("初始化成功*****************************");
             string mcode = im.eyLogin.GetMachineCode();
-            if (mcode == "37797B15343158143F7C7B15CA627BDE" || im.commonHelp.checkT(mcode) == true)
-            {
+            //if (mcode == "37797B15343158143F7C7B15CA627BDE" || im.commonHelp.checkT(mcode) == true)
+            //{
+            if (true) { 
                 //模拟器选择
                 int dm_ret = 0;
                 dm_ret = dmae.BindWindow();

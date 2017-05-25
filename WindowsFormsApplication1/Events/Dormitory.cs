@@ -80,6 +80,11 @@ namespace WindowsFormsApplication1.Events
             {
 
                 //保存图片
+                if (count == 1)
+                {
+                    SaveFriendName(dmae, count, "firstname");
+                }
+
                 SaveFriendName(dmae, count);
                 im.Form1.imageList1.Images.Add(Image.FromFile(Application.StartupPath + "\\FriendList\\" + "temp" + count.ToString() + ".bmp"));
 
@@ -106,7 +111,7 @@ namespace WindowsFormsApplication1.Events
                     break;
                 }
             }
-
+            File.Delete(Application.StartupPath + @"\FriendList\temp0.bmp");
 
             im.mouse.ClickBackTOmyDormitory(dmae);
             //若结束则返回主页
@@ -114,11 +119,11 @@ namespace WindowsFormsApplication1.Events
             im.mouse.delayTime(1);
         }
 
-        public void GetFriendBattery(DmAe dmae)
+        public void GetFriendBattery(DmAe dmae,bool SecondTime=false,bool NeetTOCap=true)
         {
             object intX = 0, intY = 0;
             bool FirstName = true;
-            bool SecondTime = false;
+
             string Name= GetMyLogFriendName(dmae);
             im.mouse.ClickHomeDormitory(dmae);
 
@@ -131,6 +136,9 @@ namespace WindowsFormsApplication1.Events
             //点击第一位
             im.mouse.ClickFirstFriendsDormitory(dmae);
             //保存好友名字 用做终止
+
+
+
 
             //做好延迟
 
@@ -146,9 +154,12 @@ namespace WindowsFormsApplication1.Events
                 //保存图片
                 if (FirstName)
                 {
-                    SaveFriendName(dmae, 0);
+                    SaveFriendName(dmae, 0, "firstname");
                     FirstName = false;
                 }
+
+
+
 
                 //开始比较如果名字符合则检查是否有电池
                 //重置镜头
@@ -192,6 +203,8 @@ namespace WindowsFormsApplication1.Events
                 }
             }
 
+            //删除第一张图片临时图片
+            File.Delete(Application.StartupPath + @"\FriendList\temp0.bmp");
 
             im.mouse.ClickBackTOmyDormitory(dmae);
             //若结束则返回主页
@@ -202,9 +215,9 @@ namespace WindowsFormsApplication1.Events
 
 
 
+        
 
-
-        public void SaveFriendName(DmAe dmae,int count)
+        public void SaveFriendName(DmAe dmae,int count,string type="normal")
         {
             while (im.mouse.CheckMyFriendDormitory(dmae) == -1)
             {
@@ -215,6 +228,12 @@ namespace WindowsFormsApplication1.Events
             {
                 im.mouse.delayTime(1);
             }
+
+            if (type == "firstname")
+            {
+                dmae.Capture(900, 15, 1065, 50, "\\FriendList\\temp0.bmp");
+            }
+
             int dm_retsave = dmae.Capture(900, 15, 1065, 50, "\\FriendList\\" + "temp" + count.ToString() + ".bmp");
 
         }

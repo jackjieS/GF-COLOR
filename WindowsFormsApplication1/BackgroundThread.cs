@@ -36,18 +36,26 @@ namespace WindowsFormsApplication1
 
                 BeijingTimeNow = CommonHelp.PSTConvertToGMT(Now);
                 //如果12点过了则添加
-                if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute <(Settings.Default.GetFriendBattleryDelayM)) && im.Form1.checkBox1.Checked == true)
+                if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute <=(Settings.Default.GetFriendBattleryDelayM)) && CommonHelp.Time12AddGetFriendBattery == true)
                 {
                     im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
-                    im.Form1.checkBox1.Checked = false;
+                    CommonHelp.Time12AddGetFriendBattery = false;
+                }
+                else
+                {
+                    CommonHelp.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
                 }
                 //3点
                 if(BeijingTimeNow.Hour*60+BeijingTimeNow.Minute <= (60 * 3 + (Settings.Default.GetFriendBattleryDelayM)))
                 {
-                    if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute > (60 * 3 + (Settings.Default.GetFriendBattleryDelayM))) && im.Form1.checkBox4.Checked == true)
+                    if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute >= (60 * 3 + (Settings.Default.GetFriendBattleryDelayM))) && CommonHelp.Time3AddGetFriendBattery == true)
                     {
                         im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
-                        im.Form1.checkBox4.Checked = false;
+                        CommonHelp.Time3AddGetFriendBattery = false;
+                    }
+                    else
+                    {
+                        CommonHelp.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
                     }
 
                 }
@@ -732,7 +740,7 @@ namespace WindowsFormsApplication1
 
                         case "22"://读取和保存好友宿舍的名单
                             {
-
+                                im.mouse.BindWindowS(dmae, 1);
                                 im.dormitory.ReadAndSaveFriendsDormitoryList(dmae);
                                 im.taskList.taskremove();
 
@@ -743,11 +751,10 @@ namespace WindowsFormsApplication1
                             }
                         case "23"://读取和保存好友宿舍的名单
                             {
+                                im.mouse.BindWindowS(dmae, 1);
 
-                                im.dormitory.GetFriendBattery(dmae);
+                                im.dormitory.GetFriendBattery(dmae,im.Form1.checkBox2.Checked,im.Form1.checkBox3.Checked);
                                 im.taskList.taskremove();
-
-
 
                                 im.mouse.BindWindowS(dmae, 0);
                                 break;

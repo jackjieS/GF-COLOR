@@ -106,45 +106,6 @@ namespace testdm
                 dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, Color5, 1);//找不到颜色返回1
                 dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, Color6, 1);//找不到颜色返回1
             }
-            //Random ran = new Random();
-            //variables.AppState = "屏幕往上移动";
-            //int dm_ret = dmae.CmpColor(x4, y4, col + "|" + Settings.Default.AirPort, 0.6);//找不到颜色返回1
-            //int dm_ret1 = dmae.CmpColor(x5, y5, col1 + "|" + Settings.Default.AirPort, 0.6);//找不到颜色返回1
-            //int dm_Ret0 = 1, count = 0;
-            //string temp0 = dmae.GetColor(700, 65);
-            //while (true)
-            //{
-            //    count = 0;
-            //    int tempx = ran.Next(x1, x2);
-            //    int tempy = ran.Next(y1, y2);
-            //    dmae.MoveTo(tempx, tempy);
-            //    dmae.LeftDown();
-            //    while (tempy < (x3 + y2))
-            //    {
-            //        temp0 = dmae.GetColor(700, 65);
-
-            //        tempy += 3;
-            //        dmae.MoveTo(tempx, tempy); delayTime(0.1);
-
-
-            //        dm_Ret0 = dmae.CmpColor(700, 65, temp0, 1);
-
-            //        if (dm_Ret0 == 0)
-            //        {
-            //            count += 1;
-            //            if (count == 5)
-            //            {
-            //                dmae.LeftUp();
-            //                return;
-            //            }
-            //        }
-
-            //    }
-            //    dmae.LeftUp();
-            //    delayTime(0.5);
-            //    dm_ret = dmae.CmpColor(x4, y4, col + "|" + Settings.Default.AirPort, 0.6);
-            //    dm_ret1 = dmae.CmpColor(x5, y5, col1 + "|" + Settings.Default.AirPort, 0.6);
-            //}
         }
 
         public void ScreenDown(DmAe dmae, int x1, int y1, int x2, int y2, int amount, int ColorX4, int ColorY4, int ColorX5, int ColorY5, int ColorX6, int ColorY6, string Color4 = "ffffff", string Color5 = "ffffff", string Color6 = "ffffff")//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
@@ -173,51 +134,45 @@ namespace testdm
                 dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, Color5, 1);//找不到颜色返回1
                 dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, Color6, 1);//找不到颜色返回1
             }
+        }
 
-            //Random ran = new Random();
-            //variables.AppState = "屏幕往下移动";
-            //int dm_ret = dmae.CmpColor(x4, y4, col + "|" + Settings.Default.AirPort, 1);//找不到颜色返回1
-            //int dm_ret1 = dmae.CmpColor(x5, y5, col1 + "|" + Settings.Default.AirPort, 1);//找不到颜色返回1
-            //int dm_Ret0 = 1, count = 0;
-            //string temp0 = dmae.GetColor(700, 65);
-            //while (true)
-            //{
-            //    count = 0;
-            //    int tempx = ran.Next(x1, x2);
-            //    int tempy = ran.Next(y1, y2);
-            //    dmae.MoveTo(tempx, tempy);
-            //    dmae.LeftDown();
-            //    while (tempy > (y1 - x3))
-            //    {
-            //        temp0 = dmae.GetColor(700, 65);
+        public void ScreenLeft(DmAe dmae, int x1, int y1, int x2, int y2, int amount, int ColorX4, int ColorY4, int ColorX5, int ColorY5, int ColorX6, int ColorY6, string Color4 = "ffffff", string Color5 = "ffffff", string Color6 = "ffffff")//x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
+        {
 
-            //        tempy -= 3;
-            //        dmae.MoveTo(tempx, tempy); delayTime(0.1);
+        }
+        public void ScreenRight(DmAe dmae, int x1, int y1, int x2, int y2, int amount, int ColorX4, int ColorY4, int ColorX5, int ColorY5, int ColorX6, int ColorY6, string Color4 = "ffffff", string Color5 = "ffffff", string Color6 = "ffffff")//x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
+        {
+            Random ran = new Random();
+            SystemInfo.AppState = "屏幕往上移动";
+            int dm_ret0 = dmae.CmpColor(ColorX4, ColorY4, Color4, 1);//找不到颜色返回1
+            int dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, Color5, 1);//找不到颜色返回1
+            int dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, Color6, 1);//找不到颜色返回1
 
+            while ((dm_ret0 == 1) && (dm_ret1 == 1) && (dm_ret2 == 1))
+            {
+                int tempx = ran.Next(x1, x2);
+                int tempy = ran.Next(y1, y2);
+                dmae.MoveTo(tempx, tempy);
+                dmae.LeftDown();
+                while (tempy < (amount + y2))
+                {
+                    tempy++;
+                    dmae.MoveTo(tempx, tempy); delayTime(0.005);
 
-            //        dm_Ret0 = dmae.CmpColor(700, 65, temp0, 1);
-
-            //        if (dm_Ret0 == 0)
-            //        {
-            //            count += 5;
-            //            if (count == 5)
-            //            {
-            //                dmae.LeftUp();
-            //                return;
-            //            }
-            //        }
-
-            //    }
-            //    dmae.LeftUp();
-            //    delayTime(0.5);
-            //}
-
+                }
+                dmae.LeftUp();
+                delayTime(0.5);
+                dm_ret0 = dmae.CmpColor(ColorX4, ColorY4, Color4, 1);//找不到颜色返回1
+                dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, Color5, 1);//找不到颜色返回1
+                dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, Color6, 1);//找不到颜色返回1
+            }
         }
 
         public void MapSet(DmAe dmae, int x1, int y1, int x2, int y2,int x3,int y3,int x4,int y4,string type ="")//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
         {
 
             //等待
+            bool loopbreak = false;
             SystemInfo.AppState = "缩放地图";
             int dm_ret0 = dmae.CmpColor(246, 11, "ffffff", 1);
             while(dm_ret0 == 1)
@@ -239,7 +194,7 @@ namespace testdm
                 case 0://右键平移
                     {
 
-                        while (dmae.CmpColor(x1, y1, "ffffff", 1) == 1 || dmae.CmpColor(x2, y2, "ffffff", 1) == 1 || dmae.CmpColor(x3, y3, "ffffff", 1) == 1)
+                        while (true)
                         {
                             tempcolor0 = dmae.GetColor(x1, y1);
                             tempcolor1 = dmae.GetColor(x2, y2);
@@ -253,13 +208,17 @@ namespace testdm
                                 dmae.MoveTo(tempx4, y4);
                                 delayTime(0.05, 1);
                                 tempx4 = tempx4 + 10;
+                                if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0 && dmae.CmpColor(x2, y2, "ffffff", 1) == 0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
+                                {
+                                    loopbreak = true;
+                                    break;
+                                }
                             }
-
                             //镜头移动
                             if (dmae.CmpColor(x1, y1, tempcolor0, 1) == 0 && dmae.CmpColor(x2, y2, tempcolor1, 1) == 0 && dmae.CmpColor(x3, y3, tempcolor2, 1) == 0)
                             {
 
-                                dmae.RightUp();
+
                                 switch (type)
                                 {
                                     case "ScreenDown":
@@ -280,8 +239,11 @@ namespace testdm
                                 }
                             }
 
-
                             dmae.RightUp();
+                            if (loopbreak)
+                            {
+                                break;
+                            }
                             delayTime(0.5);
                         }
                         break;
@@ -474,19 +436,19 @@ namespace testdm
             //--最后收尾
 
 
-            int dm_ret9 = dmae.CmpColor(558, 489, "ffffff", 0.9);
-            int dm_ret10 = dmae.CmpColor(721, 489, "ffffff", 0.9);
-            if (dm_ret9 == 0 && dm_ret10 == 0)
-            {
-                dmae.RightUp();
-                while (dm_ret9 == 0 && dm_ret10 == 0)
-                {
-                    LeftClick(dmae, 564, 496, 708, 545);
-                    delayTime(1);
-                    dm_ret9 = dmae.CmpColor(558, 489, "ffffff", 0.9);
-                    dm_ret10 = dmae.CmpColor(721, 489, "ffffff", 0.9);
-                }
-            }
+            //int dm_ret9 = dmae.CmpColor(558, 489, "ffffff", 0.9);
+            //int dm_ret10 = dmae.CmpColor(721, 489, "ffffff", 0.9);
+            //if (dm_ret9 == 0 && dm_ret10 == 0)
+            //{
+            //    dmae.RightUp();
+            //    while (dm_ret9 == 0 && dm_ret10 == 0)
+            //    {
+            //        LeftClick(dmae, 564, 496, 708, 545);
+            //        delayTime(1);
+            //        dm_ret9 = dmae.CmpColor(558, 489, "ffffff", 0.9);
+            //        dm_ret10 = dmae.CmpColor(721, 489, "ffffff", 0.9);
+            //    }
+            //}
 
         }
 
@@ -507,49 +469,77 @@ namespace testdm
 
         public void ClickHomeBattle(DmAe dmae)      //双击主页战场
         {
-            int count = 0;
             SystemInfo.AppState = "点击主页战斗按钮";
-            WriteLog.WriteError("准备点击主页战斗按钮");
+
             while (CheckHomePage(dmae) == 1)
             {
-                delayTime(0.5,1);
+                delayTime(0.5, 1);
 
             }
-
-            while (CheckHomePage(dmae) == 0)
+            BindWindowS(dmae, 1);
+            while (true)
             {
-                BindWindowS(dmae, 1);
 
-                int dm_ret9 = CheckBattlePage(dmae);
-                if (dm_ret9 == 0)
+                if (CheckBattlePage(dmae) == 0)
                 {
-                    WriteLog.WriteError("temp = 5 点击主页战斗成功");
-                    return;
+                     return;
                 }
-                if (CheckMissionSettingPage(dmae) == 0)
+
+                if (CheckHomePage(dmae) == 0)
                 {
-                    while (CheckMissionSettingPage(dmae) == 0)
-                    {
-                        LeftClick(dmae, 276, 64, 283, 71);
-                        delayTime(1,1);
-                    }
-                    return;
+                    LeftClick(dmae, 836, 456, 1010, 549);
+                    delayTime(2);
                 }
-                WriteLog.WriteError("点击主页战斗按钮");
-                LeftClick(dmae, 836, 456, 1010, 549);
-                delayTime(2);
+
             }
 
 
-            while (CheckBattlePage(dmae) == 1)
-            {
-                //防止呆在主页
-                delayTime(1);
-                count += 1;
-                if(count == 5) { ClickHomeBattle(dmae); }
-            }
 
-            WriteLog.WriteError("点击主页战场按钮成功");
+
+
+            //int count = 0;
+            //SystemInfo.AppState = "点击主页战斗按钮";
+            //WriteLog.WriteError("准备点击主页战斗按钮");
+            //while (CheckHomePage(dmae) == 1)
+            //{
+            //    delayTime(0.5,1);
+
+            //}
+
+            //while (CheckHomePage(dmae) == 0)
+            //{
+            //    BindWindowS(dmae, 1);
+
+            //    int dm_ret9 = CheckBattlePage(dmae);
+            //    if (dm_ret9 == 0)
+            //    {
+            //        WriteLog.WriteError("temp = 5 点击主页战斗成功");
+            //        return;
+            //    }
+            //    if (CheckMissionSettingPage(dmae) == 0)
+            //    {
+            //        while (CheckMissionSettingPage(dmae) == 0)
+            //        {
+            //            LeftClick(dmae, 276, 64, 283, 71);
+            //            delayTime(1,1);
+            //        }
+            //        return;
+            //    }
+            //    WriteLog.WriteError("点击主页战斗按钮");
+            //    LeftClick(dmae, 836, 456, 1010, 549);
+            //    delayTime(2);
+            //}
+
+
+            //while (CheckBattlePage(dmae) == 1)
+            //{
+            //    //防止呆在主页
+            //    delayTime(1);
+            //    count += 1;
+            //    if(count == 5) { ClickHomeBattle(dmae); }
+            //}
+
+            //WriteLog.WriteError("点击主页战场按钮成功");
         }
 
         public void ClickHomeResearch(DmAe dmae)
@@ -2518,15 +2508,20 @@ namespace testdm
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "选择作战方式";
             WriteLog.WriteError("准备选择作战方式");
 
+            while (dmae.CmpColor(525, 90, "ffffff", 0.9) == 1 || dmae.CmpColor(210, 90, "ffffff", 0.9) == 1)
+            {
+
+                delayTime(1);
+            }
+            CheckNormalAndAutoBattleButton(dmae, out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1);
 
             if (s1 == "self-discipline")
             {
                 while (dmae.CmpColor(525, 90, "ffffff", 0.9) == 0 && dmae.CmpColor(210, 90, "ffffff", 0.9) == 0)
                 {
-                    //dm_ret = dmae.FindColor(428, 527, 885, 664, "8cca10"+ "|"+Settings.Default.selfdiscipline, 0.9, 0, out intX, out intY);
-                    //if(dm_ret == 0) { break; }
 
-                    LeftClick(dmae, 604,542,759,616);
+
+                    LeftClick(dmae, AutoButtonX1 - 100, AutoButtonY1, AutoButtonX1, AutoButtonY1 + 45);
                     delayTime(1);
                     Girl_Full(dmae,ref userBattleInfo);//检测床位是否已满
                 }
@@ -2543,7 +2538,7 @@ namespace testdm
                 {
                     //dm_ret = dmae.FindColor(428, 527, 885, 664, "ffba00" + "|" + Settings.Default.normal, 0.9, 0, out intX, out intY);
 
-                    LeftClick(dmae, 564, 547, 699, 611);
+                    LeftClick(dmae, NormalButtonX1-100, NormalButtonY1, NormalButtonX1, NormalButtonY1+45);
 
                     delayTime(1,1);
 
@@ -6140,6 +6135,45 @@ namespace testdm
             else
             {
                 return 1;
+            }
+        }
+
+        public void CheckNormalAndAutoBattleButton(DmAe dmae,out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1)
+        {
+            //300,555
+            string Color0;
+            int NormalCount = 0;
+            int AutoCount = 0;
+            NormalButtonX1 = 0; NormalButtonY1 = 0; AutoButtonX1 = 0; AutoButtonY1 = 0;
+            int x1 = 300, y1 = 555;
+            for(x1 = 300, y1 = 555; x1 <= 1092; x1++)
+            {
+                Color0 = dmae.GetColor(x1, y1);
+                if (dmae.CmpColor(x1 + 1, y1, Color0, 1) == 0)
+                {
+                    //NormalCount++;
+                    AutoCount++;
+                    if (AutoCount == 100) { AutoButtonX1 = x1; AutoButtonY1 = y1; break; }
+                    //if (NormalCount == 99) { NormalButtonX1 = x1; NormalButtonY1 = y1; NormalCount = 0; }
+                }
+                else
+                {
+                    AutoCount = 0;
+                }
+            }
+
+            for (; x1 <= 1092; x1++)
+            {
+                Color0 = dmae.GetColor(x1, y1);
+                if (dmae.CmpColor(x1 + 1, y1, Color0, 1) == 0)
+                {
+                    NormalCount++;
+                    if (NormalCount == 98) { NormalButtonX1 = x1; NormalButtonY1 = y1; break; }
+                }
+                else
+                {
+                    AutoCount = 0;
+                }
             }
         }
 

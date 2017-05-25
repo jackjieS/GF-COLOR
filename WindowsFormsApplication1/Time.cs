@@ -2469,7 +2469,7 @@ namespace testdm
 
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 907, 566, 920, 574, 959, 566, 88, 613);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+                mouse.MapSet(dmae, 907, 566, 960, 566, 959, 566, 88, 613);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
             }
 
             mouse.delayTime(1);
