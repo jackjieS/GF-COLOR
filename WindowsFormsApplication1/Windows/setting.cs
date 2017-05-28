@@ -18,35 +18,37 @@ namespace WindowsFormsApplication1
 
         private void setting_Load(object sender, EventArgs e)
         {
-            trackBar1.Value = Convert.ToInt32(Properties.Settings.Default.WaitTime * 10);
+            trackBar1.Value = Convert.ToInt32(WindowsFormsApplication1.BaseData.SystemInfo.WaitTime * 10);
             decimal result = (decimal)trackBar1.Value / 10;
             label8.Text = result.ToString();
 
-            trackBar2.Value = Convert.ToInt32(Properties.Settings.Default.FindTeamSlectStrSim);
+            trackBar2.Value = Convert.ToInt32(WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim);
             decimal result1 = (decimal)trackBar2.Value / 100;
             label10.Text = result1.ToString();
 
             //地图缩放文字表达
-            if (Properties.Settings.Default.SetMapType == 0) { label14.Text = "右键平移"; }
-            if (Properties.Settings.Default.SetMapType == 1) { label14.Text = "ctrl加滚动滑轮"; }
+            if (WindowsFormsApplication1.BaseData.SystemInfo.SetMapType == 0) { label14.Text = "右键平移"; }
+            if (WindowsFormsApplication1.BaseData.SystemInfo.SetMapType == 1) { label14.Text = "ctrl加滚动滑轮"; }
 
             //地图缩放选项
-            comboBox4.SelectedIndex = Properties.Settings.Default.SetMapType;
+            comboBox4.SelectedIndex = WindowsFormsApplication1.BaseData.SystemInfo.SetMapType;
 
-            trackBar4.Value =Convert.ToInt32(Properties.Settings.Default.FindTeamSlectStrColorOffset);
+            trackBar4.Value = WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset;
             label12.Text = trackBar4.Value.ToString();
 
-            textBox1.Text = Properties.Settings.Default.WaitTime.ToString();
-            comboBox2.SelectedIndex = Properties.Settings.Default.Simulator;
-            comboBox3.Text = Properties.Settings.Default.BindWindowsType.ToString();
+            textBox1.Text = WindowsFormsApplication1.BaseData.SystemInfo.WaitTime.ToString();
+
+            comboBox2.SelectedIndex = WindowsFormsApplication1.BaseData.SystemInfo.Simulator;
+            comboBox3.Text = WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType.ToString();
             textBox2.Text = BaseData.SystemInfo.hwnd.ToString();
             checkBox3.Checked = BaseData.SystemInfo.RanControlinterval;
-            checkBox4.Checked = Properties.Settings.Default.LockWindows;
+            checkBox4.Checked = WindowsFormsApplication1.BaseData.SystemInfo.LockWindows;
+            checkBox1.Checked = WindowsFormsApplication1.BaseData.SystemInfo.DebugMode;
 
             //闪退间隔设置
-            textBox4.Text = Properties.Settings.Default.SimulatorHomeCheckTime.ToString();
-            textBox3.Text = Properties.Settings.Default.GameIconX.ToString();
-            textBox5.Text = Properties.Settings.Default.GameIconY.ToString();
+            textBox4.Text = WindowsFormsApplication1.BaseData.SystemInfo.SimulatorCheckTime.ToString();
+            //textBox3.Text = Properties.Settings.Default.GameIconX.ToString();
+            //textBox5.Text = Properties.Settings.Default.GameIconY.ToString();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -58,23 +60,23 @@ namespace WindowsFormsApplication1
 
         private void button1_Click_1(object sender, EventArgs e)// 保存
         {
-            Properties.Settings.Default.resolution = comboBox1.Text;
-            Properties.Settings.Default.BindWindowsType=Int32.Parse(comboBox3.Text);
-            Properties.Settings.Default.DebugMode = checkBox1.Checked;
-            Properties.Settings.Default.WaitTime = Convert.ToDouble(textBox1.Text);
-            Properties.Settings.Default.FindTeamSlectStrSim = trackBar2.Value;//图像识别精度
-            Properties.Settings.Default.FindTeamSlectStrColorOffset = trackBar4.Value.ToString();//图像色彩偏移度
-            Properties.Settings.Default.RandomNotes = checkBox2.Checked;
-            Properties.Settings.Default.Simulator = comboBox2.SelectedIndex;//保存模拟器设置
+            WindowsFormsApplication1.BaseData.SystemInfo.ResolutionRatio = comboBox1.Text;
+            WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType =Int32.Parse(comboBox3.Text);
+            WindowsFormsApplication1.BaseData.SystemInfo.DebugMode = checkBox1.Checked;
+            WindowsFormsApplication1.BaseData.SystemInfo.WaitTime = Convert.ToDouble(textBox1.Text);
+            WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim = trackBar2.Value;//图像识别精度
+            WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset = trackBar4.Value;//图像色彩偏移度
+            WindowsFormsApplication1.BaseData.SystemInfo.Supply = checkBox2.Checked;
+            WindowsFormsApplication1.BaseData.SystemInfo.Simulator = comboBox2.SelectedIndex;//保存模拟器设置
             BaseData.SystemInfo.Simulator = comboBox2.SelectedIndex;
             BaseData.SystemInfo.hwnd = Int32.Parse(textBox2.Text);
             Properties.Settings.Default.Save();
-            Properties.Settings.Default.SetMapType = comboBox4.SelectedIndex;//保存地图缩放设置
-            Properties.Settings.Default.LockWindows = checkBox4.Checked;
+            WindowsFormsApplication1.BaseData.SystemInfo.SetMapType = comboBox4.SelectedIndex;//保存地图缩放设置
+            WindowsFormsApplication1.BaseData.SystemInfo.LockWindows = checkBox4.Checked;
             //闪退设置
-            Properties.Settings.Default.SimulatorHomeCheckTime = Convert.ToInt32(textBox4.Text);
-            Properties.Settings.Default.GameIconX = Convert.ToInt32(textBox3.Text);
-            Properties.Settings.Default.GameIconY = Convert.ToInt32(textBox5.Text);
+            WindowsFormsApplication1.BaseData.SystemInfo.SimulatorCheckTime = Convert.ToInt32(textBox4.Text);
+            //Properties.Settings.Default.GameIconX = Convert.ToInt32(textBox3.Text);
+            //Properties.Settings.Default.GameIconY = Convert.ToInt32(textBox5.Text);
             this.Close();
         }
 

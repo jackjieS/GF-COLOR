@@ -26,7 +26,7 @@ namespace testdm
 
         public void SaveBmp(DmAe dmae, int x1,int y1,int x2,int y2,string temp)
         {   
-            if (Settings.Default.DebugMode == true)
+            if (WindowsFormsApplication1.BaseData.SystemInfo.DebugMode == true)
             {
                 int dm_retsave = dmae.Capture(x1, y1, x2, y2, temp+DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
             }
@@ -203,34 +203,34 @@ namespace testdm
                 case 1:
                     {
                         string LTeamMainColor = FindLTeamMainColor(dmae, 433, 521, 457, 547);//number1 = 第一个格子
-                        Teamname = dmae.Ocr(461,521,493,551, LTeamMainColor, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100));
+                        Teamname = dmae.Ocr(461,521,493,551, LTeamMainColor, (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100));
                         dmDict_ret0 = dmae.UseDict(0);
-                        time = getVolume(dmae.Ocr(419, 553, 572, 585, LTeamMainColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                        time = getVolume(dmae.Ocr(419, 553, 572, 585, LTeamMainColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100)));
                         return 1;
                     }
                 case 2:
                     {
                         string LTeamMainColor = FindLTeamMainColor(dmae, 654, 522, 682, 548);//number2 = 第2个格子
-                        Teamname = dmae.Ocr(682, 521, 714, 548, LTeamMainColor, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100));
+                        Teamname = dmae.Ocr(682, 521, 714, 548, LTeamMainColor, (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100));
                         dmDict_ret0 = dmae.UseDict(0);
-                        time = getVolume(dmae.Ocr(634, 550, 788, 588, LTeamMainColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                        time = getVolume(dmae.Ocr(634, 550, 788, 588, LTeamMainColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100)));
                         return 1;
                     }
                 case 3:
                     {
                         string LTeamMainColor = FindLTeamMainColor(dmae, 878, 522, 902, 547);//number3 = 第3个格子
-                        Teamname = dmae.Ocr(904, 521, 936, 553, LTeamMainColor, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100));
+                        Teamname = dmae.Ocr(904, 521, 936, 553, LTeamMainColor, (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100));
                         dmDict_ret0 = dmae.UseDict(0);
-                        time = getVolume(dmae.Ocr(867, 553, 1002, 583, LTeamMainColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                        time = getVolume(dmae.Ocr(867, 553, 1002, 583, LTeamMainColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100)));
                         return 1;
                     }
                 case 4:
                     {
 
                         string LTeamMainColor = FindLTeamMainColor(dmae, 1099, 522, 1125, 548);//number4 = 第4个格子
-                        Teamname = dmae.Ocr(1127, 522, 1158, 548, LTeamMainColor, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100));
+                        Teamname = dmae.Ocr(1127, 522, 1158, 548, LTeamMainColor, (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100));
                         dmDict_ret0 = dmae.UseDict(0);
-                        time = getVolume(dmae.Ocr(1085, 551, 1230, 583, LTeamMainColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                        time = getVolume(dmae.Ocr(1085, 551, 1230, 583, LTeamMainColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100)));
                         return 1;
                     }
                 default:
@@ -832,7 +832,7 @@ namespace testdm
                 //找到颜色后确定主颜色
                 AutoFindTeamMainColor = FindTeamMainColor(dmae, Convert.ToInt32(y));
                 //dm_ret2 = dmae.FindStr(75, Convert.ToInt32(y), 105, 720, TeamNumber, "313531" + "|" + Settings.Default.TeamListSelect0, 0.9, out intX, out intY);
-                dm_ret2 = dmae.FindStr(75, Convert.ToInt32(y), 120, 720, TeamNumber, AutoFindTeamMainColor+"-"+Settings.Default.FindTeamSlectStrColorOffset+ Settings.Default.FindTeamSlectStrColorOffset+ Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim/100), out intX, out intY);
+                dm_ret2 = dmae.FindStr(75, Convert.ToInt32(y), 120, 720, TeamNumber, AutoFindTeamMainColor+"-"+WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim /100), out intX, out intY);
 
                 if(dm_ret2 == -1)
                 {
@@ -948,58 +948,58 @@ namespace testdm
 
         public void BackToGame(DmAe dmae, Mouse mouse)
         {
-            object intX, intY;
-            intX = intY = -1;
-            while (dmae.FindPic(WindowsFormsApplication1.Properties.Settings.Default.SimulatorHomeCheckX1, WindowsFormsApplication1.Properties.Settings.Default.SimulatorHomeCheckY1, WindowsFormsApplication1.Properties.Settings.Default.SimulatorHomeCheckX2, WindowsFormsApplication1.Properties.Settings.Default.SimulatorHomeCheckY2, "A.bmp", "000000", 1, 0, out intX, out intY) == 0)
-            {
+            //object intX, intY;
+            //intX = intY = -1;
+            //while (dmae.FindPic(WindowsFormsApplication1.Properties.Settings.Default.SimulatorHomeCheckX1, WindowsFormsApplication1.Properties.Settings.Default.SimulatorHomeCheckY1, WindowsFormsApplication1.Properties.Settings.Default.SimulatorHomeCheckX2, WindowsFormsApplication1.Properties.Settings.Default.SimulatorHomeCheckY2, "A.bmp", "000000", 1, 0, out intX, out intY) == 0)
+            //{
 
-                 SystemInfo.AppState = "打开游戏";
+            //     SystemInfo.AppState = "打开游戏";
 
-                mouse.LeftClick(dmae, WindowsFormsApplication1.Properties.Settings.Default.GameIconX, WindowsFormsApplication1.Properties.Settings.Default.GameIconY, WindowsFormsApplication1.Properties.Settings.Default.GameIconX+2, WindowsFormsApplication1.Properties.Settings.Default.GameIconX+2);
-                mouse.delayTime(5, 1);
-            }
+            //    mouse.LeftClick(dmae, WindowsFormsApplication1.Properties.Settings.Default.GameIconX, WindowsFormsApplication1.Properties.Settings.Default.GameIconY, WindowsFormsApplication1.Properties.Settings.Default.GameIconX+2, WindowsFormsApplication1.Properties.Settings.Default.GameIconX+2);
+            //    mouse.delayTime(5, 1);
+            //}
 
-            if (mouse.CheckHomePage(dmae) == 0)
-            {
-                SystemInfo.AppState = "重连成功";
-                return;
-            }
-            while (dmae.CmpColor(145, 327,"ffffff",1)==0&& dmae.CmpColor(302, 106, "ffffff", 1) == 0 && dmae.CmpColor(167, 336, "ffffff", 1) == 0 && dmae.CmpColor(43, 180, "ffffff", 1) == 0 && dmae.CmpColor(445, 108, "ffffff", 1) == 0)
-            {
-                SystemInfo.AppState = "点击登陆";
-                mouse.LeftClick(dmae, 29, 399, 273, 451);
-                mouse.delayTime(5, 5);
-            }
+            //if (mouse.CheckHomePage(dmae) == 0)
+            //{
+            //    SystemInfo.AppState = "重连成功";
+            //    return;
+            //}
+            //while (dmae.CmpColor(145, 327,"ffffff",1)==0&& dmae.CmpColor(302, 106, "ffffff", 1) == 0 && dmae.CmpColor(167, 336, "ffffff", 1) == 0 && dmae.CmpColor(43, 180, "ffffff", 1) == 0 && dmae.CmpColor(445, 108, "ffffff", 1) == 0)
+            //{
+            //    SystemInfo.AppState = "点击登陆";
+            //    mouse.LeftClick(dmae, 29, 399, 273, 451);
+            //    mouse.delayTime(5, 5);
+            //}
 
 
-            while (mouse.CheckHomePage(dmae) == 1 )//直到回到主页，不停地点击登陆
-            {
-                if (dmae.CmpColor(367, 285, "ffffff", 1) == 0 && dmae.CmpColor(477, 282, "ffffff", 1) == 0 && dmae.CmpColor(645, 292, "ffffff", 1) == 0 && dmae.CmpColor(715, 311, "ffffff", 1) == 0 && dmae.CmpColor(759, 295, "ffffff", 1) == 0)
-                {
-                    while (dmae.CmpColor(367, 285, "ffffff", 1) == 0 && dmae.CmpColor(477, 282, "ffffff", 1) == 0 && dmae.CmpColor(645, 292, "ffffff", 1) == 0 && dmae.CmpColor(715, 311, "ffffff", 1) == 0 && dmae.CmpColor(759, 295, "ffffff", 1) == 0)
-                    {
-                        //自动登陆超时错误窗口
-                        SystemInfo.AppState = "登陆超时";
-                        mouse.LeftClick(dmae, 501, 371, 779, 433);
-                        mouse.delayTime(5, 5);
-                    }
+            //while (mouse.CheckHomePage(dmae) == 1 )//直到回到主页，不停地点击登陆
+            //{
+            //    if (dmae.CmpColor(367, 285, "ffffff", 1) == 0 && dmae.CmpColor(477, 282, "ffffff", 1) == 0 && dmae.CmpColor(645, 292, "ffffff", 1) == 0 && dmae.CmpColor(715, 311, "ffffff", 1) == 0 && dmae.CmpColor(759, 295, "ffffff", 1) == 0)
+            //    {
+            //        while (dmae.CmpColor(367, 285, "ffffff", 1) == 0 && dmae.CmpColor(477, 282, "ffffff", 1) == 0 && dmae.CmpColor(645, 292, "ffffff", 1) == 0 && dmae.CmpColor(715, 311, "ffffff", 1) == 0 && dmae.CmpColor(759, 295, "ffffff", 1) == 0)
+            //        {
+            //            //自动登陆超时错误窗口
+            //            SystemInfo.AppState = "登陆超时";
+            //            mouse.LeftClick(dmae, 501, 371, 779, 433);
+            //            mouse.delayTime(5, 5);
+            //        }
 
-                    //点击登陆
-                    while (dmae.CmpColor(618, 350, "ffffff", 1) == 0 && dmae.CmpColor(658, 370, "ffffff", 1) == 0 && dmae.CmpColor(641, 182, "ffffff", 1) == 0 && dmae.CmpColor(640, 136, "ffffff", 1) == 0)
-                    {
-                        SystemInfo.AppState = "点击登陆";
-                        mouse.LeftClick(dmae, 413, 326, 864, 389);
-                        mouse.delayTime(5, 1);
-                    }
-                }
-                mouse.LeftClick(dmae, 29, 399, 273, 451);
-                mouse.delayTime(5, 5);
-            }
-            if (mouse.CheckHomePage(dmae) == 0)
-            {
-                SystemInfo.AppState = "重连成功";
-                return;
-            }
+            //        //点击登陆
+            //        while (dmae.CmpColor(618, 350, "ffffff", 1) == 0 && dmae.CmpColor(658, 370, "ffffff", 1) == 0 && dmae.CmpColor(641, 182, "ffffff", 1) == 0 && dmae.CmpColor(640, 136, "ffffff", 1) == 0)
+            //        {
+            //            SystemInfo.AppState = "点击登陆";
+            //            mouse.LeftClick(dmae, 413, 326, 864, 389);
+            //            mouse.delayTime(5, 1);
+            //        }
+            //    }
+            //    mouse.LeftClick(dmae, 29, 399, 273, 451);
+            //    mouse.delayTime(5, 5);
+            //}
+            //if (mouse.CheckHomePage(dmae) == 0)
+            //{
+            //    SystemInfo.AppState = "重连成功";
+            //    return;
+            //}
         }
         
 
@@ -1426,7 +1426,7 @@ namespace testdm
                             BuildEquipmentArea(i, ref x1, ref y1, ref x2, ref y2);
                             im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentUsing = true;
                             im.gameData.User_BuildingEquipmentInfo[i].NeedToRecieve = false;
-                            im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(x1,y1,x2,y2, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                            im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(x1,y1,x2,y2, "000000-101010", (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100)));
                             break;//需要读取时间break; }
 
                         }
@@ -1494,7 +1494,7 @@ namespace testdm
                                 {
                                     mouse.delayTime(1);
                                 }
-                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(444, 177, 607, 222, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(444, 177, 607, 222, "000000-101010", (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100)));
                                 break;
                             }
                         case 1:
@@ -1503,7 +1503,7 @@ namespace testdm
                                 {
                                     mouse.delayTime(1);
                                 }
-                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(444, 387, 600, 439, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(444, 387, 600, 439, "000000-101010", (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100)));
                                 break;
                             }
                         case 2:
@@ -1512,7 +1512,7 @@ namespace testdm
                                 {
                                     mouse.delayTime(1);
                                 }
-                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(446, 600, 611, 643, "000000-101010", (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100)));
+                                im.gameData.User_BuildingEquipmentInfo[i].BuildEquipmentLastTime = getVolume(dmae.Ocr(446, 600, 611, 643, "000000-101010", (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100)));
                                 break;
                             }
 
@@ -1597,6 +1597,11 @@ namespace testdm
                 case "3_4E":
                     {
                         Battle3_4E(dmae, mouse,ref userBattleInfo);
+                        break;
+                    }
+                case "5_2N":
+                    {
+                        Battle5_2N(dmae, mouse, ref userBattleInfo);
                         break;
                     }
 
@@ -2520,7 +2525,72 @@ namespace testdm
         }
 
 
+        public void Battle5_2N(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
+        {
 
+
+            mouse.LeftClickHomeToBattle(dmae, "05", 2, 2);
+            mouse.delayTime(1);
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
+            mouse.delayTime(4);
+
+
+            if (userBattleInfo.SetMap == true)
+            {
+                mouse.MapSet(dmae, 162, 285, 178, 285, 211, 282, 120, 625);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+
+            }
+            mouse.ScreenDown(dmae, 44, 328, 332, 413, 300, 136, 519, 187, 515, 187, 515);
+            mouse.delayTime(1);
+            mouse.Teamdispose(dmae, 155, 467, 195, 500, userBattleInfo.TaskMianTeam);//指挥部部署
+
+            mouse.Teamdispose(dmae, 1029, 466, 1060, 506, userBattleInfo.TaskSupportTeam1);//指挥部部署
+
+            mouse.BattleStart(dmae);
+            mouse.delayTime(2);
+
+            //关掉任务简报
+            mouse.ClosMissionHelp(dmae);
+            //开始补给
+            if (userBattleInfo.ChoiceToSupply == true) { mouse.Support(dmae, 153, 465, 190, 501); }
+            mouse.MoveAndFight(dmae, 153, 465, 190, 501, /*第一个点坐标*/350, 460, 389, 492,/*第二个点坐标*/166, 332, 181, 430/*监测点坐标*/, 0, 1);//第一开始
+            mouse.ScreenDown(dmae, 44, 328, 332, 413, 300, 136, 519, 187, 515, 187, 515);
+
+            mouse.MoveAndFight(dmae, 348, 455, 391, 491, /*第一个点坐标*/575, 482, 625, 518,/*第二个点坐标*/363, 492, 378, 542/*监测点坐标*/, 0, 1);//第一开始
+            mouse.ScreenDown(dmae, 44, 328, 332, 413, 300, 136, 519, 187, 515, 187, 515);
+
+            switch (userBattleInfo.TaskType)
+            {
+                case 1:
+                    {
+                        mouse.MoveAndMove(dmae, 579, 477, 619, 517, /*第一个点坐标*/347, 454, 391, 496,/*第二个点坐标*/593, 516, 607, 564/*监测点坐标*/, 0, 1);//第二开始
+
+                        mouse.MoveToAirport(dmae, 354, 459, 387, 489, 151, 465, 198, 505,/**/ 406, 456, 464, 466, /*move坐标*/90, 470,/*点击移动坐标*/56, 469, 142, 505);//第四开始
+
+                        mouse.Evacuate(dmae, 155, 465, 198, 502, ref userBattleInfo);
+                        mouse.delayTime(1);
+                        mouse.StopBattle(dmae);
+                        break;
+                    }
+                case 2:
+                    {
+                        mouse.MoveAndFight(dmae, 579, 479, 614, 512, /*第一个点坐标*/810, 455, 840, 495,/*第二个点坐标*/592, 516, 609, 578/*监测点坐标*/, 0, 1);//第一开始
+                        mouse.ScreenDown(dmae, 44, 328, 332, 413, 300, 136, 519, 187, 515, 187, 515);
+
+                        mouse.MoveToAirport(dmae, 806, 465, 847, 498, 1026, 467, 1064, 506,/**/859, 460, 901, 471, /*move坐标*/960, 475,/*点击移动坐标*/927, 469, 1014, 509);//第四开始
+                        mouse.Evacuate(dmae, 1029, 470, 1067, 502, ref userBattleInfo);
+                        mouse.delayTime(1);
+                        mouse.StopBattle(dmae);
+
+                        break;
+                    }
+            }
+
+
+
+
+        }
 
 
 

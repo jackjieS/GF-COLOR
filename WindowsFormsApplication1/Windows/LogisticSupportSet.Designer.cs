@@ -80,11 +80,12 @@
             // 
             // textBox1
             // 
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(166, 15);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(38, 21);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "5";
+            this.textBox1.Text = "0";
             // 
             // label1
             // 

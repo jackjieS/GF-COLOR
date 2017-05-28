@@ -155,7 +155,7 @@ namespace WindowsFormsApplication1
             FindWindow();
             dm.SetShowErrorMsg(0);
 
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -180,9 +180,9 @@ namespace WindowsFormsApplication1
         public int BindWindowLock()
         {
 
-            if (Properties.Settings.Default.LockWindows)
+            if (WindowsFormsApplication1.BaseData.SystemInfo.LockWindows)
             {
-                switch (Properties.Settings.Default.BindWindowsType)
+                switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
                 {
                     case 1://1是大漠2是AE
                         {
@@ -206,9 +206,9 @@ namespace WindowsFormsApplication1
         }
         public int BindWindowUnLock()
         {
-            if (Properties.Settings.Default.LockWindows)
+            if (WindowsFormsApplication1.BaseData.SystemInfo.LockWindows)
             {
-                switch (Properties.Settings.Default.BindWindowsType)
+                switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
                 {
                     case 1://1是大漠2是AE
                         {
@@ -230,7 +230,7 @@ namespace WindowsFormsApplication1
         }
         public int UnBindWindow()
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -247,7 +247,7 @@ namespace WindowsFormsApplication1
 
         public int SetWindowSize(int hwnd, int width, int height)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -274,7 +274,7 @@ namespace WindowsFormsApplication1
         {
             height = width = -1;
 
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -291,7 +291,7 @@ namespace WindowsFormsApplication1
         public int Capture(int x1, int y1, int x2, int y2, string file)
         {
 
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -308,7 +308,7 @@ namespace WindowsFormsApplication1
 
         public int SetPath(string path)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -326,7 +326,7 @@ namespace WindowsFormsApplication1
         public bool SetDict()//设置系统路径和字典
         {
             int dmae;
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -362,7 +362,7 @@ namespace WindowsFormsApplication1
         public int UseDict(int x)
         {
             long dmae;
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -383,7 +383,7 @@ namespace WindowsFormsApplication1
 
         public int MoveTo(int x, int y)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -401,7 +401,7 @@ namespace WindowsFormsApplication1
         public int WheelDown()
         {
 
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -419,7 +419,7 @@ namespace WindowsFormsApplication1
         public int WheelUp()
         {
 
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -437,7 +437,7 @@ namespace WindowsFormsApplication1
         public int KeyDown(int vk_code)
         {
 
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -455,7 +455,7 @@ namespace WindowsFormsApplication1
         public int KeyUp(int vk_code)
         {
 
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -472,7 +472,7 @@ namespace WindowsFormsApplication1
 
         public int LeftDown()
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -488,7 +488,7 @@ namespace WindowsFormsApplication1
         }
         public int RightDown()
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -504,7 +504,7 @@ namespace WindowsFormsApplication1
         }
         public int RightUp()
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -520,7 +520,7 @@ namespace WindowsFormsApplication1
         }
         public int LeftUp()
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -537,7 +537,7 @@ namespace WindowsFormsApplication1
 
         public string GetColor(int x, int y)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -555,7 +555,7 @@ namespace WindowsFormsApplication1
         public int FindColor(int x1, int y1, int x2, int y2, string color, double sim, int dir, out object intX, out object intY)
         {
             intX = intY = -1;
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -572,7 +572,7 @@ namespace WindowsFormsApplication1
 
         public int LoadPic(string all_pic)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -591,7 +591,7 @@ namespace WindowsFormsApplication1
         {
             //返回找到的图片的序号,从0开始索引.如果没找到返回-1
             intX = intY = -1;
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -608,7 +608,7 @@ namespace WindowsFormsApplication1
 
         public int CmpColor(int x, int y, string color, double sim)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -625,7 +625,7 @@ namespace WindowsFormsApplication1
 
         public string FindMultiColorEx(int x1, int y1, int x2, int y2, string first_color, string offset_color, double sim, int dir)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -641,7 +641,7 @@ namespace WindowsFormsApplication1
         }
         public long GetResultCount(string ret)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -658,7 +658,7 @@ namespace WindowsFormsApplication1
 
         public string FindColorEx(int x1,int y1,int x2,int  y2,string color,double sim,int dir)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -677,7 +677,7 @@ namespace WindowsFormsApplication1
         {
 
             intX = intY = -1;
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -695,7 +695,7 @@ namespace WindowsFormsApplication1
         public int FindStrFast(int x1, int y1, int x2, int y2, string str, string color_format, double sim, out object intX, out object intY)
         {
             intX = intY = -1;
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -712,7 +712,7 @@ namespace WindowsFormsApplication1
 
         public string Ocr(int x1, int y1, int x2, int y2, string color_format, double sim)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                     {
@@ -728,7 +728,7 @@ namespace WindowsFormsApplication1
         }
         public string GetAveRGB(int x1, int y1,int x2,int y2)
         {
-            switch (Properties.Settings.Default.BindWindowsType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.BindWindowsType)
             {
                 case 1://1是大漠2是AE
                 {

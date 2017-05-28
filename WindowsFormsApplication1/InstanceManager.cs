@@ -21,6 +21,8 @@ namespace WindowsFormsApplication1
         //public DmAe dmae;
         public Mouse mouse;
         public Time time;
+        public BaseData.ConfigManager configManager;
+
 
         public BaseData.TaskList taskList;
         public BackgroundThread backGroundThread;
@@ -46,6 +48,7 @@ namespace WindowsFormsApplication1
             this.writelog = new WriteLog(this);
             this.mouse = new Mouse(this);
             this.time = new Time(this);
+            this.configManager = new BaseData.ConfigManager(this);
 
             this.taskList = new BaseData.TaskList(this);
             this.backGroundThread = new BackgroundThread(this);

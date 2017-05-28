@@ -99,8 +99,7 @@ namespace WindowsFormsApplication1
         public static int PictureBox1Count = 1;
         public static int PictureBox2Count = 0;
 
-        public static bool Time12AddGetFriendBattery=true;
-        public static bool Time3AddGetFriendBattery=true;
+
 
         public static void BindWindowS(DmAe dmae, int B)
         {

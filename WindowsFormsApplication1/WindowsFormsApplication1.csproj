@@ -125,6 +125,7 @@
     <Compile Include="BaseData\SystemInfo.cs" />
     <Compile Include="BaseData\UserOperationInfo.cs" />
     <Compile Include="CDmSoft.cs" />
+    <Compile Include="BaseData\ConfigManager.cs" />
     <Compile Include="Events\Equipment.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

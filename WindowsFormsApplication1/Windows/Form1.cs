@@ -27,8 +27,10 @@ namespace TaskList
 
         public Form1()
         {
+            this.im = new InstanceManager(this);
+            im.configManager.readConfig();
             InitializeComponent();
-            this.im= new InstanceManager(this);
+
         }
 
 
@@ -81,20 +83,20 @@ namespace TaskList
         private void Form1_Load(object sender, EventArgs e)//初始化
         {
 
-            CommonHelp.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
-            CommonHelp.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
+            SystemInfo.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
+            SystemInfo.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
 
             im.dormitory.ReadLogFriendListFromStart();
             im.dormitory.ReadtempFriendListFromStart();
-            im.Form1.checkBox1.Checked = Settings.Default.GetFriendBatteryAuto;
-            im.Form1.checkBox2.Checked = Settings.Default.GetFriendBatterySecondLoop;
-            im.Form1.checkBox3.Checked = Settings.Default.GetFriendBatteryCapt;
-            im.Form1.textBox29.Text = Settings.Default.GetFriendBattleryDelayM.ToString();
 
-            im.gameData.User_operationInfo[0].OperationName = Settings.Default.LogisticsTask1;
-            im.gameData.User_operationInfo[1].OperationName = Settings.Default.LogisticsTask2;
-            im.gameData.User_operationInfo[2].OperationName = Settings.Default.LogisticsTask3;
-            im.gameData.User_operationInfo[3].OperationName = Settings.Default.LogisticsTask4;
+            im.Form1.checkBox2.Checked = SystemInfo.GetFriendBatterySecondLoop;
+            im.Form1.checkBox3.Checked = SystemInfo.GetFriendBatteryCapt;
+            im.Form1.textBox29.Text = SystemInfo.GetFriendBattleryDelayM.ToString();
+
+            im.gameData.User_operationInfo[0].OperationName = WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask1;
+            im.gameData.User_operationInfo[1].OperationName = WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask2;
+            im.gameData.User_operationInfo[2].OperationName = WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask3;
+            im.gameData.User_operationInfo[3].OperationName = WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask4;
 
             im.gameData.User_operationInfo[0].OperationTeamName = "第一梯队";
             im.gameData.User_operationInfo[1].OperationTeamName = "第二梯队";
@@ -105,12 +107,7 @@ namespace TaskList
             im.Form1.comboBox10.SelectedIndex = 0;
             im.Form1.comboBox9.SelectedIndex = 0;
 
-            OperatingSystem osInfo = Environment.OSVersion;// 获取系统操作版本
-            WindowsFormsApplication1.BaseData.SystemInfo.OsType = osInfo.Version.Major;
-            Settings.Default.OsType = WindowsFormsApplication1.BaseData.SystemInfo.OsType;
-            Settings.Default.Save();// 保存系统操作版本
-            WriteLog.WriteError("***********************************************");
-            WriteLog.WriteError("当前系统   windows " + WindowsFormsApplication1.BaseData.SystemInfo.OsType);
+
             this.MaximizeBox = false;
             Control.CheckForIllegalCrossThreadCalls = false;
 
@@ -122,7 +119,7 @@ namespace TaskList
             }
 
             //模拟器设定
-            WindowsFormsApplication1.BaseData.SystemInfo.Simulator = Settings.Default.Simulator;
+
 
 
 
@@ -176,6 +173,7 @@ namespace TaskList
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             WriteLog.WriteError("初始化成功*****************************");
             string mcode = im.eyLogin.GetMachineCode();
             //if (mcode == "37797B15343158143F7C7B15CA627BDE" || im.commonHelp.checkT(mcode) == true)
@@ -194,13 +192,14 @@ namespace TaskList
 
                 if (dm_ret == 1)
                 {
-                    if (Settings.Default.FirstTimeU == true)
-                    {
-                        MessageBox.Show("检测到第一次运行，请校对颜色", "少女前线");
-                        var SetColor = new SetColor(im);
-                        SetColor.StartPosition = FormStartPosition.CenterParent;
-                        SetColor.ShowDialog(this);
-                    }
+                    //注意这里要检查UICFG版本号
+                    //if (Settings.Default.FirstTimeU == true)
+                    //{
+                    //    MessageBox.Show("检测到第一次运行，请校对颜色", "少女前线");
+                    //    var SetColor = new SetColor(im);
+                    //    SetColor.StartPosition = FormStartPosition.CenterParent;
+                    //    SetColor.ShowDialog(this);
+                    //}
 
 
                     im.Form1.button1.Enabled = false;
@@ -414,17 +413,19 @@ namespace TaskList
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Settings.Default.LogisticsTask1 = comboBox5.Text;
-            Settings.Default.LogisticsTask2 = comboBox6.Text;
-            Settings.Default.LogisticsTask3 = comboBox7.Text;
-            Settings.Default.LogisticsTask4 = comboBox8.Text;
+            WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask1 = comboBox5.Text;
+            WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask2 = comboBox6.Text;
+            WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask3 = comboBox7.Text;
+            WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask4 = comboBox8.Text;
 
-            Settings.Default.GetFriendBatteryAuto = im.Form1.checkBox1.Checked;
-            Settings.Default.GetFriendBatterySecondLoop = im.Form1.checkBox2.Checked;
-            Settings.Default.GetFriendBatteryCapt = im.Form1.checkBox3.Checked;
-            Settings.Default.GetFriendBattleryDelayM = Convert.ToInt32(im.Form1.textBox29.Text);
 
-            Settings.Default.Save();
+            im.Form1.checkBox1.Checked = SystemInfo.Time12AddGetFriendBattery;
+            im.Form1.checkBox4.Checked = SystemInfo.Time3AddGetFriendBattery;
+            SystemInfo.GetFriendBatterySecondLoop = im.Form1.checkBox2.Checked;
+            SystemInfo.GetFriendBatteryCapt = im.Form1.checkBox3.Checked;
+            SystemInfo.GetFriendBattleryDelayM = Convert.ToInt32(im.Form1.textBox29.Text);
+
+            im.configManager.saveConfig();
             int ret = im.eyLogin.LogOut();
             int dm_ret0 = dmae.UnBindWindow();
             try
@@ -616,9 +617,9 @@ namespace TaskList
         private void textBox29_TextChanged(object sender, EventArgs e)
         {
             int min = Convert.ToInt32(textBox29.Text);
-            Settings.Default.GetFriendBattleryDelayH = min / 60;
-            Settings.Default.GetFriendBattleryDelayM = min % 60;
-            if (Settings.Default.GetFriendBattleryDelayH >= 24) { MessageBox.Show("延迟24小时?mdzz"); textBox29.Text = "0"; }
+SystemInfo.GetFriendBattleryDelayH = min / 60;
+            SystemInfo.GetFriendBattleryDelayM = min % 60;
+            if (SystemInfo.GetFriendBattleryDelayH >= 24) { MessageBox.Show("延迟24小时?mdzz"); textBox29.Text = "0"; }
         }
 
      

@@ -119,11 +119,11 @@ namespace WindowsFormsApplication1.Events
             im.mouse.delayTime(1);
         }
 
-        public void GetFriendBattery(DmAe dmae,bool SecondTime=false,bool NeetTOCap=true)
+        public void GetFriendBattery(DmAe dmae,bool NeedSecondTime,bool NeetTOCap=true)
         {
             object intX = 0, intY = 0;
             bool FirstName = true;
-
+            bool secondtime = false;
             string Name= GetMyLogFriendName(dmae);
             im.mouse.ClickHomeDormitory(dmae);
 
@@ -177,7 +177,7 @@ namespace WindowsFormsApplication1.Events
 
                 }
                 //二次循环
-                if (im.mouse.CheckFriendDormitoryBattery(dmae) == true && SecondTime ==true)
+                if (im.mouse.CheckFriendDormitoryBattery(dmae) == true && secondtime == true)
                 {
                     im.mouse.ClickFriendDormitoryBattery(dmae);
                     im.mouse.ClickFriendDormitoryBatteryWindow(dmae);
@@ -189,16 +189,16 @@ namespace WindowsFormsApplication1.Events
                 
                 //如果当前名字和temp一样则退出循环
                 //二次循环检查
-                if (ComPFirstFriendName(dmae) == true && SecondTime ==true)
+                if (ComPFirstFriendName(dmae) == true && secondtime == true)
                 {
                     break;
                 }
-                if (ComPFirstFriendName(dmae) == true && SecondTime == false)
+                if (ComPFirstFriendName(dmae) == true && secondtime == false)
                 {
                     SystemInfo.AppState = "二次循环";
-                    if (im.Form1.checkBox2.Checked == true)
+                    if (NeedSecondTime == true)
                     {
-                        SecondTime = true;
+                        secondtime = true;
                     }
                 }
             }

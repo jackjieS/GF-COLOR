@@ -35,31 +35,30 @@ namespace WindowsFormsApplication1
                 Now = DateTime.Now;
 
                 BeijingTimeNow = CommonHelp.PSTConvertToGMT(Now);
-                //如果12点过了则添加
-                if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute <=(Settings.Default.GetFriendBattleryDelayM)) && CommonHelp.Time12AddGetFriendBattery == true)
+                //如果12点过了则添加Settings.Default.GetFriendBattleryDelayM
+                if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute == SystemInfo.GetFriendBattleryDelayM) && SystemInfo.Time12AddGetFriendBattery == true)
                 {
                     im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
-                    CommonHelp.Time12AddGetFriendBattery = false;
+                    SystemInfo.Time12AddGetFriendBattery = false;
+
                 }
                 else
                 {
-                    CommonHelp.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
+                    if(BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute != SystemInfo.GetFriendBattleryDelayM)
+                        SystemInfo.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
                 }
+
                 //3点
-                if(BeijingTimeNow.Hour*60+BeijingTimeNow.Minute <= (60 * 3 + (Settings.Default.GetFriendBattleryDelayM)))
+                if(BeijingTimeNow.Hour*60+BeijingTimeNow.Minute == (60 * 3 + (SystemInfo.GetFriendBattleryDelayM))&& SystemInfo.Time3AddGetFriendBattery == true)
                 {
-                    if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute >= (60 * 3 + (Settings.Default.GetFriendBattleryDelayM))) && CommonHelp.Time3AddGetFriendBattery == true)
-                    {
-                        im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
-                        CommonHelp.Time3AddGetFriendBattery = false;
-                    }
-                    else
-                    {
-                        CommonHelp.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
-                    }
-
+                    im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
+                    SystemInfo.Time3AddGetFriendBattery = false;
                 }
-
+                else
+                {
+                    if (BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute != 60 * 3 + SystemInfo.GetFriendBattleryDelayM)
+                        SystemInfo.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
+                }
 
                 im.gameData.User_operationInfo[0].OperationLastTimeCD(c);
                 im.gameData.User_operationInfo[1].OperationLastTimeCD(c);
@@ -919,9 +918,9 @@ namespace WindowsFormsApplication1
                                         im.mouse.delayTime(1, 1);
                                         Random ran = new Random();
 
-                                        if (Settings.Default.LogisticFinishWaittingTime != 0)
+                                        if (WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime != 0)
                                         {
-                                            im.mouse.delayTime(Convert.ToDouble(ran.Next(1, Settings.Default.LogisticFinishWaittingTime * 10)) / 10 * 60, 1);//等待时间
+                                            im.mouse.delayTime(Convert.ToDouble(ran.Next(1, WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime * 10)) / 10 * 60, 1);//等待时间
                                         }
 
                                         im.mouse.LeftClick(dmae, 484, 258, 681, 459);
@@ -1037,35 +1036,35 @@ namespace WindowsFormsApplication1
             while (true)
             {
 
-                Thread.Sleep(Settings.Default.SimulatorHomeCheckTime * 10);
+                Thread.Sleep(WindowsFormsApplication1.BaseData.SystemInfo.SimulatorCheckTime * 10);
 
 
                 //sw.Start();
-                if (dmae.FindPic(Settings.Default.SimulatorHomeCheckX1, Settings.Default.SimulatorHomeCheckY1, Settings.Default.SimulatorHomeCheckX2, Settings.Default.SimulatorHomeCheckY2, "A.bmp", "000000", 1, 0, out intX, out intY) == 0)//用户自定义检测范围
-                {
-                    //BaseData.SystemInfo.AppState = "检测到闪退";
-                    ////开始处理线程1
-                    //thread1.Abort();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //im.taskList.taskremove();
-                    //BaseData.SystemInfo.AppState = "返回游戏";
-                    //im.mouse.BindWindowS(dmae, 0);
-                    //im.time.BackToGame(dmae, im.mouse);
-                    //im.mouse.BindWindowS(dmae, 0);
-                    //thread1 = new Thread(CompleteMisson);
-                    //thread1.IsBackground = true;
-                    //thread1.Start();
-                    //im.mouse.BindWindowS(dmae, 0);//0不锁死鼠标
+                //if (dmae.FindPic(Settings.Default.SimulatorHomeCheckX1, Settings.Default.SimulatorHomeCheckY1, Settings.Default.SimulatorHomeCheckX2, Settings.Default.SimulatorHomeCheckY2, "A.bmp", "000000", 1, 0, out intX, out intY) == 0)//用户自定义检测范围
+                //{
+                //    //BaseData.SystemInfo.AppState = "检测到闪退";
+                //    ////开始处理线程1
+                //    //thread1.Abort();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //im.taskList.taskremove();
+                //    //BaseData.SystemInfo.AppState = "返回游戏";
+                //    //im.mouse.BindWindowS(dmae, 0);
+                //    //im.time.BackToGame(dmae, im.mouse);
+                //    //im.mouse.BindWindowS(dmae, 0);
+                //    //thread1 = new Thread(CompleteMisson);
+                //    //thread1.IsBackground = true;
+                //    //thread1.Start();
+                //    //im.mouse.BindWindowS(dmae, 0);//0不锁死鼠标
 
-                }
+                //}
 
                 //监控页面
 

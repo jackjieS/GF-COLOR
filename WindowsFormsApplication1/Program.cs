@@ -26,6 +26,7 @@ namespace TaskList
             FSLib.App.SimpleUpdater.Updater.CheckUpdateSimple();
 
 
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

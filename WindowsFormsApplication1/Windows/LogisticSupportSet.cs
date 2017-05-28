@@ -21,14 +21,14 @@ namespace WindowsFormsApplication1
 
         private void LogisticSupportSet_Load(object sender, EventArgs e)
         {
-            textBox1.Text = WindowsFormsApplication1.Properties.Settings.Default.LogisticFinishWaittingTime.ToString();
-            textBox2.Text = WindowsFormsApplication1.Properties.Settings.Default.LogisticLoopTimeMAX.ToString();
+            textBox1.Text = WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime.ToString();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WindowsFormsApplication1.Properties.Settings.Default.LogisticFinishWaittingTime = Convert.ToInt32(textBox1.Text);
-            WindowsFormsApplication1.Properties.Settings.Default.LogisticLoopTimeMAX = Convert.ToInt32(textBox2.Text);
+            WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime = Convert.ToInt32(textBox1.Text);
+
             WindowsFormsApplication1.Properties.Settings.Default.Save();
             this.Close();
         }

@@ -34,7 +34,7 @@ namespace testdm
                 }
                 else
                 {
-                    temp = secend * 1000 * Settings.Default.WaitTime;
+                    temp = secend * 1000 * WindowsFormsApplication1.BaseData.SystemInfo.WaitTime;
                 }
 
 
@@ -188,7 +188,7 @@ namespace testdm
             int dm_ret2 = dmae.CmpColor(x2, y2, "ffffff", 1);
             int dm_ret5 = dmae.CmpColor(x3, y3, "ffffff", 1);
             string tempcolor0 = "", tempcolor1 = "", tempcolor2 = "";
-            switch (WindowsFormsApplication1.Properties.Settings.Default.SetMapType)
+            switch (WindowsFormsApplication1.BaseData.SystemInfo.SetMapType)
 
             {
                 case 0://右键平移
@@ -2019,7 +2019,7 @@ namespace testdm
             //根据情况往下拉寻找所需的战役
 
             FirstTag: string CombatMissionMColor = dmae.GetColor(102, 34);
-            result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+            result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
             if(result != -1)//-1没有找到
             {
                 //找到直接点击完成任务
@@ -2029,7 +2029,7 @@ namespace testdm
                 {
                     LeftClick(dmae, Convert.ToInt32(intX), Convert.ToInt32(intY), Convert.ToInt32(intX) + 5, Convert.ToInt32(intY) + 5);
                     delayTime(1);
-                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
                     if (result == -1)//点击失败，点击错误需要重来
                     {
                         goto FirstTag;
@@ -2041,7 +2041,7 @@ namespace testdm
                 //若无,则拉上定位0战役
                 Random ran = new Random();
                 SystemInfo.AppState = "屏幕往上移动";
-                while (dmae.FindStr(197, 107, 395, 185, "00", CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY) == -1) 
+                while (dmae.FindStr(197, 107, 395, 185, "00", CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY) == -1) 
                 {
                     //206,115,304,163鼠标起始范围
                     int tempx = ran.Next(206, 304);
@@ -2061,12 +2061,12 @@ namespace testdm
                 if (Convert.ToInt32(battle.Substring(battle.Length - 1, 1)) < 6)
                 {
                     //若所选战役00-05则不需要向下点
-                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
                     while (Convert.ToInt32(intX) < 310)
                     {
                         LeftClick(dmae, Convert.ToInt32(intX), Convert.ToInt32(intY), Convert.ToInt32(intX) + 5, Convert.ToInt32(intY) + 5);
                         delayTime(1);
-                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
                     }
                 }
                 else
@@ -2074,12 +2074,12 @@ namespace testdm
                     //06-08则往下点
                     //188,709,323,720鼠标起始范围
                     LeftClick(dmae, 188, 713, 323, 720);
-                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
                     while (Convert.ToInt32(intX) < 310)
                     {
                         LeftClick(dmae, 188, 709, 323, 720);
                         delayTime(1,1);
-                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset + Settings.Default.FindTeamSlectStrColorOffset, (double)((decimal)Settings.Default.FindTeamSlectStrSim / 100), out intX, out intY);
+                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
                     }
                 }
 
@@ -2588,7 +2588,7 @@ namespace testdm
             if(userBattleInfo.DismantleGunOrEquipment == true)
             {
                 //Task.Insert(0, Dismantlement);
-                CommonHelp.BattleEquipmentOrGunNumber = userBattleInfo.Key;
+                CommonHelp.BattleEquipmentOrGunNumber = userBattleInfo.Key+1;
                 userBattleInfo.NeetToDismantleGunOrEquipment = true;
                 switch (userBattleInfo.DismantleType)//选择拆除形式是人形还是装备
                 {
@@ -2929,9 +2929,7 @@ namespace testdm
 
         public void CheckMapSize(DmAe dmae,int pointx1,int pointy1,int pointx2, int pointy2)
         {
-            int dm_ret0 = dmae.CmpColor(pointx1, pointy1, Settings.Default.AirPort, 0.9);
-            int dm_ret1 = dmae.CmpColor(pointx2, pointy2, Settings.Default.AirPort, 0.9);
-            if(dm_ret0 == 1 || dm_ret1 == 1) { MessageBox.Show("地图检测失败，是否确认地图已缩放到最大？", "少女前线"); }
+
 
         }
 
@@ -3253,14 +3251,12 @@ namespace testdm
                 }
 
 
-                if (Settings.Default.RandomNotes == true)
-                {
-                    int dm_retsave = dmae.Capture(425, 150, 963, 599, "\\随机点记录\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
-                }
 
-                if (Settings.Default.DebugMode == true)
+                    int dm_retsave = dmae.Capture(425, 150, 963, 599, "\\随机点记录\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
+
+                if (WindowsFormsApplication1.BaseData.SystemInfo.DebugMode == true)
                 {
-                    int dm_retsave = dmae.Capture(0, 0, 2000, 2000, "\\Debug\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
+                    dm_retsave = dmae.Capture(0, 0, 2000, 2000, "\\Debug\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
                 }
 
 
@@ -3620,14 +3616,12 @@ namespace testdm
                     delayTime(1, 1);
                 }
 
-                if (Settings.Default.RandomNotes == true)
-                {
-                    int dm_retsave = dmae.Capture(425, 150, 963, 599, "\\随机点记录\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
-                }
 
-                if (Settings.Default.DebugMode == true)
+                    int dm_retsave = dmae.Capture(425, 150, 963, 599, "\\随机点记录\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
+
+                if (WindowsFormsApplication1.BaseData.SystemInfo.DebugMode == true)
                 {
-                    int dm_retsave = dmae.Capture(0, 0, 2000, 2000, "\\Debug\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
+                    dm_retsave = dmae.Capture(0, 0, 2000, 2000, "\\Debug\\" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".bmp");
                 }
 
                 int dm_ret10 = dmae.CmpColor(599, 497, "ffffff", 0.9);
@@ -6141,14 +6135,25 @@ namespace testdm
         public void CheckNormalAndAutoBattleButton(DmAe dmae,out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1)
         {
             //300,555
+            string ignoreColor0;
             string Color0;
             int NormalCount = 0;
             int AutoCount = 0;
             NormalButtonX1 = 0; NormalButtonY1 = 0; AutoButtonX1 = 0; AutoButtonY1 = 0;
-            int x1 = 300, y1 = 555;
-            for(x1 = 300, y1 = 555; x1 <= 1092; x1++)
+            int x1 = 300, y1 = 560;
+
+            ignoreColor0 = dmae.GetColor(550, 100);
+
+
+
+            for(x1 = 300, y1 = 560; x1 <= 1092; x1++)
             {
+                
                 Color0 = dmae.GetColor(x1, y1);
+                if (Color0 == ignoreColor0)
+                {
+                    continue;
+                }
                 if (dmae.CmpColor(x1 + 1, y1, Color0, 1) == 0)
                 {
                     //NormalCount++;
@@ -6165,6 +6170,12 @@ namespace testdm
             for (; x1 <= 1092; x1++)
             {
                 Color0 = dmae.GetColor(x1, y1);
+
+                if (Color0 == ignoreColor0)
+                {
+                    continue;
+                }
+
                 if (dmae.CmpColor(x1 + 1, y1, Color0, 1) == 0)
                 {
                     NormalCount++;
@@ -6175,6 +6186,16 @@ namespace testdm
                     AutoCount = 0;
                 }
             }
+
+            //判断是否只有一个按钮 自律已经使用
+            if (NormalButtonX1 == 0)
+            {
+                NormalButtonX1 = AutoButtonX1;
+                NormalButtonY1 = AutoButtonY1;
+            }
+
+
+
         }
 
         public int CheckHomePage(DmAe dmae , int x1 = 1100, int y1 = 690, int x2 = 975, int y2 = 680, int x3 = 695, int y3 = 25)
