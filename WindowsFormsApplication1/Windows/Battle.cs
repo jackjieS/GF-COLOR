@@ -53,6 +53,7 @@ namespace testdm
             textBox7.Text = WindowsFormsApplication1.BaseData.SystemInfo.FixMaxPercentage.ToString();
             textBox8.Text = WindowsFormsApplication1.BaseData.SystemInfo.Team_SerrorTime.ToString();
             textBox9.Text = WindowsFormsApplication1.BaseData.SystemInfo.EquipmentUpdatePostion;
+            textBox11.Text = WindowsFormsApplication1.BaseData.SystemInfo.EquipmentUpdateCount.ToString();
             //page2
 
 
@@ -86,10 +87,10 @@ namespace testdm
 
             WindowsFormsApplication1.BaseData.SystemInfo.EquipmentUpdateType = comboBox8.Text;
             WindowsFormsApplication1.BaseData.SystemInfo.EquipmentUpdatePostion = textBox9.Text;
+            WindowsFormsApplication1.BaseData.SystemInfo.EquipmentUpdateCount = Convert.ToInt32(textBox11.Text); 
 
 
-
-            if(radioButton1.Checked == true)
+            if (radioButton1.Checked == true)
             {
                 WindowsFormsApplication1.BaseData.SystemInfo.FixType = 1;
             }
@@ -149,6 +150,7 @@ namespace testdm
                         im.gameData.User_battleInfo[0].DismantleType = 1;
                         im.gameData.User_battleInfo[0].EquipmentType = comboBox8.SelectedIndex;
                         im.gameData.User_battleInfo[0].EquipmentUpdatePostion = Convert.ToInt32(textBox9.Text);
+                        im.gameData.User_battleInfo[0].EquipmentUpdateCount =Convert.ToInt32(textBox11.Text);
                     }
                 }
 
@@ -205,6 +207,7 @@ namespace testdm
                         im.gameData.User_battleInfo[1].DismantleType = 1;
                         im.gameData.User_battleInfo[1].EquipmentType = comboBox8.SelectedIndex;
                         im.gameData.User_battleInfo[1].EquipmentUpdatePostion = Convert.ToInt32(textBox9.Text);
+                        im.gameData.User_battleInfo[1].EquipmentUpdateCount = Convert.ToInt32(textBox11.Text);
                     }
                 }
 
@@ -263,6 +266,7 @@ namespace testdm
                         im.gameData.User_battleInfo[2].DismantleType = 1;
                         im.gameData.User_battleInfo[2].EquipmentType = comboBox8.SelectedIndex;
                         im.gameData.User_battleInfo[2].EquipmentUpdatePostion = Convert.ToInt32(textBox9.Text);
+                        im.gameData.User_battleInfo[2].EquipmentUpdateCount = Convert.ToInt32(textBox11.Text);
                     }
                 }
 
@@ -321,6 +325,7 @@ namespace testdm
                         im.gameData.User_battleInfo[3].DismantleType = 1;
                         im.gameData.User_battleInfo[3].EquipmentType = comboBox8.SelectedIndex;
                         im.gameData.User_battleInfo[3].EquipmentUpdatePostion = Convert.ToInt32(textBox9.Text);
+                        im.gameData.User_battleInfo[3].EquipmentUpdateCount = Convert.ToInt32(textBox11.Text);
                     }
                 }
 
@@ -337,13 +342,11 @@ namespace testdm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            WindowsFormsApplication1.BaseData.SystemInfo.AutoTeam1 = comboBox3.Text;
-            WindowsFormsApplication1.BaseData.SystemInfo.AutoTeam2 = comboBox4.Text;
-            WindowsFormsApplication1.BaseData.SystemInfo.AutoTeam3 = comboBox5.Text;
-            WindowsFormsApplication1.BaseData.SystemInfo.AutoTeam4 = comboBox6.Text;
-            WindowsFormsApplication1.BaseData.SystemInfo.AutoMap = comboBox7.Text;
-
-            Settings.Default.Save();
+            im.gameData.User_AutobattleInfo[0].AutoBattleTeamName1 = comboBox3.Text;
+            im.gameData.User_AutobattleInfo[0].AutoBattleTeamName2 = comboBox4.Text;
+            im.gameData.User_AutobattleInfo[0].AutoBattleTeamName3 = comboBox5.Text;
+            im.gameData.User_AutobattleInfo[0].AutoBattleTeamName4 = comboBox6.Text;
+            im.gameData.User_AutobattleInfo[0].AutoBattleMap = comboBox7.Text;
             im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.AutoBattle);
             this.Close();
         }

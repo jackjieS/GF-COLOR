@@ -252,7 +252,26 @@ namespace WindowsFormsApplication1.BaseData
                 if (!this.im.configManager.Load())
                 {
                     MessageBox.Show("配置文件加载失败！");
+                    CommonHelp.DownloadUIcfg();
                     Environment.Exit(0);
+                }
+                
+                SystemInfo.UIcfg = this.im.configManager.getConfigDouble("UIcfg");
+                if (SystemInfo.UIcfg < 0.12)
+                {
+                    MessageBox.Show(string.Format("开始下载UIconfig"));
+                    string URLAddress = @"http://45.78.2.254/GF/UIconfig.cfg";
+                    try
+                    {
+
+                        CommonHelp.client.DownloadFile(URLAddress, "UIconfig.cfg");
+                    }
+                    catch (Exception a)
+                    {
+                        MessageBox.Show(string.Format("下载UIconfig发生错误 : {0}", a.ToString()));
+
+                    }
+                    MessageBox.Show(string.Format("UIconfig下载完毕"));
                 }
 
                 SystemInfo.BattleMap = this.im.configManager.getConfigString("BattleMap");
@@ -280,6 +299,7 @@ namespace WindowsFormsApplication1.BaseData
                 SystemInfo.Team_SerrorTime = this.im.configManager.getConfigInt("Team_SerrorTime");
                 SystemInfo.EquipmentUpdateType = this.im.configManager.getConfigString("EquipmentUpdateType");
                 SystemInfo.EquipmentUpdatePostion = this.im.configManager.getConfigString("EquipmentUpdatePostion");
+                SystemInfo.EquipmentUpdateCount = this.im.configManager.getConfigInt("EquipmentUpdateCount");
                 SystemInfo.LogisticsTask1 = this.im.configManager.getConfigString("LogisticsTask1");
                 SystemInfo.LogisticsTask2 = this.im.configManager.getConfigString("LogisticsTask2");
                 SystemInfo.LogisticsTask3 = this.im.configManager.getConfigString("LogisticsTask3");
@@ -320,7 +340,7 @@ namespace WindowsFormsApplication1.BaseData
             try
             {
 
-
+                this.im.configManager.setConfigDouble("UIcfg", SystemInfo.UIcfg);
                 this.im.configManager.setConfigString("BattleMap", SystemInfo.BattleMap);
                 this.im.configManager.setConfigString("MainTeam", SystemInfo.MainTeam);
                 this.im.configManager.setConfigString("SupportTeam", SystemInfo.SupportTeam);
@@ -346,6 +366,7 @@ namespace WindowsFormsApplication1.BaseData
                 this.im.configManager.setConfigInt("Team_SerrorTime", SystemInfo.Team_SerrorTime);
                 this.im.configManager.setConfigString("EquipmentUpdateType", SystemInfo.EquipmentUpdateType);
                 this.im.configManager.setConfigString("EquipmentUpdatePostion", SystemInfo.EquipmentUpdatePostion);
+                this.im.configManager.setConfigInt("EquipmentUpdateCount", SystemInfo.EquipmentUpdateCount);
                 this.im.configManager.setConfigString("LogisticsTask1", SystemInfo.LogisticsTask1);
                 this.im.configManager.setConfigString("LogisticsTask2", SystemInfo.LogisticsTask2);
                 this.im.configManager.setConfigString("LogisticsTask3", SystemInfo.LogisticsTask3);

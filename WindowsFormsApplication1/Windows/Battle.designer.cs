@@ -89,8 +89,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -684,6 +685,8 @@
             this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Items.AddRange(new object[] {
+            "1_1",
+            "1_2",
             "1_4",
             "1_4E"});
             this.comboBox7.Location = new System.Drawing.Point(75, 120);
@@ -828,8 +831,9 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox4);
+            this.tabPage3.Controls.Add(this.textBox11);
             this.tabPage3.Controls.Add(this.label31);
+            this.tabPage3.Controls.Add(this.textBox4);
             this.tabPage3.Controls.Add(this.comboBox8);
             this.tabPage3.Controls.Add(this.label30);
             this.tabPage3.Controls.Add(this.label28);
@@ -844,6 +848,23 @@
             this.tabPage3.Text = "测试";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(74, 190);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(48, 21);
+            this.textBox11.TabIndex = 132;
+            this.textBox11.Text = "24";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(10, 194);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(59, 12);
+            this.label31.TabIndex = 131;
+            this.label31.Text = "强化数量:";
+            // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(87, 10);
@@ -851,15 +872,6 @@
             this.textBox4.Size = new System.Drawing.Size(48, 21);
             this.textBox4.TabIndex = 130;
             this.textBox4.Text = "24";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(10, 197);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(149, 12);
-            this.label31.TabIndex = 7;
-            this.label31.Text = "注意强化使用所有两星装备";
             // 
             // comboBox8
             // 
@@ -880,7 +892,7 @@
             "红点瞄具",
             "夜战装备",
             "消音器"});
-            this.comboBox8.Location = new System.Drawing.Point(72, 135);
+            this.comboBox8.Location = new System.Drawing.Point(74, 135);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(121, 20);
             this.comboBox8.TabIndex = 6;
@@ -905,7 +917,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(77, 163);
+            this.textBox9.Location = new System.Drawing.Point(74, 164);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(26, 21);
             this.textBox9.TabIndex = 3;
@@ -1031,11 +1043,12 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ComboBox comboBox8;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label31;
     }
 }

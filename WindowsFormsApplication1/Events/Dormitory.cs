@@ -200,6 +200,10 @@ namespace WindowsFormsApplication1.Events
                     {
                         secondtime = true;
                     }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
 

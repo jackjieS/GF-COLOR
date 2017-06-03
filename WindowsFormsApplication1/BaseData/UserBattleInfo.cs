@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1.BaseData
         public bool ChangeGunBattleTask;//换枪任务
 
         public int DismantlementGunCount = 24;//拆枪数量
+        public int EquipmentUpdateCount = 24;
 
         public bool DismantleGunOrEquipment;//这个变量决定枪满装备满是否拆除或者停止脚本
         public int DismantleType;//=0表示拆的是枪，1是装备升级
@@ -112,17 +113,17 @@ namespace WindowsFormsApplication1.BaseData
     public class UserAutoBattleInfo
     {
         public bool AutoBattleUse = false;
+        public bool DismantleGunOrEquipment = false;
+        public bool NeetToDismantleGunOrEquipment = false;
+        public int DismantleType = 0;
         public int AutoBattleStartTime;
         public int AutoBattleLastTime;
         public int AutoBattleLoopTime = 0;
+        public string AutoBattleMap;
         public string AutoBattleTeamName1;
         public string AutoBattleTeamName2;
         public string AutoBattleTeamName3;
         public string AutoBattleTeamName4;
-        public string AutoBattleTeamName5;
-        public string AutoBattleTeamName6;
-        public string AutoBattleTeamName7;
-        public string AutoBattleTeamName8;
         public bool AutoBattle_State;
 
         public void AutoBattleLastTimeCD(int c)

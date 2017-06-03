@@ -80,8 +80,16 @@ namespace TaskList
 
 
 
+
+
         private void Form1_Load(object sender, EventArgs e)//初始化
         {
+            //检查UIconfig版本
+
+
+
+
+
 
             SystemInfo.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
             SystemInfo.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
@@ -176,9 +184,10 @@ namespace TaskList
 
             WriteLog.WriteError("初始化成功*****************************");
             string mcode = im.eyLogin.GetMachineCode();
-            //if (mcode == "37797B15343158143F7C7B15CA627BDE" || im.commonHelp.checkT(mcode) == true)
-            //{
-            if (true) { 
+            if (mcode == "37797B15343158143F7C7B15CA627BDE" || im.commonHelp.checkT(mcode))
+            {
+                //if (true)
+                //{
                 //模拟器选择
                 int dm_ret = 0;
                 dm_ret = dmae.BindWindow();
@@ -354,26 +363,29 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            //右下角白点转圈
-            //1157,546,1279,665
-            //1160,574,1185,639
-            int x1, y1;
-            while (true)
-            {
-                int dm_ret = 0;
+            im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.WaitAuttoBattleFinish);
 
-                for (x1 = 1160, y1 = 574; y1 <= 639; y1++)
-                {
-                    for (x1 = 1160; x1 <= 1185; x1++)
-                    {
-                        if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
-                        {
-                            dm_ret = dm_ret + 1;
-                        }
-                    }
-                }
-                MessageBox.Show(string.Format("WhiteCount = {0}", dm_ret.ToString()));
-            }
+
+            ////右下角白点转圈
+            ////1157,546,1279,665
+            ////1160,574,1185,639
+            //int x1, y1;
+            //while (true)
+            //{
+            //    int dm_ret = 0;
+
+            //    for (x1 = 1160, y1 = 574; y1 <= 639; y1++)
+            //    {
+            //        for (x1 = 1160; x1 <= 1185; x1++)
+            //        {
+            //            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+            //            {
+            //                dm_ret = dm_ret + 1;
+            //            }
+            //        }
+            //    }
+            //    MessageBox.Show(string.Format("WhiteCount = {0}", dm_ret.ToString()));
+            //}
 
         }
 

@@ -10,6 +10,12 @@ using static WindowsFormsApplication1.BaseData.TaskList;
 using TaskList;
 namespace WindowsFormsApplication1
 {
+    public class LogistandAutolist
+    {
+        public int type;//0是后勤 1是自律
+        public int key;//后勤梯队识别1-4
+        public int Time;
+    }
     class CommonHelp
     {
         private InstanceManager im;
@@ -33,45 +39,17 @@ namespace WindowsFormsApplication1
 
 
 
-            int ret0 = im.eyLogin.UserLogin(WindowsFormsApplication1.BaseData.SystemInfo.MacCode, "a123456789", version, mcode);
+            int ret0 = im.eyLogin.UserLogin(WindowsFormsApplication1.BaseData.SystemInfo.MacCode, "a123456789", "1.5.6.2", mcode);
 
             if (ret0 == 0)
             {
                 WindowsFormsApplication1.BaseData.SystemInfo.AppState = "验证失败";
-                if (im.eyLogin.GetLastError() == -203)
-                {
-                    MessageBox.Show("发现新版本，请在GFH群获取新版本。", "少女前线");
-                    WriteLog.WriteError("发现新版本，请在GFH群获取新版本。");
-                    Environment.Exit(0);
 
-                }
-                //MessageBox.Show(eyLogin.GetLastError().ToString(), "少女前线");
+                MessageBox.Show(string.Format("错误代码 :{0} ", im.eyLogin.GetLastError()));
                 return false;
             }
             else
             {
-
-                string ret1 = im.eyLogin.GetLatestVersion();
-                if (ret1 != version)
-                {
-                    MessageBox.Show("发现新版本，请在GFH群获取新版本。", "少女前线");
-                    Environment.Exit(0);
-                    return false;
-                }
-                BaseData.SystemInfo.AppState = "验证成功";
-                WriteLog.WriteError("验证成功。");
-                int ret2 = im.eyLogin.OpenUserCheck();
-
-                if (ret2 == 0)
-
-                {
-
-                    MessageBox.Show("开启自动校验用户状态失败.");
-                }
-
-
-
-
                 return true;
             }
 
@@ -95,11 +73,30 @@ namespace WindowsFormsApplication1
         public static int BattleFixNumber;
         public static int BattleEquipmentOrGunNumber;//枪满或者装备满当前IDkey
         public static List<TaskListstruct> gametasklist = new List<TaskListstruct>();
-        public static List<int> User_OperationNumberNow = new List<int>();
+        public static List<LogistandAutolist> User_LogistandAutoNumberNow = new List<LogistandAutolist>();
         public static int PictureBox1Count = 1;
         public static int PictureBox2Count = 0;
+        public static System.Net.WebClient client = new System.Net.WebClient();
 
 
+        public static Func<int> DownloadUIcfg = delegate ()
+        {
+            MessageBox.Show(string.Format("开始下载UIconfig"));
+
+            string URLAddress = @"http://45.78.2.254/GF/UIconfig.cfg";
+            try
+            {
+
+                client.DownloadFile(URLAddress, "UIconfig.cfg");
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show(string.Format("下载UIconfig发生错误 : {0}", a.ToString()));
+
+            }
+            MessageBox.Show(string.Format("UIconfig下载完毕"));
+            return 0;
+        };
 
         public static void BindWindowS(DmAe dmae, int B)
         {

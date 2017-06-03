@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
                 im.gameData.User_BuildingEquipmentInfo[2].BuildingLastTimeCD(c);
                 for (int i = 0; i < 4; i++)
                 {
-                    if (im.gameData.User_operationInfo[i].OperationLastTime == 0)
+                    if (im.gameData.User_operationInfo[i].OperationLastTime == 0 )
                     {
                         //true 有货，空为 false。
                         //加入开始后勤任务
@@ -84,17 +84,44 @@ namespace WindowsFormsApplication1
                         else
                         {
                             //需要把当前i传过去 靠队列
-                            CommonHelp.User_OperationNumberNow.Add(i);
+                            LogistandAutolist temp = new LogistandAutolist();
+                            temp.key = i;
+                            temp.type = 0;
+                            CommonHelp.User_LogistandAutoNumberNow.Add(temp);
                             im.gameData.User_operationInfo[i].Lfinish = true;
                             CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                             //返回时间
                             im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                             im.gameData.User_operationInfo[i].Added = true;
                         }
-
                     }
                 }
-                for(int i = 0; i < 3; i++)
+
+                if(im.gameData.User_AutobattleInfo[0].AutoBattleUse==true && im.gameData.User_AutobattleInfo[0].AutoBattleLastTime == 0)
+                {
+                    if (CommonHelp.gametasklist.Any() && (CommonHelp.gametasklist[0].TaskNumber != 98))
+                    {
+                        CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                    }
+                    else
+                    {
+                        //需要把当前i传过去 靠队列
+                        LogistandAutolist temp = new LogistandAutolist();
+                        temp.key = -1;
+                        temp.type = 1;
+                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+
+                        CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
+                        //返回时间
+                        CommonHelp.gametasklist.Add(BaseData.TaskList.AutoBattle);
+                        im.gameData.User_AutobattleInfo[0].AutoBattleUse = true;
+                    }
+
+
+                }
+
+
+                for (int i = 0; i < 3; i++)
                 {
                     if (im.gameData.User_BuildingEquipmentInfo[i].NeedToRecieve == true)
                     {
@@ -166,10 +193,6 @@ namespace WindowsFormsApplication1
                 {
                     im.ShowerTime[7] -= c;
                 }
-
-
-
-
 
                 im.uiupdate.UIupdateOperation();
                 Thread.Sleep(1000);
@@ -254,7 +277,11 @@ namespace WindowsFormsApplication1
                                             //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             //im.gameData.User_operationInfo[i].Added = true;
                                             ////SystemInfo.LFinish = false;
-                                            CommonHelp.User_OperationNumberNow.Add(i);
+
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            CommonHelp.User_LogistandAutoNumberNow.Add(temp);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                                             //返回时间
@@ -297,7 +324,11 @@ namespace WindowsFormsApplication1
                                             //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             //im.gameData.User_operationInfo[i].Added = true;
-                                            CommonHelp.User_OperationNumberNow.Add(i);
+
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            CommonHelp.User_LogistandAutoNumberNow.Add(temp);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                                             //返回时间
@@ -338,7 +369,11 @@ namespace WindowsFormsApplication1
                                             //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             //im.gameData.User_operationInfo[i].Added = true;
-                                            CommonHelp.User_OperationNumberNow.Add(i);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+
+                                            CommonHelp.User_LogistandAutoNumberNow.Add(temp);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                                             //返回时间
@@ -381,7 +416,12 @@ namespace WindowsFormsApplication1
                                             //im.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
                                             //im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
                                             //im.gameData.User_operationInfo[i].Added = true;
-                                            CommonHelp.User_OperationNumberNow.Add(i);
+
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+
+                                            CommonHelp.User_LogistandAutoNumberNow.Add(temp);
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Add(BaseData.TaskList.WaitForLogistics);
                                             //返回时间
@@ -438,14 +478,19 @@ namespace WindowsFormsApplication1
                             }
                         case "12"://0
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s()|| im.gameData.GetAutoBattleTime_60s())
                                 {
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -453,14 +498,25 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-
-
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
                                     }
+                                    
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
+
                                 }
                                 else
                                 {
@@ -485,14 +541,19 @@ namespace WindowsFormsApplication1
                         case "13":
                             {
 
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s() || im.gameData.GetAutoBattleTime_60s())
                                 {
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -500,11 +561,23 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
+                                    }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
                                     }
 
                                 }
@@ -531,15 +604,19 @@ namespace WindowsFormsApplication1
                             }
                         case "14":
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s() || im.gameData.GetAutoBattleTime_60s())
                                 {
-                                    
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -547,12 +624,25 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
                                     }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
+
                                 }
                                 else
                                 {
@@ -573,14 +663,19 @@ namespace WindowsFormsApplication1
                             }
                         case "15":
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s() || im.gameData.GetAutoBattleTime_60s())
                                 {
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -588,12 +683,25 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
                                     }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
+
                                 }
                                 else
                                 {
@@ -615,14 +723,19 @@ namespace WindowsFormsApplication1
 
                         case "16":
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s()/* || im.gameData.GetAutoBattleTime_60s()*/)
                                 {
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -630,19 +743,33 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
                                     }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
+
                                 }
                                 else
                                 {
+                                    UserAutoBattleInfo temp = new UserAutoBattleInfo();
 
-
-                                    im.gameData.User_AutobattleInfo[0].AutoBattleUse = false;
-                                    //im.gameData.User_AutobattleInfo[0].AutoBattleLastTime = im.time.AutoBattle(dmae, im.mouse, Settings.Default.AutoMap, Settings.Default.AutoTeam1, Settings.Default.AutoTeam2, Settings.Default.AutoTeam3, Settings.Default.AutoTeam4,ref im.gameData.User_battleInfo[]);
+                                    im.gameData.User_AutobattleInfo[0].AutoBattleUse = true;
+                                    temp = im.gameData.User_AutobattleInfo[0];
+                                    im.gameData.User_AutobattleInfo[0].AutoBattleLastTime = im.time.AutoBattle(dmae, im.mouse, ref temp);
                                     im.gameData.User_AutobattleInfo[0].AutoBattleLoopTime++;
                                     im.taskList.taskremove();
 
@@ -655,14 +782,19 @@ namespace WindowsFormsApplication1
 
                         case "17":
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s() || im.gameData.GetAutoBattleTime_60s())
                                 {
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -670,12 +802,25 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
                                     }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
+
                                 }
                                 else
                                 {
@@ -698,14 +843,19 @@ namespace WindowsFormsApplication1
 
                         case "20"://装备强化
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s() || im.gameData.GetAutoBattleTime_60s())
                                 {
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -713,17 +863,30 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
                                     }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
+
                                 }
                                 else
                                 {
                                     //拆枪代码
-                                    im.equipment.EquipmentUpdate(dmae,im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber].EquipmentType, im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber].EquipmentUpdatePostion);
+                                    im.equipment.EquipmentUpdate(dmae,im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber-1].EquipmentType, im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber-1].EquipmentUpdatePostion, im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber-1].EquipmentUpdateCount);
                                     im.taskList.taskremove();
 
                                 }
@@ -801,14 +964,19 @@ namespace WindowsFormsApplication1
 
                         case "96"://拆除
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s() || im.gameData.GetAutoBattleTime_60s())
                                 {
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -816,12 +984,25 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
                                     }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
+
                                 }
                                 else
                                 {
@@ -851,14 +1032,19 @@ namespace WindowsFormsApplication1
 
                         case "97":
                             {
-                                if (im.gameData.GetOperationTime_60s())
+                                if (im.gameData.GetOperationTime_60s() || im.gameData.GetAutoBattleTime_60s())
                                 {
-                                    Dictionary<int, int> TimeDic = new Dictionary<int, int>();
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
                                     for (int i = 0; i < 4; i++)
                                     {
                                         if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
                                         {
-                                            TimeDic.Add(i, im.gameData.User_operationInfo[i].OperationLastTime);
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
                                             im.gameData.User_operationInfo[i].Lfinish = true;
                                             CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
@@ -866,13 +1052,24 @@ namespace WindowsFormsApplication1
                                             im.gameData.User_operationInfo[i].Added = true;
                                         }
                                     }
+                                    //自律
 
-                                    var dicSort = from objDic in TimeDic orderby objDic.Value descending select objDic;
-                                    foreach (KeyValuePair<int, int> kvp in dicSort)
+                                    if (im.gameData.GetAutoBattleTime_60s())
                                     {
-                                        CommonHelp.User_OperationNumberNow.Add(kvp.Key);
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
                                     }
 
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
 
                                 }
                                 else
@@ -910,55 +1107,120 @@ namespace WindowsFormsApplication1
 
                         case "98":
                             {
-                                while (true)
+                                switch (CommonHelp.User_LogistandAutoNumberNow[0].type)
                                 {
-                                    if (SystemInfo.StayAtRecieveOperationPage)
-                                    {
-                                        SystemInfo.AppState = "接收后勤任务";
-                                        im.mouse.delayTime(1, 1);
-                                        Random ran = new Random();
-
-                                        if (WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime != 0)
+                                    case 0:
                                         {
-                                            im.mouse.delayTime(Convert.ToDouble(ran.Next(1, WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime * 10)) / 10 * 60, 1);//等待时间
-                                        }
+                                            while (true)
+                                            {
+                                                if (SystemInfo.StayAtRecieveOperationPage)
+                                                {
+                                                    SystemInfo.AppState = "接收后勤任务";
+                                                    im.mouse.delayTime(1, 1);
+                                                    Random ran = new Random();
 
-                                        im.mouse.LeftClick(dmae, 484, 258, 681, 459);
-                                    }
-                                    while (im.mouse.CheckLsystemAgain(dmae))
-                                    {
-                                        
-                                        im.mouse.LeftClick(dmae, 677, 475, 808, 514);
-                                        im.mouse.delayTime(1, 1);
-                                        while (im.mouse.CheckLsystemAgain(dmae) == false)
-                                        {
-                                            goto end;
+                                                    if (WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime != 0)
+                                                    {
+                                                        im.mouse.delayTime(Convert.ToDouble(ran.Next(1, WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime * 10)) / 10 * 60, 1);//等待时间
+                                                    }
+
+                                                    im.mouse.LeftClick(dmae, 484, 258, 681, 459);
+                                                }
+                                                while (im.mouse.CheckLsystemAgain(dmae))
+                                                {
+
+                                                    im.mouse.LeftClick(dmae, 677, 475, 808, 514);
+                                                    im.mouse.delayTime(1, 1);
+                                                    while (im.mouse.CheckLsystemAgain(dmae) == false)
+                                                    {
+                                                        goto end;
+                                                    }
+                                                }
+                                                if (SystemInfo.StayAtHomePage)
+                                                {
+                                                    SystemInfo.AppState = "主页";
+                                                }
+                                                im.mouse.delayTime(1, 1);
+                                            }
+                                            end: im.taskList.taskremove();
+                                            try
+                                            {
+                                                im.gameData.User_operationInfo[CommonHelp.User_LogistandAutoNumberNow[0].key].Lfinish = false;
+                                                CommonHelp.User_LogistandAutoNumberNow.RemoveAt(0);//出列
+                                            }
+                                            catch (Exception)
+                                            {
+                                            }
+                                            break;
                                         }
-                                    }
-                                    if (SystemInfo.StayAtHomePage)
-                                    {
-                                        SystemInfo.AppState = "主页";
-                                    }
-                                    im.mouse.delayTime(1, 1);
+                                    case 1:
+                                        {
+                                            while (true)
+                                            {
+                                                if (SystemInfo.AutoBattleFinishPage)
+                                                {
+                                                    SystemInfo.AppState = "自律任务完成";
+                                                    im.mouse.delayTime(1, 1);
+                                                    Random ran = new Random();
+
+                                                    if (WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime != 0)
+                                                    {
+                                                        im.mouse.delayTime(Convert.ToDouble(ran.Next(1, WindowsFormsApplication1.BaseData.SystemInfo.LogisticFinishWaittingTime * 10)) / 10 * 60, 1);//等待时间
+                                                    }
+
+                                                    im.mouse.LeftClick(dmae, 484, 258, 681, 459);
+                                                }
+                                                while (true)
+                                                {
+
+                                                    while (im.mouse.CheckWhiteM(dmae))
+                                                    {
+                                                        im.mouse.delayTime(1, 1);
+                                                        continue;
+                                                    }
+                                                    if (im.mouse.CheckNewGunEquipmentPage(dmae))
+                                                    {
+                                                        SystemInfo.AppState = "获取新人形";
+                                                        im.mouse.LeftClick(dmae, 1107, 633, 1242, 691);
+                                                    }
+                                                    im.mouse.delayTime(1, 1);
+
+                                                    if (SystemInfo.AutoBattleFinishPage)
+                                                    {
+                                                        while (SystemInfo.StayAtHomePage == false)
+                                                        {
+                                                            im.mouse.LeftClick(dmae, 1107, 633, 1242, 691);
+                                                        }
+                                                        goto end;
+                                                    }
+
+
+                                                }
+                                            }
+                                            end: im.taskList.taskremove();
+                                            try
+                                            {
+                                                im.gameData.User_operationInfo[CommonHelp.User_LogistandAutoNumberNow[0].key].Lfinish = false;
+                                                CommonHelp.User_LogistandAutoNumberNow.RemoveAt(0);//出列
+                                            }
+                                            catch (Exception)
+                                            {
+                                            }
+
+                                            break;
+
+                                        }
+                                    default:
+                                        break;
                                 }
-                                end: im.taskList.taskremove();
-                                try
-                                {
-                                    im.gameData.User_operationInfo[CommonHelp.User_OperationNumberNow[0]].Lfinish = false;
-                                    CommonHelp.User_OperationNumberNow.RemoveAt(0);//出列
-                                }
-                                catch (Exception)
-                                {
-                                }
+                                
 
                                 break;
                             }
-                            //}
-                            //break;
-
-
-
-
+                        case "99"://接收自律
+                            {
+                                break;
+                            }
 
 
 
@@ -1081,6 +1343,18 @@ namespace WindowsFormsApplication1
                 //监控后勤任务
 
                 //监控主页
+
+                if (im.mouse.CheckAutoBattleFinishPage(dmae))
+                {
+                    BaseData.SystemInfo.AutoBattleFinishPage = true;
+                    BaseData.SystemInfo.PageCheck = "自律结束";
+                    continue;
+                }
+                else
+                {
+                    BaseData.SystemInfo.AutoBattleFinishPage = false;
+                    BaseData.SystemInfo.PageCheck = "";
+                }
                 if (im.mouse.CheckHomePage(dmae) == 0)
                 {
 

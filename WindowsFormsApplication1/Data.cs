@@ -40,6 +40,16 @@ namespace WindowsFormsApplication1
             return false;
         }
 
+        public bool GetAutoBattleTime_60s()
+        {
+            if (im.gameData.User_AutobattleInfo[0].AutoBattleUse == true)
+            {
+                if (im.gameData.User_AutobattleInfo[0].AutoBattleLastTime <= 60)
+                    return true;
+            }
+            return false;
+        }
+
 
     }
     class UserData

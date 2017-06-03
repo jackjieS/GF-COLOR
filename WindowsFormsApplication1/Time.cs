@@ -488,6 +488,8 @@ namespace testdm
         {
             switch (map)
             {
+                case "1_1": { return 60; }
+                case "1_2": { return 600; }
                 case "1_4E": { return 6000; }
                 default: { return 0; }
 
@@ -498,8 +500,10 @@ namespace testdm
         {
             switch (map)
             {
+                case "1_1": { battle1 = "01"; battle2 = 0; battle3 = 1; break; }
+                case "1_2": { battle1 = "01"; battle2 = 0; battle3 = 2; break; }
                 case "1_6": { battle1 = "01"; battle2 = 0; battle3 = 6; break; }
-                case "1_4E": { battle1 = "01"; battle2 = 1;battle3 = 4;break; }
+                case "1_4E": { battle1 = "01"; battle2 = 1; battle3 = 4; break; }
                 default: { battle1 = "00"; battle2 = 0; battle3 = 0; break; }
 
             }
@@ -1661,50 +1665,78 @@ namespace testdm
 
         public void SelectTeam(DmAe dmae, Mouse mouse, string team1, string team2, string team3, string team4)
         {
-            int dm_ret0 = dmae.CmpColor(640, 300, "ffffff", 1);
-            int dm_ret1 = dmae.CmpColor(740, 300, "ffffff", 1);
-            int dm_ret2 = dmae.CmpColor(540, 300, "ffffff", 1);
-
-            if (dm_ret0 == 0)
+            int x0 = -1, y0 = -1;
+            int count = 1;
+            while (true)
             {
-
+                mouse.ClickAutoBattleTeamSeleat(dmae, out x0, out y0);
+                if (x0 == -1)
+                {
+                    break;
+                }
+                else
+                {
+                    while(dmae.CmpColor(525, 90, "ffffff", 0.9) == 0 && dmae.CmpColor(210, 90, "ffffff", 0.9)==0)
+                    {
+                        mouse.LeftClick(dmae, x0, y0, x0 + 1, y0 + 1);
+                    }
+                    switch (count)
+                    {
+                        case 1: { Team_S(dmae, mouse, team1); break; }
+                        case 2: { Team_S(dmae, mouse, team2); break; }
+                        case 3: { Team_S(dmae, mouse, team3); break; }
+                        case 4: { Team_S(dmae, mouse, team4); break; }
+                        default:
+                            break;
+                    }
+                    count++;
+                }
             }
 
-            if (dm_ret1 == 0 && dm_ret2 == 0)
-            {
-                int dm_ret99 = dmae.CmpColor(1000, 610, "ffffff", 0.9);
-                while (dm_ret99 == 1) { mouse.LeftClick(dmae, 474, 196, 611, 465); mouse.delayTime(1); dm_ret99 = dmae.CmpColor(1000, 610, "ffffff", 0.9); }
-                Team_S(dmae, mouse, team1);
+            //int dm_ret0 = dmae.CmpColor(640, 300, "ffffff", 1);
+            //int dm_ret1 = dmae.CmpColor(740, 300, "ffffff", 1);
+            //int dm_ret2 = dmae.CmpColor(540, 300, "ffffff", 1);
 
-                int dm_ret98 = dmae.CmpColor(975, 631, "ffffff", 1);
-                while (dm_ret98 == 0) { mouse.LeftClick(dmae, 1105, 615, 1243, 664); mouse.delayTime(1); dm_ret98 = dmae.CmpColor(975, 631, "ffffff", 1); }
+            //if (dm_ret0 == 0)
+            //{
 
-                dm_ret99 = dmae.CmpColor(1000, 610, "ffffff", 0.9);
-                while (dm_ret99 == 1) { mouse.LeftClick(dmae, 671, 197, 818, 466); mouse.delayTime(1); dm_ret99 = dmae.CmpColor(1000, 610, "ffffff", 0.9); }
-                Team_S(dmae, mouse, team2);
-                int dm_ret97 = dmae.CmpColor(975, 631, "ffffff", 1);
-                while (dm_ret97 == 0) { mouse.LeftClick(dmae, 1105, 615, 1243, 664); mouse.delayTime(1); dm_ret97 = dmae.CmpColor(975, 631, "ffffff", 1); }
+            //}
 
-                //点击确定
-                dm_ret99 = dmae.CmpColor(530, 85, "ffffff", 0.9);
-                while (dm_ret99 == 0) { mouse.LeftClick(dmae, 929, 557, 1063, 609); mouse.delayTime(1); dm_ret99 = dmae.CmpColor(530, 85, "ffffff", 0.9); }
+            //if (dm_ret1 == 0 && dm_ret2 == 0)
+            //{
+            //    int dm_ret99 = dmae.CmpColor(1000, 610, "ffffff", 0.9);
+            //    while (dm_ret99 == 1) { mouse.LeftClick(dmae, 474, 196, 611, 465); mouse.delayTime(1); dm_ret99 = dmae.CmpColor(1000, 610, "ffffff", 0.9); }
+            //    Team_S(dmae, mouse, team1);
+
+            //    int dm_ret98 = dmae.CmpColor(975, 631, "ffffff", 1);
+            //    while (dm_ret98 == 0) { mouse.LeftClick(dmae, 1105, 615, 1243, 664); mouse.delayTime(1); dm_ret98 = dmae.CmpColor(975, 631, "ffffff", 1); }
+
+            //    dm_ret99 = dmae.CmpColor(1000, 610, "ffffff", 0.9);
+            //    while (dm_ret99 == 1) { mouse.LeftClick(dmae, 671, 197, 818, 466); mouse.delayTime(1); dm_ret99 = dmae.CmpColor(1000, 610, "ffffff", 0.9); }
+            //    Team_S(dmae, mouse, team2);
+            int dm_ret97 = dmae.CmpColor(975, 631, "ffffff", 1);
+            while (dm_ret97 == 0) { mouse.LeftClick(dmae, 1105, 615, 1243, 664); mouse.delayTime(1); dm_ret97 = dmae.CmpColor(975, 631, "ffffff", 1); }
+
+            //点击确定
+            int dm_ret99 = dmae.CmpColor(530, 85, "ffffff", 0.9);
+            while (dm_ret99 == 0) { mouse.LeftClick(dmae, 929, 557, 1063, 609); mouse.delayTime(1); dm_ret99 = dmae.CmpColor(530, 85, "ffffff", 0.9); }
 
 
-            }
+            //}
         }
 
-        public int AutoBattle(DmAe dmae, Mouse mouse, string map, string team1, string team2, string team3, string team4,ref UserBattleInfo userbattleinfo)
+        public int AutoBattle(DmAe dmae, Mouse mouse, ref UserAutoBattleInfo userautobattle)
         {
             string battle1;int battle2, battle3;
-            AutoBattleTask(out battle1, out battle2, out battle3, map);
+            AutoBattleTask(out battle1, out battle2, out battle3, userautobattle.AutoBattleMap);
             mouse.LeftClickHomeToBattle(dmae, battle1, battle2, battle3);
             mouse.delayTime(1);
-            mouse.ClickFightType(dmae, "self-discipline",ref userbattleinfo);
+            mouse.ClickFightType(dmae, "self-discipline",ref userautobattle);
             mouse.delayTime(1);
-            SelectTeam(dmae, mouse, team1, team2, team3, team4);
+            SelectTeam(dmae, mouse, userautobattle.AutoBattleTeamName1, userautobattle.AutoBattleTeamName2, userautobattle.AutoBattleTeamName3, userautobattle.AutoBattleTeamName4);
 
             mouse.LeftClickBackHome(dmae);
-            return AutoBattleTime(map);
+            return AutoBattleTime(userautobattle.AutoBattleMap);
         }
 
 

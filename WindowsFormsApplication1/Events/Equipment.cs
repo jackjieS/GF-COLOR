@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1.Events
             this.im = im;
         }
 
-        public void EquipmentUpdate(DmAe dmae,int equipmentType,int equipmentPostion)
+        public void EquipmentUpdate(DmAe dmae,int equipmentType,int equipmentPostion,int equipmentcount)
         {
             //点击研发按钮
             im.mouse.ClickHomeResearch(dmae);
@@ -33,11 +33,11 @@ namespace WindowsFormsApplication1.Events
             //点击添加
             im.mouse.ClickEquipmentToUpdate(dmae, equipmentPostion);
             //点击强化按钮 加号
-            im.mouse.ClickEquipmentADDButton(dmae);
+            //im.mouse.ClickEquipmentADDButton(dmae);
             //点击所有2星装备
-            im.mouse.ClickAll2Start(dmae);
+            im.mouse.ClickAll2Start(dmae, equipmentcount);
             //点击确定
-            im.mouse.ClickEquipmentConfirm(dmae);
+            //im.mouse.ClickEquipmentConfirm(dmae);
             //点击确定强化
             im.mouse.ClickEquipmentUpdateConfirmButton(dmae);
             //点击返回基地

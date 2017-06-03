@@ -19,8 +19,9 @@ namespace WindowsFormsApplication1.BaseData
         public static bool StayAtRecieveOperationPage = false;
         public object homeInfoLocker = null;//添加一个对象作为锁
         public static bool StayAtHomePage = false;
+        public static bool AutoBattleFinishPage = false;//自律战斗完成结算画面
         public static string PageCheck = "";
-        public object TasklistLock;
+
         public static bool PprogramErrorBackToHome = false;//闪退
         public static int ErrorCount = 0;
         public static bool RanControlinterval = false;
@@ -63,7 +64,7 @@ namespace WindowsFormsApplication1.BaseData
         public static int Team_SerrorTime = 60;
         public static string EquipmentUpdateType = "外骨骼";
         public static string EquipmentUpdatePostion = "1";
-
+        public static int EquipmentUpdateCount = 24;
 
 
         //后勤
