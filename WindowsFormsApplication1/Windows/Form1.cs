@@ -363,8 +363,7 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.WaitAuttoBattleFinish);
-
+            im.mouse.GunMove(dmae, 2);
 
             ////右下角白点转圈
             ////1157,546,1279,665

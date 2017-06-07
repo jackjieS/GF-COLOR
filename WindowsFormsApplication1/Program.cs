@@ -38,7 +38,7 @@ namespace TaskList
         static void updater_Error(object sender, EventArgs e)
         {
             var updater = sender as FSLib.App.SimpleUpdater.Updater;
-            System.Windows.Forms.MessageBox.Show("错误");
+            System.Windows.Forms.MessageBox.Show("错误,请告诉作者他的服务器宕机了");
         }
 
     }

@@ -127,6 +127,7 @@
     <Compile Include="CDmSoft.cs" />
     <Compile Include="BaseData\ConfigManager.cs" />
     <Compile Include="Events\Equipment.cs" />
+    <Compile Include="Events\Formation.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -923,7 +923,77 @@ namespace WindowsFormsApplication1
                             }
 
 
+                        case "24"://拖尸
+                            {
+                                if (im.gameData.GetOperationTime_60s() || im.gameData.GetAutoBattleTime_60s())
+                                {
+                                    //后勤
+                                    Dictionary<int, LogistandAutolist> TimeDic = new Dictionary<int, LogistandAutolist>();
+                                    for (int i = 0; i < 4; i++)
+                                    {
+                                        if (im.gameData.User_operationInfo[i].OperationLastTime <= 60 && im.gameData.User_operationInfo[i].OperationNeedTowait && (im.gameData.User_operationInfo[i].Added == false))
+                                        {
+                                            LogistandAutolist temp = new LogistandAutolist();
+                                            temp.key = i;
+                                            temp.type = 0;
+                                            temp.Time = im.gameData.User_operationInfo[i].OperationLastTime;
+                                            TimeDic.Add(i, temp);
 
+                                            im.gameData.User_operationInfo[i].Lfinish = true;
+                                            CommonHelp.gametasklist.Insert(0, BaseData.TaskList.WaitForLogistics);//等加接收一起完成
+                                            im.gameData.User_operationInfo[i].OperationLastTime = im.time.StartLogisticsTask(im.mouse, im.gameData.User_operationInfo[i].OperationTeamName, im.gameData.User_operationInfo[i].OperationName, 1);
+                                            im.gameData.User_operationInfo[i].Added = true;
+                                        }
+                                    }
+                                    //自律
+
+                                    if (im.gameData.GetAutoBattleTime_60s())
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.type = 1;
+                                        temp.Time = im.gameData.User_AutobattleInfo[0].AutoBattleLastTime;
+                                        TimeDic.Add(TimeDic.Count, temp);
+                                    }
+
+                                    var dicSort = from objDic in TimeDic orderby objDic.Value.key descending select objDic;
+                                    foreach (KeyValuePair<int, LogistandAutolist> kvp in dicSort)
+                                    {
+                                        LogistandAutolist temp = new LogistandAutolist();
+                                        temp.key = kvp.Key;
+                                        temp.type = 0;
+                                        CommonHelp.User_LogistandAutoNumberNow.Add(temp);
+                                    }
+
+                                }
+                                else
+                                {
+                                    //根据当前battle的KEY传过去
+
+                                    UserBattleInfo tempUserBattleInfo = new UserBattleInfo();
+                                    tempUserBattleInfo = im.gameData.User_battleInfo[CommonHelp.BattleFixNumber-1];
+                                    switch (CommonHelp.BattleFixNumber)
+                                    {
+                                        case 1: { im.formation.TeamFormationChange(dmae,im.mouse,ref tempUserBattleInfo); break; }
+                                        case 2: { im.formation.TeamFormationChange(dmae, im.mouse, ref tempUserBattleInfo); break; }
+                                        case 3: { im.formation.TeamFormationChange(dmae, im.mouse, ref tempUserBattleInfo); break; }
+                                        case 4: { im.formation.TeamFormationChange(dmae, im.mouse, ref tempUserBattleInfo); break; }
+
+                                        default:
+                                            break;
+                                    }
+
+
+
+
+                                    im.taskList.taskremove();
+
+
+                                }
+
+
+
+                                break;
+                            }
 
 
 
@@ -1077,9 +1147,9 @@ namespace WindowsFormsApplication1
                                     switch (CommonHelp.BattleFixNumber)
                                     {
                                         case 1: { im.gameData.User_battleInfo[0].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[0]); break; }
-                                        case 2: { im.gameData.User_battleInfo[1].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[0]); break; }
-                                        case 3: { im.gameData.User_battleInfo[2].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[0]); break; }
-                                        case 4: { im.gameData.User_battleInfo[3].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[0]); break; }
+                                        case 2: { im.gameData.User_battleInfo[1].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[1]); break; }
+                                        case 3: { im.gameData.User_battleInfo[2].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[2]); break; }
+                                        case 4: { im.gameData.User_battleInfo[3].BattleFixTime = im.time.Fix(dmae, im.mouse, ref im.ShowerTime, im.gameData.User_battleInfo[3]); break; }
 
                                         default:
                                             break;

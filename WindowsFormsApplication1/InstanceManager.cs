@@ -36,6 +36,7 @@ namespace WindowsFormsApplication1
 
         public Events.Dormitory dormitory;
         public Events.Equipment equipment;
+        public Events.Formation formation;
 
         public Object  BattleInfoLock;
 
@@ -59,7 +60,7 @@ namespace WindowsFormsApplication1
             this.userData = new UserData(this);
             this.dormitory = new Events.Dormitory(this);
             this.equipment = new Events.Equipment(this);
-
+            this.formation = new Events.Formation(this);
             this.BattleInfoLock = new Object();
 
             for (int i = 0; i < 4; i++)

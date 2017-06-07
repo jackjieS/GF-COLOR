@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1.BaseData
         public static string AutoMap = "1_4E";
         public static int RoundInterval = 5;
         public static bool BattleLoopUnLockWindows = true;
-        public static bool ChangeGun = false;
+        public static bool BattleSupport_plus = false;
         public static bool SetMap = true;
         public static int FixMinPercentage = 20;
         public static int FixMaxPercentage = 20;

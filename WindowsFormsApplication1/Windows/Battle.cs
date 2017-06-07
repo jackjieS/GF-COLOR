@@ -42,7 +42,7 @@ namespace testdm
 
 
 
-            checkBox5.Checked = WindowsFormsApplication1.BaseData.SystemInfo.ChangeGun;
+            checkBox5.Checked = WindowsFormsApplication1.BaseData.SystemInfo.BattleSupport_plus;
 
 
             textBox4.Text = im.userData.DismantlementGunCount.ToString();
@@ -78,7 +78,7 @@ namespace testdm
             WindowsFormsApplication1.BaseData.SystemInfo.BattleLoopUnLockWindows = checkBox3.Checked;
             WindowsFormsApplication1.BaseData.SystemInfo.SetMap = checkBox6.Checked;
 
-            WindowsFormsApplication1.BaseData.SystemInfo.ChangeGun = checkBox5.Checked;
+            WindowsFormsApplication1.BaseData.SystemInfo.BattleSupport_plus = checkBox5.Checked;
             WindowsFormsApplication1.BaseData.SystemInfo.Team_SerrorTime = Int32.Parse(textBox8.Text);
             WindowsFormsApplication1.BaseData.SystemInfo.Fixmaxtime = Int32.Parse(textBox1.Text);
             WindowsFormsApplication1.BaseData.SystemInfo.Fixmintime = Int32.Parse(textBox2.Text);
@@ -116,7 +116,6 @@ namespace testdm
                 im.gameData.User_battleInfo[0].BattleLoopUnLockWindows = checkBox3.Checked;
 
                 im.gameData.User_battleInfo[0].DismantleGunOrEquipment = checkBox4.Checked;
-                im.gameData.User_battleInfo[0].ChangeGun = checkBox5.Checked;
                 im.gameData.User_battleInfo[0].SetMap = checkBox6.Checked;
 
 
@@ -154,6 +153,11 @@ namespace testdm
                     }
                 }
 
+                im.gameData.User_battleInfo[0].BattleSupport_plus = checkBox5.Checked;
+                //撤退代码
+                im.gameData.User_battleInfo[0].BattleGunPostionMove.Add(5);
+                im.gameData.User_battleInfo[0].BattleGunPostionMove.Add(2);
+
                 im.gameData.User_battleInfo[0].Used = true;
                 im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.Battle1);
 
@@ -174,7 +178,7 @@ namespace testdm
                 im.gameData.User_battleInfo[1].ChoiceToSupply = checkBox2.Checked;
                 im.gameData.User_battleInfo[1].BattleLoopUnLockWindows = checkBox3.Checked;
                 im.gameData.User_battleInfo[1].DismantleGunOrEquipment = checkBox4.Checked;
-                im.gameData.User_battleInfo[1].ChangeGun = checkBox5.Checked;
+                im.gameData.User_battleInfo[1].BattleSupport_plus = checkBox5.Checked;
                 im.gameData.User_battleInfo[1].SetMap = checkBox6.Checked;
 
 
@@ -232,7 +236,7 @@ namespace testdm
                 im.gameData.User_battleInfo[2].ChoiceToSupply = checkBox2.Checked;
                 im.gameData.User_battleInfo[2].BattleLoopUnLockWindows = checkBox3.Checked;
                 im.gameData.User_battleInfo[2].DismantleGunOrEquipment = checkBox4.Checked;
-                im.gameData.User_battleInfo[2].ChangeGun = checkBox5.Checked;
+                im.gameData.User_battleInfo[2].BattleSupport_plus = checkBox5.Checked;
                 im.gameData.User_battleInfo[2].SetMap = checkBox6.Checked;
 
 
@@ -293,7 +297,7 @@ namespace testdm
                 im.gameData.User_battleInfo[3].ChoiceToSupply = checkBox2.Checked;
                 im.gameData.User_battleInfo[3].BattleLoopUnLockWindows = checkBox3.Checked;
                 im.gameData.User_battleInfo[3].DismantleGunOrEquipment = checkBox4.Checked;
-                im.gameData.User_battleInfo[3].ChangeGun = checkBox5.Checked;
+                im.gameData.User_battleInfo[3].BattleSupport_plus = checkBox5.Checked;
                 im.gameData.User_battleInfo[3].SetMap = checkBox6.Checked;
 
                 im.gameData.User_battleInfo[3].FixMaxTime = Int32.Parse(textBox1.Text);
@@ -357,18 +361,19 @@ namespace testdm
             {
                 //case "0_4": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 case "0_1": { label2.Visible = false; comboBox13.Visible = false; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1"}); comboBox2.SelectedIndex = 0; label11.Text = "两战结束"; break; }
+                case "1_1": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = true; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为俩战2为三战"; break; }
                 //case "1_2": { label2.Visible = false; comboBox13.Visible = false; checkBox5.Visible = true; checkBox5.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 case "1_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = "";label18.Visible = true;comboBox9.Visible = true; break; }
                 //case "2_1E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 case "2_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
-                case "3_2N": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为俩战2为三战"; break; }
+                case "3_2N": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = true; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为俩战2为三战"; break; }
                 //case "3_3E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为指挥部2为BOSS"; break; }
                 case "3_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 //case "4_3": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = "随机点"; break; }
                 case "4_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为俩战2为四战"; break; }
                 //case "5_1E": { label2.Visible = false; comboBox13.Visible = false; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = "5_1E是连走2次随机点"; break; }
                 //case "5_2": { label2.Visible = false;comboBox13.Visible = false; checkBox5.Visible = false; checkBox5.Checked = false; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = "5_2是连走2次随机点"; break; }
-                case "5_2N": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为俩战2为三战"; break; }
+                case "5_2N": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = true; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为俩战2为三战"; break; }
                 case "5_4": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }
                 case "5_4E": { label2.Visible = true; comboBox13.Visible = true; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1", "2" }); comboBox2.SelectedIndex = 0; label11.Text = "1为三战2为四战"; break; }
                 case "6_6": { label2.Visible = false; comboBox13.Visible = false; checkBox5.Visible = false; checkBox5.Checked = false; checkBox6.Checked = true; comboBox2.Items.Clear(); comboBox2.Items.AddRange(new object[] { "1" }); comboBox2.SelectedIndex = 0; label11.Text = ""; break; }

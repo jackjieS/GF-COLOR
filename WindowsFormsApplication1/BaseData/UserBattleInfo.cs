@@ -54,6 +54,10 @@ namespace WindowsFormsApplication1.BaseData
         public bool ChangeGun;
         public bool SetMap = false;
 
+        public bool BattleSupport_plus = false;//是否拖尸 总开关
+        public bool NeedSupport_plus = false;//当前拖尸是否要补给 小开关
+        public List<int> BattleGunPostionMove = new List<int>();
+
         public void BattleFixLastTimeCD(int c)
         {
             //c是所需要减的时间
@@ -73,6 +77,10 @@ namespace WindowsFormsApplication1.BaseData
             this.Team_Serror = false;
             this.NeetToDismantleGunOrEquipment = false;
             this.NeedToFix = false;
+            if (this.BattleSupport_plus == true)
+            {
+                this.NeedSupport_plus = false;
+            }
         }
 
         public void EndAtBattle(DmAe dmae)
@@ -86,11 +94,26 @@ namespace WindowsFormsApplication1.BaseData
 
             if (this.NeedToFix)
             {
-                CommonHelp.BattleFixNumber = Key+1;
+                CommonHelp.BattleFixNumber = Key + 1;
                 CommonHelp.gametasklist.Insert(0, TaskList.Fix);
+                if (this.BattleSupport_plus == true)
+                {
+                    CommonHelp.gametasklist.Insert(1, TaskList.BattleSupport_plus); if (this.BattleSupport_plus == true)
+                    {
+                        this.NeedSupport_plus = true;
+                    }
+                }
             }
             else //-----循环间隔
             {
+                CommonHelp.BattleFixNumber = Key + 1;
+                if (this.BattleSupport_plus == true)
+                {
+                    CommonHelp.gametasklist.Insert(0, TaskList.BattleSupport_plus); if (this.BattleSupport_plus == true)
+                    {
+                        this.NeedSupport_plus = true;
+                    }
+                }
                 Random ran = new Random();
                 int temp0 = ran.Next(0, this.RoundInterval);
                 this.BattleFixTime = temp0 + 1;

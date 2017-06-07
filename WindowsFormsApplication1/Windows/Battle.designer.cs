@@ -99,11 +99,31 @@
             this.label27 = new System.Windows.Forms.Label();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.checkBox15 = new System.Windows.Forms.CheckBox();
+            this.checkBox16 = new System.Windows.Forms.CheckBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -112,6 +132,7 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(-2, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -120,6 +141,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBox13);
+            this.tabPage1.Controls.Add(this.label35);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.comboBox9);
             this.tabPage1.Controls.Add(this.textBox10);
@@ -216,7 +239,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(119, 114);
+            this.checkBox6.Location = new System.Drawing.Point(179, 114);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(108, 16);
             this.checkBox6.TabIndex = 131;
@@ -228,9 +251,9 @@
             this.checkBox5.AutoSize = true;
             this.checkBox5.Location = new System.Drawing.Point(11, 114);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(102, 16);
+            this.checkBox5.Size = new System.Drawing.Size(72, 16);
             this.checkBox5.TabIndex = 128;
-            this.checkBox5.Text = "更换狗粮(1_2)";
+            this.checkBox5.Text = "单独补给";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox4
@@ -249,9 +272,9 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(70, 136);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(144, 16);
+            this.checkBox3.Size = new System.Drawing.Size(132, 16);
             this.checkBox3.TabIndex = 126;
-            this.checkBox3.Text = "循环过程中不解锁窗体";
+            this.checkBox3.Text = "循环过程中锁定窗体";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // textBox3
@@ -317,6 +340,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "0_1",
             "0_4",
+            "1_1",
             "1_4E",
             "2_4E",
             "3_2N",
@@ -954,6 +978,189 @@
             this.radioButton3.Text = "人形拆除：";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.textBox12);
+            this.tabPage5.Controls.Add(this.label34);
+            this.tabPage5.Controls.Add(this.label33);
+            this.tabPage5.Controls.Add(this.label32);
+            this.tabPage5.Controls.Add(this.panel1);
+            this.tabPage5.Controls.Add(this.checkBox7);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(284, 243);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "测试";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(10, 13);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(48, 16);
+            this.checkBox7.TabIndex = 0;
+            this.checkBox7.Text = "撤退";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.checkBox16);
+            this.panel1.Controls.Add(this.checkBox15);
+            this.panel1.Controls.Add(this.checkBox14);
+            this.panel1.Controls.Add(this.checkBox13);
+            this.panel1.Controls.Add(this.checkBox12);
+            this.panel1.Controls.Add(this.checkBox11);
+            this.panel1.Controls.Add(this.checkBox10);
+            this.panel1.Controls.Add(this.checkBox9);
+            this.panel1.Controls.Add(this.checkBox8);
+            this.panel1.Location = new System.Drawing.Point(10, 35);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(110, 80);
+            this.panel1.TabIndex = 1;
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(3, 15);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(30, 16);
+            this.checkBox8.TabIndex = 0;
+            this.checkBox8.Text = "1";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(39, 15);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(30, 16);
+            this.checkBox9.TabIndex = 1;
+            this.checkBox9.Text = "2";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(75, 15);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(30, 16);
+            this.checkBox10.TabIndex = 2;
+            this.checkBox10.Text = "3";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(3, 37);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(30, 16);
+            this.checkBox11.TabIndex = 3;
+            this.checkBox11.Text = "4";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(39, 37);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(30, 16);
+            this.checkBox12.TabIndex = 4;
+            this.checkBox12.Text = "5";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox13
+            // 
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.Location = new System.Drawing.Point(75, 37);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(30, 16);
+            this.checkBox13.TabIndex = 5;
+            this.checkBox13.Text = "6";
+            this.checkBox13.UseVisualStyleBackColor = true;
+            // 
+            // checkBox14
+            // 
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.Location = new System.Drawing.Point(3, 59);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(30, 16);
+            this.checkBox14.TabIndex = 6;
+            this.checkBox14.Text = "7";
+            this.checkBox14.UseVisualStyleBackColor = true;
+            // 
+            // checkBox15
+            // 
+            this.checkBox15.AutoSize = true;
+            this.checkBox15.Location = new System.Drawing.Point(39, 59);
+            this.checkBox15.Name = "checkBox15";
+            this.checkBox15.Size = new System.Drawing.Size(30, 16);
+            this.checkBox15.TabIndex = 7;
+            this.checkBox15.Text = "8";
+            this.checkBox15.UseVisualStyleBackColor = true;
+            // 
+            // checkBox16
+            // 
+            this.checkBox16.AutoSize = true;
+            this.checkBox16.Location = new System.Drawing.Point(75, 59);
+            this.checkBox16.Name = "checkBox16";
+            this.checkBox16.Size = new System.Drawing.Size(30, 16);
+            this.checkBox16.TabIndex = 8;
+            this.checkBox16.Text = "9";
+            this.checkBox16.UseVisualStyleBackColor = true;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(126, 35);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(149, 36);
+            this.label32.TabIndex = 2;
+            this.label32.Text = "撤退功能主要用于5-2N练级\r\n如果你有更好的练级地图\r\n请告诉我";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label33.Location = new System.Drawing.Point(7, 184);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(184, 48);
+            this.label33.TabIndex = 3;
+            this.label33.Text = "注意\r\n请把战斗页面拖放到最左\r\n否则无法正确选取人形";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(11, 130);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(77, 12);
+            this.label34.TabIndex = 4;
+            this.label34.Text = "撤退延迟(S):";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(88, 125);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(31, 21);
+            this.textBox12.TabIndex = 5;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(83, 115);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(65, 12);
+            this.label35.TabIndex = 138;
+            this.label35.Text = "补给回合数";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(149, 110);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(23, 21);
+            this.textBox13.TabIndex = 139;
+            this.textBox13.Text = "0";
+            // 
             // Battle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -974,6 +1181,10 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1050,5 +1261,23 @@
         private System.Windows.Forms.ComboBox comboBox9;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TabPage tabPage5;
+        public System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.CheckBox checkBox16;
+        public System.Windows.Forms.CheckBox checkBox15;
+        public System.Windows.Forms.CheckBox checkBox14;
+        public System.Windows.Forms.CheckBox checkBox13;
+        public System.Windows.Forms.CheckBox checkBox12;
+        public System.Windows.Forms.CheckBox checkBox11;
+        public System.Windows.Forms.CheckBox checkBox10;
+        public System.Windows.Forms.CheckBox checkBox9;
+        public System.Windows.Forms.CheckBox checkBox8;
+        public System.Windows.Forms.CheckBox checkBox7;
+        public System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label35;
     }
 }

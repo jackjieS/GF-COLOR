@@ -3964,7 +3964,7 @@ namespace testdm
         }
 
 
-        public int MoveAndFight(DmAe dmae, int x1, int y1, int x2, int y2, /*1*/int x3, int y3, int x4, int y4,/*2*/ int x5, int y5,int x6,int y6,int x99, int x98)//移动与战斗 //0不需要检查机遇点X99随机点 x98 0是横 1是束 
+        public int MoveAndFight(DmAe dmae, int x1, int y1, int x2, int y2, /*1*/int x3, int y3, int x4, int y4,/*2*/ int x5, int y5,int x6,int y6,int x99, int x98,List<int> BattleGunPostionMove = null)//移动与战斗 //0不需要检查机遇点X99随机点 x98 0是横 1是束 
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "开始移动";
 
@@ -3981,7 +3981,7 @@ namespace testdm
                 }
                 WriteLog.WriteError("点击X1点");
                 LeftClick(dmae, x1, y1, x2, y2);
-                delayTime(1,1);
+                delayTime(0.1);
                 
                 int dm_ret5 = dmae.CmpColor(714, 609, "ffffff", 0.9);
                 int dm_ret3 = dmae.CmpColor(1061, 609, "ffffff", 0.9);
@@ -3989,7 +3989,7 @@ namespace testdm
                 if (dm_ret5 == 0 && dm_ret3 == 0 && dm_ret4 == 0)//判断是否点击到梯队列表
                 {
                     LeftClick(dmae, 902, 612, 1053, 664);
-                    delayTime(2);
+                    delayTime(0.1);
                     dm_ret5 = dmae.CmpColor(714, 609, "ffffff", 0.9);
                     dm_ret3 = dmae.CmpColor(1061, 609, "ffffff", 0.9);
                     dm_ret4 = dmae.CmpColor(930, 638, "ffffff", 0.9);
@@ -4006,14 +4006,14 @@ namespace testdm
                 }
                 WriteLog.WriteError("将点击X3点");
                 LeftClick(dmae, x3, y3, x4, y4);
-                delayTime(1,1);
+                delayTime(0.1);
                 int dm_ret5 = dmae.CmpColor(714, 609, "ffffff", 0.9);
                 int dm_ret3 = dmae.CmpColor(1061, 609, "ffffff", 0.9);
                 int dm_ret4 = dmae.CmpColor(930, 638, "ffffff", 0.9);
                 if (dm_ret5 == 0 && dm_ret3 == 0 && dm_ret4 == 0)
                 {
                     LeftClick(dmae, 902, 612, 1053, 664);
-                    delayTime(2);
+                    delayTime(0.1);
                     dm_ret5 = dmae.CmpColor(714, 609, "ffffff", 0.9);
                     dm_ret3 = dmae.CmpColor(1061, 609, "ffffff", 0.9);
                     dm_ret4 = dmae.CmpColor(930, 638, "ffffff", 0.9);
@@ -4139,7 +4139,7 @@ namespace testdm
             while (dmae.CmpColor(634, 14, "ffffff", 1) == 1 && dmae.CmpColor(643, 14, "ffffff", 1) == 1)
             {
                 WindowsFormsApplication1.BaseData.SystemInfo.AppState = "移动中";
-                delayTime(0.5);
+                delayTime(0.1);
 
                 if(dmae.CmpColor(634, 14, "ffffff", 1) == 0 && dmae.CmpColor(643, 14, "ffffff", 1) == 0)
                 {
@@ -4160,6 +4160,19 @@ namespace testdm
             while (dmae.CmpColor(634, 14, "ffffff", 1) == 0 && dmae.CmpColor(643, 14, "ffffff", 1) == 0)
             {
                 WindowsFormsApplication1.BaseData.SystemInfo.AppState = "战斗中";
+
+                //检测是否需要队伍人形撤退
+                List<int> templist = new List<int>();
+                templist = BattleGunPostionMove;
+                if (templist.Any())
+                {
+                    //delayTime(1, 1);
+                    this.BattleGunPostionMove(dmae,templist);
+                }
+                else
+                {
+
+                }
 
                 if(CheckBattleMapReady(dmae) == 0)
                 {
@@ -4187,82 +4200,6 @@ namespace testdm
                 delayTime(0.5);
             }
 
-
-            //while (CheckBattleMapReady(dmae)==1)
-            //{
-            //    variables.AppState = "移动中";
-            //    delayTime(0.5);
-            //    if (dmae.CmpColor(634, 14, "ffffff", 1) == 0 && dmae.CmpColor(643, 14, "ffffff", 1) == 0)
-            //    {
-            //        variables.AppState = "战斗中";
-            //        while(CheckBattleMapReady(dmae) == 0)
-            //        {
-            //            if (dmae.CmpColor(640, 15, "ffffff", 1) == 0)                //暂停判断
-            //            {
-            //                LeftClick(dmae,615, 10, 665, 25);
-            //                delayTime(1);
-            //            }
-            //            //暂停判断结束
-            //            //任意点击
-            //            LeftClick(dmae, 315, 111, 1076, 531);
-            //            delayTime(1, 1);
-            //        }
-            //        break;
-            //    }
-
-            //}
-
-
-
-            ////dm_ret2 =1 不匹配表示已经进入战斗界面
-            ////开始检测是否按到暂停键
-
-            //int dm_ret6 = dmae.CmpColor(640, 15, "ffffff", 1);
-            ////开始循环是否战斗结束到大地图界面，其中鼠标点击
-            //while(CheckBattleMapReady(dmae) == 1)
-            //{
-            //    //暂停判断
-            //    dm_ret6 = dmae.CmpColor(640, 15, "ffffff", 1);
-            //    if(dm_ret6 == 0)
-            //    {
-            //        LeftClick(dmae, 615, 10, 665, 25);
-            //        delayTime(1);
-            //        dm_ret6 = dmae.CmpColor(640, 15, "ffffff", 1);
-            //    }
-            //    //暂停判断结束
-            //    //任意点击
-            //    LeftClick(dmae, 315, 111, 1076, 531);
-            //    delayTime(1,1);
-            //}
-
-
-
-
-
-
-            //int dm_ret2 = dmae.CmpColor(285, 40, "ff5500" + "|" + Settings.Default.Battle0, 0.9);
-
-            //while (dm_ret2 == 0)
-            //{
-            //    LeftClick(dmae, 437, 162, 953, 588);
-            //    delayTime(2);
-            //    dm_ret2 = dmae.CmpColor(285, 40, "ff5500" + "|" + Settings.Default.Battle0, 0.9);
-            //}
-
-            //while (dm_ret2 == 1)
-            //{
-            //    LeftClick(dmae, 315, 111, 1076, 531);
-            //    delayTime(1);
-            //    dm_ret2 = dmae.CmpColor(285, 40, "ff5500" + "|" + Settings.Default.Battle0, 0.9);//用户自定义颜色
-            //    int dm_ret3 = dmae.CmpColor(640, 15, "ffffff", 1);
-            //    while (dm_ret3 == 0)//暂停判断
-            //    {
-            //        LeftClick(dmae, 615, 10, 665, 25);
-            //        delayTime(1);
-            //        dm_ret3 = dmae.CmpColor(640, 15, "ffffff", 1);
-            //    }
-            //}
-            //delayTime(1);
             return 99;
         }
 
@@ -4344,6 +4281,178 @@ namespace testdm
             }
 
 
+
+        }
+
+        public void BattleGunPostionMove(DmAe dmae,List<int> BattleGunPostionMove)
+        {
+            int count = 0;
+            while (true)
+            {
+                if (BattleGunPostionMove.Count()>count)
+                {
+                    if(GunMove(dmae, BattleGunPostionMove[count]))
+                    {
+                        count++;
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    break;
+                }
+
+
+            }
+
+
+        }
+
+        public bool GunMove(DmAe dmae,int x)
+        {
+            //可以更准确的按住然后判断直线ffffff的位置确定是否选中
+
+            //while (CheckBattleWithDrawButton(dmae))
+            //{
+            //    LeftClick(dmae, 1059, 452, 1157, 608);
+            //}
+
+            switch (x)
+            {
+                case 1:
+                    {
+                        LeftClick(dmae, 412, 291, 510, 324);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 412, 291, 510, 324);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                        }
+                        return true;
+                    }
+                case 2:
+                    {
+                        LeftClick(dmae, 552, 296, 644, 325);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 552, 296, 644, 325);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                        }
+                        return true;
+                    }
+                case 3:
+                    {
+                        LeftClick(dmae, 695, 293, 782, 324);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 695, 293, 782, 324);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                        }
+                        return true;
+                    }
+                case 4:
+                    {
+                        LeftClick(dmae, 365, 383, 463, 420);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 365, 383, 463, 420);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                        }
+                        return true;
+                    }
+                case 5:
+                    {
+                        LeftClick(dmae, 558, 387, 612, 407);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 558, 387, 612, 407);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                        }
+                        return true;
+                    }
+                case 6:
+                    {
+                        LeftClick(dmae, 696, 378, 826, 421);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 696, 378, 826, 421);
+                            delayTime(0.1);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                            delayTime(0.1);
+                        }
+                        return true;
+                    }
+                case 7:
+                    {
+                        LeftClick(dmae, 286, 512, 407, 576);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 286, 512, 407, 576);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                        }
+                        return true;
+                    }
+                case 8:
+                    {
+                        LeftClick(dmae, 498, 512, 648, 571);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 498, 512, 648, 571);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                        }
+                        return true;
+                    }
+                case 9:
+                    {
+                        LeftClick(dmae, 733, 516, 867, 571);
+                        while (CheckBattleWithDrawButton(dmae) == false)
+                        {
+                            LeftClick(dmae, 733, 516, 867, 571);
+                        }
+
+                        while (CheckBattleWithDrawButton(dmae))
+                        {
+                            LeftClick(dmae, 53, 140, 204, 189);
+                        }
+                        return true;
+                    }
+                default:
+                    return false;
+            }
 
         }
 
@@ -5743,6 +5852,184 @@ namespace testdm
 
 
 
+        public void ClickFormationPostionPreset(DmAe dmae)
+        {
+            while (CheckFormationTeamPresetSelect(dmae) == false)
+            {
+                delayTime(1);
+            }
+            while (CheckFormationTeamPresetSelect(dmae))
+            {
+                LeftClick(dmae, 1222, 241, 1275, 310);
+                delayTime(1, 1);
+            }
+        }
+
+        public void ClickFormationTeamPresetButton(DmAe dmae)
+        {
+            while (CheckFormationPage(dmae) == false)
+            {
+                delayTime(1);
+            }
+            while (CheckFormationPage(dmae))
+            {
+                LeftClick(dmae, 1105, 639, 1261, 673);
+                delayTime(1, 1);
+            }
+
+
+        }
+
+        public void ClickFormationTeamPresetTeam(DmAe dmae,int TeamNumber)//点击预设梯队
+        {
+            while(dmae.CmpColor(1035, 520,"ffffff",1)==1 || CheckFormationPostionPresetPage(dmae) == true)
+            {
+                delayTime(1);
+            }
+
+            string team1color = dmae.GetColor(726, 20);
+            string team2color = dmae.GetColor(726, 143);
+            string team3color = dmae.GetColor(726, 265);
+            string team4color = dmae.GetColor(726, 388);
+
+            switch (TeamNumber)
+            {
+
+                //这里的1234编队需要和外面的key确认下
+                case 1:
+                    {
+                        while (true)
+                        {
+                            if (dmae.CmpColor(726, 20, team1color, 1) == 0)
+                            {
+                                LeftClick(dmae, 824, 41, 1227, 120);
+                                delayTime(1, 1);
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        while (true)
+                        {
+                            if (dmae.CmpColor(726, 143, team2color, 1) == 0)
+                            {
+                                LeftClick(dmae, 820, 158, 1235, 243);
+                                delayTime(1, 1);
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                case 3:
+                    {
+                        while (true)
+                        {
+                            if (dmae.CmpColor(726, 265, team3color, 1) == 0)
+                            {
+                                LeftClick(dmae, 871, 281, 1224, 364);
+                                delayTime(1, 1);
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                case 4:
+                    {
+                        while (true)
+                        {
+                            if (dmae.CmpColor(726, 388, team4color, 1) == 0)
+                            {
+                                LeftClick(dmae, 869, 402, 1241, 444);
+                                delayTime(1, 1);
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+        }
+
+        public void ClickFormationTeamUsePresets(DmAe dmae)
+        {
+            while (CheckFormationTeamPresetSelect(dmae) == false)
+            {
+                delayTime(1);
+            }
+            while (CheckFormationTeamPresetSelect(dmae))
+            {
+                if (CheckFormationPostionPresetPage(dmae))
+                {
+                    return;
+                }
+                LeftClick(dmae, 1038, 604, 1234, 669);
+                delayTime(1, 1);
+            }
+        }
+
+        public void ClickFormationChangeWindowINFO(DmAe dmae)
+        {
+            while (CheckFormationWindowINFO(dmae) == false)
+            {
+                delayTime(1);
+
+                if (CheckFormationTeamPresetSelect(dmae))
+                {
+                    return;
+                }
+
+
+            }
+
+            string tempcolor0 = dmae.GetColor(543, 369);
+            while (true)
+            {
+                if (dmae.CmpColor(556, 382, tempcolor0, 1) == 0)
+                {
+                    //颜色匹配
+                    LeftClick(dmae, 548, 371, 586, 409);
+                    delayTime(1, 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            while (CheckFormationTeamPresetSelect(dmae)==false)
+            {
+                LeftClick(dmae, 759, 478, 889, 522);
+                delayTime(1, 1);
+            }
+        }
+
+        public void ClickFormationSelectedFinishButton(DmAe dmae)
+        {
+            while (CheckFormationTeamPresetSelect(dmae) == false)
+            {
+                delayTime(1);
+            }
+            while (CheckFormationTeamPresetSelect(dmae))
+            {
+                LeftClick(dmae, 1088, 604, 1242, 669);
+                delayTime(1, 1);
+            }
+        }
 
 
 
@@ -7376,6 +7663,72 @@ namespace testdm
             }
 
             return false;
+        }
+
+        public bool CheckFormationPage(DmAe dmae)
+        {
+            for(int x=1083,y=540;x<=1141;x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            for (int x = 1141, y = 540; y <= 596; y++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        public bool CheckFormationPostionPresetPage(DmAe dmae)
+        {
+            for (int x = 900, y = 590; x <= 1060; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool CheckFormationTeamPresetSelect(DmAe dmae)
+        {
+            for (int x = 900, y = 590; x <= 990; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CheckFormationWindowINFO(DmAe dmae)
+        {
+            for (int x = 375, y = 470; x <= 535; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CheckBattleWithDrawButton(DmAe dmae)
+        {
+            for(int x= 106,y= 165; x <= 124; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public bool CheckDormitoryMLeft(DmAe dmae)//检测屏幕是否白屏

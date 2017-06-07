@@ -291,7 +291,7 @@ namespace WindowsFormsApplication1.BaseData
                 SystemInfo.AutoMap = this.im.configManager.getConfigString("AutoMap");
                 SystemInfo.RoundInterval = this.im.configManager.getConfigInt("RoundInterval");
                 SystemInfo.BattleLoopUnLockWindows = this.im.configManager.getConfigBool("BattleLoopUnLockWindows");
-                SystemInfo.ChangeGun = this.im.configManager.getConfigBool("ChangeGun");
+                SystemInfo.BattleSupport_plus = this.im.configManager.getConfigBool("BattleSupport_plus");
                 SystemInfo.SetMap = this.im.configManager.getConfigBool("SetMap");
                 SystemInfo.FixMinPercentage = this.im.configManager.getConfigInt("FixMinPercentage");
                 SystemInfo.FixMaxPercentage = this.im.configManager.getConfigInt("FixMaxPercentage");
@@ -358,7 +358,7 @@ namespace WindowsFormsApplication1.BaseData
                 this.im.configManager.setConfigString("AutoMap", SystemInfo.AutoMap);
                 this.im.configManager.setConfigInt("RoundInterval", SystemInfo.RoundInterval);
                 this.im.configManager.setConfigBool("BattleLoopUnLockWindows", SystemInfo.BattleLoopUnLockWindows);
-                this.im.configManager.setConfigBool("ChangeGun", SystemInfo.ChangeGun);
+                this.im.configManager.setConfigBool("BattleSupport_plus", SystemInfo.BattleSupport_plus);
                 this.im.configManager.setConfigBool("SetMap", SystemInfo.SetMap);
                 this.im.configManager.setConfigInt("FixMinPercentage", SystemInfo.FixMinPercentage);
                 this.im.configManager.setConfigInt("FixMaxPercentage", SystemInfo.FixMaxPercentage);
