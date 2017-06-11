@@ -26,6 +26,12 @@ namespace WindowsFormsApplication1
             decimal result1 = (decimal)trackBar2.Value / 100;
             label10.Text = result1.ToString();
 
+            trackBar5.Value = Convert.ToInt32(BaseData.SystemInfo.BattleMissionSlectStrSim);
+            decimal result2 = (decimal)trackBar5.Value / 100;
+            label21.Text = result2.ToString();
+
+
+
             //地图缩放文字表达
             if (WindowsFormsApplication1.BaseData.SystemInfo.SetMapType == 0) { label14.Text = "右键平移"; }
             if (WindowsFormsApplication1.BaseData.SystemInfo.SetMapType == 1) { label14.Text = "ctrl加滚动滑轮"; }
@@ -35,6 +41,10 @@ namespace WindowsFormsApplication1
 
             trackBar4.Value = WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset;
             label12.Text = trackBar4.Value.ToString();
+
+            trackBar3.Value = BaseData.SystemInfo.BattleMissionSlectStrColorOffset;
+            label22.Text = trackBar3.Value.ToString();
+
 
             textBox1.Text = WindowsFormsApplication1.BaseData.SystemInfo.WaitTime.ToString();
 
@@ -66,6 +76,8 @@ namespace WindowsFormsApplication1
             WindowsFormsApplication1.BaseData.SystemInfo.WaitTime = Convert.ToDouble(textBox1.Text);
             WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim = trackBar2.Value;//图像识别精度
             WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset = trackBar4.Value;//图像色彩偏移度
+            WindowsFormsApplication1.BaseData.SystemInfo.BattleMissionSlectStrSim = trackBar5.Value;//图像识别精度
+            WindowsFormsApplication1.BaseData.SystemInfo.BattleMissionSlectStrColorOffset = trackBar3.Value;//图像色彩偏移度
             WindowsFormsApplication1.BaseData.SystemInfo.Supply = checkBox2.Checked;
             WindowsFormsApplication1.BaseData.SystemInfo.Simulator = comboBox2.SelectedIndex;//保存模拟器设置
             BaseData.SystemInfo.Simulator = comboBox2.SelectedIndex;
@@ -99,6 +111,7 @@ namespace WindowsFormsApplication1
         }
 
 
+
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             if(checkBox3.Checked == true) { BaseData.SystemInfo.RanControlinterval = true; trackBar1.Enabled = false;label8.Enabled=false; } else { BaseData.SystemInfo.RanControlinterval = false; trackBar1.Enabled = true;label8.Enabled = true; }
@@ -116,7 +129,12 @@ namespace WindowsFormsApplication1
             label10.Text = result.ToString();
 
         }
-
+        private void trackBar5_ValueChanged(object sender, EventArgs e)
+        {
+            decimal result = (decimal)trackBar5.Value / 100;
+            //textBox1.Text = result.ToString();
+            label21.Text = result.ToString();
+        }
         private void trackBar4_Scroll(object sender, EventArgs e)
         {
 
@@ -131,6 +149,11 @@ namespace WindowsFormsApplication1
         {
             if (comboBox4.SelectedIndex == 0) { label14.Text = "右键平移"; }
             if (comboBox4.SelectedIndex == 1) { label14.Text = "右键加滚动滑轮"; }
+        }
+
+        private void trackBar3_ValueChanged(object sender, EventArgs e)
+        {
+            label22.Text = trackBar3.Value.ToString();
         }
     }
 }

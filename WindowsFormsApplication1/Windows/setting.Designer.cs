@@ -64,6 +64,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            this.trackBar5 = new System.Windows.Forms.TrackBar();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
             this.label11 = new System.Windows.Forms.Label();
@@ -75,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
@@ -447,6 +455,12 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label22);
+            this.tabPage3.Controls.Add(this.label21);
+            this.tabPage3.Controls.Add(this.trackBar3);
+            this.tabPage3.Controls.Add(this.trackBar5);
+            this.tabPage3.Controls.Add(this.label19);
+            this.tabPage3.Controls.Add(this.label20);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.trackBar4);
             this.tabPage3.Controls.Add(this.label11);
@@ -462,10 +476,73 @@
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(188, 115);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(0, 12);
+            this.label22.TabIndex = 41;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(187, 87);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(0, 12);
+            this.label21.TabIndex = 40;
+            // 
+            // trackBar3
+            // 
+            this.trackBar3.BackColor = System.Drawing.Color.White;
+            this.trackBar3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.trackBar3.LargeChange = 10;
+            this.trackBar3.Location = new System.Drawing.Point(85, 108);
+            this.trackBar3.Maximum = 15;
+            this.trackBar3.Name = "trackBar3";
+            this.trackBar3.Size = new System.Drawing.Size(101, 45);
+            this.trackBar3.TabIndex = 39;
+            this.trackBar3.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBar3.Value = 15;
+            this.trackBar3.ValueChanged += new System.EventHandler(this.trackBar3_ValueChanged);
+            // 
+            // trackBar5
+            // 
+            this.trackBar5.BackColor = System.Drawing.Color.White;
+            this.trackBar5.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.trackBar5.LargeChange = 10;
+            this.trackBar5.Location = new System.Drawing.Point(85, 75);
+            this.trackBar5.Maximum = 95;
+            this.trackBar5.Minimum = 60;
+            this.trackBar5.Name = "trackBar5";
+            this.trackBar5.Size = new System.Drawing.Size(101, 45);
+            this.trackBar5.TabIndex = 38;
+            this.trackBar5.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBar5.Value = 60;
+            this.trackBar5.ValueChanged += new System.EventHandler(this.trackBar5_ValueChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(13, 111);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 12);
+            this.label19.TabIndex = 37;
+            this.label19.Text = "色彩偏移";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(13, 87);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(77, 12);
+            this.label20.TabIndex = 36;
+            this.label20.Text = "战役识别精度";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(181, 46);
+            this.label12.Location = new System.Drawing.Point(185, 46);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(0, 12);
             this.label12.TabIndex = 35;
@@ -475,7 +552,7 @@
             this.trackBar4.BackColor = System.Drawing.Color.White;
             this.trackBar4.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.trackBar4.LargeChange = 10;
-            this.trackBar4.Location = new System.Drawing.Point(83, 39);
+            this.trackBar4.Location = new System.Drawing.Point(85, 39);
             this.trackBar4.Maximum = 15;
             this.trackBar4.Name = "trackBar4";
             this.trackBar4.Size = new System.Drawing.Size(101, 45);
@@ -497,7 +574,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(181, 15);
+            this.label10.Location = new System.Drawing.Point(185, 15);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(0, 12);
             this.label10.TabIndex = 31;
@@ -516,7 +593,7 @@
             this.trackBar2.BackColor = System.Drawing.Color.White;
             this.trackBar2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.trackBar2.LargeChange = 10;
-            this.trackBar2.Location = new System.Drawing.Point(83, 6);
+            this.trackBar2.Location = new System.Drawing.Point(85, 6);
             this.trackBar2.Maximum = 95;
             this.trackBar2.Minimum = 60;
             this.trackBar2.Name = "trackBar2";
@@ -544,6 +621,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
@@ -593,5 +672,11 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TrackBar trackBar3;
+        private System.Windows.Forms.TrackBar trackBar5;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
     }
 }

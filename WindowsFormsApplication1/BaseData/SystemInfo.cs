@@ -80,6 +80,10 @@ namespace WindowsFormsApplication1.BaseData
         public static bool LockWindows = true;
         public static double FindTeamSlectStrSim = 90;
         public static int FindTeamSlectStrColorOffset = 10;
+        public static double BattleMissionSlectStrSim = 90;
+        public static int BattleMissionSlectStrColorOffset = 10;
+
+
         public static int SetMapType = 0;
         //# 监控时间 过大会CPU占用增大
         public static int SimulatorCheckTime = 5;

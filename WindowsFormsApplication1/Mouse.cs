@@ -2290,7 +2290,7 @@ namespace testdm
             //根据情况往下拉寻找所需的战役
 
             FirstTag: string CombatMissionMColor = dmae.GetColor(102, 34);
-            result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
+            result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString() , (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY);
             if(result != -1)//-1没有找到
             {
                 //找到直接点击完成任务
@@ -2300,7 +2300,7 @@ namespace testdm
                 {
                     LeftClick(dmae, Convert.ToInt32(intX), Convert.ToInt32(intY), Convert.ToInt32(intX) + 5, Convert.ToInt32(intY) + 5);
                     delayTime(1);
-                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString() , (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY);
                     if (result == -1)//点击失败，点击错误需要重来
                     {
                         goto FirstTag;
@@ -2312,7 +2312,7 @@ namespace testdm
                 //若无,则拉上定位0战役
                 Random ran = new Random();
                 SystemInfo.AppState = "屏幕往上移动";
-                while (dmae.FindStr(197, 107, 395, 185, "00", CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY) == -1) 
+                while (dmae.FindStr(197, 107, 395, 185, "00", CombatMissionMColor + "-" + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString() , (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY) == -1) 
                 {
                     //206,115,304,163鼠标起始范围
                     int tempx = ran.Next(206, 304);
@@ -2332,12 +2332,12 @@ namespace testdm
                 if (Convert.ToInt32(battle.Substring(battle.Length - 1, 1)) < 6)
                 {
                     //若所选战役00-05则不需要向下点
-                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString() , (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY);
                     while (Convert.ToInt32(intX) < 310)
                     {
                         LeftClick(dmae, Convert.ToInt32(intX), Convert.ToInt32(intY), Convert.ToInt32(intX) + 5, Convert.ToInt32(intY) + 5);
                         delayTime(1);
-                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
+                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString() , (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY);
                     }
                 }
                 else
@@ -2345,12 +2345,12 @@ namespace testdm
                     //06-08则往下点
                     //188,709,323,720鼠标起始范围
                     LeftClick(dmae, 188, 713, 323, 720);
-                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
+                    result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString() , (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY);
                     while (Convert.ToInt32(intX) < 310)
                     {
                         LeftClick(dmae, 188, 709, 323, 720);
                         delayTime(1,1);
-                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString()  + WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrColorOffset.ToString() , (double)((decimal)WindowsFormsApplication1.BaseData.SystemInfo.FindTeamSlectStrSim / 100), out intX, out intY);
+                        result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString() , (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY);
                     }
                 }
 

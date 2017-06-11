@@ -257,7 +257,7 @@ namespace WindowsFormsApplication1.BaseData
                 }
                 
                 SystemInfo.UIcfg = this.im.configManager.getConfigDouble("UIcfg");
-                if (SystemInfo.UIcfg < 0.12)
+                if (SystemInfo.UIcfg < 0.13)
                 {
                     MessageBox.Show(string.Format("开始下载UIconfig"));
                     string URLAddress = @"http://45.78.2.254/GF/UIconfig.cfg";
@@ -310,6 +310,8 @@ namespace WindowsFormsApplication1.BaseData
                 SystemInfo.LockWindows = this.im.configManager.getConfigBool("LockWindows");
                 SystemInfo.FindTeamSlectStrSim = this.im.configManager.getConfigDouble("FindTeamSlectStrSim");
                 SystemInfo.FindTeamSlectStrColorOffset = this.im.configManager.getConfigInt("FindTeamSlectStrColorOffset");
+                SystemInfo.BattleMissionSlectStrSim = this.im.configManager.getConfigDouble("BattleMissionSlectStrSim");
+                SystemInfo.BattleMissionSlectStrColorOffset = this.im.configManager.getConfigInt("BattleMissionSlectStrColorOffset");
                 SystemInfo.SetMapType = this.im.configManager.getConfigInt("SetMapType");
                 SystemInfo.SimulatorCheckTime = this.im.configManager.getConfigInt("SimulatorCheckTime");
                 SystemInfo.Time12AddGetFriendBattery = this.im.configManager.getConfigBool("Time12AddGetFriendBattery");
@@ -377,6 +379,8 @@ namespace WindowsFormsApplication1.BaseData
                 this.im.configManager.setConfigBool("LockWindows", SystemInfo.LockWindows);
                 this.im.configManager.setConfigDouble("FindTeamSlectStrSim", SystemInfo.FindTeamSlectStrSim);
                 this.im.configManager.setConfigInt("FindTeamSlectStrColorOffset", SystemInfo.FindTeamSlectStrColorOffset);
+                this.im.configManager.setConfigDouble("BattleMissionSlectStrSim", SystemInfo.BattleMissionSlectStrSim);
+                this.im.configManager.setConfigInt("BattleMissionSlectStrColorOffset", SystemInfo.BattleMissionSlectStrColorOffset);
                 this.im.configManager.setConfigInt("SetMapType", SystemInfo.SetMapType);
                 this.im.configManager.setConfigInt("SimulatorCheckTime", SystemInfo.SimulatorCheckTime);
                 this.im.configManager.setConfigBool("Time12AddGetFriendBattery", SystemInfo.Time12AddGetFriendBattery);
