@@ -101,10 +101,10 @@ namespace TaskList
             im.Form1.checkBox3.Checked = SystemInfo.GetFriendBatteryCapt;
             im.Form1.textBox29.Text = SystemInfo.GetFriendBattleryDelayM.ToString();
 
-            im.gameData.User_operationInfo[0].OperationName = WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask1;
-            im.gameData.User_operationInfo[1].OperationName = WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask2;
-            im.gameData.User_operationInfo[2].OperationName = WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask3;
-            im.gameData.User_operationInfo[3].OperationName = WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask4;
+            im.gameData.User_operationInfo[0].OperationName = SystemInfo.LogisticsTask1;
+            im.gameData.User_operationInfo[1].OperationName = SystemInfo.LogisticsTask2;
+            im.gameData.User_operationInfo[2].OperationName = SystemInfo.LogisticsTask3;
+            im.gameData.User_operationInfo[3].OperationName = SystemInfo.LogisticsTask4;
 
             im.gameData.User_operationInfo[0].OperationTeamName = "第一梯队";
             im.gameData.User_operationInfo[1].OperationTeamName = "第二梯队";
@@ -274,10 +274,10 @@ namespace TaskList
 
         private void button2_Click(object sender, EventArgs e)//停止战斗任务从尾开始
         {
-            if (im.gameData.User_battleInfo[3].Used == true) { im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; return; }
-            if (im.gameData.User_battleInfo[2].Used == true) { im.gameData.User_battleInfo[2].BattleLoopTime = 0; im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; return; }
-            if (im.gameData.User_battleInfo[1].Used == true) { im.gameData.User_battleInfo[1].BattleLoopTime = 0; im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; return; }
-            if (im.gameData.User_battleInfo[0].Used == true) { im.gameData.User_battleInfo[0].BattleLoopTime = 0; im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; return; }
+            if (im.gameData.User_battleInfo[3].Used == true) { im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; im.gameData.User_battleInfo[3].BattleGunPostionMove.Clear(); return; }
+            if (im.gameData.User_battleInfo[2].Used == true) { im.gameData.User_battleInfo[2].BattleLoopTime = 0; im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; im.gameData.User_battleInfo[2].BattleGunPostionMove.Clear(); return; }
+            if (im.gameData.User_battleInfo[1].Used == true) { im.gameData.User_battleInfo[1].BattleLoopTime = 0; im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; im.gameData.User_battleInfo[1].BattleGunPostionMove.Clear(); return; }
+            if (im.gameData.User_battleInfo[0].Used == true) { im.gameData.User_battleInfo[0].BattleLoopTime = 0; im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; im.gameData.User_battleInfo[0].BattleGunPostionMove.Clear(); return; }
         }
 
         private void button3_Click(object sender, EventArgs e)//截图

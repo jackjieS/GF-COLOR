@@ -43,15 +43,22 @@ namespace WindowsFormsApplication1.Events
             im.time.ChoseThebattle(dmae, mouse, ref userbattleinfo);
         }
 
-        public void TeamFormationChange(DmAe dmae, Mouse mouse, ref BaseData.UserBattleInfo userbattleinfo)
+        public void TeamFormationChange1(DmAe dmae, Mouse mouse, ref BaseData.UserBattleInfo userbattleinfo)
         {
 
             //单独补给
 
             //换成打手编队
             TeamFormationChangeToFighter(dmae,userbattleinfo.TaskMianTeam, 1);
-            //进图补给
-            TeamFormationFighterSupport(dmae, mouse, ref userbattleinfo);
+
+
+        }
+
+        public void TeamFormationChange2(DmAe dmae, Mouse mouse, ref BaseData.UserBattleInfo userbattleinfo)
+        {
+
+
+
             //换成完整梯队
             TeamFormationChangeToFighter(dmae, userbattleinfo.TaskMianTeam, 2);
             //over

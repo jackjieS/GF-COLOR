@@ -57,6 +57,9 @@ namespace WindowsFormsApplication1.BaseData
         public bool BattleSupport_plus = false;//是否拖尸 总开关
         public bool NeedSupport_plus = false;//当前拖尸是否要补给 小开关
         public List<int> BattleGunPostionMove = new List<int>();
+        public int BattleSupportRound = 0;//回合数补给间隔
+        public bool GunNeedWithDraw = false;//战斗中人形撤退
+        public double GunWithDrawTimedelay = 0;//撤退延迟
 
         public void BattleFixLastTimeCD(int c)
         {
@@ -98,10 +101,17 @@ namespace WindowsFormsApplication1.BaseData
                 CommonHelp.gametasklist.Insert(0, TaskList.Fix);
                 if (this.BattleSupport_plus == true)
                 {
-                    CommonHelp.gametasklist.Insert(1, TaskList.BattleSupport_plus); if (this.BattleSupport_plus == true)
+                    if(this.BattleLoopTime % this.BattleSupportRound == 0)
                     {
-                        this.NeedSupport_plus = true;
+                        CommonHelp.gametasklist.Insert(1, TaskList.BattleTeamFormationChange1);
+                        CommonHelp.gametasklist.Insert(2, TaskList.BattleSupport_plus);
+                        CommonHelp.gametasklist.Insert(3, TaskList.BattleTeamFormationChange2);
+                        if (this.BattleSupport_plus == true)
+                        {
+                            this.NeedSupport_plus = true;
+                        }
                     }
+
                 }
             }
             else //-----循环间隔
@@ -109,9 +119,15 @@ namespace WindowsFormsApplication1.BaseData
                 CommonHelp.BattleFixNumber = Key + 1;
                 if (this.BattleSupport_plus == true)
                 {
-                    CommonHelp.gametasklist.Insert(0, TaskList.BattleSupport_plus); if (this.BattleSupport_plus == true)
+                    if (this.BattleLoopTime % this.BattleSupportRound == 0)
                     {
-                        this.NeedSupport_plus = true;
+                        CommonHelp.gametasklist.Insert(0, TaskList.BattleTeamFormationChange1);
+                        CommonHelp.gametasklist.Insert(1, TaskList.BattleSupport_plus);
+                        CommonHelp.gametasklist.Insert(2, TaskList.BattleTeamFormationChange2);
+                        if (this.BattleSupport_plus == true)
+                        {
+                            this.NeedSupport_plus = true;
+                        }
                     }
                 }
                 Random ran = new Random();

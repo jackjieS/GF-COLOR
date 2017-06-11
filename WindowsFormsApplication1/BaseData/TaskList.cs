@@ -68,7 +68,10 @@ namespace WindowsFormsApplication1.BaseData
         public static TaskListstruct ReadAndSaveFriendsDormitoryList = new TaskListstruct("读取宿舍", 22);
         public static TaskListstruct GetFriendDormitoryBattery = new TaskListstruct("领取电池", 23);
 
-        public static TaskListstruct BattleSupport_plus = new TaskListstruct("单独补给", 24);
+        public static TaskListstruct BattleTeamFormationChange1 = new TaskListstruct("更换编队", 24);
+        public static TaskListstruct BattleSupport_plus = new TaskListstruct("单独补给", 25);
+        public static TaskListstruct BattleTeamFormationChange2 = new TaskListstruct("更换编队", 26);
+
 
         public static TaskListstruct WaitForLogistics = new TaskListstruct("等待后勤任务结束", 98);
         public static TaskListstruct WaitAuttoBattleFinish = new TaskListstruct("自律作战结束", 99);
@@ -87,8 +90,13 @@ namespace WindowsFormsApplication1.BaseData
 
         public void taskremove()//出列
         {
-            CommonHelp.gametasklist.RemoveAt(0);
-            WriteLog.WriteError("任务移除 ");
+            try
+            {
+                CommonHelp.gametasklist.RemoveAt(0);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public void taskInsertafterOperation(TaskListstruct a)

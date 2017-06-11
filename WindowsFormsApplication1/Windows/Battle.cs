@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TaskList;
 using WindowsFormsApplication1;
@@ -152,13 +153,16 @@ namespace testdm
                         im.gameData.User_battleInfo[0].EquipmentUpdateCount =Convert.ToInt32(textBox11.Text);
                     }
                 }
-
+                im.gameData.User_battleInfo[0].BattleSupportRound = Convert.ToInt32(textBox13.Text);
                 im.gameData.User_battleInfo[0].BattleSupport_plus = checkBox5.Checked;
+                im.gameData.User_battleInfo[0].GunWithDrawTimedelay = Convert.ToDouble(textBox12.Text);
                 //撤退代码
-                im.gameData.User_battleInfo[0].BattleGunPostionMove.Add(5);
-                im.gameData.User_battleInfo[0].BattleGunPostionMove.Add(2);
+                BattleGunE(im.gameData.User_battleInfo[0].BattleGunPostionMove);
+                im.gameData.User_battleInfo[0].GunNeedWithDraw = checkBox7.Checked;
 
                 im.gameData.User_battleInfo[0].Used = true;
+
+
                 im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.Battle1);
 
 
@@ -217,6 +221,14 @@ namespace testdm
 
 
                 im.gameData.User_battleInfo[1].TaskType = Int32.Parse(comboBox2.Text);
+
+                im.gameData.User_battleInfo[1].BattleSupportRound = Convert.ToInt32(textBox13.Text);
+                im.gameData.User_battleInfo[1].BattleSupport_plus = checkBox5.Checked;
+                im.gameData.User_battleInfo[1].GunNeedWithDraw = checkBox7.Checked;
+                im.gameData.User_battleInfo[1].GunWithDrawTimedelay = Convert.ToDouble(textBox12.Text);
+                //撤退代码
+                BattleGunE(im.gameData.User_battleInfo[1].BattleGunPostionMove);
+
                 im.gameData.User_battleInfo[1].Used = true;
                 im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.Battle2);
             }
@@ -278,6 +290,14 @@ namespace testdm
 
 
                 im.gameData.User_battleInfo[2].TaskType = Int32.Parse(comboBox2.Text);
+
+                im.gameData.User_battleInfo[2].BattleSupportRound = Convert.ToInt32(textBox13.Text);
+                im.gameData.User_battleInfo[2].BattleSupport_plus = checkBox5.Checked;
+                im.gameData.User_battleInfo[2].GunNeedWithDraw = checkBox7.Checked;
+                im.gameData.User_battleInfo[2].GunWithDrawTimedelay = Convert.ToDouble(textBox12.Text);
+                //撤退代码
+                BattleGunE(im.gameData.User_battleInfo[2].BattleGunPostionMove);
+
                 im.gameData.User_battleInfo[2].Used = true;
                 im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.Battle3);
             }
@@ -335,6 +355,15 @@ namespace testdm
 
 
                 im.gameData.User_battleInfo[3].TaskType = Int32.Parse(comboBox2.Text);
+
+                im.gameData.User_battleInfo[3].BattleSupportRound = Convert.ToInt32(textBox13.Text);
+                im.gameData.User_battleInfo[3].BattleSupport_plus = checkBox5.Checked;
+                im.gameData.User_battleInfo[3].GunNeedWithDraw = checkBox7.Checked;
+                im.gameData.User_battleInfo[3].GunWithDrawTimedelay = Convert.ToDouble(textBox12.Text);
+                //撤退代码
+                BattleGunE(im.gameData.User_battleInfo[3].BattleGunPostionMove);
+
+
                 im.gameData.User_battleInfo[3].Used = true;
                 im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.Battle4);
             }
@@ -342,7 +371,46 @@ namespace testdm
             this.Close();
         }
 
+        public void BattleGunE(List<int> battleGunE)
+        {
+            if (checkBox8.Checked == true)
+            {
+                battleGunE.Add(1);
+            }
+            if (checkBox9.Checked == true)
+            {
+                battleGunE.Add(2);
+            }
+            if (checkBox10.Checked == true)
+            {
+                battleGunE.Add(3);
+            }
+            if (checkBox11.Checked == true)
+            {
+                battleGunE.Add(4);
+            }
+            if (checkBox12.Checked == true)
+            {
+                battleGunE.Add(5);
+            }
+            if (checkBox13.Checked == true)
+            {
+                battleGunE.Add(6);
+            }
+            if (checkBox14.Checked == true)
+            {
+                battleGunE.Add(7);
+            }
+            if (checkBox15.Checked == true)
+            {
+                battleGunE.Add(8);
+            }
+            if (checkBox16.Checked == true)
+            {
+                battleGunE.Add(9);
+            }
 
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {

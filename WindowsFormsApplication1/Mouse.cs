@@ -2910,12 +2910,12 @@ namespace testdm
                 {
                     case 0:
                         {
-                            CommonHelp.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.Dismantlement);
+                            CommonHelp.gametasklist.Insert(1,WindowsFormsApplication1.BaseData.TaskList.Dismantlement);
                             break;
                         }
                     case 1:
                         {
-                            CommonHelp.gametasklist.Add(WindowsFormsApplication1.BaseData.TaskList.EquipmentUpdate);
+                            CommonHelp.gametasklist.Insert(1,WindowsFormsApplication1.BaseData.TaskList.EquipmentUpdate);
                             break;
                         }
                     default:
@@ -2928,7 +2928,6 @@ namespace testdm
                 MessageBox.Show("床位已满，请整顿", "少女前线");
             }
 
-            //WindowsFormsApplication1.BaseData.SystemInfo.ThreadTCase = 2;
             return true;
         }
 
@@ -3899,12 +3898,20 @@ namespace testdm
         {
             SystemInfo.AppState = "开始撤离";
             int count = 0;
-            int dm_ret0 = dmae.CmpColor(297, 40, "ffffff", 0.9);
-            while (dm_ret0 == 0)
+
+
+            while(dmae.CmpColor(297, 40, "ffffff", 0.9) == 1)
+            {
+                delayTime(1);
+            }
+
+
+
+            while (dmae.CmpColor(297, 40, "ffffff", 0.9) == 0)
             {
                 LeftClick(dmae, x1, y1, x2, y2);
                 delayTime(1);
-                dm_ret0 = dmae.CmpColor(297, 40, "ffffff", 0.9);
+
                 count += 1;
                 if (count == 20)
                 {
@@ -3964,7 +3971,7 @@ namespace testdm
         }
 
 
-        public int MoveAndFight(DmAe dmae, int x1, int y1, int x2, int y2, /*1*/int x3, int y3, int x4, int y4,/*2*/ int x5, int y5,int x6,int y6,int x99, int x98,List<int> BattleGunPostionMove = null)//移动与战斗 //0不需要检查机遇点X99随机点 x98 0是横 1是束 
+        public int MoveAndFight(DmAe dmae, int x1, int y1, int x2, int y2, /*1*/int x3, int y3, int x4, int y4,/*2*/ int x5, int y5,int x6,int y6,int x99, int x98,UserBattleInfo userbattleinfo)//移动与战斗 //0不需要检查机遇点X99随机点 x98 0是横 1是束 
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "开始移动";
 
@@ -4162,17 +4169,18 @@ namespace testdm
                 WindowsFormsApplication1.BaseData.SystemInfo.AppState = "战斗中";
 
                 //检测是否需要队伍人形撤退
-                List<int> templist = new List<int>();
-                templist = BattleGunPostionMove;
-                if (templist.Any())
+
+
+                if (userbattleinfo.GunNeedWithDraw)
                 {
-                    //delayTime(1, 1);
-                    this.BattleGunPostionMove(dmae,templist);
-                }
-                else
-                {
+                    delayTime(userbattleinfo.GunWithDrawTimedelay, 1);
+                    if (this.BattleGunPostionMove(dmae, userbattleinfo.BattleGunPostionMove) == false)
+                    {
+                        break;
+                    }
 
                 }
+
 
                 if(CheckBattleMapReady(dmae) == 0)
                 {
@@ -4284,7 +4292,7 @@ namespace testdm
 
         }
 
-        public void BattleGunPostionMove(DmAe dmae,List<int> BattleGunPostionMove)
+        public bool BattleGunPostionMove(DmAe dmae,List<int> BattleGunPostionMove)
         {
             int count = 0;
             while (true)
@@ -4297,7 +4305,7 @@ namespace testdm
                     }
                     else
                     {
-
+                        return false;
                     }
                 }
                 else
@@ -4307,7 +4315,7 @@ namespace testdm
 
 
             }
-
+            return true;
 
         }
 
@@ -4315,144 +4323,112 @@ namespace testdm
         {
             //可以更准确的按住然后判断直线ffffff的位置确定是否选中
 
-            //while (CheckBattleWithDrawButton(dmae))
-            //{
-            //    LeftClick(dmae, 1059, 452, 1157, 608);
-            //}
-
-            switch (x)
+            while (true)
             {
-                case 1:
-                    {
-                        LeftClick(dmae, 412, 291, 510, 324);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 412, 291, 510, 324);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                        }
-                        return true;
-                    }
-                case 2:
-                    {
-                        LeftClick(dmae, 552, 296, 644, 325);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 552, 296, 644, 325);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                        }
-                        return true;
-                    }
-                case 3:
-                    {
-                        LeftClick(dmae, 695, 293, 782, 324);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 695, 293, 782, 324);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                        }
-                        return true;
-                    }
-                case 4:
-                    {
-                        LeftClick(dmae, 365, 383, 463, 420);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 365, 383, 463, 420);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                        }
-                        return true;
-                    }
-                case 5:
-                    {
-                        LeftClick(dmae, 558, 387, 612, 407);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 558, 387, 612, 407);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                        }
-                        return true;
-                    }
-                case 6:
-                    {
-                        LeftClick(dmae, 696, 378, 826, 421);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 696, 378, 826, 421);
-                            delayTime(0.1);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                            delayTime(0.1);
-                        }
-                        return true;
-                    }
-                case 7:
-                    {
-                        LeftClick(dmae, 286, 512, 407, 576);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 286, 512, 407, 576);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                        }
-                        return true;
-                    }
-                case 8:
-                    {
-                        LeftClick(dmae, 498, 512, 648, 571);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 498, 512, 648, 571);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                        }
-                        return true;
-                    }
-                case 9:
-                    {
-                        LeftClick(dmae, 733, 516, 867, 571);
-                        while (CheckBattleWithDrawButton(dmae) == false)
-                        {
-                            LeftClick(dmae, 733, 516, 867, 571);
-                        }
-
-                        while (CheckBattleWithDrawButton(dmae))
-                        {
-                            LeftClick(dmae, 53, 140, 204, 189);
-                        }
-                        return true;
-                    }
-                default:
+                if (CheckBattleMapReady(dmae) == 0)
+                {
                     return false;
+                }
+
+                switch (x)
+                {
+                    case 1:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 412, 291, 510, 324);
+                            }
+                            break;
+                        }
+                    case 2:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 552, 296, 644, 325);
+                            }
+
+                            break;
+                        }
+                    case 3:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 695, 293, 782, 324);
+                            }
+                            break;
+                        }
+                    case 4:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 365, 383, 463, 420);
+                            }
+
+                            break;
+                        }
+                    case 5:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 558, 387, 612, 407);
+                            }
+
+                            break;
+                        }
+                    case 6:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 696, 378, 826, 421);
+                                delayTime(0.1);
+                            }
+
+                            break;
+                        }
+                    case 7:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 286, 512, 407, 576);
+                            }
+
+                            break;
+                        }
+                    case 8:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 498, 512, 648, 571);
+                            }
+
+                            break;
+                        }
+                    case 9:
+                        {
+                            if (CheckBattleWithDrawButton(dmae) == false)
+                            {
+                                LeftClick(dmae, 733, 516, 867, 571);
+                            }
+                            break;
+                        }
+                    default:
+                        return false;
+                }
+
+                if (CheckBattleWithDrawButton(dmae))
+                {
+                    
+                    LeftClick(dmae, 53, 140, 204, 189);
+                    if (CheckBattleWithDrawButton(dmae) == false)
+                    {
+                        return true;
+                    }
+                }
+
+
             }
+
+
 
         }
 

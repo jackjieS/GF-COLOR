@@ -1744,12 +1744,12 @@ namespace testdm
         }
 
 
-        public void BattleSupport_plus(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
-        {
-            //单独补给
-            im.formation.TeamFormationChange(dmae, mouse, ref userBattleInfo);
+        //public void BattleSupport_plus(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
+        //{
+        //    //单独补给
+        //    im.formation.TeamFormationChange(dmae, mouse, ref userBattleInfo);
 
-        }
+        //}
         public void Battle1_1(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
             mouse.LeftClickHomeToBattle(dmae, "01", 0, 1);
@@ -1771,7 +1771,7 @@ namespace testdm
 
 
 
-            mouse.MoveAndFight(dmae, 534, 315, 605, 368, 758, 179, 820, 230, 413, 307, 512, 333, 0, 0,userBattleInfo.BattleGunPostionMove);//
+            mouse.MoveAndFight(dmae, 534, 315, 605, 368, 758, 179, 820, 230, 413, 307, 512, 333, 0, 0, userBattleInfo);//
            
 
             mouse.RoundEnd(dmae, 774, 697, 838, 718, ref userBattleInfo);
@@ -1827,9 +1827,9 @@ namespace testdm
             mouse.RoundEnd2(dmae);
             mouse.ScreenUp(dmae, 294, 127, 518, 210, 100, 669, 186, 680, 422, 460, 594); //900, 665
 
-            mouse.MoveAndFight(dmae, 360, 492, 399, 528, 515, 658, 556, 704, 215, 480, 339, 502, 1, 0);//
+            mouse.MoveAndFight(dmae, 360, 492, 399, 528, 515, 658, 556, 704, 215, 480, 339, 502, 1, 0, userBattleInfo);//
             mouse.ScreenUp(dmae, 294, 127, 518, 210, 100, 669, 186, 680, 422, 460, 594); //900, 665
-            mouse.MoveAndFight(dmae, 515, 658, 556, 704, 780, 488, 821, 532, 390, 663, 492, 678, 0, 0);//
+            mouse.MoveAndFight(dmae, 515, 658, 556, 704, 780, 488, 821, 532, 390, 663, 492, 678, 0, 0, userBattleInfo);//
             mouse.ScreenUp(dmae, 294, 127, 518, 210, 100, 669, 186, 680, 422, 460, 594); //900, 665
             mouse.MoveAndMove(dmae, 474, 317, 516, 351, 357, 489, 403, 528, 538, 315, 621, 326, 0, 0);//
             mouse.MoveAndMove(dmae, 357, 489, 403, 528, 512, 659, 556, 707, 251, 485, 336, 500, 0, 0);//
@@ -1838,9 +1838,9 @@ namespace testdm
             mouse.ScreenUp(dmae, 294, 127, 518, 210, 100, 669, 186, 680, 422, 460, 594); //900, 665
 
             mouse.Support(dmae, 780, 489, 822, 536);
-            mouse.MoveAndFight(dmae, 780, 489, 822, 536, 574, 483, 616, 527, 847, 494, 918, 508, 0, 0);//
+            mouse.MoveAndFight(dmae, 780, 489, 822, 536, 574, 483, 616, 527, 847, 494, 918, 508, 0, 0, userBattleInfo);//
             mouse.ScreenUp(dmae, 294, 127, 518, 210, 100, 669, 186, 680, 422, 460, 594); //900, 665
-            mouse.MoveAndFight(dmae, 576, 485, 623, 524, 744, 317, 787, 353, 466, 482, 555, 499, 0, 0);//
+            mouse.MoveAndFight(dmae, 576, 485, 623, 524, 744, 317, 787, 353, 466, 482, 555, 499, 0, 0, userBattleInfo);//
             mouse.ScreenUp(dmae, 294, 127, 518, 210, 100, 669, 186, 680, 422, 460, 594); //900, 665
             mouse.MoveAndMove(dmae, 743, 320, 788, 352, 918, 398, 962, 435, 627, 312, 721, 328, 0, 0);//
             mouse.MoveAndMove(dmae, 918, 398, 962, 435, 899, 590, 939, 632, 985, 398, 1072, 412, 0, 0);//
@@ -1997,11 +1997,11 @@ namespace testdm
 
             mouse.ScreenUp(dmae, 39, 191, 167, 570, 100, 497, 412, 563, 503, 665, 478); //900, 665
 
-            mouse.MoveAndFight(dmae, 233, 354, 269, 385, 359, 213, 391, 241, 121, 340, 212, 368, 1, 0);//
+            mouse.MoveAndFight(dmae, 233, 354, 269, 385, 359, 213, 391, 241, 121, 340, 212, 368, 1, 0, userBattleInfo);//
 
             mouse.ScreenUp(dmae, 39, 191, 167, 570, 100, 497, 412, 563, 503, 665, 478); //900, 665
 
-            mouse.MoveAndFight(dmae, 355, 210, 393, 246, 580, 235, 614, 270, 238, 200, 335, 228, 0, 0);//need
+            mouse.MoveAndFight(dmae, 355, 210, 393, 246, 580, 235, 614, 270, 238, 200, 335, 228, 0, 0, userBattleInfo);//need
 
             mouse.ScreenUp(dmae, 39, 191, 167, 570, 100, 497, 412, 563, 503, 665, 478); //900, 665
 
@@ -2146,7 +2146,7 @@ namespace testdm
             //第一开始
             mouse.MoveAndMove(dmae, 707, 337, 733, 361, 543, 345, 581, 378, 709, 230, 728, 278, 0, 1);//
             mouse.delayTime(1);
-            mouse.MoveAndFight(dmae, 543, 345, 581, 378, 634, 492, 662, 531, 472, 346, 525, 356, 0, 0);//
+            mouse.MoveAndFight(dmae, 543, 345, 581, 378, 634, 492, 662, 531, 472, 346, 525, 356, 0, 0, userBattleInfo);//
             mouse.delayTime(1);
 
             mouse.ScreenDown(dmae, 61, 267, 262, 575, 250, 392, 483, 702, 482, 992, 455);
@@ -2154,7 +2154,7 @@ namespace testdm
             //第二开始
             mouse.MoveAndMove(dmae, 630, 119, 667, 148, 571, 252, 601, 281, 686, 114, 712, 122, 0, 0);//
             mouse.delayTime(1);
-            mouse.MoveAndFight(dmae, 569, 249, 603, 283, 497, 407, 543, 452, 621, 247, 699, 259, 0, 0);//
+            mouse.MoveAndFight(dmae, 569, 249, 603, 283, 497, 407, 543, 452, 621, 247, 699, 259, 0, 0, userBattleInfo);//
 
             mouse.ScreenDown(dmae, 61, 267, 262, 575, 250, 392, 483, 702, 482, 992, 455);
             //结束回合
@@ -2251,12 +2251,12 @@ namespace testdm
 
             if (userBattleInfo.ChoiceToSupply == true && userBattleInfo.BattleSupport_plus==false && userBattleInfo.BattleSupport_plus==false) { mouse.Support(dmae, 1084, 141, 1117, 178); }
 
-            mouse.MoveAndFight(dmae, 1081, 140, 1125, 179, 844, 142, 883, 178, 1093, 182, 1112, 348, 0, 1);//第一开始
+            mouse.MoveAndFight(dmae, 1081, 140, 1125, 179, 844, 142, 883, 178, 1093, 182, 1112, 348, 0, 1, userBattleInfo);//第一开始
 
             mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
             mouse.delayTime(1);
 
-            mouse.MoveAndFight(dmae, 845, 141, 879, 173, 669, 140, 697, 176, 853, 189, 873, 276, 0, 1);//第二开始
+            mouse.MoveAndFight(dmae, 845, 141, 879, 173, 669, 140, 697, 176, 853, 189, 873, 276, 0, 1, userBattleInfo);//第二开始
             mouse.delayTime(1);
             mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
             mouse.delayTime(1);
@@ -2264,12 +2264,12 @@ namespace testdm
             if (userBattleInfo.TaskType == 2)
             {
                 //第三开始
-                mouse.MoveAndFight(dmae, 688, 157, 725, 186, 450, 158, 501, 195, 679, 184, 697, 255, 0, 1);//第二开始
+                mouse.MoveAndFight(dmae, 688, 157, 725, 186, 450, 158, 501, 195, 679, 184, 697, 255, 0, 1, userBattleInfo);//第二开始
                 mouse.delayTime(1);
                 mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
                 mouse.delayTime(1);
                 //第四开始
-                mouse.MoveAndFight(dmae, 452, 156, 492, 192, 185, 148, 238, 197, 464, 196, 483, 240, 0, 1);//第二开始
+                mouse.MoveAndFight(dmae, 452, 156, 492, 192, 185, 148, 238, 197, 464, 196, 483, 240, 0, 1, userBattleInfo);//第二开始
                 mouse.delayTime(1);
                 mouse.ScreenUp(dmae, 358, 250, 998, 338, 450, 401, 171, 828, 222, 349, 263); //900, 665
                 mouse.delayTime(1);
@@ -2506,7 +2506,7 @@ namespace testdm
             if (userBattleInfo.ChoiceToSupply == true && userBattleInfo.BattleSupport_plus==false) { mouse.Support(dmae, 332, 325, 435, 424); }
 
             mouse.MoveAndMove(dmae, 342, 322, 426, 407, /*第一个点坐标*/486, 433, 541, 491,/*第二个点坐标*/199, 326, 322, 347/*监测点坐标*/, 0, 0);//第一开始
-            mouse.MoveAndFight(dmae, 486, 433, 541, 491, /*第一个点坐标*/579, 237, 636, 297,/*第二个点坐标*/ 348, 434, 457, 450/*监测点坐标*/, 0, 0);//第一开始
+            mouse.MoveAndFight(dmae, 486, 433, 541, 491, /*第一个点坐标*/579, 237, 636, 297,/*第二个点坐标*/ 348, 434, 457, 450/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
             mouse.ScreenDown(dmae, 59, 212, 268, 482, 200, 891, 99, 544, 96, 499, 195);//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
 
             mouse.RoundEnd2(dmae);
@@ -2514,7 +2514,7 @@ namespace testdm
 
             mouse.MoveAndMove(dmae, 578, 247, 636, 290, /*第一个点坐标*/448, 139, 484, 155,/*第二个点坐标*/394, 234, 548, 254/*监测点坐标*/, 0, 0);//第一开始
             mouse.MoveAndMove(dmae, 436, 112, 494, 157, /*第一个点坐标*/678, 73, 703, 102,/*第二个点坐标*/291, 104, 406, 119/*监测点坐标*/, 0, 0);//第一开始
-            mouse.MoveAndFight(dmae, 646, 66, 702, 98, /*第一个点坐标*/768, 158, 824, 210,/*第二个点坐标*/ 661, 102, 686, 194/*监测点坐标*/, 0, 1);//第一开始
+            mouse.MoveAndFight(dmae, 646, 66, 702, 98, /*第一个点坐标*/768, 158, 824, 210,/*第二个点坐标*/ 661, 102, 686, 194/*监测点坐标*/, 0, 1, userBattleInfo);//第一开始
 
             mouse.ScreenDown(dmae, 59, 212, 268, 482, 200, 891, 99, 544, 96, 499, 195);//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
             mouse.RoundEnd(dmae, 770, 157, 824, 210, ref userBattleInfo);
@@ -2568,9 +2568,9 @@ namespace testdm
                 mouse.StopBattle(dmae);
                 return;
             }
-            mouse.MoveAndFight(dmae, 244, 206, 274, 241, /*第一个点坐标*/472, 165, 520, 203,/*第二个点坐标*/135, 203, 215, 211/*监测点坐标*/, 0, 0);//第一开始
+            mouse.MoveAndFight(dmae, 244, 206, 274, 241, /*第一个点坐标*/472, 165, 520, 203,/*第二个点坐标*/135, 203, 215, 211/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
 
-            mouse.MoveAndFight(dmae, 472, 165, 520, 203, /*第一个点坐标*/643, 281, 679, 317,/*第二个点坐标*/319, 157, 450, 177/*监测点坐标*/, 0, 0);//第一开始
+            mouse.MoveAndFight(dmae, 472, 165, 520, 203, /*第一个点坐标*/643, 281, 679, 317,/*第二个点坐标*/319, 157, 450, 177/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
 
             switch (userBattleInfo.TaskType)
             {
@@ -2587,7 +2587,7 @@ namespace testdm
                     }
                 case 2:
                     {
-                        mouse.MoveAndFight(dmae, 619, 283, 661, 318, /*第一个点坐标*/507, 500, 552, 538,/*第二个点坐标*/463, 272, 594, 296/*监测点坐标*/, 0, 0);//第一开始
+                        mouse.MoveAndFight(dmae, 619, 283, 661, 318, /*第一个点坐标*/507, 500, 552, 538,/*第二个点坐标*/463, 272, 594, 296/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
 
                         mouse.MoveToAirport(dmae, 530, 500, 569, 535, 290, 543, 332, 580,/**/595, 498, 663, 506, /*move坐标*/240, 545,/*点击移动坐标*/196, 547, 273, 578);//第四开始
                         mouse.Evacuate(dmae, 291, 545, 330, 576, ref userBattleInfo);
@@ -2654,10 +2654,10 @@ namespace testdm
 
 
 
-            mouse.MoveAndFight(dmae, 153, 465, 190, 501, /*第一个点坐标*/350, 460, 389, 492,/*第二个点坐标*/166, 332, 181, 430/*监测点坐标*/, 0, 1,userBattleInfo.BattleGunPostionMove);//第一开始
+            mouse.MoveAndFight(dmae, 153, 465, 190, 501, /*第一个点坐标*/350, 460, 389, 492,/*第二个点坐标*/169, 532, 182, 606/*监测点坐标*/, 0, 1,userBattleInfo);//第一开始
             mouse.ScreenDown(dmae, 44, 328, 332, 413, 300, 136, 519, 187, 515, 187, 515);
 
-            mouse.MoveAndFight(dmae, 348, 455, 391, 491, /*第一个点坐标*/575, 482, 625, 518,/*第二个点坐标*/363, 492, 378, 542/*监测点坐标*/, 0, 1, userBattleInfo.BattleGunPostionMove);//第一开始
+            mouse.MoveAndFight(dmae, 348, 455, 391, 491, /*第一个点坐标*/575, 482, 625, 518,/*第二个点坐标*/363, 492, 378, 542/*监测点坐标*/, 0, 1, userBattleInfo);//第一开始
             mouse.ScreenDown(dmae, 44, 328, 332, 413, 300, 136, 519, 187, 515, 187, 515);
 
             switch (userBattleInfo.TaskType)
@@ -2675,7 +2675,7 @@ namespace testdm
                     }
                 case 2:
                     {
-                        mouse.MoveAndFight(dmae, 579, 479, 614, 512, /*第一个点坐标*/810, 455, 840, 495,/*第二个点坐标*/592, 516, 609, 578/*监测点坐标*/, 0, 1);//第一开始
+                        mouse.MoveAndFight(dmae, 579, 479, 614, 512, /*第一个点坐标*/810, 455, 840, 495,/*第二个点坐标*/592, 516, 609, 578/*监测点坐标*/, 0, 1, userBattleInfo);//第一开始
                         mouse.ScreenDown(dmae, 44, 328, 332, 413, 300, 136, 519, 187, 515, 187, 515);
 
                         mouse.MoveToAirport(dmae, 806, 465, 847, 498, 1026, 467, 1064, 506,/**/859, 460, 901, 471, /*move坐标*/960, 475,/*点击移动坐标*/927, 469, 1014, 509);//第四开始
@@ -2776,19 +2776,19 @@ namespace testdm
 
 
 
-                        mouse.MoveAndFight(dmae, 1020, 148, 1076, 193, /*第一个点坐标*/830, 125, 860, 154,/*第二个点坐标*/ 1086, 151, 1149, 161/*监测点坐标*/, 0, 0);//第一开始
+                        mouse.MoveAndFight(dmae, 1020, 148, 1076, 193, /*第一个点坐标*/830, 125, 860, 154,/*第二个点坐标*/ 1086, 151, 1149, 161/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
                         mouse.ScreenUp(dmae, 70, 270, 269, 369, 100, 971, 158, 876, 651, 286, 589);
 
 
 
-                        mouse.MoveAndFight(dmae, 827, 123, 861, 151, 642, 152, 675, 182, 841, 553, 854, 625, 0, 1);//第二开始
+                        mouse.MoveAndFight(dmae, 827, 123, 861, 151, 642, 152, 675, 182, 841, 553, 854, 625, 0, 1, userBattleInfo);//第二开始
                         mouse.ScreenUp(dmae, 70, 270, 269, 369, 100, 971, 158, 876, 651, 286, 589);
                         mouse.delayTime(1);
 
-                        mouse.MoveAndFight(dmae, 638, 152, 675, 188, 646, 285, 680, 314, 694, 147, 782, 158, 0, 0);//第三开始
+                        mouse.MoveAndFight(dmae, 638, 152, 675, 188, 646, 285, 680, 314, 694, 147, 782, 158, 0, 0, userBattleInfo);//第三开始
                         mouse.ScreenUp(dmae, 70, 270, 269, 369, 100, 971, 158, 876, 651, 286, 589);
 
-                        mouse.MoveAndFight(dmae, 646, 285, 680, 314, 632, 389, 679, 434, 703, 281, 786, 289, 0, 0);//第四开始
+                        mouse.MoveAndFight(dmae, 646, 285, 680, 314, 632, 389, 679, 434, 703, 281, 786, 289, 0, 0, userBattleInfo);//第四开始
                         mouse.ScreenUp(dmae, 70, 270, 269, 369, 100, 971, 158, 876, 651, 286, 589);
 
                         mouse.delayTime(1);
@@ -2842,12 +2842,12 @@ namespace testdm
 
                         mouse.ScreenDown(dmae, 36, 228, 145, 333, 100, 447, 551, 288, 176, 869, 433);
 
-                        mouse.MoveAndFight(dmae, 496, 439, 525, 471, /*第一个点坐标*/648, 429, 679, 462,/*第二个点坐标*/ 504, 579, 516, 642/*监测点坐标*/, 0, 1);//第三开始
+                        mouse.MoveAndFight(dmae, 496, 439, 525, 471, /*第一个点坐标*/648, 429, 679, 462,/*第二个点坐标*/ 504, 579, 516, 642/*监测点坐标*/, 0, 1, userBattleInfo);//第三开始
 
 
                         mouse.ScreenDown(dmae, 36, 228, 145, 333, 100, 447, 551, 288, 176, 869, 433);
 
-                        mouse.MoveAndFight(dmae, 649, 433, 679, 461, /*第一个点坐标*/634, 290, 674, 339,/*第二个点坐标*/538, 422, 621, 436/*监测点坐标*/, 0, 0);//第四开始
+                        mouse.MoveAndFight(dmae, 649, 433, 679, 461, /*第一个点坐标*/634, 290, 674, 339,/*第二个点坐标*/538, 422, 621, 436/*监测点坐标*/, 0, 0, userBattleInfo);//第四开始
 
 
 
@@ -2927,20 +2927,20 @@ namespace testdm
                             mouse.StopBattle(dmae);
                             return;
                         }
-                        mouse.MoveAndFight(dmae, 1021, 501, 1074, 557, /*第一个点坐标*/1077, 264, 1112, 291,/*第二个点坐标*/ 839, 529, 996, 546/*监测点坐标*/, 0,0);//第一开始
+                        mouse.MoveAndFight(dmae, 1021, 501, 1074, 557, /*第一个点坐标*/1077, 264, 1112, 291,/*第二个点坐标*/ 839, 529, 996, 546/*监测点坐标*/, 0,0, userBattleInfo);//第一开始
 
                         mouse.ScreenDown(dmae, 333, 197, 1132, 243, 360, 183, 121, 751, 172, 571, 473);
 
 
 
-                        mouse.MoveAndFight(dmae, 1074, 264, 1111, 296, 886, 337, 924, 371, 967, 255, 1056, 274, 0,0);//第二开始
+                        mouse.MoveAndFight(dmae, 1074, 264, 1111, 296, 886, 337, 924, 371, 967, 255, 1056, 274, 0,0, userBattleInfo);//第二开始
                         mouse.delayTime(1);
 
 
                         mouse.ScreenDown(dmae, 333, 197, 1132, 243, 360, 183, 121, 751, 172, 571, 473);
                         mouse.delayTime(1);
 
-                        mouse.MoveAndFight(dmae, 889, 338, 929, 376, 766, 488, 808, 527, 803, 333, 867, 349, 0,0);//第三开始
+                        mouse.MoveAndFight(dmae, 889, 338, 929, 376, 766, 488, 808, 527, 803, 333, 867, 349, 0,0, userBattleInfo);//第三开始
                         mouse.ScreenDown(dmae, 333, 197, 1132, 243, 360, 183, 121, 751, 172, 571, 473);
 
                         //mouse.ScreenDown(dmae, 333, 197, 1132, 243, 360, 378, 217, "94c6f7" + "|" + Settings.Default.AirPort, 1022, 130, "94c6f7" + "|" + Settings.Default.AirPort);
@@ -2987,25 +2987,25 @@ namespace testdm
                             mouse.StopBattle(dmae);
                             return;
                         }
-                        mouse.MoveAndFight(dmae, 1041, 125, 1081, 154, /*第一个点坐标*/824, 102, 866, 132,/*第二个点坐标*/1136, 163, 1266, 172/*监测点坐标*/, 0,0);//第一开始
+                        mouse.MoveAndFight(dmae, 1041, 125, 1081, 154, /*第一个点坐标*/824, 102, 866, 132,/*第二个点坐标*/1136, 163, 1266, 172/*监测点坐标*/, 0,0, userBattleInfo);//第一开始
 
 
                         mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 587, 633, 446, 249, 229, 252);
 
 
-                        mouse.MoveAndFight(dmae, 843, 143, 876, 174, /*第一个点坐标*/665, 202, 702, 232,/*第二个点坐标*/742, 136, 817, 155/*监测点坐标*/, 0,0);//第二开始
+                        mouse.MoveAndFight(dmae, 843, 143, 876, 174, /*第一个点坐标*/665, 202, 702, 232,/*第二个点坐标*/742, 136, 817, 155/*监测点坐标*/, 0,0, userBattleInfo);//第二开始
 
 
                         mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 587, 633, 446, 249, 229, 252);
 
 
-                        mouse.MoveAndFight(dmae, 666, 199, 708, 233, /*第一个点坐标*/457, 169, 503, 200,/*第二个点坐标*/ 678, 297, 694, 391/*监测点坐标*/, 0,1);//第三开始
+                        mouse.MoveAndFight(dmae, 666, 199, 708, 233, /*第一个点坐标*/457, 169, 503, 200,/*第二个点坐标*/ 678, 297, 694, 391/*监测点坐标*/, 0,1, userBattleInfo);//第三开始
 
 
                         mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 587, 633, 446, 249, 229, 252);
 
 
-                        mouse.MoveAndFight(dmae, 459, 168, 496, 196, /*第一个点坐标*/229, 191, 292, 241,/*第二个点坐标*/700, 161, 762, 180/*监测点坐标*/, 0,0);//第四开始
+                        mouse.MoveAndFight(dmae, 459, 168, 496, 196, /*第一个点坐标*/229, 191, 292, 241,/*第二个点坐标*/700, 161, 762, 180/*监测点坐标*/, 0,0, userBattleInfo);//第四开始
 
 
                         mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 587, 633, 446, 249, 229, 252);
@@ -3055,13 +3055,13 @@ namespace testdm
                             mouse.StopBattle(dmae);
                             return;
                         }
-                        mouse.MoveAndFight(dmae, 1021, 501, 1074, 557, /*第一个点坐标*/1065, 306, 1097, 338,/*第二个点坐标*/ 1075, 525, 1201, 535/*监测点坐标*/, 0, 0);//第一开始
+                        mouse.MoveAndFight(dmae, 1021, 501, 1074, 557, /*第一个点坐标*/1065, 306, 1097, 338,/*第二个点坐标*/ 1075, 525, 1201, 535/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
                         mouse.delayTime(1);
 
                         mouse.MoveToAirport(dmae, 1066, 308, 1108, 343, 1018, 509, 1070, 559,/**/1114, 321, 1214, 330, /*move坐标*/1000, 515,/*点击移动坐标*/930, 523, 1007, 548);//第四开始
                         mouse.delayTime(1);
 
-                        mouse.MoveAndFight(dmae, 1015, 508, 1074, 549, 755, 538, 794, 569, 1075, 525, 1201, 535, 0, 0);//第二开始
+                        mouse.MoveAndFight(dmae, 1015, 508, 1074, 549, 755, 538, 794, 569, 1075, 525, 1201, 535, 0, 0, userBattleInfo);//第二开始
                         mouse.delayTime(1);
 
                         mouse.MoveToAirport(dmae, 759, 541, 789, 572, 1019, 515, 1068, 555,/**/ 807, 551, 910, 560, /*move坐标*/1020, 525,/*点击移动坐标*/920, 514, 1012, 547);//第四开始
@@ -3112,10 +3112,10 @@ namespace testdm
                             mouse.StopBattle(dmae);
                             return;
                         }
-                        mouse.MoveAndFight(dmae, 1021, 501, 1074, 557, /*第一个点坐标*/1065, 306, 1097, 338,/*第二个点坐标*/ 1075, 526, 1200, 534/*监测点坐标*/, 0, 0);//第一开始
+                        mouse.MoveAndFight(dmae, 1021, 501, 1074, 557, /*第一个点坐标*/1065, 306, 1097, 338,/*第二个点坐标*/ 1075, 526, 1200, 534/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
                         mouse.delayTime(1);
 
-                        mouse.MoveAndFight(dmae, 1064, 308, 1104, 340, 1008, 136, 1053, 169, 1114, 321, 1214, 330, 0, 0);//第二开始
+                        mouse.MoveAndFight(dmae, 1064, 308, 1104, 340, 1008, 136, 1053, 169, 1114, 321, 1214, 330, 0, 0, userBattleInfo);//第二开始
                         mouse.delayTime(1);
 
                         mouse.MoveAndMove(dmae, 1008, 377, 1049, 408, 1063, 547, 1100, 580, 1061, 385, 1200, 394, 0, 0);//
@@ -3183,25 +3183,25 @@ namespace testdm
                 return;
             }
 
-            mouse.MoveAndFight(dmae, 130, 190, 170, 234, /*第一个点坐标*/359, 203, 396, 229,/*第二个点坐标*/ 144, 230, 160, 293/*监测点坐标*/, 0, 1);//第一开始
+            mouse.MoveAndFight(dmae, 130, 190, 170, 234, /*第一个点坐标*/359, 203, 396, 229,/*第二个点坐标*/ 144, 230, 160, 293/*监测点坐标*/, 0, 1, userBattleInfo);//第一开始
 
             mouse.MoveAndMove(dmae, 363, 204, 396, 230, /*第一个点坐标*/541, 209, 574, 241,/*第二个点坐标*/373, 234, 389, 308/*监测点坐标*/, 0, 1);//第一开始
 
-            mouse.MoveAndFight(dmae, 543, 209, 572, 235, /*第一个点坐标*/672, 206, 704, 239,/*第二个点坐标*/ 551, 262, 565, 315/*监测点坐标*/, 0, 1);//第一开始
+            mouse.MoveAndFight(dmae, 543, 209, 572, 235, /*第一个点坐标*/672, 206, 704, 239,/*第二个点坐标*/ 551, 262, 565, 315/*监测点坐标*/, 0, 1, userBattleInfo);//第一开始
 
             mouse.RoundEnd2(dmae);
 
             mouse.Support(dmae, 673, 213, 705, 237);
 
-            mouse.MoveAndFight(dmae, 673, 213, 705, 237, /*第一个点坐标*/611, 324, 642, 359,/*第二个点坐标*/ 564, 201, 655, 222/*监测点坐标*/, 1, 0);//第一开始
+            mouse.MoveAndFight(dmae, 673, 213, 705, 237, /*第一个点坐标*/611, 324, 642, 359,/*第二个点坐标*/ 564, 201, 655, 222/*监测点坐标*/, 1, 0, userBattleInfo);//第一开始
 
             mouse.MoveAndMove(dmae, 607, 327, 639, 356, /*第一个点坐标*/536, 522, 566, 555,/*第二个点坐标*/656, 322, 748, 335/*监测点坐标*/, 0, 0);//第一开始
 
-            mouse.MoveAndFight(dmae, 533, 520, 563, 549, /*第一个点坐标*/729, 558, 757, 584,/*第二个点坐标*/ 583, 521, 635, 531/*监测点坐标*/, 0, 0);//第一开始
+            mouse.MoveAndFight(dmae, 533, 520, 563, 549, /*第一个点坐标*/729, 558, 757, 584,/*第二个点坐标*/ 583, 521, 635, 531/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
 
             mouse.ScreenUp(dmae, 547, 95, 903, 146, 300, 830, 378, 802, 384, 810, 366);//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
 
-            mouse.MoveAndFight(dmae, 729, 558, 763, 589, /*第一个点坐标*/752, 392, 792, 438,/*第二个点坐标*/ 775, 553, 854, 570/*监测点坐标*/, 0, 0);//第一开始
+            mouse.MoveAndFight(dmae, 729, 558, 763, 589, /*第一个点坐标*/752, 392, 792, 438,/*第二个点坐标*/ 775, 553, 854, 570/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
 
             mouse.ScreenUp(dmae, 547, 95, 903, 146, 300, 305, 214, 311, 217, 983, 566);//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
 
