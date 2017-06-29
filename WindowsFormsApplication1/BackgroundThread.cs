@@ -885,7 +885,7 @@ namespace WindowsFormsApplication1
                                 }
                                 else
                                 {
-                                    //拆枪代码
+                                    //代码
                                     im.equipment.EquipmentUpdate(dmae,im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber-1].EquipmentType, im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber-1].EquipmentUpdatePostion, im.gameData.User_battleInfo[CommonHelp.BattleEquipmentOrGunNumber-1].EquipmentUpdateCount);
                                     im.taskList.taskremove();
 

@@ -90,6 +90,10 @@ namespace TaskList
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.BattletabPage = new System.Windows.Forms.TabPage();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
@@ -210,6 +214,9 @@ namespace TaskList
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
+            this.button39 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -1031,6 +1038,13 @@ namespace TaskList
             // BattletabPage
             // 
             this.BattletabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BattletabPage.BackgroundImage")));
+            this.BattletabPage.Controls.Add(this.button39);
+            this.BattletabPage.Controls.Add(this.button38);
+            this.BattletabPage.Controls.Add(this.button37);
+            this.BattletabPage.Controls.Add(this.button36);
+            this.BattletabPage.Controls.Add(this.button35);
+            this.BattletabPage.Controls.Add(this.button34);
+            this.BattletabPage.Controls.Add(this.button21);
             this.BattletabPage.Controls.Add(this.label64);
             this.BattletabPage.Controls.Add(this.label65);
             this.BattletabPage.Controls.Add(this.label66);
@@ -1079,6 +1093,50 @@ namespace TaskList
             this.BattletabPage.TabIndex = 1;
             this.BattletabPage.Text = "tabPage2";
             this.BattletabPage.UseVisualStyleBackColor = true;
+            // 
+            // button36
+            // 
+            this.button36.Enabled = false;
+            this.button36.Location = new System.Drawing.Point(456, 138);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(41, 21);
+            this.button36.TabIndex = 174;
+            this.button36.Text = "配置";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // button35
+            // 
+            this.button35.Enabled = false;
+            this.button35.Location = new System.Drawing.Point(456, 113);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(41, 21);
+            this.button35.TabIndex = 173;
+            this.button35.Text = "配置";
+            this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+            // 
+            // button34
+            // 
+            this.button34.Enabled = false;
+            this.button34.Location = new System.Drawing.Point(456, 88);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(41, 21);
+            this.button34.TabIndex = 172;
+            this.button34.Text = "配置";
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+            // 
+            // button21
+            // 
+            this.button21.Enabled = false;
+            this.button21.Location = new System.Drawing.Point(456, 63);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(41, 21);
+            this.button21.TabIndex = 171;
+            this.button21.Text = "配置";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // label64
             // 
@@ -1369,9 +1427,9 @@ namespace TaskList
             // button16
             // 
             this.button16.Enabled = false;
-            this.button16.Location = new System.Drawing.Point(456, 88);
+            this.button16.Location = new System.Drawing.Point(456, 38);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(52, 48);
+            this.button16.Size = new System.Drawing.Size(41, 21);
             this.button16.TabIndex = 140;
             this.button16.Text = "配置";
             this.button16.UseVisualStyleBackColor = true;
@@ -1430,9 +1488,9 @@ namespace TaskList
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(456, 37);
+            this.button2.Location = new System.Drawing.Point(500, 38);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(52, 47);
+            this.button2.Size = new System.Drawing.Size(41, 21);
             this.button2.TabIndex = 134;
             this.button2.Text = "停止\r\n循环";
             this.button2.UseVisualStyleBackColor = true;
@@ -2320,6 +2378,39 @@ namespace TaskList
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button37
+            // 
+            this.button37.Enabled = false;
+            this.button37.Location = new System.Drawing.Point(500, 63);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(41, 21);
+            this.button37.TabIndex = 175;
+            this.button37.Text = "停止\r\n循环";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
+            // button38
+            // 
+            this.button38.Enabled = false;
+            this.button38.Location = new System.Drawing.Point(500, 88);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(41, 21);
+            this.button38.TabIndex = 176;
+            this.button38.Text = "停止\r\n循环";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+            // 
+            // button39
+            // 
+            this.button39.Enabled = false;
+            this.button39.Location = new System.Drawing.Point(500, 113);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(41, 21);
+            this.button39.TabIndex = 177;
+            this.button39.Text = "停止\r\n循环";
+            this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2556,6 +2647,13 @@ namespace TaskList
         public Button button3;
         public Button button4;
         public Button button1;
+        public Button button36;
+        public Button button35;
+        public Button button34;
+        public Button button21;
+        public Button button39;
+        public Button button38;
+        public Button button37;
     }
 }
 

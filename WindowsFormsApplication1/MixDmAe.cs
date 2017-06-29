@@ -323,6 +323,8 @@ namespace WindowsFormsApplication1
             }
         }
 
+
+
         public bool SetDict()//设置系统路径和字典
         {
             int dmae;

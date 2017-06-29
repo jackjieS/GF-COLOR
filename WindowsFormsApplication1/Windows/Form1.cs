@@ -229,8 +229,13 @@ namespace TaskList
                     im.Form1.button18.Enabled = true;
                     im.Form1.button19.Enabled = true;
                     im.Form1.button20.Enabled = true;
-
-
+                    im.Form1.button34.Enabled = true;
+                    im.Form1.button21.Enabled = true;
+                    im.Form1.button35.Enabled = true;
+                    im.Form1.button36.Enabled = true;
+                    im.Form1.button37.Enabled = true;
+                    im.Form1.button38.Enabled = true;
+                    im.Form1.button39.Enabled = true;
                     im.CountDown = new Thread(im.backGroundThread.CountDown);
                     im.CountDown.IsBackground = true;
                     im.CountDown.Start();
@@ -274,10 +279,11 @@ namespace TaskList
 
         private void button2_Click(object sender, EventArgs e)//停止战斗任务从尾开始
         {
-            if (im.gameData.User_battleInfo[3].Used == true) { im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; im.gameData.User_battleInfo[3].BattleGunPostionMove.Clear(); return; }
-            if (im.gameData.User_battleInfo[2].Used == true) { im.gameData.User_battleInfo[2].BattleLoopTime = 0; im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; im.gameData.User_battleInfo[2].BattleGunPostionMove.Clear(); return; }
-            if (im.gameData.User_battleInfo[1].Used == true) { im.gameData.User_battleInfo[1].BattleLoopTime = 0; im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; im.gameData.User_battleInfo[1].BattleGunPostionMove.Clear(); return; }
-            if (im.gameData.User_battleInfo[0].Used == true) { im.gameData.User_battleInfo[0].BattleLoopTime = 0; im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; im.gameData.User_battleInfo[0].BattleGunPostionMove.Clear(); return; }
+            im.gameData.User_battleInfo[0].BattleLoopTime = 0; im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; im.gameData.User_battleInfo[0].BattleGunPostionMove.Clear();
+            //if (im.gameData.User_battleInfo[3].Used == true) { im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; im.gameData.User_battleInfo[3].BattleGunPostionMove.Clear(); return; }
+            //if (im.gameData.User_battleInfo[2].Used == true) { im.gameData.User_battleInfo[2].BattleLoopTime = 0; im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; im.gameData.User_battleInfo[2].BattleGunPostionMove.Clear(); return; }
+            //if (im.gameData.User_battleInfo[1].Used == true) { im.gameData.User_battleInfo[1].BattleLoopTime = 0; im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; im.gameData.User_battleInfo[1].BattleGunPostionMove.Clear(); return; }
+            //if (im.gameData.User_battleInfo[0].Used == true) { im.gameData.User_battleInfo[0].BattleLoopTime = 0; im.gameData.User_battleInfo[0].BattleFixTime = -1; im.gameData.User_battleInfo[0].Used = false; im.gameData.User_battleInfo[0].BattleGunPostionMove.Clear(); return; }
         }
 
         private void button3_Click(object sender, EventArgs e)//截图
@@ -363,7 +369,10 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            im.mouse.GunMove(dmae, 2);
+            im.mouse.CheckPointIsEmpty(dmae, 614, 190, 648, 225);
+
+
+
 
             ////右下角白点转圈
             ////1157,546,1279,665
@@ -399,7 +408,7 @@ namespace TaskList
         private void button16_Click(object sender, EventArgs e)
         {
 
-            var Battle = new Battle(im);
+            var Battle = new Battle(im,0);
             Battle.StartPosition = FormStartPosition.CenterParent;
             Battle.ShowDialog(this);
         }
@@ -628,11 +637,52 @@ namespace TaskList
         private void textBox29_TextChanged(object sender, EventArgs e)
         {
             int min = Convert.ToInt32(textBox29.Text);
-SystemInfo.GetFriendBattleryDelayH = min / 60;
+            SystemInfo.GetFriendBattleryDelayH = min / 60;
             SystemInfo.GetFriendBattleryDelayM = min % 60;
             if (SystemInfo.GetFriendBattleryDelayH >= 24) { MessageBox.Show("延迟24小时?mdzz"); textBox29.Text = "0"; }
         }
 
-     
+        private void button21_Click(object sender, EventArgs e)
+        {
+            var Battle = new Battle(im, 1);
+            Battle.StartPosition = FormStartPosition.CenterParent;
+            Battle.ShowDialog(this);
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            var Battle = new Battle(im, 2);
+            Battle.StartPosition = FormStartPosition.CenterParent;
+            Battle.ShowDialog(this);
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            var Battle = new Battle(im, 3);
+            Battle.StartPosition = FormStartPosition.CenterParent;
+            Battle.ShowDialog(this);
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            var Battle = new Battle(im, 0);
+            Battle.StartPosition = FormStartPosition.CenterParent;
+            Battle.ShowDialog(this);
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            im.gameData.User_battleInfo[1].BattleLoopTime = 0; im.gameData.User_battleInfo[1].BattleFixTime = -1; im.gameData.User_battleInfo[1].Used = false; im.gameData.User_battleInfo[1].BattleGunPostionMove.Clear();
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            im.gameData.User_battleInfo[2].BattleLoopTime = 0; im.gameData.User_battleInfo[2].BattleFixTime = -1; im.gameData.User_battleInfo[2].Used = false; im.gameData.User_battleInfo[2].BattleGunPostionMove.Clear();
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; im.gameData.User_battleInfo[3].BattleGunPostionMove.Clear();
+        }
     }
 }
