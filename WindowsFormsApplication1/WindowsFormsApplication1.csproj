@@ -79,9 +79,18 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '输出到main|AnyCPU'">
+    <OutputPath>bin\输出到main\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dmtext">
+      <HintPath>Resources\dmtext.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>False</Private>
+    </Reference>
+    <Reference Include="PageCheck">
+      <HintPath>Resources\PageCheck.dll</HintPath>
     </Reference>
     <Reference Include="SimpleUpdater">
       <HintPath>Resources\SimpleUpdater.dll</HintPath>

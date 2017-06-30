@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskList;
 using testdm;
+using dmtext;
+using PageCheck;
 using static WindowsFormsApplication1.BaseData.TaskList;
 
 namespace WindowsFormsApplication1
@@ -19,6 +21,8 @@ namespace WindowsFormsApplication1
         public WriteLog writelog;
 
         //public DmAe dmae;
+        public dmtext.CDmSoft dm;
+        public PageCheck.PageCheck pagecheck;
         public Mouse mouse;
         public Time time;
         public BaseData.ConfigManager configManager;
@@ -38,7 +42,7 @@ namespace WindowsFormsApplication1
         public Events.Equipment equipment;
         public Events.Formation formation;
 
-        public Object  BattleInfoLock;
+
 
 
         public InstanceManager(Form1 form1)
@@ -47,6 +51,11 @@ namespace WindowsFormsApplication1
             this.uiupdate = new UIupdate(this);
             //this.dmae = new DmAe(this);
             this.writelog = new WriteLog(this);
+
+            this.dm = new dmtext.CDmSoft();
+            this.pagecheck = new PageCheck.PageCheck(dm);
+
+
             this.mouse = new Mouse(this);
             this.time = new Time(this);
             this.configManager = new BaseData.ConfigManager(this);
@@ -61,7 +70,7 @@ namespace WindowsFormsApplication1
             this.dormitory = new Events.Dormitory(this);
             this.equipment = new Events.Equipment(this);
             this.formation = new Events.Formation(this);
-            this.BattleInfoLock = new Object();
+
 
             for (int i = 0; i < 4; i++)
             {

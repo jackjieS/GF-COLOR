@@ -369,8 +369,9 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            im.mouse.CheckPointIsEmpty(dmae, 614, 190, 648, 225);
-
+            im.pagecheck.Ver();
+            //im.mouse.CheckPointIsEmpty(dmae, 614, 190, 648, 225);
+            //im.mouse.CheckBattleSettlementPage(dmae);
 
 
 

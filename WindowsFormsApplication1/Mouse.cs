@@ -2862,11 +2862,11 @@ namespace testdm
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "选择后勤任务";
 
             //等待页面加在完毕
-            int dm_ret2 = ChooseLogisticsPageReady(dmae);
+            int dm_ret2 = CheckLogisticsPageReady(dmae);
             while(dm_ret2 == 1)
             {
                 delayTime(1);
-                dm_ret2 = ChooseLogisticsPageReady(dmae);
+                dm_ret2 = CheckLogisticsPageReady(dmae);
             }
 
 
@@ -4363,51 +4363,19 @@ namespace testdm
 
             while (dmae.CmpColor(634, 14, "ffffff", 1) == 0 && dmae.CmpColor(643, 14, "ffffff", 1) == 0)
             {
-                WindowsFormsApplication1.BaseData.SystemInfo.AppState = "战斗中";
+                SystemInfo.AppState = "战斗中";
 
                 //检测是否需要队伍人形撤退
-
-
                 if (userbattleinfo.GunNeedWithDraw)
                 {
                     delayTime(userbattleinfo.GunWithDrawTimedelay, 1);
-                    if (this.BattleGunPostionMove(dmae, userbattleinfo.BattleGunPostionMove) == false)
+                    if (BattleGunPostionMove(dmae, userbattleinfo.BattleGunPostionMove) == false)
                     {
                         break;
                     }
-
                 }
+                delayTime(0.1);
 
-                while (CheckBattleMapReady(dmae) == 1)
-                {
-                    if (dmae.CmpColor(640, 15, "ffffff", 1) == 0)                //暂停判断
-                    {
-                        LeftClick(dmae, 615, 10, 665, 25);
-                        delayTime(1);
-                    }
-                    //暂停判断结束
-                    //任意点击
-                    LeftClick(dmae, 315, 111, 1076, 531);
-                    delayTime(1, 1);
-
-                    bool bk = false;
-                    for (int x = 557, y = 488; x <= 700; x++)
-                    {
-                        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                        {
-                            bk = true;
-                            break;
-                        }
-                        if (x == 700)
-                        {
-                            LeftClick(dmae, 569, 495, 704, 544);
-                            bk = true;
-                        }
-                    }
-                    if (bk) break;
-
-
-                }
             }
 
             //战斗结算页面
@@ -4417,32 +4385,45 @@ namespace testdm
             }
 
             //确定在战斗页面
-            while (CheckBattleSettlementPage(dmae))
+            while (true)
             {
-                WindowsFormsApplication1.BaseData.SystemInfo.AppState = "战斗结算";
-                LeftClick(dmae, 315, 111, 1076, 531);
-                delayTime(0.5);
-            }
+                //一些结算 如装备掉落 战利品窗口掉落等
+                SystemInfo.AppState = "战斗结算";
 
-            while (CheckBattleMapReady(dmae) == 1)
-            {
-                WindowsFormsApplication1.BaseData.SystemInfo.AppState = "等待";
-                LeftClick(dmae, 315, 111, 1076, 531);
-                delayTime(0.5);
-
-                //弹窗如获得战利品需要关闭的窗口
-                for(int x = 557,y = 488; x <= 700; x++)
+                while (CheckWhiteM(dmae))
                 {
-                    if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                    {
-                        break;
-                    }
-                    if (x == 700)
-                    {
-                        LeftClick(dmae, 569, 495, 704, 544);
-                    }
+                    delayTime(0.1);
+                    continue;
+                }
+                while (CheckInternetTransfer(dmae))//网络传输
+                {
+                    delayTime(0.1);
+                    continue;
                 }
 
+                if (CheckNewGunEquipmentPage(dmae))
+                {
+                    SystemInfo.AppState = "掉落结算";
+                    LeftClick(dmae, 1107, 633, 1242, 691);
+                }
+
+                if (CheckBattleSettlementPage(dmae))
+                {
+                    SystemInfo.AppState = "战斗结算";
+                    LeftClick(dmae, 315, 111, 1076, 531);
+                    delayTime(0.5);
+                }
+                if(ChckBattleDropWindow(dmae))
+                {
+                    SystemInfo.AppState = "战利品";
+                    LeftClick(dmae, 569, 495, 704, 544);
+                    delayTime(0.5);
+                }
+
+                if (CheckBattleMapReady(dmae) == 0)
+                {
+                    break;
+                }
             }
 
             return 99;
@@ -4562,7 +4543,7 @@ namespace testdm
 
             while (true)
             {
-                if (CheckBattleMapReady(dmae) == 0)
+                if ((dmae.CmpColor(634, 14, "ffffff", 1) == 1 || dmae.CmpColor(643, 14, "ffffff", 1) == 1))
                 {
                     return false;
                 }
@@ -6608,7 +6589,7 @@ namespace testdm
 
         }
 
-        public int ChooseLogisticsPageReady(DmAe dmae,int x1 = 435,int y1=395,int x2= 658,int y2 = 392,int x3 = 880,int y3=394,int x4= 1102,int y4 = 394)
+        public int CheckLogisticsPageReady(DmAe dmae,int x1 = 435,int y1=395,int x2= 658,int y2 = 392,int x3 = 880,int y3=394,int x4= 1102,int y4 = 394)
         {
             int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
             int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
@@ -7251,6 +7232,18 @@ namespace testdm
             return true;
         }
 
+        public bool ChckBattleDropWindow(DmAe dmae)
+        {
+            for (int x = 557, y = 488; x <= 700; x++)
+            {
+                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public bool CheckAutoBattleFinishPage(DmAe dmae)
         {
             for(int x= 108,y=151; x<=155; x++)
@@ -7507,7 +7500,7 @@ namespace testdm
 
 
         }
-        public int CcheckActivityPageReady(DmAe dmae, int x1 = 195, int y1 = 270, int x2 = 20, int y2 = 675, int x3 = 33, int y3 = 675)//检查魔方行动4个战役加载完毕
+        public int CcheckActivityPageReady(DmAe dmae, int x1 = 200, int y1 = 50, int x2 = 20, int y2 = 675, int x3 = 33, int y3 = 675)//检查魔方行动4个战役加载完毕
         {
             int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
             int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
