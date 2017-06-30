@@ -53,7 +53,6 @@ namespace WindowsFormsApplication1
             this.writelog = new WriteLog(this);
 
             this.dm = new dmtext.CDmSoft();
-            this.pagecheck = new PageCheck.PageCheck(dm);
 
 
             this.mouse = new Mouse(this);

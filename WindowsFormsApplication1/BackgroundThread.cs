@@ -202,6 +202,7 @@ namespace WindowsFormsApplication1
         public void CompleteMisson()
         {
             DmAe dmae = new DmAe();
+            
             dmae.BindWindow();
             dmae.SetDict();//设置系统路径和字典
             if (BaseData.SystemInfo.PprogramErrorBackToHome == true)
@@ -1346,12 +1347,12 @@ namespace WindowsFormsApplication1
 
                                                     im.mouse.LeftClick(dmae, 484, 258, 681, 459);
                                                 }
-                                                while (im.mouse.CheckLsystemAgain(dmae))
+                                                while (im.pagecheck.CheckLsystemAgain(dmae))
                                                 {
 
                                                     im.mouse.LeftClick(dmae, 677, 475, 808, 514);
                                                     im.mouse.delayTime(1, 1);
-                                                    while (im.mouse.CheckLsystemAgain(dmae) == false)
+                                                    while (im.pagecheck.CheckLsystemAgain(dmae) == false)
                                                     {
                                                         goto end;
                                                     }
@@ -1393,12 +1394,12 @@ namespace WindowsFormsApplication1
                                                 while (true)
                                                 {
 
-                                                    while (im.mouse.CheckWhiteM(dmae))
+                                                    while (im.pagecheck.CheckWhiteM())
                                                     {
                                                         im.mouse.delayTime(1, 1);
                                                         continue;
                                                     }
-                                                    if (im.mouse.CheckNewGunEquipmentPage(dmae))
+                                                    if (im.pagecheck.CheckNewGunEquipmentPage())
                                                     {
                                                         SystemInfo.AppState = "获取新人形";
                                                         im.mouse.LeftClick(dmae, 1107, 633, 1242, 691);
@@ -1564,7 +1565,7 @@ namespace WindowsFormsApplication1
 
                 //监控主页
 
-                if (im.mouse.CheckAutoBattleFinishPage(dmae))
+                if (im.pagecheck.CheckAutoBattleFinishPage())
                 {
                     BaseData.SystemInfo.AutoBattleFinishPage = true;
                     BaseData.SystemInfo.PageCheck = "自律结束";
@@ -1575,7 +1576,7 @@ namespace WindowsFormsApplication1
                     BaseData.SystemInfo.AutoBattleFinishPage = false;
                     BaseData.SystemInfo.PageCheck = "";
                 }
-                if (im.mouse.CheckHomePage(dmae) == 0)
+                if (im.pagecheck.CheckHomePage() == 0)
                 {
 
                     BaseData.SystemInfo.StayAtHomePage = true;
@@ -1588,12 +1589,12 @@ namespace WindowsFormsApplication1
                     BaseData.SystemInfo.PageCheck = "";
                 }
 
-                if (im.mouse.CheckBattleResult(dmae))
+                if (im.pagecheck.CheckBattleResult())
                 {
                     SystemInfo.PageCheck = "战斗结算";
                     continue;
                 }
-                if (im.mouse.CheckNewGunEquipmentPage(dmae))
+                if (im.pagecheck.CheckNewGunEquipmentPage())
                 {
                     SystemInfo.PageCheck = "获取新人形";
                     continue;

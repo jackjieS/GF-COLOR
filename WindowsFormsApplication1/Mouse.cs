@@ -13,6 +13,7 @@ namespace testdm
 
     class Mouse
     {
+        //mouse里面的im.pagecheck应该使用外面传进来的dmae
         private InstanceManager im;
 
         public Mouse(InstanceManager im)
@@ -331,11 +332,11 @@ namespace testdm
                                     goto end;
                                 }
 
-                                if (CheckTeamSlectPage(dmae) == 0)
+                                if (im.pagecheck.CheckTeamSlectPage() == 0)
                                 {
                                     //检测突发情况梯队列表
                                     dmae.KeyUp(17);
-                                    while(CheckTeamSlectPage(dmae) == 0)
+                                    while(im.pagecheck.CheckTeamSlectPage() == 0)
                                     {
                                         LeftClick(dmae, 906, 614, 1045, 664);
                                         delayTime(1);
@@ -373,10 +374,10 @@ namespace testdm
                                 delayTime(1);
                             }
                         }
-                        if (CheckTeamSlectPage(dmae) == 0)
+                        if (im.pagecheck.CheckTeamSlectPage() == 0)
                         {
                             //检测突发情况梯队列表
-                            while (CheckTeamSlectPage(dmae) == 0)
+                            while (im.pagecheck.CheckTeamSlectPage() == 0)
                             {
                                 LeftClick(dmae, 906, 614, 1045, 664);
                                 delayTime(1);
@@ -386,65 +387,6 @@ namespace testdm
 
 
                         break;
-
-
-                        //int tempx4 = x4, tempy4 = y4;
-                        //while (true)
-                        //{
-                        //    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0 && dmae.CmpColor(x2, y2, "ffffff", 1) == 0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
-                        //    {
-                        //        return;
-                        //    }
-                        //    else
-                        //    {
-                        //        dmae.KeyDown(17);
-                        //        dmae.MoveTo(x4, y4);
-                        //        tempx4 = x4;
-                        //        //检测突发情况（部署小队）
-                        //        if (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
-                        //        {
-                        //            while (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
-                        //            {
-                        //                LeftClick(dmae, 564, 496, 708, 545);
-                        //                delayTime(1);
-                        //            }
-
-                        //        }
-                        //        while (tempx4 < 1280)
-                        //        {
-                        //            delayTime(0.5, 1);
-                        //            dmae.WheelDown();
-
-                        //            if (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
-                        //            {
-                        //                while (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
-                        //                {
-                        //                    LeftClick(dmae, 564, 496, 708, 545);
-                        //                    delayTime(1);
-                        //                }
-
-                        //            }
-
-
-                        //            tempx4 += 5;
-                        //            if (tempx4 > 1280)
-                        //            {
-                        //                break;
-                        //            }
-
-                        //            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0 && dmae.CmpColor(x2, y3, "ffffff", 1) == 0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
-                        //            {
-                        //                delayTime(2);
-                        //                dmae.KeyUp(17);
-                        //                return;
-                        //            }
-                        //        }
-
-
-
-                        //    }
-
-                        //}
                     }
 
                 default:
@@ -532,7 +474,7 @@ namespace testdm
         {
             SystemInfo.AppState = "点击主页战斗按钮";
 
-            while (CheckHomePage(dmae) == 1)
+            while (im.pagecheck.CheckHomePage() == 1)
             {
                 delayTime(0.5, 1);
 
@@ -541,12 +483,12 @@ namespace testdm
             while (true)
             {
 
-                if (CheckBattlePage(dmae) == 0)
+                if (im.pagecheck.CheckBattlePage() == 0)
                 {
                      return;
                 }
 
-                if (CheckHomePage(dmae) == 0)
+                if (im.pagecheck.CheckHomePage() == 0)
                 {
                     LeftClick(dmae, 836, 456, 1010, 549);
                     delayTime(2);
@@ -554,62 +496,15 @@ namespace testdm
 
             }
 
-
-
-
-
-            //int count = 0;
-            //SystemInfo.AppState = "点击主页战斗按钮";
-            //WriteLog.WriteError("准备点击主页战斗按钮");
-            //while (CheckHomePage(dmae) == 1)
-            //{
-            //    delayTime(0.5,1);
-
-            //}
-
-            //while (CheckHomePage(dmae) == 0)
-            //{
-            //    BindWindowS(dmae, 1);
-
-            //    int dm_ret9 = CheckBattlePage(dmae);
-            //    if (dm_ret9 == 0)
-            //    {
-            //        WriteLog.WriteError("temp = 5 点击主页战斗成功");
-            //        return;
-            //    }
-            //    if (CheckMissionSettingPage(dmae) == 0)
-            //    {
-            //        while (CheckMissionSettingPage(dmae) == 0)
-            //        {
-            //            LeftClick(dmae, 276, 64, 283, 71);
-            //            delayTime(1,1);
-            //        }
-            //        return;
-            //    }
-            //    WriteLog.WriteError("点击主页战斗按钮");
-            //    LeftClick(dmae, 836, 456, 1010, 549);
-            //    delayTime(2);
-            //}
-
-
-            //while (CheckBattlePage(dmae) == 1)
-            //{
-            //    //防止呆在主页
-            //    delayTime(1);
-            //    count += 1;
-            //    if(count == 5) { ClickHomeBattle(dmae); }
-            //}
-
-            //WriteLog.WriteError("点击主页战场按钮成功");
         }
 
         public void ClickHomeResearch(DmAe dmae)
         {
-            while (CheckHomePage(dmae) == 1)
+            while (im.pagecheck.CheckHomePage() == 1)
             {
                 delayTime(0.5, 1);
             }
-            while (CheckHomePage(dmae) == 0)
+            while (im.pagecheck.CheckHomePage() == 0)
             {
                 BindWindowS(dmae, 1);
                 LeftClick(dmae, 831, 322, 1019, 397);
@@ -619,11 +514,11 @@ namespace testdm
 
         public void ClickEquipmentStrengthen(DmAe dmae)
         {
-            while (CheckResearchPageReady(dmae) == false)
+            while (im.pagecheck.CheckResearchPageReady() == false)
             {
                 delayTime(0.5, 1);
             }
-            while (CheckResearchPageReady(dmae) == true)
+            while (im.pagecheck.CheckResearchPageReady() == true)
             {
 
                 LeftClick(dmae, 32, 230, 174, 279);
@@ -633,11 +528,11 @@ namespace testdm
 
         public void ClickEquipmentSelect(DmAe dmae)
         {
-            while (CheckEquipmentSelectPageReady(dmae) == false)
+            while (im.pagecheck.CheckEquipmentSelectPageReady() == false)
             {
                 delayTime(0.5, 1);
             }
-            while (CheckEquipmentSelectPageReady(dmae) == true)
+            while (im.pagecheck.CheckEquipmentSelectPageReady() == true)
             {
 
                 LeftClick(dmae, 291, 352, 356, 427);
@@ -647,11 +542,11 @@ namespace testdm
 
         public void ClickEquipmentTab(DmAe dmae)
         {
-            while (CheckSelectOneEquipmentPageReady(dmae) == false)
+            while (im.pagecheck.CheckSelectOneEquipmentPageReady() == false)
             {
                 delayTime(0.5, 1);
             }
-            while (CheckEquipmentTabPageReady(dmae) == false)
+            while (im.pagecheck.CheckEquipmentTabPageReady() == false)
             {
 
                 LeftClick(dmae, 1112, 127, 1260, 217);
@@ -661,11 +556,11 @@ namespace testdm
 
         public void ClickEquipmentType(DmAe dmae,int i)
         {
-            while (CheckEquipmentTabPageReady(dmae) == false)
+            while (im.pagecheck.CheckEquipmentTabPageReady() == false)
             {
                 delayTime(0.5, 1);
             }
-            while (CheckEquipmentSelectdReady(dmae,i) == false)
+            while (im.pagecheck.CheckEquipmentSelectdReady(i) == false)
             {
                 switch (i)
                 {
@@ -694,12 +589,12 @@ namespace testdm
 
         public void ClickEquipmentTabToClose(DmAe dmae)
         {
-            while(CheckEquipmentTabReadyClose(dmae) == false)
+            while(im.pagecheck.CheckEquipmentTabReadyClose() == false)
             {
                 delayTime(1);
             }
 
-            while (CheckEquipmentTabReadyClose(dmae) == true)
+            while (im.pagecheck.CheckEquipmentTabReadyClose() == true)
             {
                 LeftClick(dmae, 1111, 163, 1247, 213);
             }
@@ -708,12 +603,12 @@ namespace testdm
 
         public void ClickEquipmentToUpdate(DmAe dmae,int i)
         {
-            while (CheckEquipmentTabPageReady(dmae) == true)
+            while (im.pagecheck.CheckEquipmentTabPageReady() == true)
             {
                 //如果页面还zai就要报警了
                 delayTime(1);
             }
-            while (CheckEquipmentLock(dmae) == true)//需要修改
+            while (im.pagecheck.CheckEquipmentLock() == true)//需要修改
             {
                 switch (i)
                 {
@@ -738,11 +633,11 @@ namespace testdm
 
         public void ClickEquipmentADDButton(DmAe dmae)
         {
-            while (CheckEquipmentReadyToUpdate(dmae) == false)
+            while (im.pagecheck.CheckEquipmentReadyToUpdate() == false)
             {
                 delayTime(1);
             }
-            while (CheckEquipmentReadyToUpdate(dmae) == true)
+            while (im.pagecheck.CheckEquipmentReadyToUpdate() == true)
             {
                 LeftClick(dmae, 474, 181, 608, 249);
             }
@@ -755,7 +650,7 @@ namespace testdm
             int temp0 = 0;//用来确定选择按钮的位置
             int n;
             //等待页面加载完毕
-            while (CheckEquipmentReadyToUpdate(dmae) == false)
+            while (im.pagecheck.CheckEquipmentReadyToUpdate() == false)
             {
                 delayTime(1);
             }
@@ -830,11 +725,11 @@ namespace testdm
 
         public void ClickEquipmentConfirm(DmAe dmae)
         {
-            while (CheckEquipmentSelected(dmae) == false)
+            while (im.pagecheck.CheckEquipmentSelected() == false)
             {
                 delayTime(1);
 
-                if (CheckEquipmentUpdate50MaxCount(dmae) == true)
+                if (im.pagecheck.CheckEquipmentUpdate50MaxCount() == true)
                 {
                     LeftClick(dmae, 570, 496, 704, 541);
                     delayTime(1);
@@ -843,7 +738,7 @@ namespace testdm
 
 
             }
-            while (CheckEquipmentSelected(dmae) == true)
+            while (im.pagecheck.CheckEquipmentSelected() == true)
             {
                 LeftClick(dmae, 1102, 552, 1234, 624);
                 delayTime(1);
@@ -853,15 +748,15 @@ namespace testdm
 
         public void ClickEquipmentUpdateConfirmButton(DmAe dmae)
         {
-            while (CheckEquipmentConfirmButton(dmae) == false)
+            while (im.pagecheck.CheckEquipmentConfirmButton() == false)
             {
                 delayTime(1);
             }
-            while (CheckEquipmentConfirmButton(dmae) == true)
+            while (im.pagecheck.CheckEquipmentConfirmButton() == true)
             {
-                if (CheckEquipmentReadyToUpdate(dmae)) { break; }
+                if (im.pagecheck.CheckEquipmentReadyToUpdate()) { break; }
 
-                if (CheckEquipmentUpdateWarningWindows(dmae))
+                if (im.pagecheck.CheckEquipmentUpdateWarningWindows())
                 {
                     LeftClick(dmae, 421, 325, 547, 357);
                 }
@@ -875,11 +770,11 @@ namespace testdm
 
         public void ClickHomeDormitory(DmAe dmae)
         {
-            while (CheckHomePage(dmae) == 1)
+            while (im.pagecheck.CheckHomePage() == 1)
             {
                 delayTime(0.5, 1);
             }
-            while (CheckHomePage(dmae) == 0)
+            while (im.pagecheck.CheckHomePage() == 0)
             {
                 BindWindowS(dmae, 1);
                 LeftClick(dmae, 1074, 184, 1243, 252);
@@ -894,17 +789,17 @@ namespace testdm
             //int dm_ret0 = dmae.CmpColor(40, 85, "3ac2f7" + "|" + Settings.Default.HomePage0, 0.9);
             //int dm_ret1 = dmae.CmpColor(900, 35, "ffffff" + "|" + Settings.Default.HomePage1, 0.9);
             //int dm_ret2 = dmae.CmpColor(710, 690, "ffffff", 0.9);
-            int dm_ret0 = CheckHomePage(dmae);
+            int dm_ret0 = im.pagecheck.CheckHomePage();
             while (dm_ret0 == 1 )
             {
-                int dm_ret6 = CheckBattlePage(dmae);
+                int dm_ret6 = im.pagecheck.CheckBattlePage();
                 //int dm_ret7 = dmae.CmpColor(138, 94, "ffffff", 0.9);
 
                 if(dm_ret6 == 0 ) { return; }
 
                 LeftClick(dmae, 196, 90, 779, 531);//点击人物
                 delayTime(1);
-                dm_ret0 = CheckHomePage(dmae);
+                dm_ret0 = im.pagecheck.CheckHomePage();
                 //dm_ret1 = dmae.CmpColor(900, 35, "ffffff" + "|" + Settings.Default.HomePage1, 0.9);
                 //dm_ret2 = dmae.CmpColor(710, 690, "ffffff", 0.9);
             }
@@ -912,7 +807,7 @@ namespace testdm
             {
                 BindWindowS(dmae, 1);
                 LeftClick(dmae, 1068, 429, 1245, 539);//点击编成
-                dm_ret0 = CheckHomePage(dmae);
+                dm_ret0 = im.pagecheck.CheckHomePage();
                 //dm_ret0 = dmae.CmpColor(40, 85, "3ac2f7" + "|" + Settings.Default.HomePage0, 0.9);
                 //dm_ret1 = dmae.CmpColor(900, 35, "ffffff" + "|" + Settings.Default.HomePage1, 0.9);
                 //dm_ret2 = dmae.CmpColor(710, 690, "ffffff", 0.9);
@@ -920,11 +815,11 @@ namespace testdm
 
             //等待页面载入完毕
 
-            int dm_ret3 = CheckBattlePage(dmae);
+            int dm_ret3 = im.pagecheck.CheckBattlePage();
             //int dm_ret4 = dmae.CmpColor(138, 94, "ffffff", 0.9);
             while (dm_ret3 == 1)
             {
-                int dm_ret6 = CheckBattlePage(dmae);
+                int dm_ret6 = im.pagecheck.CheckBattlePage();
                 //int dm_ret6 = dmae.CmpColor(138, 1, "ffffff", 0.9);
                 //int dm_ret7 = dmae.CmpColor(138, 94, "ffffff", 0.9);
 
@@ -932,7 +827,7 @@ namespace testdm
 
                 delayTime(1);
 
-                dm_ret3 = CheckBattlePage(dmae);
+                dm_ret3 = im.pagecheck.CheckBattlePage();
                 //dm_ret3 = dmae.CmpColor(38, 1, "ffffff", 0.9);
                 //dm_ret4 = dmae.CmpColor(138, 94, "ffffff", 0.9);
                 count += 1;
@@ -947,7 +842,7 @@ namespace testdm
             int count = 0;
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "点击主页工厂";
 
-            while (CheckHomePage(dmae) == 1)
+            while (im.pagecheck.CheckHomePage() == 1)
             {
                 int dm_ret6 = dmae.CmpColor(138, 1, "ffffff", 0.9);
                 int dm_ret7 = dmae.CmpColor(138, 94, "ffffff", 0.9);
@@ -958,7 +853,7 @@ namespace testdm
                 delayTime(0.5,1);
 
             }
-            while (CheckHomePage(dmae) == 0)
+            while (im.pagecheck.CheckHomePage() == 0)
             {
                 BindWindowS(dmae, 1);
                 LeftClick(dmae, 1073, 311, 1224, 376);//点击工厂
@@ -1073,12 +968,12 @@ namespace testdm
 
         public void ClickBuildingResult(DmAe dmae)
         {
-            while (CheckNewGunEquipmentPage(dmae) == false)
+            while (im.pagecheck.CheckNewGunEquipmentPage() == false)
             {
                 delayTime(5,1);
             }
 
-            while (CheckNewGunEquipmentPage(dmae) == true)
+            while (im.pagecheck.CheckNewGunEquipmentPage() == true)
             {
                 if (SystemInfo.EquipmentPicRecord == true)
                 {
@@ -2232,19 +2127,19 @@ namespace testdm
         {
             int count = 0;
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "点击修复按钮";
-            int dm_ret0 = CheckHomePage(dmae);
+            int dm_ret0 = im.pagecheck.CheckHomePage();
             while (dm_ret0 == 1 )
             {
                 //若检测主页不在             
                 LeftClick(dmae, 479, 175, 661, 587);//点击人物
                 delayTime(1);
-                dm_ret0 = CheckHomePage(dmae);
+                dm_ret0 = im.pagecheck.CheckHomePage();
             }
             while (dm_ret0 == 0)
             {
                 BindWindowS(dmae, 1);
                 LeftClick(dmae, 856, 206, 999, 265);//点击修复
-                dm_ret0 = CheckHomePage(dmae);
+                dm_ret0 = im.pagecheck.CheckHomePage();
             }
 
             //等待页面载入完毕
@@ -2293,12 +2188,12 @@ namespace testdm
         public void Activity(DmAe dmae)      //夏活
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "点击魔方行动";
-            int dm_ret0 = CheckActivityChoicePage(dmae);
+            int dm_ret0 = im.pagecheck.CheckActivityChoicePage();
             while (dm_ret0 == 1)//1为不相等
             {
                 LeftClick(dmae, 25, 400, 172, 460);
                 delayTime(1);
-                dm_ret0 = CheckActivityChoicePage(dmae);
+                dm_ret0 = im.pagecheck.CheckActivityChoicePage();
             }
         }
 
@@ -2617,7 +2512,7 @@ namespace testdm
             SystemInfo.AppState = "选择难度";
             while (true)
             {
-                if (CheckBattleDifficultyType(dmae) == difficult)
+                if (im.pagecheck.CheckBattleDifficultyType() == difficult)
                 {
                     break;
                 }
@@ -2631,23 +2526,23 @@ namespace testdm
         public void ChoiceActivityBattle(DmAe dmae,int mission)//活动E-E4
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "点击任务";
-            int dm_Ret0 = CcheckActivityPageReady(dmae);
+            int dm_Ret0 = im.pagecheck.CcheckActivityPageReady();
             while(dm_Ret0 == 1)
             {
                 delayTime(1);
-                dm_Ret0 = CcheckActivityPageReady(dmae);
+                dm_Ret0 = im.pagecheck.CcheckActivityPageReady();
             }
 
             switch (mission)
             {
                 case 11:
                     {
-                        int dm_Ret1 = CheckMissionSettingPage(dmae);//530 80 是作战设置
+                        int dm_Ret1 = im.pagecheck.CheckMissionSettingPage();//530 80 是作战设置
                         while (dm_Ret1 == 1)
                         {
                             LeftClick(dmae, 386, 235, 641, 344);
                             delayTime(1);
-                            dm_Ret1 = CheckMissionSettingPage(dmae);
+                            dm_Ret1 = im.pagecheck.CheckMissionSettingPage();
                         }
                         WriteLog.WriteError("点击完成");
 
@@ -2657,12 +2552,12 @@ namespace testdm
                 case 12:
 
                     {
-                        int dm_Ret1 = CheckMissionSettingPage(dmae);//530 80 是作战设置
+                        int dm_Ret1 = im.pagecheck.CheckMissionSettingPage();//530 80 是作战设置
                         while (dm_Ret1 == 1)
                         {
                             LeftClick(dmae, 874, 198, 1116, 295);
                             delayTime(1);
-                            dm_Ret1 = CheckMissionSettingPage(dmae);
+                            dm_Ret1 = im.pagecheck.CheckMissionSettingPage();
                         }
                         WriteLog.WriteError("点击完成");
 
@@ -2670,12 +2565,12 @@ namespace testdm
                     }
                 case 13:
                     {
-                        int dm_Ret1 = CheckMissionSettingPage(dmae);//530 80 是作战设置
+                        int dm_Ret1 = im.pagecheck.CheckMissionSettingPage();//530 80 是作战设置
                         while (dm_Ret1 == 1)
                         {
                             LeftClick(dmae, 371, 473, 646, 590);
                             delayTime(1);
-                            dm_Ret1 = CheckMissionSettingPage(dmae);
+                            dm_Ret1 = im.pagecheck.CheckMissionSettingPage();
                         }
                         WriteLog.WriteError("点击完成");
 
@@ -2685,12 +2580,12 @@ namespace testdm
                 case 14:
                     {
 
-                        int dm_Ret1 = CheckMissionSettingPage(dmae);//530 80 是作战设置
+                        int dm_Ret1 = im.pagecheck.CheckMissionSettingPage();//530 80 是作战设置
                         while (dm_Ret1 == 1)
                         {
                             LeftClick(dmae, 900, 515, 1112, 587);
                             delayTime(1);
-                            dm_Ret1 = CheckMissionSettingPage(dmae);
+                            dm_Ret1 = im.pagecheck.CheckMissionSettingPage();
                         }
                         WriteLog.WriteError("点击完成");
 
@@ -2862,11 +2757,11 @@ namespace testdm
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "选择后勤任务";
 
             //等待页面加在完毕
-            int dm_ret2 = CheckLogisticsPageReady(dmae);
+            int dm_ret2 = im.pagecheck.CheckLogisticsPageReady();
             while(dm_ret2 == 1)
             {
                 delayTime(1);
-                dm_ret2 = CheckLogisticsPageReady(dmae);
+                dm_ret2 = im.pagecheck.CheckLogisticsPageReady();
             }
 
 
@@ -2881,12 +2776,12 @@ namespace testdm
                     return;
                 }
                 //int dm_ret1 = dmae.CmpColor(390, 100, "ffffff", 0.9);
-                int dm_ret1 = CheckTeamSlectPage(dmae);
+                int dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 while (dm_ret1 == 1)
                 {
                     LeftClick(dmae, 423, 178, 569, 401);
                     delayTime(1);
-                    dm_ret1 = CheckTeamSlectPage(dmae);
+                    dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 }
             }
 
@@ -2899,12 +2794,12 @@ namespace testdm
                     MessageBox.Show("后勤任务进行中", "少女前线");
                     return;
                 }
-                int dm_ret1 = CheckTeamSlectPage(dmae);
+                int dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 while (dm_ret1 == 1)
                 {
                     LeftClick(dmae, 626, 163, 794, 402);
                     delayTime(1);
-                    dm_ret1 = CheckTeamSlectPage(dmae);
+                    dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 }
             }
 
@@ -2916,12 +2811,12 @@ namespace testdm
                     MessageBox.Show("后勤任务进行中", "少女前线");
                     return;
                 }
-                int dm_ret1 = CheckTeamSlectPage(dmae);
+                int dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 while (dm_ret1 == 1)
                 {
                     LeftClick(dmae, 860, 166, 1010, 404);
                     delayTime(1);
-                    dm_ret1 = CheckTeamSlectPage(dmae);
+                    dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 }
             }
 
@@ -2933,12 +2828,12 @@ namespace testdm
                     MessageBox.Show("后勤任务进行中", "少女前线");
                     return;
                 }
-                int dm_ret1 = CheckTeamSlectPage(dmae);
+                int dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 while (dm_ret1 == 1)
                 {
                     LeftClick(dmae, 1073, 162, 1242, 405);
                     delayTime(1);
-                    dm_ret1 = CheckTeamSlectPage(dmae);
+                    dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 }
             }
 
@@ -2948,12 +2843,12 @@ namespace testdm
         public void DoubleClickLogisticsConfirm(DmAe dmae)//双击后勤任务确定
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "确认";
-            int dm_ret0 = CheckTeamSlectPage(dmae);
+            int dm_ret0 = im.pagecheck.CheckTeamSlectPage();
             while (dm_ret0 == 0)
             {
                 LeftClick(dmae, 1104, 622, 1235, 655);
                 delayTime(1);
-                dm_ret0 = CheckTeamSlectPage(dmae); ;
+                dm_ret0 = im.pagecheck.CheckTeamSlectPage(); ;
             }
         }
 
@@ -2967,7 +2862,7 @@ namespace testdm
 
                 delayTime(1);
             }
-            CheckNormalAndAutoBattleButton(dmae, out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1);
+            im.pagecheck.CheckNormalAndAutoBattleButton(out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1);
 
             if (s1 == "self-discipline")
             {
@@ -3012,7 +2907,7 @@ namespace testdm
 
                 delayTime(1);
             }
-            CheckNormalAndAutoBattleButton(dmae, out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1);
+            im.pagecheck.CheckNormalAndAutoBattleButton(out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1);
 
             if (s1 == "self-discipline")
             {
@@ -3238,13 +3133,13 @@ namespace testdm
         public void ClosMissionHelp (DmAe dmae)
         {
 
-            while (CheckMissionHelp(dmae) == 1)
+            while (im.pagecheck.CheckMissionHelp() == 1)
             {
                 delayTime(1, 1);
             }
 
 
-            while (CheckMissionHelp(dmae) == 0)
+            while (im.pagecheck.CheckMissionHelp() == 0)
             {
                 LeftClick(dmae, 170, 115, 260, 155);
                 delayTime(1,1);
@@ -3255,31 +3150,31 @@ namespace testdm
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "补给梯队";
             int count = 0;
-            int dm_ret0 = CheckBattleMapReady(dmae);//检查是否在战斗页面
+            int dm_ret0 = im.pagecheck.CheckBattleMapReady();//检查是否在战斗页面
             //int dm_ret0 = dmae.CmpColor(210, 20, "ffffff", 0.9);
             while (dm_ret0 == 0)
             {
                 LeftClick(dmae, x1, y1, x2, y2);
                 delayTime(1);
-                dm_ret0 = dm_ret0 = CheckBattleMapReady(dmae);
+                dm_ret0 = dm_ret0 = im.pagecheck.CheckBattleMapReady();
             }
 
             delayTime(1);
 
-            int dm_ret2 = CheckTeamSlectPage(dmae);
+            int dm_ret2 = im.pagecheck.CheckTeamSlectPage();
 
 
             while (dm_ret2 == 1 )
             {
                 LeftClick(dmae, x1, y1, x2, y2);
                 delayTime(1);
-                dm_ret2 = CheckTeamSlectPage(dmae);
+                dm_ret2 = im.pagecheck.CheckTeamSlectPage();
 
             }
 
 
             delayTime(1);
-            int dm_ret1 = CheckTeamSlectPage(dmae);
+            int dm_ret1 = im.pagecheck.CheckTeamSlectPage();
 
 
             while (dm_ret1 == 0)
@@ -3294,7 +3189,7 @@ namespace testdm
                 LeftClick(dmae, 1095, 525, 1267, 571);
                 delayTime(1,1);
 
-                int dm_ret4 = CheckErrorWindows(dmae);
+                int dm_ret4 = im.pagecheck.CheckErrorWindows();
                 WriteLog.WriteError("检查错误窗口 dm_ret4 = " + dm_ret4.ToString());
                 if (dm_ret4 == 0 )
                 {
@@ -3303,13 +3198,13 @@ namespace testdm
                     {
                         LeftClick(dmae, 562, 493, 713, 547);
                         delayTime(1);
-                        dm_ret4 = CheckErrorWindows(dmae);
+                        dm_ret4 = im.pagecheck.CheckErrorWindows();
                         //dm_ret5 = dmae.CmpColor(721, 489, "ffffff", 0.9);
                     }
                     return;
                 }
 
-                dm_ret1 = CheckTeamSlectPage(dmae);
+                dm_ret1 = im.pagecheck.CheckTeamSlectPage();
                 WriteLog.WriteError("检测补给 dm_Ret1 = " + dm_ret1.ToString());
             }
 
@@ -3329,7 +3224,7 @@ namespace testdm
             {
                 //打开梯队列表检查HP
                 WriteLog.WriteError("打开梯队列表检查HP");
-                while (CheckTeamSlectPage(dmae) == 1)
+                while (im.pagecheck.CheckTeamSlectPage() == 1)
                 {
                     LeftClick(dmae, x1,y1,x2,y2);
                     delayTime(1);
@@ -3338,7 +3233,7 @@ namespace testdm
                 int dm_ret5;
                 for (int i = 1; i <= 5; i++)
                 {
-                    dm_ret5 = CheckToFix(dmae, i);
+                    dm_ret5 = im.pagecheck.CheckToFix(i);
                     if (dm_ret5 < userBattleInfo.FixMaxPercentage)//小于某一个数
                     {
                         WriteLog.WriteError("需要修复");
@@ -3348,14 +3243,14 @@ namespace testdm
             }
             //关闭梯队页面
 
-            while (CheckTeamSlectPage(dmae) == 0)
+            while (im.pagecheck.CheckTeamSlectPage() == 0)
             {
                 WriteLog.WriteError("关闭梯队页面");
                 LeftClick(dmae, 909, 614, 1045, 663);
                 delayTime(1);
             }
 
-            while (CheckBattleMapReady(dmae) == 0)
+            while (im.pagecheck.CheckBattleMapReady() == 0)
             {
                 WriteLog.WriteError("点击回合结束");
                 LeftClick(dmae, 1107, 633, 1242, 691);
@@ -3365,12 +3260,12 @@ namespace testdm
             //战斗结果结算页面
             while (true)
             {
-                while (CheckWhiteM(dmae))
+                while (im.pagecheck.CheckWhiteM())
                 {
                     delayTime(1, 1);
                     continue;
                 }
-                while (CheckInternetTransfer(dmae))//网络传输
+                while (im.pagecheck.CheckInternetTransfer())//网络传输
                 {
                     delayTime(0.3, 1);
                     continue;
@@ -3379,44 +3274,44 @@ namespace testdm
 
 
 
-                if (CheckSystemRewardSupportPage(dmae))
+                if (im.pagecheck.CheckSystemRewardSupportPage())
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 589, 512, 692, 534);
                 }
 
-                if (CheckBattleResult(dmae))
+                if (im.pagecheck.CheckBattleResult())
                 {
                     SystemInfo.AppState = "战斗结算";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckNewGunEquipmentPage(dmae))
+                if (im.pagecheck.CheckNewGunEquipmentPage())
                 {
                     SystemInfo.AppState = "获取新人形";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckSystemNewsPapge(dmae))
+                if (im.pagecheck.CheckSystemNewsPapge())
                 {
                     SystemInfo.AppState = "系统公告重磅热点";
                     LeftClick(dmae, 145, 70, 146, 71);
                 }
 
-                if (CheckSystemActivistPage(dmae))
+                if (im.pagecheck.CheckSystemActivistPage())
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 102, 95, 103, 96);
                 }
 
-                if (CheckNewAchievement(dmae))
+                if (im.pagecheck.CheckNewAchievement())
                 {
                     SystemInfo.AppState = "新成就";
                     im.time.SaveBmp(dmae, 0, 0, 2000, 2000, "\\PicRecord\\");
                     LeftClick(dmae, 567, 497, 699, 541);
                 }
 
-                if (CheckHomePage(dmae) == 0)
+                if (im.pagecheck.CheckHomePage() == 0)
                 {
                     break;
                 }
@@ -3437,7 +3332,7 @@ namespace testdm
             while (dm_ret1 == 0)
             {
                 delayTime(1);
-                dm_ret1 = CheckActionCount(dmae);
+                dm_ret1 = im.pagecheck.CheckActionCount();
             }
 
 
@@ -3446,7 +3341,7 @@ namespace testdm
             while (true)
             {
                 delayTime(0.1, 1);
-                dm_ret1 = CheckBattleEnd(dmae);
+                dm_ret1 = im.pagecheck.CheckBattleEnd();
 
                 if(dm_ret1 == 0) { WindowsFormsApplication1.BaseData.SystemInfo.AppState = "敌方回合"; break; }
                 count += 1;
@@ -3473,7 +3368,7 @@ namespace testdm
 
                 delayTime(0.1, 1);
 
-                dm_ret1 = CheckBattleStart(dmae);
+                dm_ret1 = im.pagecheck.CheckBattleStart();
                 if(dm_ret1 == 0) { WindowsFormsApplication1.BaseData.SystemInfo.AppState = "回合开始"; break; }
 
                 //鼠标点击防止卡住战斗结算页面
@@ -3541,19 +3436,19 @@ namespace testdm
             int count0 = 0;
 
             //等待界面加在完毕
-            int dm_ret6 = CheckBattleMapReady(dmae);
+            int dm_ret6 = im.pagecheck.CheckBattleMapReady();
             while(dm_ret6 ==1)
             {
                 delayTime(1);
-                dm_ret6 = CheckBattleMapReady(dmae);
+                dm_ret6 = im.pagecheck.CheckBattleMapReady();
 
                 //检查突发情况
-                int dm_ret7 = CheckErrorWindows(dmae);
+                int dm_ret7 = im.pagecheck.CheckErrorWindows();
                 while (dm_ret7 == 0)
                 {
                     delayTime(1);
                     LeftClick(dmae, 567, 495, 708, 542);
-                    dm_ret7 = CheckErrorWindows(dmae);
+                    dm_ret7 = im.pagecheck.CheckErrorWindows();
                 }
             }
             //等待界面加载完毕
@@ -3569,7 +3464,7 @@ namespace testdm
 
                 LeftClick(dmae, x1, y1, x2, y2);
                 delayTime(1);
-                dm_ret6 = CheckBattleMapReady(dmae);
+                dm_ret6 = im.pagecheck.CheckBattleMapReady();
 
 
 
@@ -3577,28 +3472,28 @@ namespace testdm
             delayTime(1);
 
 
-            int dm_ret2 = CheckTeamSlectPage(dmae);
+            int dm_ret2 = im.pagecheck.CheckTeamSlectPage();
             while (dm_ret2 == 1)
             {
                 //检查突发情况(我方总部需。。。)
-                int dm_ret7 = CheckErrorWindows(dmae);
+                int dm_ret7 = im.pagecheck.CheckErrorWindows();
                 while (dm_ret7 == 0)
                 {
                     delayTime(1);
                     LeftClick(dmae, 567, 495, 708, 542);
-                    dm_ret7 = CheckErrorWindows(dmae);
+                    dm_ret7 = im.pagecheck.CheckErrorWindows();
                 }
                 
                 LeftClick(dmae, x1, y1, x2, y2);
                 delayTime(1);
-                dm_ret2 = CheckTeamSlectPage(dmae);
+                dm_ret2 = im.pagecheck.CheckTeamSlectPage();
 
             }
 
             if(im.time.Team_S(dmae, this, TeamNumber)==false)//选择梯队
             {
                 //如果选择失败则返回
-                while (CheckTeamSlectPage(dmae) == 0)
+                while (im.pagecheck.CheckTeamSlectPage() == 0)
                 {
                     Team_SeclectClickCancel(dmae);
                     delayTime(1);
@@ -3608,7 +3503,7 @@ namespace testdm
             delayTime(1);
 
 
-            int dm_ret1 = CheckTeamSlectPage(dmae);
+            int dm_ret1 = im.pagecheck.CheckTeamSlectPage();
             count = 0;
             while (dm_ret1 == 0)
             {
@@ -3619,7 +3514,7 @@ namespace testdm
                 count += 1;
                 LeftClick(dmae, 1087, 612, 1244, 659);
                 delayTime(1);
-                dm_ret1 = CheckTeamSlectPage(dmae);
+                dm_ret1 = im.pagecheck.CheckTeamSlectPage();
             }
             return 0;
         }
@@ -3888,11 +3783,11 @@ namespace testdm
 
                             if(x97 == 1) //X97随机点遇敌0撤退1不撤退
                             {
-                                int dm_ret14 = CheckRandomPointWindows(dmae);
+                                int dm_ret14 = im.pagecheck.CheckRandomPointWindows();
                                 while(dm_ret14 == 0)
                                 {
                                     LeftClick(dmae, 491, 202, 920, 546);
-                                    dm_ret14 = CheckRandomPointWindows(dmae);
+                                    dm_ret14 = im.pagecheck.CheckRandomPointWindows();
                                     return 0;
                                 }
                             }
@@ -4032,11 +3927,11 @@ namespace testdm
                 delayTime(1);
                 //dm_ret0 = dmae.FindColor(x5, y5, x99, y99, "ffba00" + "|" + Settings.Default.TeamSelect, 0.9, 0, out intX1, out intY1);
                 //检测误操作是否点如梯队列表
-                dm_ret3 = CheckTeamSlectPage(dmae);
+                dm_ret3 = im.pagecheck.CheckTeamSlectPage();
                 while(dm_ret3 == 0)
                 {
                     LeftClick(dmae, 921, 625, 1029, 659);
-                    dm_ret3 = CheckTeamSlectPage(dmae);
+                    dm_ret3 = im.pagecheck.CheckTeamSlectPage();
                 }
 
                 dm_ret1 = dm_ret1 = FindTeamSelectLine(dmae, x5, y5, x99, y99, x98);
@@ -4098,7 +3993,7 @@ namespace testdm
                 count += 1;
                 if (count == 20)
                 {
-                    int dm_ret4 = CheckTeamSlectPage(dmae);
+                    int dm_ret4 = im.pagecheck.CheckTeamSlectPage();
                     if (dm_ret4 == 0)
                     {
                         break;
@@ -4120,7 +4015,7 @@ namespace testdm
                 int dm_ret5;
                 for (int i = 1; i <= 5; i++)
                 {
-                    dm_ret5 = CheckToFix(dmae, i);
+                    dm_ret5 = im.pagecheck.CheckToFix(i);
 
                     if(dm_ret5 < userBattleInfo.FixMaxPercentage)//小于某一个数
                     {
@@ -4132,12 +4027,12 @@ namespace testdm
 
 
 
-            int dm_ret3 = CheckTeamSlectPage(dmae);
+            int dm_ret3 = im.pagecheck.CheckTeamSlectPage();
             while (dm_ret3 == 0)
             {
                 LeftClick(dmae, 726, 614, 865, 666);
                 delayTime(1);
-                dm_ret3 = CheckTeamSlectPage(dmae);
+                dm_ret3 = im.pagecheck.CheckTeamSlectPage();
             }
 
             int dm_ret1 = dmae.CmpColor(450, 470, "ffffff", 0.9);
@@ -4162,7 +4057,7 @@ namespace testdm
             //检查是否为空点
             if (neetCheckPointEmpty == true)
             {
-                NextPointIsEmpty = CheckPointIsEmpty(dmae, x3, y3, x4, y4, percentage);
+                NextPointIsEmpty = im.pagecheck.CheckPointIsEmpty( x3, y3, x4, y4, percentage);
             }
 
 
@@ -4227,7 +4122,7 @@ namespace testdm
                 int case1 = 0;
 
                 //等待机遇窗口
-                while(CheckRandomPointWindows(dmae)==1)
+                while(im.pagecheck.CheckRandomPointWindows()==1)
                 {
                     delayTime(1, 1);
                 }
@@ -4315,7 +4210,7 @@ namespace testdm
                         }
                     default://乱七八糟的
                         {
-                            while (CheckRandomPointWindows(dmae) == 0)
+                            while (im.pagecheck.CheckRandomPointWindows() == 0)
                             {
                                 LeftClick(dmae, 413, 134, 982, 606);
                                 delayTime(1, 1);
@@ -4379,7 +4274,7 @@ namespace testdm
             }
 
             //战斗结算页面
-            while (CheckBattleSettlementPage(dmae) == false)
+            while (im.pagecheck.CheckBattleSettlementPage() == false)
             {
                 delayTime(1);
             }
@@ -4390,37 +4285,37 @@ namespace testdm
                 //一些结算 如装备掉落 战利品窗口掉落等
                 SystemInfo.AppState = "战斗结算";
 
-                while (CheckWhiteM(dmae))
+                while (im.pagecheck.CheckWhiteM())
                 {
                     delayTime(0.1);
                     continue;
                 }
-                while (CheckInternetTransfer(dmae))//网络传输
+                while (im.pagecheck.CheckInternetTransfer())//网络传输
                 {
                     delayTime(0.1);
                     continue;
                 }
 
-                if (CheckNewGunEquipmentPage(dmae))
+                if (im.pagecheck.CheckNewGunEquipmentPage())
                 {
                     SystemInfo.AppState = "掉落结算";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckBattleSettlementPage(dmae))
+                if (im.pagecheck.CheckBattleSettlementPage())
                 {
                     SystemInfo.AppState = "战斗结算";
                     LeftClick(dmae, 315, 111, 1076, 531);
                     delayTime(0.5);
                 }
-                if(ChckBattleDropWindow(dmae))
+                if(im.pagecheck.ChckBattleDropWindow())
                 {
                     SystemInfo.AppState = "战利品";
                     LeftClick(dmae, 569, 495, 704, 544);
                     delayTime(0.5);
                 }
 
-                if (CheckBattleMapReady(dmae) == 0)
+                if (im.pagecheck.CheckBattleMapReady() == 0)
                 {
                     break;
                 }
@@ -4448,12 +4343,12 @@ namespace testdm
             //战斗结果结算页面
             while (true)
             {
-                while (CheckWhiteM(dmae))
+                while (im.pagecheck.CheckWhiteM())
                 {
                     delayTime(0.1);
                     continue;
                 }
-                while (CheckInternetTransfer(dmae))//网络传输
+                while (im.pagecheck.CheckInternetTransfer())//网络传输
                 {
                     delayTime(0.1);
                     continue;
@@ -4461,44 +4356,44 @@ namespace testdm
 
 
 
-                if (CheckSystemRewardSupportPage(dmae))
+                if (im.pagecheck.CheckSystemRewardSupportPage())
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 589, 512, 692, 534);
                 }
 
-                if (CheckBattleResult(dmae))
+                if (im.pagecheck.CheckBattleResult())
                 {
                     SystemInfo.AppState = "战斗结算";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckNewGunEquipmentPage(dmae))
+                if (im.pagecheck.CheckNewGunEquipmentPage())
                 {
                     SystemInfo.AppState = "获取新人形";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckSystemNewsPapge(dmae))
+                if (im.pagecheck.CheckSystemNewsPapge())
                 {
                     SystemInfo.AppState = "系统公告重磅热点";
                     LeftClick(dmae, 145, 70, 146, 71);
                 }
 
-                if (CheckSystemActivistPage(dmae))
+                if (im.pagecheck.CheckSystemActivistPage())
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 102, 95, 103, 96);
                 }
 
-                if (CheckNewAchievement(dmae))
+                if (im.pagecheck.CheckNewAchievement())
                 {
                     SystemInfo.AppState = "新成就";
                     im.time.SaveBmp(dmae, 0, 0, 2000, 2000, "\\PicRecord\\");
                     LeftClick(dmae, 567, 497, 699, 541);
                 }
 
-                if (CheckHomePage(dmae) == 0)
+                if (im.pagecheck.CheckHomePage() == 0)
                 {
                     break;
                 }
@@ -4552,7 +4447,7 @@ namespace testdm
                 {
                     case 1:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 412, 291, 510, 324);
                             }
@@ -4560,7 +4455,7 @@ namespace testdm
                         }
                     case 2:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 552, 296, 644, 325);
                             }
@@ -4569,7 +4464,7 @@ namespace testdm
                         }
                     case 3:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 695, 293, 782, 324);
                             }
@@ -4577,7 +4472,7 @@ namespace testdm
                         }
                     case 4:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 365, 383, 463, 420);
                             }
@@ -4586,7 +4481,7 @@ namespace testdm
                         }
                     case 5:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 558, 387, 612, 407);
                             }
@@ -4595,7 +4490,7 @@ namespace testdm
                         }
                     case 6:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 696, 378, 826, 421);
                                 delayTime(0.1);
@@ -4605,7 +4500,7 @@ namespace testdm
                         }
                     case 7:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 286, 512, 407, 576);
                             }
@@ -4614,7 +4509,7 @@ namespace testdm
                         }
                     case 8:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 498, 512, 648, 571);
                             }
@@ -4623,7 +4518,7 @@ namespace testdm
                         }
                     case 9:
                         {
-                            if (CheckBattleWithDrawButton(dmae) == false)
+                            if (im.pagecheck.CheckBattleWithDrawButton() == false)
                             {
                                 LeftClick(dmae, 733, 516, 867, 571);
                             }
@@ -4633,11 +4528,11 @@ namespace testdm
                         return false;
                 }
 
-                if (CheckBattleWithDrawButton(dmae))
+                if (im.pagecheck.CheckBattleWithDrawButton())
                 {
                     
                     LeftClick(dmae, 53, 140, 204, 189);
-                    if (CheckBattleWithDrawButton(dmae) == false)
+                    if (im.pagecheck.CheckBattleWithDrawButton() == false)
                     {
                         return true;
                     }
@@ -4681,12 +4576,12 @@ namespace testdm
 
             while (true)
             {
-                while (CheckWhiteM(dmae))
+                while (im.pagecheck.CheckWhiteM())
                 {
                     delayTime(1, 1);
                     continue;
                 }
-                while (CheckInternetTransfer(dmae))//网络传输
+                while (im.pagecheck.CheckInternetTransfer())//网络传输
                 {
                     delayTime(0.3, 1);
                     continue;
@@ -4698,44 +4593,44 @@ namespace testdm
 
 
 
-                if (CheckSystemRewardSupportPage(dmae))
+                if (im.pagecheck.CheckSystemRewardSupportPage())
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 589, 512, 692, 534);
                 }
 
-                if (CheckBattleResult(dmae))
+                if (im.pagecheck.CheckBattleResult())
                 {
                     SystemInfo.AppState = "战斗结算";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckNewGunEquipmentPage(dmae))
+                if (im.pagecheck.CheckNewGunEquipmentPage())
                 {
                     SystemInfo.AppState = "获取新人形";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckSystemNewsPapge(dmae))
+                if (im.pagecheck.CheckSystemNewsPapge())
                 {
                     SystemInfo.AppState = "系统公告重磅热点";
                     LeftClick(dmae, 145, 70, 146, 71);
                 }
 
-                if (CheckSystemActivistPage(dmae))
+                if (im.pagecheck.CheckSystemActivistPage())
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 102, 95, 103, 96);
                 }
 
-                if (CheckNewAchievement(dmae))
+                if (im.pagecheck.CheckNewAchievement())
                 {
                     SystemInfo.AppState = "新成就";
                     im.time.SaveBmp(dmae, 0, 0, 2000, 2000, "\\PicRecord\\");
                     LeftClick(dmae, 567, 497, 699, 541);
                 }
 
-                if (CheckHomePage(dmae) == 0)
+                if (im.pagecheck.CheckHomePage() == 0)
                 {
                     break;
                 }
@@ -4754,7 +4649,7 @@ namespace testdm
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "等待回到主页";
 
-            while (CheckHomePage(dmae) == 1 )
+            while (im.pagecheck.CheckHomePage() == 1 )
             {
                 delayTime(1);
                 return false;
@@ -4963,7 +4858,7 @@ namespace testdm
             //检测是否在选取待修复少女页面上
 
             delayTime(1);
-            while(CheckSelectFixGirlPage(dmae) == 1)
+            while(im.pagecheck.CheckSelectFixGirlPage() == 1)
             {
                 delayTime(0.5);
             }
@@ -5342,7 +5237,7 @@ namespace testdm
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "使用快速修复";
             //检查页面状态并按确定
-            while(CheckSelectFixGirlPage(dmae) == 0)
+            while(im.pagecheck.CheckSelectFixGirlPage() == 0)
             {
                 LeftClick(dmae, 1109, 600, 1254, 682);
                 delayTime(1);
@@ -5360,7 +5255,7 @@ namespace testdm
         {
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "普通修复";
             //检查页面状态并按确定
-            while (CheckSelectFixGirlPage(dmae) == 0)
+            while (im.pagecheck.CheckSelectFixGirlPage() == 0)
             {
                 delayTime(1);
                 LeftClick(dmae, 1109, 600, 1254, 682);
@@ -5393,7 +5288,7 @@ namespace testdm
                             delayTime(1);
                         }
 
-                        while (CheckFixPage(dmae) == 1)
+                        while (im.pagecheck.CheckFixPage() == 1)
                         {
                             delayTime(1);
                         }
@@ -5401,7 +5296,7 @@ namespace testdm
                     }
                 case false:
                     {
-                        while (CheckFixPage(dmae) == 1)
+                        while (im.pagecheck.CheckFixPage() == 1)
                         {
                             delayTime(1);
                         }
@@ -5454,7 +5349,7 @@ namespace testdm
                         tempFixGirlsInfo1.Color = dmae.GetColor(9, 111);
 
                         tempFixGirlsInfo1.Location = 1;
-                        tempFixGirlsInfo1.Hp= FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo1.Hp= im.pagecheck.FixPageCheckTheHP(n);
                         tempFixGirlsInfo1.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo1);
                         break;
@@ -5481,7 +5376,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo2.Color = dmae.GetColor(188, 111);
                         tempFixGirlsInfo2.Location = 2;
-                        tempFixGirlsInfo2.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo2.Hp = im.pagecheck.FixPageCheckTheHP(n);
                         tempFixGirlsInfo2.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo2);
                         break;
@@ -5508,7 +5403,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo3.Color = dmae.GetColor(366, 111);
                         tempFixGirlsInfo3.Location = 3;
-                        tempFixGirlsInfo3.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo3.Hp = im.pagecheck.FixPageCheckTheHP( n);
                         tempFixGirlsInfo3.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo3);
                         break;
@@ -5536,7 +5431,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo4.Color = dmae.GetColor(545, 397);
                         tempFixGirlsInfo4.Location = 4;
-                        tempFixGirlsInfo4.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo4.Hp = im.pagecheck.FixPageCheckTheHP( n);
                         tempFixGirlsInfo4.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo4);
                         break;
@@ -5563,7 +5458,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo5.Color = dmae.GetColor(724, 397); 
                         tempFixGirlsInfo5.Location = 5;
-                        tempFixGirlsInfo5.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo5.Hp = im.pagecheck.FixPageCheckTheHP( n);
                         tempFixGirlsInfo5.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo5);
                         break;
@@ -5590,7 +5485,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo6.Location = 6;
                         tempFixGirlsInfo6.Color = dmae.GetColor(902, 397);
-                        tempFixGirlsInfo6.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo6.Hp = im.pagecheck.FixPageCheckTheHP( n);
                         tempFixGirlsInfo6.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo6);
                         break;
@@ -5617,7 +5512,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo7.Location = 7;
                         tempFixGirlsInfo7.Color = dmae.GetColor(9, 415);
-                        tempFixGirlsInfo7.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo7.Hp = im.pagecheck.FixPageCheckTheHP( n);
                         tempFixGirlsInfo7.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo7);
                         break;
@@ -5645,7 +5540,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo8.Location = 8;
                         tempFixGirlsInfo8.Color = dmae.GetColor(188, 415);
-                        tempFixGirlsInfo8.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo8.Hp = im.pagecheck.FixPageCheckTheHP( n);
                         tempFixGirlsInfo8.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo8);
                         break;
@@ -5672,7 +5567,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo9.Location = 9;
                         tempFixGirlsInfo9.Color = dmae.GetColor(366, 415);
-                        tempFixGirlsInfo9.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo9.Hp = im.pagecheck.FixPageCheckTheHP( n);
                         tempFixGirlsInfo9.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo9);
                         break;
@@ -5699,7 +5594,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo10.Location = 10;
                         tempFixGirlsInfo10.Color = dmae.GetColor(545, 415);
-                        tempFixGirlsInfo10.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo10.Hp = im.pagecheck.FixPageCheckTheHP( n);
                         tempFixGirlsInfo10.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo10);
                         break;
@@ -5726,7 +5621,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo11.Location = 11;
                         tempFixGirlsInfo11.Color = dmae.GetColor(724, 415);
-                        tempFixGirlsInfo11.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo11.Hp = im.pagecheck.FixPageCheckTheHP(n);
                         tempFixGirlsInfo11.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo11);
                         break;
@@ -5753,7 +5648,7 @@ namespace testdm
                         n += 1;
                         tempFixGirlsInfo12.Location = 12;
                         tempFixGirlsInfo12.Color = dmae.GetColor(902, 415);
-                        tempFixGirlsInfo12.Hp = FixPageCheckTheHP(dmae, n);
+                        tempFixGirlsInfo12.Hp = im.pagecheck.FixPageCheckTheHP(n);
                         tempFixGirlsInfo12.CheckNeedQfix(userBattleInfo);
                         GirlsInfo.Add(tempFixGirlsInfo12);
                         break;
@@ -5773,7 +5668,7 @@ namespace testdm
 
         public void ClickRestDormitoryMLeft(DmAe dmae)
         {
-            while (CheckDormitoryMLeft(dmae) == false)
+            while (im.pagecheck.CheckDormitoryMLeft() == false)
             {
                 Random random = new Random();
                 int x1 = 56;
@@ -5794,7 +5689,7 @@ namespace testdm
 
         public void ClickFriendDormitoryBattery(DmAe dmae)
         {
-            while (CheckFriendDormitoryBattery(dmae) == true)
+            while (im.pagecheck.CheckFriendDormitoryBattery() == true)
             {
                 LeftClick(dmae, 365, 412, 419, 464);
                 delayTime(1, 1);
@@ -5805,11 +5700,11 @@ namespace testdm
 
         public void ClickFriendDormitoryBatteryWindow(DmAe dmae)
         {
-            while(CheckDormitoryBatteryWindow(dmae) == false)
+            while(im.pagecheck.CheckDormitoryBatteryWindow() == false)
             {
                 delayTime(1);
             }
-            while (CheckDormitoryBatteryWindow(dmae) == true)
+            while (im.pagecheck.CheckDormitoryBatteryWindow() == true)
             {
                 if (im.Form1.checkBox3.Checked)
                 {
@@ -5823,12 +5718,12 @@ namespace testdm
         }
         public void ClickVisitDormitory(DmAe dmae)
         {
-            while (CheckMyDormitory(dmae) == false)
+            while (im.pagecheck.CheckMyDormitory() == false)
             {
                 delayTime(1);
             }
             SystemInfo.AppState = "点击参观";
-            while (CheckMyDormitory(dmae))
+            while (im.pagecheck.CheckMyDormitory())
             {
                 delayTime(1);
                 LeftClick(dmae, 36, 662, 152, 701);
@@ -5837,14 +5732,14 @@ namespace testdm
         }
         public void ClickMyFriendsList(DmAe dmae)
         {
-            while (CheckFriendsListPage(dmae) == false)
+            while (im.pagecheck.CheckFriendsListPage() == false)
             {
                 delayTime(1);
             }
             SystemInfo.AppState = "点击我的好友";
-            while (CheckFriendsListPage(dmae))
+            while (im.pagecheck.CheckFriendsListPage())
             {
-                if (CheckVisitFriendsTapge(dmae) == 2)
+                if (im.pagecheck.CheckVisitFriendsTapge() == 2)
                 {
                     break;
                 }
@@ -5855,12 +5750,12 @@ namespace testdm
         }
         public void ClickRandomVisit(DmAe dmae)
         {
-            while (CheckFriendsListPage(dmae) == false)
+            while (im.pagecheck.CheckFriendsListPage() == false)
             {
                 delayTime(1);
             }
             SystemInfo.AppState = "点击随机参观";
-            while (CheckFriendsListPage(dmae))
+            while (im.pagecheck.CheckFriendsListPage())
             {
                 delayTime(1);
                 LeftClick(dmae, 1020, 622, 1173, 664);
@@ -5869,12 +5764,12 @@ namespace testdm
 
         public void ClickFirstFriendsDormitory(DmAe dmae)
         {
-            while (CheckFriendsListPage(dmae) == false)
+            while (im.pagecheck.CheckFriendsListPage() == false)
             {
                 delayTime(1);
             }
             SystemInfo.AppState = "点击第一位好友";
-            while (CheckFriendsListPage(dmae))
+            while (im.pagecheck.CheckFriendsListPage())
             {
                 delayTime(1);
                 LeftClick(dmae, 981, 222, 1137, 265);
@@ -5889,25 +5784,25 @@ namespace testdm
 
         public bool ClickVote(DmAe dmae)
         {
-            while (CheckMyFriendDormitory(dmae) == -1)
+            while (im.pagecheck.CheckMyFriendDormitory() == -1)
             {
                 delayTime(1);
             }
             SystemInfo.AppState = "点赞";
-            while (CheckMyFriendDormitory(dmae)==1)
+            while (im.pagecheck.CheckMyFriendDormitory()==1)
             {
                 LeftClick(dmae, 1125, 659, 1258, 703);
                 delayTime(2, 1);
                 //判断回应
 
-                if (im.mouse.CheckFriendsPointReward(dmae) == 0)
+                if (im.pagecheck.CheckFriendsPointReward() == 0)
                 {
                     LeftClick(dmae, 564, 497, 709, 546);
                     delayTime(1, 1);
                     //
                     return true;
                 }
-                if (im.mouse.CheckFriendsPointReward(dmae) == 1)
+                if (im.pagecheck.CheckFriendsPointReward() == 1)
                 {
                     LeftClick(dmae, 564, 497, 709, 546);
                     delayTime(1, 1);
@@ -5919,21 +5814,21 @@ namespace testdm
         }
         public bool ClickGetFriendsPoint(DmAe dmae)
         {
-            while (CheckFriendsPointReward(dmae) == -1)
+            while (im.pagecheck.CheckFriendsPointReward() == -1)
             {
                 delayTime(1);
                 return false;
             }
             SystemInfo.AppState = "点赞";
-            while (CheckFriendsPointReward(dmae) != -1) 
+            while (im.pagecheck.CheckFriendsPointReward() != -1) 
             {
-                if (CheckFriendsPointReward(dmae) == 0)
+                if (im.pagecheck.CheckFriendsPointReward() == 0)
                 {
                     delayTime(1);
                     LeftClick(dmae, 577, 505, 698, 531);
                     return true;
                 }
-                if (CheckFriendsPointReward(dmae) == 1)
+                if (im.pagecheck.CheckFriendsPointReward() == 1)
                 {
                     delayTime(1);
                     LeftClick(dmae, 577, 505, 698, 531);
@@ -5945,12 +5840,12 @@ namespace testdm
 
         public void ClickBackTOmyDormitory(DmAe dmae)
         {
-            while (CheckMyFriendDormitory(dmae)==-1)
+            while (im.pagecheck.CheckMyFriendDormitory()==-1)
             {
                 delayTime(1);
             }
             SystemInfo.AppState = "返回";
-            while (CheckMyFriendDormitory(dmae)!=-1)
+            while (im.pagecheck.CheckMyFriendDormitory()!=-1)
             {
                 delayTime(1);
                 LeftClick(dmae, 13, 18, 126, 75);
@@ -5959,12 +5854,12 @@ namespace testdm
 
         public void ClickNextFriendDormitory(DmAe dmae)
         {
-            while (CheckMyFriendDormitory(dmae) == -1)
+            while (im.pagecheck.CheckMyFriendDormitory() == -1)
             {
                 delayTime(1);
             }
             SystemInfo.AppState = "点击Next";
-            while (CheckMyFriendDormitory(dmae) != -1)
+            while (im.pagecheck.CheckMyFriendDormitory() != -1)
             {
                 delayTime(1);
                 LeftClick(dmae, 191, 654, 245, 702);
@@ -5973,24 +5868,24 @@ namespace testdm
 
         public void ClickBackToHomeFromDomitory(DmAe dmae)
         {
-            while (CheckMyDormitory(dmae) == false)
+            while (im.pagecheck.CheckMyDormitory() == false)
             {
                 delayTime(1);
             }
             SystemInfo.AppState = "返回主页";
-            while (CheckMyDormitory(dmae))
+            while (im.pagecheck.CheckMyDormitory())
             {
                 delayTime(1);
                 LeftClick(dmae, 16, 18, 125, 75);
             }
             while (true)
             {
-                while (CheckWhiteM(dmae))
+                while (im.pagecheck.CheckWhiteM())
                 {
                     delayTime(1, 1);
                     continue;
                 }
-                while (CheckInternetTransfer(dmae))//网络传输
+                while (im.pagecheck.CheckInternetTransfer())//网络传输
                 {
                     delayTime(0.3, 1);
                     continue;
@@ -5998,44 +5893,44 @@ namespace testdm
 
 
 
-                if (CheckSystemRewardSupportPage(dmae))
+                if (im.pagecheck.CheckSystemRewardSupportPage())
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 589, 512, 692, 534);
                 }
 
-                if (CheckBattleResult(dmae))
+                if (im.pagecheck.CheckBattleResult())
                 {
                     SystemInfo.AppState = "战斗结算";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckNewGunEquipmentPage(dmae))
+                if (im.pagecheck.CheckNewGunEquipmentPage())
                 {
                     SystemInfo.AppState = "获取新人形";
                     LeftClick(dmae, 1107, 633, 1242, 691);
                 }
 
-                if (CheckSystemNewsPapge(dmae))
+                if (im.pagecheck.CheckSystemNewsPapge())
                 {
                     SystemInfo.AppState = "系统公告重磅热点";
                     LeftClick(dmae, 145, 70, 146, 71);
                 }
 
-                if (CheckSystemActivistPage(dmae))
+                if (im.pagecheck.CheckSystemActivistPage())
                 {
                     SystemInfo.AppState = "系统奖励";
                     LeftClick(dmae, 102, 95, 103, 96);
                 }
 
-                if (CheckNewAchievement(dmae))
+                if (im.pagecheck.CheckNewAchievement())
                 {
                     SystemInfo.AppState = "新成就";
                     im.time.SaveBmp(dmae, 0, 0, 2000, 2000, "\\PicRecord\\");
                     LeftClick(dmae, 567, 497, 699, 541);
                 }
 
-                if (CheckHomePage(dmae) == 0)
+                if (im.pagecheck.CheckHomePage() == 0)
                 {
                     break;
                 }
@@ -6048,11 +5943,11 @@ namespace testdm
 
         public void ClickFormationPostionPreset(DmAe dmae)
         {
-            while (CheckFormationTeamPresetSelect(dmae) == false)
+            while (im.pagecheck.CheckFormationTeamPresetSelect() == false)
             {
                 delayTime(1);
             }
-            while (CheckFormationTeamPresetSelect(dmae))
+            while (im.pagecheck.CheckFormationTeamPresetSelect())
             {
                 LeftClick(dmae, 1222, 241, 1275, 310);
                 delayTime(1, 1);
@@ -6061,11 +5956,11 @@ namespace testdm
 
         public void ClickFormationTeamPresetButton(DmAe dmae)
         {
-            while (CheckFormationPage(dmae) == false)
+            while (im.pagecheck.CheckFormationPage() == false)
             {
                 delayTime(1);
             }
-            while (CheckFormationPage(dmae))
+            while (im.pagecheck.CheckFormationPage())
             {
                 LeftClick(dmae, 1105, 639, 1261, 673);
                 delayTime(1, 1);
@@ -6076,7 +5971,7 @@ namespace testdm
 
         public void ClickFormationTeamPresetTeam(DmAe dmae,int TeamNumber)//点击预设梯队
         {
-            while(dmae.CmpColor(1035, 520,"ffffff",1)==1 || CheckFormationPostionPresetPage(dmae) == true)
+            while(dmae.CmpColor(1035, 520,"ffffff",1)==1 || im.pagecheck.CheckFormationPostionPresetPage() == true)
             {
                 delayTime(1);
             }
@@ -6162,13 +6057,13 @@ namespace testdm
 
         public void ClickFormationTeamUsePresets(DmAe dmae)
         {
-            while (CheckFormationTeamPresetSelect(dmae) == false)
+            while (im.pagecheck.CheckFormationTeamPresetSelect() == false)
             {
                 delayTime(1);
             }
-            while (CheckFormationTeamPresetSelect(dmae))
+            while (im.pagecheck.CheckFormationTeamPresetSelect())
             {
-                if (CheckFormationPostionPresetPage(dmae))
+                if (im.pagecheck.CheckFormationPostionPresetPage())
                 {
                     return;
                 }
@@ -6179,11 +6074,11 @@ namespace testdm
 
         public void ClickFormationChangeWindowINFO(DmAe dmae)
         {
-            while (CheckFormationWindowINFO(dmae) == false)
+            while (im.pagecheck.CheckFormationWindowINFO() == false)
             {
                 delayTime(1);
 
-                if (CheckFormationTeamPresetSelect(dmae))
+                if (im.pagecheck.CheckFormationTeamPresetSelect())
                 {
                     return;
                 }
@@ -6205,7 +6100,7 @@ namespace testdm
                     break;
                 }
             }
-            while (CheckFormationTeamPresetSelect(dmae)==false)
+            while (im.pagecheck.CheckFormationTeamPresetSelect()==false)
             {
                 LeftClick(dmae, 759, 478, 889, 522);
                 delayTime(1, 1);
@@ -6214,11 +6109,11 @@ namespace testdm
 
         public void ClickFormationSelectedFinishButton(DmAe dmae)
         {
-            while (CheckFormationTeamPresetSelect(dmae) == false)
+            while (im.pagecheck.CheckFormationTeamPresetSelect() == false)
             {
                 delayTime(1);
             }
-            while (CheckFormationTeamPresetSelect(dmae))
+            while (im.pagecheck.CheckFormationTeamPresetSelect())
             {
                 LeftClick(dmae, 1088, 604, 1242, 669);
                 delayTime(1, 1);
@@ -6227,1876 +6122,1876 @@ namespace testdm
 
 
 
-        //------------------多点比较颜色函数
+        ////------------------多点比较颜色函数
 
-        public int CheckToFix(DmAe dmae, int N)//梯队列表检查是否需要维修
-        {
-            int x1, y1, x2, y2, x3, y3, i;
-            string dm_ret0, dm_ret1, dm_ret2;
+        //public int CheckToFix(DmAe dmae, int N)//梯队列表检查是否需要维修
+        //{
+        //    int x1, y1, x2, y2, x3, y3, i;
+        //    string dm_ret0, dm_ret1, dm_ret2;
 
-            switch (N)
-            {
-                case 1:
-                    {
-                        x1 = 204; y1 = 523; x2 = 308; y2 = 523; x3 = 207; y3 = 512;
-                        break;
-                    }
-                case 2:
-                    {
-                        x1 = 391; y1 = 523; x2 = 494; y2 = 523; x3 = 393; y3 = 512;
-                        break;
-                    }
-                case 3:
-                    {
-                        x1 = 577; y1 = 523; x2 = 681; y2 = 523; x3 = 579; y3 = 512;
-                        break;
-                    }
+        //    switch (N)
+        //    {
+        //        case 1:
+        //            {
+        //                x1 = 204; y1 = 523; x2 = 308; y2 = 523; x3 = 207; y3 = 512;
+        //                break;
+        //            }
+        //        case 2:
+        //            {
+        //                x1 = 391; y1 = 523; x2 = 494; y2 = 523; x3 = 393; y3 = 512;
+        //                break;
+        //            }
+        //        case 3:
+        //            {
+        //                x1 = 577; y1 = 523; x2 = 681; y2 = 523; x3 = 579; y3 = 512;
+        //                break;
+        //            }
 
-                case 4:
-                    {
-                        x1 = 763; y1 = 523; x2 = 867; y2 = 523; x3 = 766; y3 = 512;
-                        break;
-                    }
+        //        case 4:
+        //            {
+        //                x1 = 763; y1 = 523; x2 = 867; y2 = 523; x3 = 766; y3 = 512;
+        //                break;
+        //            }
 
-                case 5:
-                    {
-                        x1 = 949; y1 = 523; x2 = 1053; y2 = 523; x3 = 952; y3 = 512;
-                        break;
-                    }
-                default:
-                    return -1;
-            }
+        //        case 5:
+        //            {
+        //                x1 = 949; y1 = 523; x2 = 1053; y2 = 523; x3 = 952; y3 = 512;
+        //                break;
+        //            }
+        //        default:
+        //            return -1;
+        //    }
 
-            dm_ret0 = dmae.GetColor(x1, y1);
-            dm_ret1 = dmae.GetColor(x2, y2);
-            if (dm_ret0 == dm_ret1)//判断是否满血或者没血
-            {
-                dm_ret2 = dmae.GetColor(x3, y3);
-                if (dm_ret2 == dm_ret1)
-                {
-                    Console.WriteLine("0血");
-                    return 0;
-                    //0血状态
-                }
-                Console.WriteLine("满血");
-                return 100;
-                //满血状态
-            }
-            else
-            {
-                for (i = 0; i < (x2 - x1); i++)
-                {
-                    string dm_ret3 = dmae.GetColor(x1 + i, y1);
-                    if (dm_ret3 != dm_ret0)
-                    {
-                        Console.WriteLine("x = " + (x1 + i).ToString());
-                        break;
-                    }
-                }
-                //检查
-                Console.WriteLine("遍历完成 i = " + i.ToString());
-                Console.WriteLine("百分比为" + Convert.ToInt32(((float)i / (x2 - x1) * 100) + 0.5).ToString());
-                return Convert.ToInt32(((float)i / (x2 - x1) * 100) + 0.5);
-            }
-
-
-        }
-
-        public int FixPageCheckTheHP(DmAe dmae, int N)//修复页面列表读取血量
-        {
-            int x1, y1, x2, y2, x3, y3, i;
-            string dm_ret0, dm_ret1, dm_ret2;
-
-            switch (N)
-            {
-                case 1:
-                    {
-                        x1 = 9; y1 = 335; x2 = 167;  y2 = 335;
-                        break;
-                    }
-                case 2:
-                    {
-                        x1 = 187; y1 = 335; x2 = 346; y2 = 335;
-                        break;
-                    }
-                case 3:
-                    {
-                        x1 = 366; y1 = 335; x2 = 525;  y2 = 335;
-                        break;
-                    }
-
-                case 4:
-                    {
-                        x1 = 545; y1 = 335; x2 = 704; y2 = 335;
-                        break;
-                    }
-
-                case 5:
-                    {
-                        x1 = 724;  y1 = 335; x2 = 882;  y2 = 335;
-                        break;
-                    }
-                case 6:
-                    {
-                        x1 = 902;y1 = 335;x2= 1061;y2 = 335;
-                        break;
-                    }
-                case 7:
-                    {
-                        x1 = 9; y1 = 638;x2 = 167; y2 = 638;
-                        break;
-                    }
-                case 8:
-                    {
-                        x1= 167; y1 = 638;x2 = 346; y2 = 638;
-                        break;
-                    }
-                case 9:
-                    {
-                        x1 =367; y1 = 638;x2= 525; y2 = 638;
-                        break;
-                    }
-                case 10:
-                    {
-                        x1 = 546; y1 = 638;x2= 704; y2 = 638;
-                        break;
-                    }
-                case 11:
-                    {
-                        x1= 725; y1 = 638;x2 = 882; y2 = 638;
-                        break;
-                    }
-                case 12:
-                    {
-                        x1= 903; y1 = 638;x2= 1061; y2 = 638;
-                        break;
-                    }
-                default:
-                    return -1;
-            }
-
-            dm_ret0 = dmae.GetColor(x1, y1);
-            dm_ret1 = dmae.GetColor(x2, y2);
-
-            for (i = 0; i < (x2 - x1); i++)
-            {
-                string dm_ret3 = dmae.GetColor(x1 + i, y1);
-                if (dm_ret3 != dm_ret0)
-                {
-                    //Console.WriteLine("x = " + (x1 + i).ToString());
-                    break;
-                }
-            }
-            //检查
-            //Console.WriteLine("遍历完成 i = " + i.ToString());
-            //Console.WriteLine("百分比为" + Convert.ToInt32(((float)i / (x2 - x1) * 100) + 0.5).ToString());
-            int k = Convert.ToInt32(((float)i / (x2 - x1) * 100));
-            return k;
+        //    dm_ret0 = dmae.GetColor(x1, y1);
+        //    dm_ret1 = dmae.GetColor(x2, y2);
+        //    if (dm_ret0 == dm_ret1)//判断是否满血或者没血
+        //    {
+        //        dm_ret2 = dmae.GetColor(x3, y3);
+        //        if (dm_ret2 == dm_ret1)
+        //        {
+        //            Console.WriteLine("0血");
+        //            return 0;
+        //            //0血状态
+        //        }
+        //        Console.WriteLine("满血");
+        //        return 100;
+        //        //满血状态
+        //    }
+        //    else
+        //    {
+        //        for (i = 0; i < (x2 - x1); i++)
+        //        {
+        //            string dm_ret3 = dmae.GetColor(x1 + i, y1);
+        //            if (dm_ret3 != dm_ret0)
+        //            {
+        //                Console.WriteLine("x = " + (x1 + i).ToString());
+        //                break;
+        //            }
+        //        }
+        //        //检查
+        //        Console.WriteLine("遍历完成 i = " + i.ToString());
+        //        Console.WriteLine("百分比为" + Convert.ToInt32(((float)i / (x2 - x1) * 100) + 0.5).ToString());
+        //        return Convert.ToInt32(((float)i / (x2 - x1) * 100) + 0.5);
+        //    }
 
 
-        }
+        //}
 
-        public bool CheckIsBroken(DmAe dmae,int N)//检测是否大破
-        {
-            int x1, y1, x2, y2, x3, y3, x4, y4, x5, y5;
-            string dm_ret1;
-            string dm_main_ret0;
-            int tempx;
-            switch (N)//识别第N个是否大破
-            {
-                case 1:
-                    {
-                        x1 = 10; y1 = 155; x2 = 27; y2 = 155; x3 = 39; y3 = 155; x4 = 74; y4 = 155; x5 = 132; y5 = 155;
-                        break;
-                    }
-                case 2:
-                    {
-                        x1 = 189; y1 = 155; x2 = 205; y2 = 155; x3 = 229; y3 = 155; x4 = 253; y4 = 155; x5 = 310; y5 = 155;
-                        break;
-                    }
-                case 3:
-                    {
-                        x1 = 368; y1 = 155; x2 = 384; y2 = 155; x3 = 408; y3 = 155; x4 = 600; y4 = 155; x5 = 668; y5 = 155;
-                        break;
-                    }
-                case 4:
-                    {
-                        x1 = 547; y1 = 155; x2 = 563; y2 = 155; x3 = 575; y3 = 155; x4 = 611; y4 = 155; x5 = 668; y5 = 155;
-                        break;
-                    }
-                case 5:
-                    {
-                        x1 = 726; y1 = 155; x2 = 741; y2 = 155; x3 = 753; y3 = 155; x4 = 777; y4 = 155; x5 = 845; y5 = 155;
-                        break;
-                    }
-                case 6:
-                    {
-                        x1 = 904; y1 = 155; x2 = 920; y2 = 155; x3 = 932; y3 = 155; x4 = 956; y4 = 155; x5 = 1025; y5 = 155;
-                        break;
-                    }
-                case 7:
-                    {
-                        x1 = 10; y1 = 458; x2 = 28; y2 = 458; x3 = 39; y3 = 458; x4 = 51; y4 = 458; x5 = 130; y5 = 458;
-                        break;
-                    }
-                case 8:
-                    {
-                        x1 = 189; y1 = 458; x2 = 207; y2 = 458; x3 = 219; y3 = 458; x4 = 231; y4 = 458; x5 = 310; y5 = 458;
-                        break;
-                    }
+        //public int FixPageCheckTheHP(DmAe dmae, int N)//修复页面列表读取血量
+        //{
+        //    int x1, y1, x2, y2, x3, y3, i;
+        //    string dm_ret0, dm_ret1, dm_ret2;
 
-                case 9:
-                    {
-                        x1 = 368; y1 = 458; x2 = 385; y2 = 458; x3 = 576; y3 = 458; x4 = 600; y4 = 458; x5 = 668; y5 = 458;
-                        break;
-                    }
-                case 10:
-                    {
-                        x1 = 547; y1 = 458; x2 = 565; y2 = 458; x3 = 588; y3 = 458; x4 = 600; y4 = 458; x5 = 667; y5 = 458;
-                        break;
-                    }
-                case 11:
-                    {
-                        x1 = 725; y1 = 458; x2 = 743; y2 = 458; x3 = 755; y3 = 458; x4 = 790; y4 = 458; x5 = 845; y5 = 458;
-                        break;
-                    }
-                case 12:
-                    {
-                        x1 = 904; y1 = 458; x2 = 921; y2 = 458; x3 = 945; y3 = 458; x4 = 958; y4 = 458; x5 = 1025; y5 = 458;
-                        break;
-                    }
-                default:
-                    return false;
-            }
+        //    switch (N)
+        //    {
+        //        case 1:
+        //            {
+        //                x1 = 9; y1 = 335; x2 = 167;  y2 = 335;
+        //                break;
+        //            }
+        //        case 2:
+        //            {
+        //                x1 = 187; y1 = 335; x2 = 346; y2 = 335;
+        //                break;
+        //            }
+        //        case 3:
+        //            {
+        //                x1 = 366; y1 = 335; x2 = 525;  y2 = 335;
+        //                break;
+        //            }
 
-            for (int i = 1; i <= 5; i++)
-            {
-                switch (i)
-                {
-                    case 1:
-                        {
-                            dm_main_ret0 = dmae.GetColor(x1, y1);
-                            tempx = x1;
-                            break;
-                        }
-                    case 2:
-                        {
-                            dm_main_ret0 = dmae.GetColor(x2, y2);
-                            tempx = x2;
-                            break;
-                        }
-                    case 3:
-                        {
-                            dm_main_ret0 = dmae.GetColor(x3, y3);
-                            tempx = x3;
-                            break;
-                        }
-                    case 4:
-                        {
-                            dm_main_ret0 = dmae.GetColor(x4, y4);
-                            tempx = x4;
-                            break;
-                        }
-                    case 5:
-                        {
-                            dm_main_ret0 = dmae.GetColor(x5, y5);
-                            tempx = x5;
-                            break;
-                        }
-                    default:
-                        {
-                            dm_main_ret0 = dmae.GetColor(x1, y1);
-                            tempx = x1;
-                            break;
-                        }
-                }
-                for (int y = 1; y <= 3; y++)
-                {
-                    dm_ret1 = dmae.GetColor(tempx + y, y1);
-                    if (dm_main_ret0 != dm_ret1)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
+        //        case 4:
+        //            {
+        //                x1 = 545; y1 = 335; x2 = 704; y2 = 335;
+        //                break;
+        //            }
 
-        public int CheckTeamSlectPage(DmAe dmae)//梯队详细列表
-        {
-            int dm_Ret0 = dmae.CmpColor(192, 90, "ffffff", 1);
-            int dm_Ret1 = dmae.CmpColor(1000, 615, "ffffff", 1);
-            int dm_Ret2 = dmae.CmpColor(388, 94, "ffffff", 1);
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;//真0假1
-            }
+        //        case 5:
+        //            {
+        //                x1 = 724;  y1 = 335; x2 = 882;  y2 = 335;
+        //                break;
+        //            }
+        //        case 6:
+        //            {
+        //                x1 = 902;y1 = 335;x2= 1061;y2 = 335;
+        //                break;
+        //            }
+        //        case 7:
+        //            {
+        //                x1 = 9; y1 = 638;x2 = 167; y2 = 638;
+        //                break;
+        //            }
+        //        case 8:
+        //            {
+        //                x1= 167; y1 = 638;x2 = 346; y2 = 638;
+        //                break;
+        //            }
+        //        case 9:
+        //            {
+        //                x1 =367; y1 = 638;x2= 525; y2 = 638;
+        //                break;
+        //            }
+        //        case 10:
+        //            {
+        //                x1 = 546; y1 = 638;x2= 704; y2 = 638;
+        //                break;
+        //            }
+        //        case 11:
+        //            {
+        //                x1= 725; y1 = 638;x2 = 882; y2 = 638;
+        //                break;
+        //            }
+        //        case 12:
+        //            {
+        //                x1= 903; y1 = 638;x2= 1061; y2 = 638;
+        //                break;
+        //            }
+        //        default:
+        //            return -1;
+        //    }
 
-            else
-            {
-                return 1;
-            }
-        }
+        //    dm_ret0 = dmae.GetColor(x1, y1);
+        //    dm_ret1 = dmae.GetColor(x2, y2);
 
-        public int CheckErrorWindows(DmAe dmae, int x1 = 558, int y1 = 489, int x2 = 721, int y2 = 489)
-        {
-            int dm_ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-
-            if(dm_ret0 ==0 && dm_ret1 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-
-        }
-
-        public bool CheckLsystemAgain(DmAe dmae)
-        {
-
-            for(int x1 = 446, y1 = 463; x1 <= 610; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            for(int x1 = 611, y1 = 463; y1 <= 511; y1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            for(int x1 = 446, y1 = 526; x1 <= 596; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            return true;
-        }
-
-        public int CheckMissionHelp(DmAe dmae, int x1 = 164, int y1 = 106, int x2 = 270, int y2 = 106, int x3 = 259, int y3 = 162)
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-
-        }
-
-        public int CheckLogisticsPageReady(DmAe dmae,int x1 = 435,int y1=395,int x2= 658,int y2 = 392,int x3 = 880,int y3=394,int x4= 1102,int y4 = 394)
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-            int dm_Ret3 = dmae.CmpColor(x4, y4, "ffffff", 0.9);
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0 && dm_Ret3 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
+        //    for (i = 0; i < (x2 - x1); i++)
+        //    {
+        //        string dm_ret3 = dmae.GetColor(x1 + i, y1);
+        //        if (dm_ret3 != dm_ret0)
+        //        {
+        //            //Console.WriteLine("x = " + (x1 + i).ToString());
+        //            break;
+        //        }
+        //    }
+        //    //检查
+        //    //Console.WriteLine("遍历完成 i = " + i.ToString());
+        //    //Console.WriteLine("百分比为" + Convert.ToInt32(((float)i / (x2 - x1) * 100) + 0.5).ToString());
+        //    int k = Convert.ToInt32(((float)i / (x2 - x1) * 100));
+        //    return k;
 
 
-        }
+        //}
 
-        public int CheckBuildEquipmentS(DmAe dmae,int area)
-        {
-            switch (area)
-            {
-                case 0:
-                    {
-                        //空
-                        for (int x1 = 468, y1 = 241; x1 < 548; x1++)
-                        {
-                            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
-                            {
-                                if (x1 == 547)
-                                {
-                                    for (x1 = 468, y1 = 242; x1 < 548; x1++)
-                                    {
-                                        if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
-                                        {
-                                            if (x1 == 547)
-                                            {
-                                                return 0;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            else break;
-                        }
-                        //完成
-                        for (int x1 = 468, y1 = 241; x1 < 548; x1++)
-                        {
-                            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
-                            {
-                                if (x1 == 547)
-                                {
-                                    for (x1 = 468, y1 = 242; x1 < 548; x1++)
-                                    {
-                                        if (dmae.CmpColor(x1, y1, "ffffff", 1) != 0)
-                                        {
-                                            if (x1 == 547)
-                                            {
-                                                return 1;
-                                            }
-                                        }
-                                    }
-                                }
+        //public bool CheckIsBroken(DmAe dmae,int N)//检测是否大破
+        //{
+        //    int x1, y1, x2, y2, x3, y3, x4, y4, x5, y5;
+        //    string dm_ret1;
+        //    string dm_main_ret0;
+        //    int tempx;
+        //    switch (N)//识别第N个是否大破
+        //    {
+        //        case 1:
+        //            {
+        //                x1 = 10; y1 = 155; x2 = 27; y2 = 155; x3 = 39; y3 = 155; x4 = 74; y4 = 155; x5 = 132; y5 = 155;
+        //                break;
+        //            }
+        //        case 2:
+        //            {
+        //                x1 = 189; y1 = 155; x2 = 205; y2 = 155; x3 = 229; y3 = 155; x4 = 253; y4 = 155; x5 = 310; y5 = 155;
+        //                break;
+        //            }
+        //        case 3:
+        //            {
+        //                x1 = 368; y1 = 155; x2 = 384; y2 = 155; x3 = 408; y3 = 155; x4 = 600; y4 = 155; x5 = 668; y5 = 155;
+        //                break;
+        //            }
+        //        case 4:
+        //            {
+        //                x1 = 547; y1 = 155; x2 = 563; y2 = 155; x3 = 575; y3 = 155; x4 = 611; y4 = 155; x5 = 668; y5 = 155;
+        //                break;
+        //            }
+        //        case 5:
+        //            {
+        //                x1 = 726; y1 = 155; x2 = 741; y2 = 155; x3 = 753; y3 = 155; x4 = 777; y4 = 155; x5 = 845; y5 = 155;
+        //                break;
+        //            }
+        //        case 6:
+        //            {
+        //                x1 = 904; y1 = 155; x2 = 920; y2 = 155; x3 = 932; y3 = 155; x4 = 956; y4 = 155; x5 = 1025; y5 = 155;
+        //                break;
+        //            }
+        //        case 7:
+        //            {
+        //                x1 = 10; y1 = 458; x2 = 28; y2 = 458; x3 = 39; y3 = 458; x4 = 51; y4 = 458; x5 = 130; y5 = 458;
+        //                break;
+        //            }
+        //        case 8:
+        //            {
+        //                x1 = 189; y1 = 458; x2 = 207; y2 = 458; x3 = 219; y3 = 458; x4 = 231; y4 = 458; x5 = 310; y5 = 458;
+        //                break;
+        //            }
 
-                            }
-                            else break;
-                        }
+        //        case 9:
+        //            {
+        //                x1 = 368; y1 = 458; x2 = 385; y2 = 458; x3 = 576; y3 = 458; x4 = 600; y4 = 458; x5 = 668; y5 = 458;
+        //                break;
+        //            }
+        //        case 10:
+        //            {
+        //                x1 = 547; y1 = 458; x2 = 565; y2 = 458; x3 = 588; y3 = 458; x4 = 600; y4 = 458; x5 = 667; y5 = 458;
+        //                break;
+        //            }
+        //        case 11:
+        //            {
+        //                x1 = 725; y1 = 458; x2 = 743; y2 = 458; x3 = 755; y3 = 458; x4 = 790; y4 = 458; x5 = 845; y5 = 458;
+        //                break;
+        //            }
+        //        case 12:
+        //            {
+        //                x1 = 904; y1 = 458; x2 = 921; y2 = 458; x3 = 945; y3 = 458; x4 = 958; y4 = 458; x5 = 1025; y5 = 458;
+        //                break;
+        //            }
+        //        default:
+        //            return false;
+        //    }
 
-                        //建造中
-                        return 2;
-                    }
-                case 1:
-                    {
-                        //空
-                        for (int x1 = 468, y1 = 451; x1 < 565; x1++)
-                        {
-                            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
-                            {
-                                if (x1 == 564)
-                                {
-                                    for (x1 = 468, y1 = 452; x1 < 565; x1++)
-                                    {
-                                        if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
-                                        {
-                                            if (x1 == 564)
-                                            {
-                                                return 0;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            else break;
-                        }
-                        //完成
-                        for (int x1 = 468, y1 = 451; x1 < 565; x1++)
-                        {
-                            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
-                            {
-                                if (x1 == 564)
-                                {
-                                    for (x1 = 468, y1 = 452; x1 < 565; x1++)
-                                    {
-                                        if (dmae.CmpColor(x1, y1, "ffffff", 1) != 0)
-                                        {
-                                            if (x1 == 564)
-                                            {
-                                                return 1;
-                                            }
-                                        }
-                                    }
-                                }
+        //    for (int i = 1; i <= 5; i++)
+        //    {
+        //        switch (i)
+        //        {
+        //            case 1:
+        //                {
+        //                    dm_main_ret0 = dmae.GetColor(x1, y1);
+        //                    tempx = x1;
+        //                    break;
+        //                }
+        //            case 2:
+        //                {
+        //                    dm_main_ret0 = dmae.GetColor(x2, y2);
+        //                    tempx = x2;
+        //                    break;
+        //                }
+        //            case 3:
+        //                {
+        //                    dm_main_ret0 = dmae.GetColor(x3, y3);
+        //                    tempx = x3;
+        //                    break;
+        //                }
+        //            case 4:
+        //                {
+        //                    dm_main_ret0 = dmae.GetColor(x4, y4);
+        //                    tempx = x4;
+        //                    break;
+        //                }
+        //            case 5:
+        //                {
+        //                    dm_main_ret0 = dmae.GetColor(x5, y5);
+        //                    tempx = x5;
+        //                    break;
+        //                }
+        //            default:
+        //                {
+        //                    dm_main_ret0 = dmae.GetColor(x1, y1);
+        //                    tempx = x1;
+        //                    break;
+        //                }
+        //        }
+        //        for (int y = 1; y <= 3; y++)
+        //        {
+        //            dm_ret1 = dmae.GetColor(tempx + y, y1);
+        //            if (dm_main_ret0 != dm_ret1)
+        //            {
+        //                return false;
+        //            }
+        //        }
+        //    }
+        //    return true;
+        //}
 
-                            }
-                            else break;
-                        }
+        //public int CheckTeamSlectPage(DmAe dmae)//梯队详细列表
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(192, 90, "ffffff", 1);
+        //    int dm_Ret1 = dmae.CmpColor(1000, 615, "ffffff", 1);
+        //    int dm_Ret2 = dmae.CmpColor(388, 94, "ffffff", 1);
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;//真0假1
+        //    }
 
-                        //建造中
-                        return 2;
-                    }
-                case 2:
-                    {
-                        //空
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
 
-                        string Color0 = dmae.GetColor(468, 661);
-                        string Color1 = dmae.GetColor(569, 661);
-                        if (Color0 != Color1)
-                        {
-                            return 0;
-                        }
-                        //完成
-                        for (int x1 = 468, y1 = 661; x1 < 644; x1++)
-                        {
-                            if (dmae.GetColor(x1, y1) == Color0)
-                            {
-                                if (x1 == 643)
-                                {
+        //public int CheckErrorWindows(DmAe dmae, int x1 = 558, int y1 = 489, int x2 = 721, int y2 = 489)
+        //{
+        //    int dm_ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
 
-                                    return 1;
+        //    if(dm_ret0 ==0 && dm_ret1 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
 
-                                }
+        //}
 
-                            }
-                            else break;
-                        }
+        //public bool CheckLsystemAgain(DmAe dmae)
+        //{
 
-                        //建造中
-                        return 2;
-                    }
-                default:
-                    return -1;
-            }
+        //    for(int x1 = 446, y1 = 463; x1 <= 610; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    for(int x1 = 611, y1 = 463; y1 <= 511; y1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    for(int x1 = 446, y1 = 526; x1 <= 596; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    return true;
+        //}
+
+        //public int CheckMissionHelp(DmAe dmae, int x1 = 164, int y1 = 106, int x2 = 270, int y2 = 106, int x3 = 259, int y3 = 162)
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+
+        //}
+
+        //public int CheckLogisticsPageReady(DmAe dmae,int x1 = 435,int y1=395,int x2= 658,int y2 = 392,int x3 = 880,int y3=394,int x4= 1102,int y4 = 394)
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+        //    int dm_Ret3 = dmae.CmpColor(x4, y4, "ffffff", 0.9);
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0 && dm_Ret3 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+
+
+        //}
+
+        //public int CheckBuildEquipmentS(DmAe dmae,int area)
+        //{
+        //    switch (area)
+        //    {
+        //        case 0:
+        //            {
+        //                //空
+        //                for (int x1 = 468, y1 = 241; x1 < 548; x1++)
+        //                {
+        //                    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+        //                    {
+        //                        if (x1 == 547)
+        //                        {
+        //                            for (x1 = 468, y1 = 242; x1 < 548; x1++)
+        //                            {
+        //                                if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+        //                                {
+        //                                    if (x1 == 547)
+        //                                    {
+        //                                        return 0;
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+        //                    }
+        //                    else break;
+        //                }
+        //                //完成
+        //                for (int x1 = 468, y1 = 241; x1 < 548; x1++)
+        //                {
+        //                    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+        //                    {
+        //                        if (x1 == 547)
+        //                        {
+        //                            for (x1 = 468, y1 = 242; x1 < 548; x1++)
+        //                            {
+        //                                if (dmae.CmpColor(x1, y1, "ffffff", 1) != 0)
+        //                                {
+        //                                    if (x1 == 547)
+        //                                    {
+        //                                        return 1;
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+
+        //                    }
+        //                    else break;
+        //                }
+
+        //                //建造中
+        //                return 2;
+        //            }
+        //        case 1:
+        //            {
+        //                //空
+        //                for (int x1 = 468, y1 = 451; x1 < 565; x1++)
+        //                {
+        //                    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+        //                    {
+        //                        if (x1 == 564)
+        //                        {
+        //                            for (x1 = 468, y1 = 452; x1 < 565; x1++)
+        //                            {
+        //                                if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+        //                                {
+        //                                    if (x1 == 564)
+        //                                    {
+        //                                        return 0;
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+        //                    }
+        //                    else break;
+        //                }
+        //                //完成
+        //                for (int x1 = 468, y1 = 451; x1 < 565; x1++)
+        //                {
+        //                    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+        //                    {
+        //                        if (x1 == 564)
+        //                        {
+        //                            for (x1 = 468, y1 = 452; x1 < 565; x1++)
+        //                            {
+        //                                if (dmae.CmpColor(x1, y1, "ffffff", 1) != 0)
+        //                                {
+        //                                    if (x1 == 564)
+        //                                    {
+        //                                        return 1;
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+
+        //                    }
+        //                    else break;
+        //                }
+
+        //                //建造中
+        //                return 2;
+        //            }
+        //        case 2:
+        //            {
+        //                //空
+
+        //                string Color0 = dmae.GetColor(468, 661);
+        //                string Color1 = dmae.GetColor(569, 661);
+        //                if (Color0 != Color1)
+        //                {
+        //                    return 0;
+        //                }
+        //                //完成
+        //                for (int x1 = 468, y1 = 661; x1 < 644; x1++)
+        //                {
+        //                    if (dmae.GetColor(x1, y1) == Color0)
+        //                    {
+        //                        if (x1 == 643)
+        //                        {
+
+        //                            return 1;
+
+        //                        }
+
+        //                    }
+        //                    else break;
+        //                }
+
+        //                //建造中
+        //                return 2;
+        //            }
+        //        default:
+        //            return -1;
+        //    }
 
             
-        }
+        //}
 
-        public void CheckFixBox(DmAe dmae, ref List<int> list)
-        {
+        //public void CheckFixBox(DmAe dmae, ref List<int> list)
+        //{
 
-            for (int x1 = 120, y1 = 291; x1 < 141; x1++, y1++)
-            {
-                if (dmae.GetColor(x1, 309) != "ffffff")
-                {
-                    break;
-                }
-                if (dmae.GetColor(140, y1) != "ffffff")
-                {
-                    break;
-                }
-                if (x1 == 140)
-                {
-                    list.Add(1);//第一个槽为空
-                }
-            }
+        //    for (int x1 = 120, y1 = 291; x1 < 141; x1++, y1++)
+        //    {
+        //        if (dmae.GetColor(x1, 309) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (dmae.GetColor(140, y1) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 140)
+        //        {
+        //            list.Add(1);//第一个槽为空
+        //        }
+        //    }
 
-            for (int x1 = 305, y1 = 291; x1 < 326; x1++, y1++)
-            {
-                if (dmae.GetColor(x1, 309) != "ffffff")
-                {
-                    break;
-                }
-                if (dmae.GetColor(324, y1) != "ffffff")
-                {
-                    break;
-                }
-                if (x1 == 325)
-                {
+        //    for (int x1 = 305, y1 = 291; x1 < 326; x1++, y1++)
+        //    {
+        //        if (dmae.GetColor(x1, 309) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (dmae.GetColor(324, y1) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 325)
+        //        {
 
-                    list.Add(2);//第二个槽为空
-                }
-            }
+        //            list.Add(2);//第二个槽为空
+        //        }
+        //    }
 
-            for (int x1 = 488, y1 = 291; x1 < 509; x1++, y1++)
-            {
-                if (dmae.GetColor(x1, 309) != "ffffff")
-                {
-                    break;
-                }
-                if (dmae.GetColor(509, y1) != "ffffff")
-                {
-                    break;
-                }
-                if (x1 == 508)
-                {
-                    list.Add(3);//第三个槽为空
-                }
-            }
+        //    for (int x1 = 488, y1 = 291; x1 < 509; x1++, y1++)
+        //    {
+        //        if (dmae.GetColor(x1, 309) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (dmae.GetColor(509, y1) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 508)
+        //        {
+        //            list.Add(3);//第三个槽为空
+        //        }
+        //    }
 
-            for (int x1 = 672, y1 = 291; x1 < 693; x1++, y1++)
-            {
-                if (dmae.GetColor(x1, 308) != "ffffff")
-                {
-                    break;
-                }
-                if (dmae.GetColor(691, y1) != "ffffff")
-                {
-                    break;
-                }
-                if (x1 == 692)
-                {
-                    list.Add(4);//第四个槽为空
-                }
-            }
-            for (int x1 = 856, y1 = 291; x1 < 877; x1++, y1++)
-            {
-                if (dmae.GetColor(x1, 308) != "ffffff")
-                {
-                    break;
-                }
-                if (dmae.GetColor(876, y1) != "ffffff")
-                {
-                    break;
-                }
-                if (x1 == 856)
-                {
-                    list.Add(5);//第五个槽为空
-                }
-            }
-            for (int x1 = 1039, y1 = 291; x1 < 1060; x1++, y1++)
-            {
-                if (dmae.GetColor(x1, 309) != "ffffff")
-                {
-                    break;
-                }
-                if (dmae.GetColor(1058, y1) != "ffffff")
-                {
-                    break;
-                }
-                if (x1 == 1059)
-                {
-                    list.Add(6);//第六个槽为空
-                }
-            }
+        //    for (int x1 = 672, y1 = 291; x1 < 693; x1++, y1++)
+        //    {
+        //        if (dmae.GetColor(x1, 308) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (dmae.GetColor(691, y1) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 692)
+        //        {
+        //            list.Add(4);//第四个槽为空
+        //        }
+        //    }
+        //    for (int x1 = 856, y1 = 291; x1 < 877; x1++, y1++)
+        //    {
+        //        if (dmae.GetColor(x1, 308) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (dmae.GetColor(876, y1) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 856)
+        //        {
+        //            list.Add(5);//第五个槽为空
+        //        }
+        //    }
+        //    for (int x1 = 1039, y1 = 291; x1 < 1060; x1++, y1++)
+        //    {
+        //        if (dmae.GetColor(x1, 309) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (dmae.GetColor(1058, y1) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 1059)
+        //        {
+        //            list.Add(6);//第六个槽为空
+        //        }
+        //    }
 
-            for (int x1 = 1223, y1 = 291; x1 < 1244; x1++, y1++)
-            {
-                if (dmae.GetColor(x1, 309) != "ffffff")
-                {
-                    break;
-                }
-                if (dmae.GetColor(1242, y1) != "ffffff")
-                {
-                    break;
-                }
-                if (x1 == 1243)
-                {
-                    list.Add(7);//第七个槽为空
-                }
-            }
+        //    for (int x1 = 1223, y1 = 291; x1 < 1244; x1++, y1++)
+        //    {
+        //        if (dmae.GetColor(x1, 309) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (dmae.GetColor(1242, y1) != "ffffff")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 1243)
+        //        {
+        //            list.Add(7);//第七个槽为空
+        //        }
+        //    }
 
-        }
-        public int CheckSelectFixGirlPage(DmAe dmae)//检测是否在选取待修复少女的页面
-        {
-            //符合返回0不符合1
-            int dm_ret0 = dmae.CmpColor(10, 8, "ffffff", 1);
-            int dm_ret1 = dmae.CmpColor(131, 8, "ffffff", 1);
-            int dm_ret2 = dmae.CmpColor(10, 88, "ffffff", 1);
-            int dm_ret3 = dmae.CmpColor(130, 88, "ffffff", 1);
-            if(dm_ret0 == 0 && dm_ret1 == 0 && dm_ret2 == 0 && dm_ret3 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
+        //}
+        //public int CheckSelectFixGirlPage(DmAe dmae)//检测是否在选取待修复少女的页面
+        //{
+        //    //符合返回0不符合1
+        //    int dm_ret0 = dmae.CmpColor(10, 8, "ffffff", 1);
+        //    int dm_ret1 = dmae.CmpColor(131, 8, "ffffff", 1);
+        //    int dm_ret2 = dmae.CmpColor(10, 88, "ffffff", 1);
+        //    int dm_ret3 = dmae.CmpColor(130, 88, "ffffff", 1);
+        //    if(dm_ret0 == 0 && dm_ret1 == 0 && dm_ret2 == 0 && dm_ret3 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
 
-        }
+        //}
 
-        public int CheckBattleMapReady(DmAe dmae, int x1 = 11,int y1 = 12, int x2 = 246, int y2 = 11, int x3 = 235, int y3 = 78)//检查战斗页面没有按战斗开始
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 1);
+        //public int CheckBattleMapReady(DmAe dmae, int x1 = 11,int y1 = 12, int x2 = 246, int y2 = 11, int x3 = 235, int y3 = 78)//检查战斗页面没有按战斗开始
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 1);
 
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
 
 
-        }
+        //}
 
-        public bool CheckBattleResult(DmAe dmae)
-        {
-            int dm_ret0 = dmae.CmpColor(74, 278, "ffffff", 1);
-            int dm_ret1 = dmae.CmpColor(74, 333, "ffffff", 1);
-            int dm_ret2 = dmae.CmpColor(74, 387, "ffffff", 1);
-            int dm_ret3 = dmae.CmpColor(74, 431, "ffffff", 1);
-            int dm_ret4 = dmae.CmpColor(296, 431, "ffffff", 1);
-            if (dm_ret0 == 0 && dm_ret1 == 0 && dm_ret2 == 0 && dm_ret3 == 0 & dm_ret4 == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        //public bool CheckBattleResult(DmAe dmae)
+        //{
+        //    int dm_ret0 = dmae.CmpColor(74, 278, "ffffff", 1);
+        //    int dm_ret1 = dmae.CmpColor(74, 333, "ffffff", 1);
+        //    int dm_ret2 = dmae.CmpColor(74, 387, "ffffff", 1);
+        //    int dm_ret3 = dmae.CmpColor(74, 431, "ffffff", 1);
+        //    int dm_ret4 = dmae.CmpColor(296, 431, "ffffff", 1);
+        //    if (dm_ret0 == 0 && dm_ret1 == 0 && dm_ret2 == 0 && dm_ret3 == 0 & dm_ret4 == 0)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
 
-        }
+        //}
 
-        public bool CheckNewGunEquipmentPage(DmAe dmae)
-        {
-            for(int x=1095,y=674;x< 1100; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1 )
-                {
-                    return false;
-                }
-                else if(dmae.CmpColor(126, 25, "ffffff", 1) == 0)
-                {
-                    return false;
-                }
+        //public bool CheckNewGunEquipmentPage(DmAe dmae)
+        //{
+        //    for(int x=1095,y=674;x< 1100; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1 )
+        //        {
+        //            return false;
+        //        }
+        //        else if(dmae.CmpColor(126, 25, "ffffff", 1) == 0)
+        //        {
+        //            return false;
+        //        }
                      
-            }
-            return true;
-        }
+        //    }
+        //    return true;
+        //}
 
-        public bool CheckEquipmentStorageFull(DmAe dmae)
-        {
-            int x1 = 779, y1 = 526;
-            for (; x1 <= 596; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
+        //public bool CheckEquipmentStorageFull(DmAe dmae)
+        //{
+        //    int x1 = 779, y1 = 526;
+        //    for (; x1 <= 596; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
 
-            x1 = 446; y1 = 525;
-            for (; x1 <= 597; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            x1 = 446; y1 = 463;
-            for (; x1 <= 610; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            x1 = 446; y1 = 470;
-            for (; x1 <= 610; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            x1 = 446; y1 = 463;
-            for (; y1 <= 525; y1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            x1 = 611; y1 = 463;
-            for (; y1 <= 511; y1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            return true;
-        }
+        //    x1 = 446; y1 = 525;
+        //    for (; x1 <= 597; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    x1 = 446; y1 = 463;
+        //    for (; x1 <= 610; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    x1 = 446; y1 = 470;
+        //    for (; x1 <= 610; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    x1 = 446; y1 = 463;
+        //    for (; y1 <= 525; y1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    x1 = 611; y1 = 463;
+        //    for (; y1 <= 511; y1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    return true;
+        //}
 
-        public int CheckRandomPointWindows(DmAe dmae, int x1 = 439, int y1 = 165, int x2 = 523, int y2 = 182, int x3 = 523, int y3 = 165)//检查随机点窗口
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        //public int CheckRandomPointWindows(DmAe dmae, int x1 = 439, int y1 = 165, int x2 = 523, int y2 = 182, int x3 = 523, int y3 = 165)//检查随机点窗口
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
 
-        public int CheckActionCount(DmAe dmae, int x1 = 1012, int y1 = 639, int x2 = 1080, int y2 = 639)
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
-            if (dm_Ret0 == 0 && dm_Ret1 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        //public int CheckActionCount(DmAe dmae, int x1 = 1012, int y1 = 639, int x2 = 1080, int y2 = 639)
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
 
-        public int CheckBattleEnd(DmAe dmae, int x1 = 1049, int y1 = 637, int x2 = 1037, int y2 = 145, int x3 = 932, int y3 = 569)//检查回合开始
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        //public int CheckBattleEnd(DmAe dmae, int x1 = 1049, int y1 = 637, int x2 = 1037, int y2 = 145, int x3 = 932, int y3 = 569)//检查回合开始
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
 
-        public int CheckBattleStart(DmAe dmae, int x1 = 849, int y1 = 184, int x2 = 1148, int y2 = 184, int x3 = 849, int y3 = 454, int x4 = 119, int y4 = 246, int x5 = 722, int y5 = 327, int x6 = 314, int y6 = 24, int x7 = 50, int y7 = 655)//检查回合开始
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-            int dm_Ret3 = dmae.CmpColor(x4, y4, "ffffff", 0.9);
-            int dm_Ret4 = dmae.CmpColor(x5, y5, "ffffff", 0.9);
-            int dm_Ret5 = dmae.CmpColor(x6, y6, "ffffff", 0.9);
-            int dm_Ret6 = dmae.CmpColor(x7, y7, "ffffff", 0.9);
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0 && dm_Ret3 == 0 && dm_Ret4 == 0 && dm_Ret5 == 1 && dm_Ret6 == 1)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        //public int CheckBattleStart(DmAe dmae, int x1 = 849, int y1 = 184, int x2 = 1148, int y2 = 184, int x3 = 849, int y3 = 454, int x4 = 119, int y4 = 246, int x5 = 722, int y5 = 327, int x6 = 314, int y6 = 24, int x7 = 50, int y7 = 655)//检查回合开始
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+        //    int dm_Ret3 = dmae.CmpColor(x4, y4, "ffffff", 0.9);
+        //    int dm_Ret4 = dmae.CmpColor(x5, y5, "ffffff", 0.9);
+        //    int dm_Ret5 = dmae.CmpColor(x6, y6, "ffffff", 0.9);
+        //    int dm_Ret6 = dmae.CmpColor(x7, y7, "ffffff", 0.9);
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0 && dm_Ret3 == 0 && dm_Ret4 == 0 && dm_Ret5 == 1 && dm_Ret6 == 1)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
 
-        public void CheckNormalAndAutoBattleButton(DmAe dmae,out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1)
-        {
-            //300,555
-            string ignoreColor0;
-            string Color0;
-            int NormalCount = 0;
-            int AutoCount = 0;
-            NormalButtonX1 = 0; NormalButtonY1 = 0; AutoButtonX1 = 0; AutoButtonY1 = 0;
-            int x1 = 300, y1 = 560;
+        //public void CheckNormalAndAutoBattleButton(DmAe dmae,out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1)
+        //{
+        //    //300,555
+        //    string ignoreColor0;
+        //    string Color0;
+        //    int NormalCount = 0;
+        //    int AutoCount = 0;
+        //    NormalButtonX1 = 0; NormalButtonY1 = 0; AutoButtonX1 = 0; AutoButtonY1 = 0;
+        //    int x1 = 300, y1 = 560;
 
-            ignoreColor0 = dmae.GetColor(550, 100);
+        //    ignoreColor0 = dmae.GetColor(550, 100);
 
 
 
-            for(x1 = 300, y1 = 560; x1 <= 1092; x1++)
-            {
+        //    for(x1 = 300, y1 = 560; x1 <= 1092; x1++)
+        //    {
                 
-                Color0 = dmae.GetColor(x1, y1);
-                if (Color0 == ignoreColor0)
-                {
-                    continue;
-                }
-                if (dmae.CmpColor(x1 + 1, y1, Color0, 1) == 0)
-                {
-                    //NormalCount++;
-                    AutoCount++;
-                    if (AutoCount == 100) { AutoButtonX1 = x1; AutoButtonY1 = y1; break; }
-                    //if (NormalCount == 99) { NormalButtonX1 = x1; NormalButtonY1 = y1; NormalCount = 0; }
-                }
-                else
-                {
-                    AutoCount = 0;
-                }
-            }
-
-            for (; x1 <= 1092; x1++)
-            {
-                Color0 = dmae.GetColor(x1, y1);
-
-                if (Color0 == ignoreColor0)
-                {
-                    continue;
-                }
-
-                if (dmae.CmpColor(x1 + 1, y1, Color0, 1) == 0)
-                {
-                    NormalCount++;
-                    if (NormalCount == 98) { NormalButtonX1 = x1; NormalButtonY1 = y1; break; }
-                }
-                else
-                {
-                    AutoCount = 0;
-                }
-            }
-
-            //判断是否只有一个按钮 自律已经使用
-            if (NormalButtonX1 == 0)
-            {
-                NormalButtonX1 = AutoButtonX1;
-                NormalButtonY1 = AutoButtonY1;
-            }
-
-
-
-        }
-        public bool CheckPointIsEmpty(DmAe dmae, int x1, int y1, int x2, int y2, double percentage = 0.3)
-        {
-            List<string> colorlist = new List<string>();
-            List<int> countlist = new List<int>();
-            string color0;
-            int count = 0, tempy = x1;
-
-            for (tempy = y1; tempy < y2; tempy++)
-            {
-                for (int x = x1; x < x2; x++)
-                {
-                    color0 = dmae.GetColor(x, tempy);
-                    count = colorlist.FindIndex(s => s == color0);
-
-                    if (count == -1)
-                    {
-                        colorlist.Add(color0);
-                        countlist.Add(1);
-                    }
-                    else
-                    {
-                        countlist[count] += 1;
-                    }
-                }
-            }
-            count = countlist.Max();
-            int sum = countlist.Sum();
-
-
-            double result = (double)count / (double)sum;
-            //int a = countlist.FindLastIndex(s => s == count);
-            if (result > percentage)
-            {
-                return true;
-            }
-            //a是最多点的序列号 colorlist[a] 颜色
-            else
-            {
-                return false;
-            }
-
-
-        }
-
-        public bool CheckBattleSettlementPage (DmAe dmae)
-        {
-            for(int x=938, y = 455; x <= 956; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            for (int x = 1076, y = 455; x <= 1094; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 938, y = 601; x <= 956; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 1076, y = 601; x <= 1094; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 1105, y = 568; x <= 1140; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 1105, y = 603; x <= 1140; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-
-            for (int x = 938, y = 455; y <= 473; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 939, y = 585; y <= 602; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 1093, y = 455; y <= 473; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 1094, y = 585; y <= 602; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 1140, y = 568; y <= 603; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-
-
-
-
-
-
-
-            return true;
-        }
-
-        public bool ChckBattleDropWindow(DmAe dmae)
-        {
-            for (int x = 557, y = 488; x <= 700; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckAutoBattleFinishPage(DmAe dmae)
-        {
-            for(int x= 108,y=151; x<=155; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for(int x= 155, y = 151; y <= 197; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 108, y = 197; x <= 155; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            for (int x = 108, y = 151; y <= 197; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public int CheckHomePage(DmAe dmae , int x1 = 1100, int y1 = 690, int x2 = 975, int y2 = 680, int x3 = 695, int y3 = 25)
-        {
-            if (dmae.CmpColor(x1, y1, "ffffff", 0.9) == 0 && dmae.CmpColor(x2, y2, "ffffff", 0.9) == 0 && dmae.CmpColor(x3, y3, "ffffff", 0.9) == 0)
-            {
-                if (dmae.CmpColor(126, 25, "ffffff", 1) == 0)
-                {
-                    return 1;
-                }
-                return 0;//相同返回0
-            }
-            else
-            {
-                return 1;
-            }
-        }
-
-        public bool CheckSystemNewsPapge(DmAe dmae)
-        {
-            int x1 = 67, y1 = 20;
-            for (; x1 <= 165; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-
-            x1 = 360;y1 = 85;
-            for (; x1 <= 1197; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            return true;
-        }
-
-        public bool CheckSystemRewardSupportPage(DmAe dmae)
-        {
-            int x1 = 557, y1 = 488;
-            for (; x1 <= 722; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-
-            x1 = 557; y1 = 496;
-            for (; x1 <= 722; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            return true;
-
-
-
-        }
-
-        public bool CheckSystemActivistPage(DmAe dmae)
-        {
-            int x1 = 19, y1 = 39;
-            for (; x1 <= 117; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-
-            x1 = 33; y1 = 106;
-            for (; x1 <= 327; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            x1 = 338; y1 = 106;
-            for (; x1 <= 1246; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            return true;
-        }
-
-        public bool CheckNewAchievement(DmAe dmae)
-        {
-            int x1 = 557, y1 = 488;
-            for (; x1 <= 721; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-
-            x1 = 557; y1 = 490;
-            for (; x1 <= 721; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            x1 = 557; y1 = 496;
-            for (; x1 <= 721; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "ffffff") return false;
-            }
-            return true;
-
-        }
-        public int CheckBattlePage(DmAe dmae, int x1 = 986, int y1 = 30, int x2 = 5, int y2 = 94, int x3 = 138, int y3 = 94, int x4 = 138, int y4 = 1)
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-            int dm_Ret3 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0 && dm_Ret3 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
-
-        public int CheckFixPage(DmAe dmae, int x1 = 204, int y1 = 63, int x2 = 138, int y2 = 1, int x3 = 5, int y3 = 94)//检测修复页面
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
-
-        public int CheckActivityBattlePage(DmAe dmae, int x1 = 135, int y1 = 94, int x2 = 135, int y2 = 1)
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 )
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
-
-        public int CheckBattleDifficultyType(DmAe dmae)
-        {
-            int x1 = 940, y1 = 151;
-            for (; x1 <= 1043; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "000000")
-                {
-                    break;
-                }
-                if (x1 == 1043)
-                {
-                    return 0;
-                }
-            }
-
-            x1 = 1055;
-            for (; x1 <= 1157; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "000000")
-                {
-                    break;
-                }
-                if (x1 == 1157)
-                {
-                    return 1;
-                }
-            }
-
-            x1 = 1168;
-            for (; x1 <= 1272; x1++)
-            {
-                if (dmae.GetColor(x1, y1) != "000000")
-                {
-                    break;
-                }
-                if (x1 == 1272)
-                {
-                    return 2;
-                }
-            }
-
-
-            return -1;
-        }
-
-        public int CheckMissionSettingPage(DmAe dmae, int x1 = 180, int y1 = 64, int x2 = 542, int y2 = 79, int x3 = 195, int y3 = 134)
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 1);
-
-
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
-
-        public int CheckActivityChoicePage(DmAe dmae, int x1 = 63, int y1 = 445, int x2 = 134, int y2 = 482, int x3 = 191, int y3 = 481)//魔方行动
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
-
-
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-
-
-        }
-        public int CcheckActivityPageReady(DmAe dmae, int x1 = 200, int y1 = 50, int x2 = 20, int y2 = 675, int x3 = 33, int y3 = 675)//检查魔方行动4个战役加载完毕
-        {
-            int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
-            int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
-            int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 1);
-
-
-            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-
-
-        }
-
-        public bool CheckMyDormitory(DmAe dmae)//检测是否在宿舍页面
-        {
-            //符合返回0不符合1
-            for (int x = 151, y = 13; x <= 354; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-
-            }
-            return true;
-        }
-
-        public bool CheckFriendsListPage(DmAe dmae)//检测是否在好友列表页面
-        {
-            //符合返回0不符合1
-            for (int x = 199, y = 40; x <= 400; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-
-            }
-            return true;
-        }
-
-        public int CheckVisitFriendsTapge(DmAe dmae)//检测我的好友我的访客我的拜访3个页面
-        {
-            string color0 = dmae.GetColor(135, 130);
-            string color1 = dmae.GetColor(290, 130);
-            string color2 = dmae.GetColor(440, 130);
-            if (color0 == color1) { return 2; }
-            if (color0 == color2) { return 1; }
-            return 0;
-        }
-
-        public int CheckMyFriendDormitory(DmAe dmae)//检测是否打开好友宿舍
-        {
-
-            for (int x = 1256, y = 54; y <= 74; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return -1;//检测左上角
-                }
-
-            }
-
-            for (int x = 1140, y = 650; x <= 1260; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return 0;//通过左上角检测右下角 0 没有右下角
-                }
-
-            }
-
-            return 1;//左上右下都有
-        }
-
-        public bool CheckFriendDormitoryBattery(DmAe dmae)
-        {
-            if(dmae.CmpColor(420, 459,"ffffff",1) == 1)
-            {
-                return false;
-            }
-
-            if (dmae.CmpColor(419, 460, "ffffff", 1) == 1)
-            {
-                return false;
-            }
-            if (dmae.CmpColor(418, 462, "ffffff", 1) == 1)
-            {
-                return false;
-            }
-            if (dmae.CmpColor(371, 404, "ffffff", 1) == 1)
-            {
-                return false;
-            }
-            if (dmae.CmpColor(368, 404, "ffffff", 1) == 1)
-            {
-                return false;
-            }
-            if (dmae.CmpColor(365, 408, "ffffff", 1) == 1)
-            {
-                return false;
-            }
-            if (dmae.CmpColor(363, 410, "ffffff", 1) == 1)
-            {
-                return false;
-            }
-            if (dmae.CmpColor(362, 411, "ffffff", 1) == 1)
-            {
-                return false;
-            }
-            return true;
-
-        }
-
-        public bool CheckDormitoryBatteryWindow(DmAe dmae)
-        {
-            for(int x = 559, y = 487; x <= 719; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-
-
-        }
-
-        public int CheckFriendsPointReward(DmAe dmae)//检测是否接收友情点数奖励或者本日次数已用完
-        {
-            //符合返回0不符合1
-
-            for (int x = 557, y = 488; x <= 722; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 0)
-                {
-                    if (x == 722) { return 0; }//获得友情点数可以继续
-                }
-                else { break; }
-
-            }
-
-            for (int x = 529, y = 369; x <= 549; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 0)
-                {
-                    if (x == 549) { return 1; }//本日友情点数以获取不用继续
-                }
-                else { break; }
-
-            }
-            return -1;//都不是需要重来
-        }
-
-        public bool CheckResearchPageReady(DmAe dmae)
-        {
-            for(int x = 50,y = 215; x <= 180; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                    return false;
-            }
-            return true;
-        }
-
-        public bool CheckEquipmentSelectPageReady(DmAe dmae)
-        {
-            for(int x = 300, y = 380; x <= 345; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for(int x=320,y=360;y<=405; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public bool CheckSelectOneEquipmentPageReady(DmAe dmae)
-        {
-            for(int x = 1099,y = 242; x <= 1266; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckEquipmentTabPageReady(DmAe dmae)
-        {
-            for (int x = 530, y = 115; x <= 680; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            for (int x = 710, y = 115; x <= 520; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            for (int x = 890, y = 115; x <= 1035; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public bool CheckEquipmentSelectdReady(DmAe dmae,int i)
-        {
-            switch (i)
-            {
-                case 0:
-                    {
-                        if(dmae.CmpColor(600, 125, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 1:
-                    {
-                        if (dmae.CmpColor(800, 130, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 2:
-                    {
-                        if (dmae.CmpColor(1000, 130, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 3:
-                    {
-                        if (dmae.CmpColor(600, 200, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 4:
-                    {
-                        if (dmae.CmpColor(800, 200, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 5:
-                    {
-                        if (dmae.CmpColor(1000, 200, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 6:
-                    {
-                        if (dmae.CmpColor(600, 310, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 7:
-                    {
-                        if (dmae.CmpColor(800, 310, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 8:
-                    {
-                        if (dmae.CmpColor(1000, 310, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 9:
-                    {
-                        if (dmae.CmpColor(600, 400, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 10:
-                    {
-                        if (dmae.CmpColor(600, 510, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 11:
-                    {
-                        if (dmae.CmpColor(800, 510, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 12:
-                    {
-                        if (dmae.CmpColor(1000, 510, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 13:
-                    {
-                        if (dmae.CmpColor(600, 600, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                case 14:
-                    {
-                        if (dmae.CmpColor(800, 600, "ffffff", 1) == 1)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                default:
-                    break;
-            }
-            return false;
-        }
-
-        public bool CheckEquipmentTabReadyClose(DmAe dmae)
-        {
-            string color0 = dmae.GetColor(530, 120);
-            for(int x = 530, y = 120; x <= 680; x++)
-            {
-                if (dmae.CmpColor(x, y, color0, 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public bool CheckEquipmentLock(DmAe dmae)
-        {
-
-            for (int x = 1099, y = 242; x <= 1265; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public bool CheckEquipmentReadyToUpdate(DmAe dmae)
-        {
-            for (int x = 485, y = 202; x <= 505; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            for (int x = 516, y = 202; x <= 537; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckEquipmentUpdateWarningWindows(DmAe dmae)
-        {
-
-            for (int x = 446,y = 463; x <= 611; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckEquipment2Start(DmAe dmae)
-        {
-            for(int x = 1095, y = 341; x <= 1140; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckEquipmentConfirmButton(DmAe dmae)
-        {
-            for (int x = 1070, y = 530; x <= 1220; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckEquipmentSelected(DmAe dmae)
-        {
-            object intX, intY;
-            if(dmae.FindColor(1116, 410, 1251, 442,"ffffff",1,0,out intX,out intY)==1)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool CheckEquipmentUpdate50MaxCount (DmAe dmae)
-        {
-            for(int x = 560, y = 490; x <= 720; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-
-
-        }
-
-        public bool CheckWhiteM(DmAe dmae)//检测屏幕是否白屏
-        {
-            for(int x = 1, y = 1; y < 720; y++)
-            {
-                for (; x < 1280; x++)
-                {
-                    if(dmae.CmpColor(x,y,"ffffff",0.9) == 1)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-
-        public bool CheckInternetTransfer(DmAe dmae)
-        {
-
-            int x1, y1;
-            int dm_ret = 0;
-            for (x1 = 1160, y1 = 574; y1 <= 639; y1++)
-            {
-                for (x1 = 1160; x1 <= 1185; x1++)
-                {
-                    if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
-                    {
-                        dm_ret = dm_ret + 1;
-                    }
-                }
-            }
-            if (dm_ret >= 90 && dm_ret<=300)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool CheckDormitoryLoad(DmAe dmae)//等待宿舍加载完毕，检查右上方的名字
-        {
-            while (dmae.FindColor(900, 15, 1065, 50, "ffffff", 0.9, 0, out object intX, out object intY) == 1)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool CheckFormationPage(DmAe dmae)
-        {
-            for(int x=1083,y=540;x<=1141;x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            for (int x = 1141, y = 540; y <= 596; y++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-        public bool CheckFormationPostionPresetPage(DmAe dmae)
-        {
-            for (int x = 900, y = 590; x <= 1060; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        public bool CheckFormationTeamPresetSelect(DmAe dmae)
-        {
-            for (int x = 900, y = 590; x <= 990; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckFormationWindowINFO(DmAe dmae)
-        {
-            for (int x = 375, y = 470; x <= 535; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckBattleWithDrawButton(DmAe dmae)
-        {
-            for(int x= 106,y= 165; x <= 124; x++)
-            {
-                if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public bool CheckDormitoryMLeft(DmAe dmae)//检测屏幕是否白屏
-        {
-            for (int x = 1, y = 1; x < 50; x++)
-            {
-                if (dmae.CmpColor(x, y, "000000", 1) == 1)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        //        Color0 = dmae.GetColor(x1, y1);
+        //        if (Color0 == ignoreColor0)
+        //        {
+        //            continue;
+        //        }
+        //        if (dmae.CmpColor(x1 + 1, y1, Color0, 1) == 0)
+        //        {
+        //            //NormalCount++;
+        //            AutoCount++;
+        //            if (AutoCount == 100) { AutoButtonX1 = x1; AutoButtonY1 = y1; break; }
+        //            //if (NormalCount == 99) { NormalButtonX1 = x1; NormalButtonY1 = y1; NormalCount = 0; }
+        //        }
+        //        else
+        //        {
+        //            AutoCount = 0;
+        //        }
+        //    }
+
+        //    for (; x1 <= 1092; x1++)
+        //    {
+        //        Color0 = dmae.GetColor(x1, y1);
+
+        //        if (Color0 == ignoreColor0)
+        //        {
+        //            continue;
+        //        }
+
+        //        if (dmae.CmpColor(x1 + 1, y1, Color0, 1) == 0)
+        //        {
+        //            NormalCount++;
+        //            if (NormalCount == 98) { NormalButtonX1 = x1; NormalButtonY1 = y1; break; }
+        //        }
+        //        else
+        //        {
+        //            AutoCount = 0;
+        //        }
+        //    }
+
+        //    //判断是否只有一个按钮 自律已经使用
+        //    if (NormalButtonX1 == 0)
+        //    {
+        //        NormalButtonX1 = AutoButtonX1;
+        //        NormalButtonY1 = AutoButtonY1;
+        //    }
+
+
+
+        //}
+        //public bool CheckPointIsEmpty(DmAe dmae, int x1, int y1, int x2, int y2, double percentage = 0.3)
+        //{
+        //    List<string> colorlist = new List<string>();
+        //    List<int> countlist = new List<int>();
+        //    string color0;
+        //    int count = 0, tempy = x1;
+
+        //    for (tempy = y1; tempy < y2; tempy++)
+        //    {
+        //        for (int x = x1; x < x2; x++)
+        //        {
+        //            color0 = dmae.GetColor(x, tempy);
+        //            count = colorlist.FindIndex(s => s == color0);
+
+        //            if (count == -1)
+        //            {
+        //                colorlist.Add(color0);
+        //                countlist.Add(1);
+        //            }
+        //            else
+        //            {
+        //                countlist[count] += 1;
+        //            }
+        //        }
+        //    }
+        //    count = countlist.Max();
+        //    int sum = countlist.Sum();
+
+
+        //    double result = (double)count / (double)sum;
+        //    //int a = countlist.FindLastIndex(s => s == count);
+        //    if (result > percentage)
+        //    {
+        //        return true;
+        //    }
+        //    //a是最多点的序列号 colorlist[a] 颜色
+        //    else
+        //    {
+        //        return false;
+        //    }
+
+
+        //}
+
+        //public bool CheckBattleSettlementPage (DmAe dmae)
+        //{
+        //    for(int x=938, y = 455; x <= 956; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    for (int x = 1076, y = 455; x <= 1094; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 938, y = 601; x <= 956; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 1076, y = 601; x <= 1094; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 1105, y = 568; x <= 1140; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 1105, y = 603; x <= 1140; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+
+        //    for (int x = 938, y = 455; y <= 473; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 939, y = 585; y <= 602; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 1093, y = 455; y <= 473; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 1094, y = 585; y <= 602; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 1140, y = 568; y <= 603; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+
+
+
+
+
+
+
+        //    return true;
+        //}
+
+        //public bool ChckBattleDropWindow(DmAe dmae)
+        //{
+        //    for (int x = 557, y = 488; x <= 700; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckAutoBattleFinishPage(DmAe dmae)
+        //{
+        //    for(int x= 108,y=151; x<=155; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for(int x= 155, y = 151; y <= 197; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 108, y = 197; x <= 155; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    for (int x = 108, y = 151; y <= 197; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
+
+        //public int CheckHomePage(DmAe dmae , int x1 = 1100, int y1 = 690, int x2 = 975, int y2 = 680, int x3 = 695, int y3 = 25)
+        //{
+        //    if (dmae.CmpColor(x1, y1, "ffffff", 0.9) == 0 && dmae.CmpColor(x2, y2, "ffffff", 0.9) == 0 && dmae.CmpColor(x3, y3, "ffffff", 0.9) == 0)
+        //    {
+        //        if (dmae.CmpColor(126, 25, "ffffff", 1) == 0)
+        //        {
+        //            return 1;
+        //        }
+        //        return 0;//相同返回0
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
+
+        //public bool CheckSystemNewsPapge(DmAe dmae)
+        //{
+        //    int x1 = 67, y1 = 20;
+        //    for (; x1 <= 165; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+
+        //    x1 = 360;y1 = 85;
+        //    for (; x1 <= 1197; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckSystemRewardSupportPage(DmAe dmae)
+        //{
+        //    int x1 = 557, y1 = 488;
+        //    for (; x1 <= 722; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+
+        //    x1 = 557; y1 = 496;
+        //    for (; x1 <= 722; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    return true;
+
+
+
+        //}
+
+        //public bool CheckSystemActivistPage(DmAe dmae)
+        //{
+        //    int x1 = 19, y1 = 39;
+        //    for (; x1 <= 117; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+
+        //    x1 = 33; y1 = 106;
+        //    for (; x1 <= 327; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    x1 = 338; y1 = 106;
+        //    for (; x1 <= 1246; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckNewAchievement(DmAe dmae)
+        //{
+        //    int x1 = 557, y1 = 488;
+        //    for (; x1 <= 721; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+
+        //    x1 = 557; y1 = 490;
+        //    for (; x1 <= 721; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    x1 = 557; y1 = 496;
+        //    for (; x1 <= 721; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "ffffff") return false;
+        //    }
+        //    return true;
+
+        //}
+        //public int CheckBattlePage(DmAe dmae, int x1 = 986, int y1 = 30, int x2 = 5, int y2 = 94, int x3 = 138, int y3 = 94, int x4 = 138, int y4 = 1)
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+        //    int dm_Ret3 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0 && dm_Ret3 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
+
+        //public int CheckFixPage(DmAe dmae, int x1 = 204, int y1 = 63, int x2 = 138, int y2 = 1, int x3 = 5, int y3 = 94)//检测修复页面
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
+
+        //public int CheckActivityBattlePage(DmAe dmae, int x1 = 135, int y1 = 94, int x2 = 135, int y2 = 1)
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 )
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
+
+        //public int CheckBattleDifficultyType(DmAe dmae)
+        //{
+        //    int x1 = 940, y1 = 151;
+        //    for (; x1 <= 1043; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "000000")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 1043)
+        //        {
+        //            return 0;
+        //        }
+        //    }
+
+        //    x1 = 1055;
+        //    for (; x1 <= 1157; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "000000")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 1157)
+        //        {
+        //            return 1;
+        //        }
+        //    }
+
+        //    x1 = 1168;
+        //    for (; x1 <= 1272; x1++)
+        //    {
+        //        if (dmae.GetColor(x1, y1) != "000000")
+        //        {
+        //            break;
+        //        }
+        //        if (x1 == 1272)
+        //        {
+        //            return 2;
+        //        }
+        //    }
+
+
+        //    return -1;
+        //}
+
+        //public int CheckMissionSettingPage(DmAe dmae, int x1 = 180, int y1 = 64, int x2 = 542, int y2 = 79, int x3 = 195, int y3 = 134)
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 1);
+
+
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
+
+        //public int CheckActivityChoicePage(DmAe dmae, int x1 = 63, int y1 = 445, int x2 = 134, int y2 = 482, int x3 = 191, int y3 = 481)//魔方行动
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 0.9);
+
+
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+
+
+        //}
+        //public int CcheckActivityPageReady(DmAe dmae, int x1 = 200, int y1 = 50, int x2 = 20, int y2 = 675, int x3 = 33, int y3 = 675)//检查魔方行动4个战役加载完毕
+        //{
+        //    int dm_Ret0 = dmae.CmpColor(x1, y1, "ffffff", 1);
+        //    int dm_Ret1 = dmae.CmpColor(x2, y2, "ffffff", 1);
+        //    int dm_Ret2 = dmae.CmpColor(x3, y3, "ffffff", 1);
+
+
+        //    if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+
+
+        //}
+
+        //public bool CheckMyDormitory(DmAe dmae)//检测是否在宿舍页面
+        //{
+        //    //符合返回0不符合1
+        //    for (int x = 151, y = 13; x <= 354; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckFriendsListPage(DmAe dmae)//检测是否在好友列表页面
+        //{
+        //    //符合返回0不符合1
+        //    for (int x = 199, y = 40; x <= 400; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+
+        //    }
+        //    return true;
+        //}
+
+        //public int CheckVisitFriendsTapge(DmAe dmae)//检测我的好友我的访客我的拜访3个页面
+        //{
+        //    string color0 = dmae.GetColor(135, 130);
+        //    string color1 = dmae.GetColor(290, 130);
+        //    string color2 = dmae.GetColor(440, 130);
+        //    if (color0 == color1) { return 2; }
+        //    if (color0 == color2) { return 1; }
+        //    return 0;
+        //}
+
+        //public int CheckMyFriendDormitory(DmAe dmae)//检测是否打开好友宿舍
+        //{
+
+        //    for (int x = 1256, y = 54; y <= 74; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return -1;//检测左上角
+        //        }
+
+        //    }
+
+        //    for (int x = 1140, y = 650; x <= 1260; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return 0;//通过左上角检测右下角 0 没有右下角
+        //        }
+
+        //    }
+
+        //    return 1;//左上右下都有
+        //}
+
+        //public bool CheckFriendDormitoryBattery(DmAe dmae)
+        //{
+        //    if(dmae.CmpColor(420, 459,"ffffff",1) == 1)
+        //    {
+        //        return false;
+        //    }
+
+        //    if (dmae.CmpColor(419, 460, "ffffff", 1) == 1)
+        //    {
+        //        return false;
+        //    }
+        //    if (dmae.CmpColor(418, 462, "ffffff", 1) == 1)
+        //    {
+        //        return false;
+        //    }
+        //    if (dmae.CmpColor(371, 404, "ffffff", 1) == 1)
+        //    {
+        //        return false;
+        //    }
+        //    if (dmae.CmpColor(368, 404, "ffffff", 1) == 1)
+        //    {
+        //        return false;
+        //    }
+        //    if (dmae.CmpColor(365, 408, "ffffff", 1) == 1)
+        //    {
+        //        return false;
+        //    }
+        //    if (dmae.CmpColor(363, 410, "ffffff", 1) == 1)
+        //    {
+        //        return false;
+        //    }
+        //    if (dmae.CmpColor(362, 411, "ffffff", 1) == 1)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+
+        //}
+
+        //public bool CheckDormitoryBatteryWindow(DmAe dmae)
+        //{
+        //    for(int x = 559, y = 487; x <= 719; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+
+
+        //}
+
+        //public int CheckFriendsPointReward(DmAe dmae)//检测是否接收友情点数奖励或者本日次数已用完
+        //{
+        //    //符合返回0不符合1
+
+        //    for (int x = 557, y = 488; x <= 722; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 0)
+        //        {
+        //            if (x == 722) { return 0; }//获得友情点数可以继续
+        //        }
+        //        else { break; }
+
+        //    }
+
+        //    for (int x = 529, y = 369; x <= 549; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 0)
+        //        {
+        //            if (x == 549) { return 1; }//本日友情点数以获取不用继续
+        //        }
+        //        else { break; }
+
+        //    }
+        //    return -1;//都不是需要重来
+        //}
+
+        //public bool CheckResearchPageReady(DmAe dmae)
+        //{
+        //    for(int x = 50,y = 215; x <= 180; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //            return false;
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckEquipmentSelectPageReady(DmAe dmae)
+        //{
+        //    for(int x = 300, y = 380; x <= 345; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for(int x=320,y=360;y<=405; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
+
+        //public bool CheckSelectOneEquipmentPageReady(DmAe dmae)
+        //{
+        //    for(int x = 1099,y = 242; x <= 1266; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckEquipmentTabPageReady(DmAe dmae)
+        //{
+        //    for (int x = 530, y = 115; x <= 680; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    for (int x = 710, y = 115; x <= 520; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    for (int x = 890, y = 115; x <= 1035; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
+
+        //public bool CheckEquipmentSelectdReady(DmAe dmae,int i)
+        //{
+        //    switch (i)
+        //    {
+        //        case 0:
+        //            {
+        //                if(dmae.CmpColor(600, 125, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 1:
+        //            {
+        //                if (dmae.CmpColor(800, 130, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 2:
+        //            {
+        //                if (dmae.CmpColor(1000, 130, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 3:
+        //            {
+        //                if (dmae.CmpColor(600, 200, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 4:
+        //            {
+        //                if (dmae.CmpColor(800, 200, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 5:
+        //            {
+        //                if (dmae.CmpColor(1000, 200, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 6:
+        //            {
+        //                if (dmae.CmpColor(600, 310, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 7:
+        //            {
+        //                if (dmae.CmpColor(800, 310, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 8:
+        //            {
+        //                if (dmae.CmpColor(1000, 310, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 9:
+        //            {
+        //                if (dmae.CmpColor(600, 400, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 10:
+        //            {
+        //                if (dmae.CmpColor(600, 510, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 11:
+        //            {
+        //                if (dmae.CmpColor(800, 510, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 12:
+        //            {
+        //                if (dmae.CmpColor(1000, 510, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 13:
+        //            {
+        //                if (dmae.CmpColor(600, 600, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        case 14:
+        //            {
+        //                if (dmae.CmpColor(800, 600, "ffffff", 1) == 1)
+        //                {
+        //                    return true;
+        //                }
+        //                return false;
+        //            }
+        //        default:
+        //            break;
+        //    }
+        //    return false;
+        //}
+
+        //public bool CheckEquipmentTabReadyClose(DmAe dmae)
+        //{
+        //    string color0 = dmae.GetColor(530, 120);
+        //    for(int x = 530, y = 120; x <= 680; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, color0, 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
+
+        //public bool CheckEquipmentLock(DmAe dmae)
+        //{
+
+        //    for (int x = 1099, y = 242; x <= 1265; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
+
+        //public bool CheckEquipmentReadyToUpdate(DmAe dmae)
+        //{
+        //    for (int x = 485, y = 202; x <= 505; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    for (int x = 516, y = 202; x <= 537; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckEquipmentUpdateWarningWindows(DmAe dmae)
+        //{
+
+        //    for (int x = 446,y = 463; x <= 611; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckEquipment2Start(DmAe dmae)
+        //{
+        //    for(int x = 1095, y = 341; x <= 1140; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckEquipmentConfirmButton(DmAe dmae)
+        //{
+        //    for (int x = 1070, y = 530; x <= 1220; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckEquipmentSelected(DmAe dmae)
+        //{
+        //    object intX, intY;
+        //    if(dmae.FindColor(1116, 410, 1251, 442,"ffffff",1,0,out intX,out intY)==1)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
+        //public bool CheckEquipmentUpdate50MaxCount (DmAe dmae)
+        //{
+        //    for(int x = 560, y = 490; x <= 720; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+
+
+        //}
+
+        //public bool CheckWhiteM(DmAe dmae)//检测屏幕是否白屏
+        //{
+        //    for(int x = 1, y = 1; y < 720; y++)
+        //    {
+        //        for (; x < 1280; x++)
+        //        {
+        //            if(dmae.CmpColor(x,y,"ffffff",0.9) == 1)
+        //            {
+        //                return false;
+        //            }
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckInternetTransfer(DmAe dmae)
+        //{
+
+        //    int x1, y1;
+        //    int dm_ret = 0;
+        //    for (x1 = 1160, y1 = 574; y1 <= 639; y1++)
+        //    {
+        //        for (x1 = 1160; x1 <= 1185; x1++)
+        //        {
+        //            if (dmae.CmpColor(x1, y1, "ffffff", 1) == 0)
+        //            {
+        //                dm_ret = dm_ret + 1;
+        //            }
+        //        }
+        //    }
+        //    if (dm_ret >= 90 && dm_ret<=300)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        //public bool CheckDormitoryLoad(DmAe dmae)//等待宿舍加载完毕，检查右上方的名字
+        //{
+        //    while (dmae.FindColor(900, 15, 1065, 50, "ffffff", 0.9, 0, out object intX, out object intY) == 1)
+        //    {
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
+
+        //public bool CheckFormationPage(DmAe dmae)
+        //{
+        //    for(int x=1083,y=540;x<=1141;x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    for (int x = 1141, y = 540; y <= 596; y++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
+        //public bool CheckFormationPostionPresetPage(DmAe dmae)
+        //{
+        //    for (int x = 900, y = 590; x <= 1060; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+        //public bool CheckFormationTeamPresetSelect(DmAe dmae)
+        //{
+        //    for (int x = 900, y = 590; x <= 990; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckFormationWindowINFO(DmAe dmae)
+        //{
+        //    for (int x = 375, y = 470; x <= 535; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckBattleWithDrawButton(DmAe dmae)
+        //{
+        //    for(int x= 106,y= 165; x <= 124; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "ffffff", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool CheckDormitoryMLeft(DmAe dmae)//检测屏幕是否白屏
+        //{
+        //    for (int x = 1, y = 1; x < 50; x++)
+        //    {
+        //        if (dmae.CmpColor(x, y, "000000", 1) == 1)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
     }
 
 

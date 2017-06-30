@@ -185,7 +185,7 @@ namespace testdm
                 mouse.LeftClick(dmae, 315, 175, 657, 452);
             }
 
-            while (mouse.CheckHomePage(dmae) == 1)
+            while (im.pagecheck.CheckHomePage() == 1)
             {
                 mouse.delayTime(1);
             }
@@ -1026,7 +1026,7 @@ namespace testdm
 
             while (EmptyFixBox.Any()==false)
             {
-                mouse.CheckFixBox(dmae, ref EmptyFixBox);
+                im.pagecheck.CheckFixBox( ref EmptyFixBox);
             }
 
             //读取修复槽完毕
@@ -1413,7 +1413,7 @@ namespace testdm
             SystemInfo.AppState = "读取时间";
             for (int i = 0; i < 3; i++)
             {
-                switch (mouse.CheckBuildEquipmentS(dmae, i))
+                switch (im.pagecheck.CheckBuildEquipmentS(i))
                 {
                     case 0:
                         {
@@ -1474,9 +1474,9 @@ namespace testdm
 
                     //检查是否满仓
 
-                    if (mouse.CheckEquipmentStorageFull(dmae))
+                    if (im.pagecheck.CheckEquipmentStorageFull())
                     {
-                        while (mouse.CheckEquipmentStorageFull(dmae))
+                        while (im.pagecheck.CheckEquipmentStorageFull())
                         {
                             mouse.LeftClick(dmae, 455, 472, 598, 522);
                             mouse.delayTime(1, 1);
