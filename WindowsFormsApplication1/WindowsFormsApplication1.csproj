@@ -134,7 +134,6 @@
     <Compile Include="BaseData\UserBattleInfo.cs" />
     <Compile Include="BaseData\SystemInfo.cs" />
     <Compile Include="BaseData\UserOperationInfo.cs" />
-    <Compile Include="CDmSoft.cs" />
     <Compile Include="BaseData\ConfigManager.cs" />
     <Compile Include="Events\Equipment.cs" />
     <Compile Include="Events\Formation.cs" />
