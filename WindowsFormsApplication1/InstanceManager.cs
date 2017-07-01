@@ -23,6 +23,7 @@ namespace WindowsFormsApplication1
         //public DmAe dmae;
         public dmtext.CDmSoft dm;
         public PageCheck.PageCheck pagecheck;
+
         public Mouse mouse;
         public Time time;
         public BaseData.ConfigManager configManager;
@@ -53,7 +54,7 @@ namespace WindowsFormsApplication1
             this.writelog = new WriteLog(this);
 
             this.dm = new dmtext.CDmSoft();
-
+            pagecheck = new PageCheck.PageCheck();
 
             this.mouse = new Mouse(this);
             this.time = new Time(this);

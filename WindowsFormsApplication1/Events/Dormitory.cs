@@ -146,7 +146,7 @@ namespace WindowsFormsApplication1.Events
             while (true)
             {
 
-                while (im.pagecheck.CheckDormitoryLoad() == false)
+                while (im.pagecheck.CheckDormitoryLoad(dmae.dm) == false)
                 {
                     im.mouse.delayTime(1);
                 }
@@ -169,7 +169,7 @@ namespace WindowsFormsApplication1.Events
                 {
                     //确认到名字
                     //检查电池
-                    if (im.pagecheck.CheckFriendDormitoryBattery() == true)
+                    if (im.pagecheck.CheckFriendDormitoryBattery(dmae.dm) == true)
                     {
                         im.mouse.ClickFriendDormitoryBattery(dmae);
                         im.mouse.ClickFriendDormitoryBatteryWindow(dmae);
@@ -177,7 +177,7 @@ namespace WindowsFormsApplication1.Events
 
                 }
                 //二次循环
-                if (im.pagecheck.CheckFriendDormitoryBattery() == true && secondtime == true)
+                if (im.pagecheck.CheckFriendDormitoryBattery(dmae.dm) == true && secondtime == true)
                 {
                     im.mouse.ClickFriendDormitoryBattery(dmae);
                     im.mouse.ClickFriendDormitoryBatteryWindow(dmae);
@@ -223,12 +223,12 @@ namespace WindowsFormsApplication1.Events
 
         public void SaveFriendName(DmAe dmae,int count,string type="normal")
         {
-            while (im.pagecheck.CheckMyFriendDormitory() == -1)
+            while (im.pagecheck.CheckMyFriendDormitory(dmae.dm) == -1)
             {
                 im.mouse.delayTime(1);
             }
 
-            while (im.pagecheck.CheckDormitoryLoad()==false)
+            while (im.pagecheck.CheckDormitoryLoad(dmae.dm) ==false)
             {
                 im.mouse.delayTime(1);
             }
@@ -262,7 +262,7 @@ namespace WindowsFormsApplication1.Events
         public bool ComPFirstFriendName(DmAe dmae)
         {
             object intX, intY;
-            while (im.pagecheck.CheckMyFriendDormitory() == -1)
+            while (im.pagecheck.CheckMyFriendDormitory(dmae.dm) == -1)
             {
                 im.mouse.delayTime(1);
             }
@@ -277,7 +277,7 @@ namespace WindowsFormsApplication1.Events
         public bool ComPFriendName(DmAe dmae,string name)
         {
             object intX, intY;
-            while (im.pagecheck.CheckMyFriendDormitory() == -1)
+            while (im.pagecheck.CheckMyFriendDormitory(dmae.dm) == -1)
             {
                 im.mouse.delayTime(1);
             }

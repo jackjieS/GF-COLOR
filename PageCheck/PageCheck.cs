@@ -314,7 +314,7 @@ namespace PageCheck
             return true;
         }
 
-        public int CheckTeamSlectPagez(CDmSoft dm)//梯队详细列表
+        public int CheckTeamSlectPage(CDmSoft dm)//梯队详细列表
         {
             int dm_Ret0 = dm.CmpColor(192, 90, "ffffff", 1);
             int dm_Ret1 = dm.CmpColor(1000, 615, "ffffff", 1);

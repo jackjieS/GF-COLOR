@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using testdm;
+using dmtext;
 using WindowsFormsApplication1.Properties;
 using WindowsFormsApplication1;
+
 namespace WindowsFormsApplication1
 {
     partial class SetColor : Form

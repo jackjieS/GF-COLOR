@@ -1347,12 +1347,12 @@ namespace WindowsFormsApplication1
 
                                                     im.mouse.LeftClick(dmae, 484, 258, 681, 459);
                                                 }
-                                                while (im.pagecheck.CheckLsystemAgain(dmae))
+                                                while (im.pagecheck.CheckLsystemAgain(dmae.dm))
                                                 {
 
                                                     im.mouse.LeftClick(dmae, 677, 475, 808, 514);
                                                     im.mouse.delayTime(1, 1);
-                                                    while (im.pagecheck.CheckLsystemAgain(dmae) == false)
+                                                    while (im.pagecheck.CheckLsystemAgain(dmae.dm) == false)
                                                     {
                                                         goto end;
                                                     }
@@ -1394,12 +1394,12 @@ namespace WindowsFormsApplication1
                                                 while (true)
                                                 {
 
-                                                    while (im.pagecheck.CheckWhiteM())
+                                                    while (im.pagecheck.CheckWhiteM(dmae.dm))
                                                     {
                                                         im.mouse.delayTime(1, 1);
                                                         continue;
                                                     }
-                                                    if (im.pagecheck.CheckNewGunEquipmentPage())
+                                                    if (im.pagecheck.CheckNewGunEquipmentPage(dmae.dm))
                                                     {
                                                         SystemInfo.AppState = "获取新人形";
                                                         im.mouse.LeftClick(dmae, 1107, 633, 1242, 691);
@@ -1565,7 +1565,7 @@ namespace WindowsFormsApplication1
 
                 //监控主页
 
-                if (im.pagecheck.CheckAutoBattleFinishPage())
+                if (im.pagecheck.CheckAutoBattleFinishPage(dmae.dm))
                 {
                     BaseData.SystemInfo.AutoBattleFinishPage = true;
                     BaseData.SystemInfo.PageCheck = "自律结束";
@@ -1576,7 +1576,7 @@ namespace WindowsFormsApplication1
                     BaseData.SystemInfo.AutoBattleFinishPage = false;
                     BaseData.SystemInfo.PageCheck = "";
                 }
-                if (im.pagecheck.CheckHomePage() == 0)
+                if (im.pagecheck.CheckHomePage(dmae.dm) == 0)
                 {
 
                     BaseData.SystemInfo.StayAtHomePage = true;
@@ -1589,12 +1589,12 @@ namespace WindowsFormsApplication1
                     BaseData.SystemInfo.PageCheck = "";
                 }
 
-                if (im.pagecheck.CheckBattleResult())
+                if (im.pagecheck.CheckBattleResult(dmae.dm))
                 {
                     SystemInfo.PageCheck = "战斗结算";
                     continue;
                 }
-                if (im.pagecheck.CheckNewGunEquipmentPage())
+                if (im.pagecheck.CheckNewGunEquipmentPage(dmae.dm))
                 {
                     SystemInfo.PageCheck = "获取新人形";
                     continue;

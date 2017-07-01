@@ -9,18 +9,18 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Configuration;
-using dmtext;
 namespace WindowsFormsApplication1
 {
 
     public class DmAe
     {
 
-        public dmtext.CDmSoft dm= new dmtext.CDmSoft();
         public DmAe()
         {
-        }
 
+
+        }
+        CDmSoft dm = new CDmSoft();
         public int FindWindow()
         {
             switch (BaseData.SystemInfo.Simulator)
