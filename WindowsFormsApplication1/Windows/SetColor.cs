@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using dmtext;
 using WindowsFormsApplication1.Properties;
 using WindowsFormsApplication1;
+using WindowsFormsApplication1.BaseData;
 
 namespace WindowsFormsApplication1
 {
@@ -70,7 +71,7 @@ namespace WindowsFormsApplication1
             //textBox4.Text = Properties.Settings.Default.SimulatorHomeCheckX2.ToString();
             //textBox2.Text = Properties.Settings.Default.SimulatorHomeCheckY2.ToString();
 
-
+            label59.Text = ((double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100)).ToString();
 
         }
 
@@ -95,14 +96,12 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "00",1);
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "01", 1);
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -208,8 +207,7 @@ namespace WindowsFormsApplication1
 
         private void button17_Click(object sender, EventArgs e)
         {
-            dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "02", 1);
+
 
         }
 
@@ -231,38 +229,134 @@ namespace WindowsFormsApplication1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "03", 1);
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "04", 1);
+
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
-            dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "05", 1);
+
         }
 
         private void button20_Click(object sender, EventArgs e)
         {
-            dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "06", 1);
+
         }
 
         private void button21_Click(object sender, EventArgs e)
         {
-            dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "07", 1);
+
         }
 
         private void button22_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
             dmae.UseDict(5);
-            im.mouse.ChooseBattle(dmae, "08", 1);
+
+            int result0 = dmae.FindStr(254, 97, 380, 719, "00", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX0, out object intY0);
+            if(result0 == 0)
+            {
+                label4.Text = "第零战役成功识别";
+            }
+            else
+            {
+                label4.Text = "第零战役无法识别";
+            }
+
+            int result1 = dmae.FindStr(254, 97, 380, 719, "01", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX1, out object intY1);
+            if (result1 == 0)
+            {
+                label38.Text = "第一战役成功识别";
+            }
+            else
+            {
+                label38.Text = "第一战役无法识别";
+            }
+
+            int result2 = dmae.FindStr(254, 97, 380, 719, "02", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX2, out object intY2);
+            if (result2 == 0)
+            {
+                label51.Text = "第二战役成功识别";
+            }
+            else
+            {
+                label51.Text = "第二战役无法识别";
+            }
+
+            int result3 = dmae.FindStr(254, 97, 380, 719, "03", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX3, out object intY3);
+            if (result3 == 0)
+            {
+                label50.Text = "第三战役成功识别";
+            }
+            else
+            {
+                label50.Text = "第三战役无法识别";
+            }
+
+            int result4 = dmae.FindStr(254, 97, 380, 719, "04", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX4, out object intY4);
+            if (result4 == 0)
+            {
+                label55.Text = "第四战役成功识别";
+            }
+            else
+            {
+                label55.Text = "第四战役无法识别";
+            }
+
+            int result5 = dmae.FindStr(254, 97, 380, 719, "05", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX5, out object intY5);
+            if (result5 == 0)
+            {
+                label54.Text = "第五战役成功识别";
+            }
+            else
+            {
+                label54.Text = "第五战役无法识别";
+            }
+
+            int result6 = dmae.FindStr(254, 97, 380, 719, "06", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX6, out object intY6);
+            if (result6 == 0)
+            {
+                label53.Text = "第六战役成功识别";
+            }
+            else
+            {
+                label53.Text = "第六战役无法识别";
+            }
+
+            int result7 = dmae.FindStr(254, 97, 380, 719, "07", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX7, out object intY7);
+            if (result7 == 0)
+            {
+                label52.Text = "第七战役成功识别";
+            }
+            else
+            {
+                label52.Text = "第七战役无法识别";
+            }
+
+            int result8 = dmae.FindStr(254, 97, 380, 719, "08", "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out object intX8, out object intY8);
+            if (result8 == 0)
+            {
+                label56.Text = "第八战役成功识别";
+            }
+            else
+            {
+                label56.Text = "第八战役无法识别";
+            }
+
+
+
+
+
+
+
         }
     }
 }

@@ -85,7 +85,7 @@ namespace TaskList
         private void Form1_Load(object sender, EventArgs e)//初始化
         {
             //检查UIconfig版本
-
+            this.Text = "少女前线 "+ Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
 
 
@@ -369,11 +369,10 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            im.pagecheck.Ver(dmae.dm);
-            //im.mouse.CheckPointIsEmpty(dmae, 614, 190, 648, 225);
+            //im.pagecheck.Ver(dmae.dm);
+            //im.pagecheck.CheckPointIsEmpty(dmae.dm, 299, 338, 337, 371);
             //im.mouse.CheckBattleSettlementPage(dmae);
-
-
+            im.mouse.MapSet(dmae, 977, 565, 566, 693, 237, 212, 208, 650, "ScreenUp");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
 
             ////右下角白点转圈
             ////1157,546,1279,665

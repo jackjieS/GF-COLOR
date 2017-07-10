@@ -882,7 +882,7 @@ namespace testdm
                 }
             }
             return true;
-            dmae.UseDict(0);
+
         }
 
         public void StartLogisticsTask1(DmAe dmae, Mouse mouse)
@@ -2506,7 +2506,7 @@ namespace testdm
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 573, 87, 861, 128, 499, 195, 171, 701, "ScreenDown");
+                mouse.MapSet(dmae, 499, 195, 544, 391, 849, 130, 208, 650, "ScreenDown");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
             }
 
 
@@ -2544,12 +2544,6 @@ namespace testdm
 
         }
 
-
-
-
-
-
-
         public void Battle3_2N(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
 
@@ -2563,7 +2557,8 @@ namespace testdm
 
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 907, 566, 960, 566, 959, 566, 88, 613);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+                mouse.MapSet(dmae, 538, 215, 744, 318, 429, 537, 105, 159, "ScreenLeft");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+
             }
 
             mouse.delayTime(1);
@@ -2597,7 +2592,7 @@ namespace testdm
             {
                 case 1:
                     {
-                        mouse.MoveAndMove(dmae, 643, 281, 679, 317, /*第一个点坐标*/472, 165, 520, 203,/*第二个点坐标*/463, 272, 594, 296/*监测点坐标*/, 0, 0);//第二开始
+                        mouse.MoveAndMove(dmae, 643, 281, 679, 317, /*第一个点坐标*/472, 165, 520, 203,/*第二个点坐标*/580, 276, 616, 297/*监测点坐标*/, 0, 0);//第二开始
 
                         mouse.MoveToAirport(dmae, 456, 163, 494, 199, 219, 206, 259, 238,/**/ 332, 155, 426, 177, /*move坐标*/221, 205,/*点击移动坐标*/145, 203, 222, 239);//第四开始
 
@@ -2624,7 +2619,6 @@ namespace testdm
 
         }
 
-
         public void Battle5_2N(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
 
@@ -2638,7 +2632,7 @@ namespace testdm
 
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 162, 285, 178, 285, 211, 282, 120, 625);//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+                mouse.MapSet(dmae, 708, 109, 948, 235, 380, 254, 208, 650, "ScreenDown");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
 
             }
             mouse.ScreenDown(dmae, 44, 328, 332, 413, 300, 380, 254, 848, 358, 948, 238, 1);
@@ -2709,35 +2703,6 @@ namespace testdm
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         public void Battle5_4(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
@@ -2882,6 +2847,7 @@ namespace testdm
                     break;
             }
         }
+
         public void Battle5_4E(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
         {
 
@@ -2895,7 +2861,7 @@ namespace testdm
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 183, 121, 751, 172, 571, 473, 88, 613);
+                im.mouse.MapSet(dmae, 579, 275, 285, 265, 293, 351, 208, 650, "ScreenDown");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
             }
 
 
@@ -3173,7 +3139,7 @@ namespace testdm
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 830, 378, 802, 384, 810, 366, 307, 146, "ScreenUp");
+                im.mouse.MapSet(dmae, 977, 565, 566, 693, 237, 212, 208, 650, "ScreenUp");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
             }
 
 
@@ -3240,12 +3206,12 @@ namespace testdm
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 830, 378, 802, 384, 810, 366, 307, 146, "ScreenDown");
+                im.mouse.MapSet(dmae, 317, 512, 233, 234, 804, 418, 208, 650, "ScreenDown");
             }
 
 
             mouse.delayTime(1);
-            if (mouse.Teamdispose(dmae, 858, 446, 927, 509, userBattleInfo.TaskMianTeam) == -1)//指挥部部署
+            if (mouse.Teamdispose(dmae, 869, 454, 921, 509, userBattleInfo.TaskMianTeam) == -1)//指挥部部署
             {
                 mouse.BackToHomeFromBattlePageREADY(dmae);
                 userBattleInfo.Team_Serror = true;
@@ -3258,7 +3224,7 @@ namespace testdm
             //x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
             //开始补给
 
-            if (userBattleInfo.ChoiceToSupply == true && userBattleInfo.BattleSupport_plus == false) { mouse.Support(dmae, 858, 446, 927, 509); }
+            if (userBattleInfo.ChoiceToSupply == true && userBattleInfo.BattleSupport_plus == false) { mouse.Support(dmae, 869, 454, 921, 509); }
             //是否拖尸补给
             if (userBattleInfo.BattleSupport_plus == true)
             {
@@ -3268,33 +3234,33 @@ namespace testdm
                 return;
             }
 
-            mouse.MoveAndMove(dmae, 858, 446, 927, 509, /*第一个点坐标*/1108, 370, 1160, 421,/*第二个点坐标*/764, 459, 848, 469/*监测点坐标*/, 0, 0);//第一开始
+            mouse.MoveAndMove(dmae, 869, 454, 921, 509, /*第一个点坐标*/1118, 379, 1154, 417,/*第二个点坐标*/755, 454, 850, 470/*监测点坐标*/, 0, 0);//第一开始
 
             mouse.Teamdispose(dmae, 914, 447, 941, 515, userBattleInfo.TaskSupportTeam1);
 
-            if (userBattleInfo.ChoiceToSupply == true && userBattleInfo.BattleSupport_plus == false) { mouse.Support(dmae, 858, 446, 927, 509); }
+            if (userBattleInfo.ChoiceToSupply == true && userBattleInfo.BattleSupport_plus == false) { mouse.Support(dmae, 914, 447, 941, 515); }
 
             mouse.RoundEnd2(dmae);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 312, 404, 356, 633, 190, 290);
 
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 615, 260, 870, 250, 345, 405);
 
+            mouse.MoveAndFight(dmae, 1115, 587, 1174, 605, /*第一个点坐标*/885, 258, 919, 296,/*第二个点坐标*/ 1118, 486, 1146, 564/*监测点坐标*/, 0, 1, userBattleInfo,true);//第一开始
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 312, 404, 356, 633, 190, 290);
 
-            mouse.MoveAndFight(dmae, 1120, 593, 1144, 607, /*第一个点坐标*/886, 258, 922, 291,/*第二个点坐标*/ 987, 609, 1091, 616/*监测点坐标*/, 0, 0, userBattleInfo,true);//第一开始
+            mouse.MoveAndFight(dmae, 885, 259, 921, 298, /*第一个点坐标*/716, 117, 755, 160,/*第二个点坐标*/ 782, 254, 860, 268/*监测点坐标*/, 0, 0, userBattleInfo,true);//第一开始
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 312, 404, 356, 633, 190, 290);
 
-            mouse.MoveAndFight(dmae, 883, 258, 922, 293, /*第一个点坐标*/716, 116, 754, 160,/*第二个点坐标*/ 764, 253, 860, 269/*监测点坐标*/, 0, 0, userBattleInfo,true);//第一开始
+            mouse.MoveAndFight(dmae, 716, 117, 755, 160, /*第一个点坐标*/455, 392, 492, 422,/*第二个点坐标*/610, 113, 693, 131/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 312, 404, 356, 633, 190, 290);
 
-            mouse.MoveAndFight(dmae, 716, 116, 754, 160, /*第一个点坐标*/453, 377, 495, 424,/*第二个点坐标*/ 598, 116, 692, 130/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
-
-            mouse.MoveAndFight(dmae, 453, 377, 495, 424, /*第一个点坐标*/383, 253, 428, 293,/*第二个点坐标*/ 331, 384, 430, 397/*监测点坐标*/, 0, 0, userBattleInfo, true,0.5);//第一开始
+            mouse.MoveAndFight(dmae, 455, 392, 492, 422, /*第一个点坐标*/385, 255, 424, 294,/*第二个点坐标*/346, 382, 431, 400/*监测点坐标*/, 0, 0, userBattleInfo, true,0.5);//第一开始
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 312, 404, 356, 633, 190, 290);
 
             mouse.RoundEnd2(dmae);
-
             mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 615, 260, 870, 250, 345, 405);
 
-            mouse.MoveAndFight(dmae, 383, 253, 428, 293, /*第一个点坐标*/200, 158, 273, 218,/*第二个点坐标*/ 242, 249, 365, 265/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
-
-
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 615, 260, 870, 250, 345, 405);
+            mouse.MoveAndFight(dmae, 385, 255, 424, 294, /*第一个点坐标*/206, 159, 270, 221,/*第二个点坐标*/239, 249, 362, 270/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 312, 404, 356, 633, 190, 290);
 
             mouse.RoundEnd(dmae, 200, 158, 273, 218, ref userBattleInfo);
         }
@@ -3310,7 +3276,7 @@ namespace testdm
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 830, 378, 802, 384, 810, 366, 307, 146, "ScreenDown");
+                mouse.MapSet(dmae, 1017, 157, 595, 156, 223, 526, 208, 650, "ScreenDown");
             }
 
 
@@ -3371,7 +3337,7 @@ namespace testdm
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
             {
-                mouse.MapSet(dmae, 830, 378, 802, 384, 810, 366, 307, 146, "ScreenDown");
+                mouse.MapSet(dmae, 1063, 410, 821, 529, 506, 184, 208, 650, "ScreenDown");
             }
 
 
@@ -3408,40 +3374,49 @@ namespace testdm
             mouse.ScreenDown(dmae, 231, 115, 1184, 219, 300, 718, 422, 347, 395, 550, 355);
             mouse.RoundEnd2(dmae);
 
-            mouse.ScreenDown(dmae, 231, 115, 1184, 219, 300, 718, 422, 347, 395, 550, 355);
-            mouse.MoveAndFight(dmae, 245, 392, 282, 423, /*第一个点坐标*/433, 370, 475, 407,/*第二个点坐标*/127, 386, 225, 397/*监测点坐标*/, 0, 0, userBattleInfo,true,0.18);//第一开始
-            mouse.ScreenDown(dmae, 231, 115, 1184, 219, 300, 718, 422, 347, 395, 550, 355);
-            mouse.MoveAndFight(dmae, 738, 438, 772, 471, /*第一个点坐标*/899, 335, 931, 375,/*第二个点坐标*/608, 436, 716, 450/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
-            mouse.ScreenDown(dmae, 231, 115, 1184, 219, 300, 718, 422, 347, 395, 550, 355);
-            mouse.MoveAndFight(dmae, 899, 335, 931, 375, /*第一个点坐标*/895, 217, 929, 250,/*第二个点坐标*/798, 334, 875, 347/*监测点坐标*/, 0, 0, userBattleInfo,true,0.5);//第一开始
-            mouse.ScreenDown(dmae, 231, 115, 1184, 219, 300, 718, 422, 347, 395, 550, 355);
-            mouse.MoveAndFight(dmae, 895, 217, 929, 250, /*第一个点坐标*/921, 71, 955, 103,/*第二个点坐标*/770, 213, 874, 228/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
-            mouse.MoveAndFight(dmae, 1167, 507, 1208, 540, /*第一个点坐标*/1076, 361, 1117, 398,/*第二个点坐标*/1057, 499, 1147, 517/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
+
+            mouse.ScreenDown(dmae, 231, 115, 1184, 219, 300, 244, 536, 527, 362, 454, 187);
+            mouse.MoveAndFight(dmae, 245, 390, 280, 424, /*第一个点坐标*/437, 372, 473, 401,/*第二个点坐标*/148, 381, 228, 401/*监测点坐标*/, 0, 0, userBattleInfo,true,0.18);//第一开始
+            mouse.ScreenDown(dmae, 231, 115, 1184, 219, 300, 244, 536, 527, 362, 454, 187);
+            mouse.MoveAndFight(dmae, 736, 443, 773, 472, /*第一个点坐标*/894, 336, 933, 370,/*第二个点坐标*/615, 431, 715, 450/*监测点坐标*/, 0, 0, userBattleInfo,true);//第一开始
+            mouse.ScreenDown(dmae, 231, 115, 1184, 219, 300, 244, 536, 527, 362, 454, 187);
+            mouse.MoveAndFight(dmae, 894, 336, 933, 370, /*第一个点坐标*/893, 217, 932, 251,/*第二个点坐标*/766, 328, 876, 351/*监测点坐标*/, 0, 0, userBattleInfo, true, 0.5);//第一开始
+
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.MoveAndFight(dmae, 1173, 511, 1205, 540, /*第一个点坐标*/1080, 364, 1111, 396,/*第二个点坐标*/1174, 543, 1197, 597/*监测点坐标*/, 0, 1, userBattleInfo, true);//第一开始
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.MoveAndFight(dmae, 897, 558, 929, 586, /*第一个点坐标*/921, 408, 955, 434,/*第二个点坐标*/730, 547, 872, 568/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
             mouse.RoundEnd2(dmae);
 
 
 
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
-            mouse.Support(dmae, 921, 407, 955, 439);
-            mouse.MoveAndFight(dmae, 921, 407, 955, 439, /*第一个点坐标*/802, 237, 840, 272,/*第二个点坐标*/813, 400, 899, 414/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
-            mouse.MoveAndFight(dmae, 802, 237, 840, 272, /*第一个点坐标*/658, 355, 693, 388,/*第二个点坐标*/692, 237, 750, 247/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
-            mouse.MoveAndFight(dmae, 658, 355, 693, 388, /*第一个点坐标*/473, 370, 507, 408,/*第二个点坐标*/545, 350, 634, 364/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
-            mouse.MoveAndFight(dmae, 473, 370, 507, 408, /*第一个点坐标*/298, 337, 336, 369,/*第二个点坐标*/528, 373, 599, 380/*监测点坐标*/, 0, 0, userBattleInfo, true,0.25);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
-            mouse.MoveAndFight(dmae, 298, 337, 336, 369, /*第一个点坐标*/310, 517, 349, 549,/*第二个点坐标*/169, 332, 277, 348/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
-            mouse.MoveAndFight(dmae, 310, 517, 349, 549, /*第一个点坐标*/555, 506, 592, 537,/*第二个点坐标*/225, 514, 291, 526/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
-            mouse.MoveAndFight(dmae, 555, 506, 592, 537, /*第一个点坐标*/725, 434, 779, 484,/*第二个点坐标*/500, 499, 536, 511/*监测点坐标*/, 0, 0, userBattleInfo);//第一开始
-            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 235, 301, 572, 163, 386, 369);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.Support(dmae, 921, 406, 954, 438);
+            mouse.MoveAndFight(dmae, 921, 406, 954, 438, /*第一个点坐标*/808, 240, 836, 268,/*第二个点坐标*/814, 400, 899, 415/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
+            mouse.delayTime(2, 1);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.MoveAndFight(dmae, 808, 240, 836, 268, /*第一个点坐标*/663, 358, 693, 385,/*第二个点坐标*/812, 274, 833, 355/*监测点坐标*/, 0, 1, userBattleInfo, true);//第一开始
+            mouse.delayTime(2, 1);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.MoveAndFight(dmae, 663, 358, 693, 385, /*第一个点坐标*/475, 376, 506, 404,/*第二个点坐标*/554, 348, 637, 368/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
+            mouse.delayTime(2, 1);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.MoveAndFight(dmae, 475, 376, 506, 404, /*第一个点坐标*/299, 338, 337, 371,/*第二个点坐标*/482, 414, 501, 488/*监测点坐标*/, 0, 1, userBattleInfo, true);//第一开始
+            mouse.delayTime(2, 1);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.MoveAndFight(dmae, 299, 341, 332, 367, /*第一个点坐标*/313, 516, 351, 550,/*第二个点坐标*/178, 328, 278, 349/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
+            mouse.delayTime(2, 1);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.MoveAndFight(dmae, 317, 520, 351, 548, /*第一个点坐标*/558, 507, 589, 534,/*第二个点坐标*/221, 506, 295, 528/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
+            mouse.delayTime(2, 1);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
+            mouse.MoveAndFight(dmae, 558, 507, 589, 534, /*第一个点坐标*/729, 437, 771, 482,/*第二个点坐标*/564, 540, 583, 626/*监测点坐标*/, 0, 1, userBattleInfo);//第一开始
+            mouse.delayTime(2, 1);
+            mouse.ScreenUp(dmae, 231, 115, 1184, 219, 300, 260, 315, 600, 160, 1163, 481);
 
 
-            mouse.RoundEnd(dmae, 725, 434, 779, 484, ref userBattleInfo);
+            mouse.RoundEnd(dmae, 729, 437, 771, 482, ref userBattleInfo);
 
 
 

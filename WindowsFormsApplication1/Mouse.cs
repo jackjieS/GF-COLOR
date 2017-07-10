@@ -81,33 +81,144 @@ namespace testdm
             }
 
         }
-
-        public void ScreenUp(DmAe dmae, int x1, int y1, int x2, int y2,int amount, int ColorX4,int ColorY4,int ColorX5, int ColorY5,int ColorX6,int ColorY6, string Color4 = "ffffff",string Color5 = "ffffff",string Color6 = "ffffff")//x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
+        /// <summary>
+        /// 前四个是鼠标拖放坐标范围第五个是移动数量 type = 0 旧的 type = 1 新的 注意要5个连续像素点
+        /// </summary>
+        /// <param name="dmae"></param>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <param name="amount"></param>
+        /// <param name="ColorX4"></param>
+        /// <param name="ColorY4"></param>
+        /// <param name="ColorX5"></param>
+        /// <param name="ColorY5"></param>
+        /// <param name="ColorX6"></param>
+        /// <param name="ColorY6"></param>
+        /// <param name="Color4"></param>
+        /// <param name="Color5"></param>
+        /// <param name="Color6"></param>
+        public void ScreenUp(DmAe dmae, int x1, int y1, int x2, int y2,int amount, int ColorX4,int ColorY4,int ColorX5, int ColorY5,int ColorX6,int ColorY6,int type = 0)//x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
         {
             Random ran = new Random();
             SystemInfo.AppState = "屏幕往上移动";
-            int dm_ret0 = dmae.CmpColor(ColorX4, ColorY4, Color4, 1);//找不到颜色返回1
-            int dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, Color5, 1);//找不到颜色返回1
-            int dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, Color6, 1);//找不到颜色返回1
-            while ((dm_ret0 == 1) && (dm_ret1 == 1) && (dm_ret2 == 1)) 
+            switch (type)
             {
-                int tempx = ran.Next(x1, x2);
-                int tempy = ran.Next(y1, y2);
-                dmae.MoveTo(tempx, tempy);
-                dmae.LeftDown();
-                while (tempy < (amount + y2))
-                {
-                    tempy++;
-                    dmae.MoveTo(tempx, tempy); delayTime(0.005);
+                case 0:
+                    {
+                        int dm_ret0 = dmae.CmpColor(ColorX4, ColorY4, "ffffff", 1);//找不到颜色返回1
+                        int dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, "ffffff", 1);//找不到颜色返回1
+                        int dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, "ffffff", 1);//找不到颜色返回1
+                        while ((dm_ret0 == 1) && (dm_ret1 == 1) && (dm_ret2 == 1))
+                        {
+                            int tempx = ran.Next(x1, x2);
+                            int tempy = ran.Next(y1, y2);
+                            dmae.MoveTo(tempx, tempy);
+                            dmae.LeftDown();
+                            while (tempy < (amount + y2))
+                            {
+                                tempy++;
+                                dmae.MoveTo(tempx, tempy); delayTime(0.005);
 
-                }
-                dmae.LeftUp();
-                delayTime(0.5);
-                dm_ret0 = dmae.CmpColor(ColorX4, ColorY4, Color4, 1);//找不到颜色返回1
-                dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, Color5, 1);//找不到颜色返回1
-                dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, Color6, 1);//找不到颜色返回1
+                            }
+                            dmae.LeftUp();
+                            delayTime(0.5);
+                            dm_ret0 = dmae.CmpColor(ColorX4, ColorY4, "ffffff", 1);//找不到颜色返回1
+                            dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, "ffffff", 1);//找不到颜色返回1
+                            dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, "ffffff", 1);//找不到颜色返回1
+                        }
+                        break;
+                    }
+                case 1:
+                    {
+                        while (true)
+                        {
+                            a: string color0 = dmae.GetColor(ColorX4, ColorY4);//找不到颜色返回1
+                            string color1 = dmae.GetColor(ColorX5, ColorY5);//找不到颜色返回1
+                            string color2 = dmae.GetColor(ColorX6, ColorY6);//找不到颜色返回1
+
+                            int tempx = ran.Next(x1, x2);
+                            int tempy = ran.Next(y1, y2);
+                            dmae.MoveTo(tempx, tempy);
+                            dmae.LeftDown();
+                            while (tempy < (amount + y2))
+                            {
+                                tempy++;
+                                dmae.MoveTo(tempx, tempy); delayTime(0.005);
+
+                            }
+                            dmae.LeftUp();
+                            delayTime(0.5);
+                            for (int x = 0; x < 5; x++)
+                            {
+                                if (dmae.CmpColor(ColorX4 + x, ColorY4, color0, 1) == 1)
+                                {
+                                    goto a;
+                                }
+                            }
+                            for (int x = 0; x < 5; x++)
+                            {
+
+                                if (dmae.CmpColor(ColorX5 + x, ColorY5, color1, 1) == 1)
+                                {
+                                    goto a;
+                                }
+
+                            }
+                            for (int x = 0; x < 5; x++)
+                            {
+                                if (dmae.CmpColor(ColorX6 + x, ColorY6, color2, 1) == 1)
+                                {
+                                    goto a;
+                                }
+
+                            }
+                            break;
+
+                        }
+                        break;
+                    }
+
+
+                case 2:
+                    {
+                        int tempx = ran.Next(x1, x2);
+                        int tempy = ran.Next(y1, y2);
+                        dmae.MoveTo(tempx, tempy);
+                        dmae.LeftDown();
+                        while (tempy < (amount + y2))
+                        {
+                            tempy++;
+                            dmae.MoveTo(tempx, tempy); delayTime(0.005);
+
+                        }
+                        dmae.LeftUp();
+                        delayTime(0.5);
+                        break;
+                    }
+                default:
+                    break;
             }
+
+
         }
+        /// <summary>
+        /// 前四个是鼠标拖放坐标范围第五个是移动数量 type = 0 旧的 type = 1 新的 注意要5个连续像素点
+        /// </summary>
+        /// <param name="dmae"></param>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <param name="amount"></param>
+        /// <param name="ColorX4"></param>
+        /// <param name="ColorY4"></param>
+        /// <param name="ColorX5"></param>
+        /// <param name="ColorY5"></param>
+        /// <param name="ColorX6"></param>
+        /// <param name="ColorY6"></param>
+        /// <param name="type"></param>
 
         public void ScreenDown(DmAe dmae, int x1, int y1, int x2, int y2, int amount, int ColorX4, int ColorY4, int ColorX5, int ColorY5, int ColorX6, int ColorY6,int type=0)//x1,y1,x2,y2起始范围,x3启动的像素点 ,x4 y4 为检测点，string col为颜色
         {
@@ -115,7 +226,7 @@ namespace testdm
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "屏幕往下移动";
             switch (type)
             {
-                case 0:
+                case 0://旧版只对比ffffff
                     {
                         int dm_ret0 = dmae.CmpColor(ColorX4, ColorY4, "ffffff", 1);//找不到颜色返回1
                         int dm_ret1 = dmae.CmpColor(ColorX5, ColorY5, "ffffff", 1);//找不到颜色返回1
@@ -141,7 +252,7 @@ namespace testdm
                         }
                         break;
                         }
-                case 1:
+                case 1://新版任意颜色但必须连续5个点相同
                     {
 
                         while (true)
@@ -192,15 +303,53 @@ namespace testdm
                         break;
                     }
 
+                case 2:
+                    {
+                        //只拖动一次针对和滑轮配合
+                        int tempx = ran.Next(x1, x2);
+                        int tempy = ran.Next(y1, y2);
+                        dmae.MoveTo(tempx, tempy);
+                        dmae.LeftDown();
+                        while (tempy > (y1 - amount))
+                        {
+                            tempy--;
+                            dmae.MoveTo(tempx, tempy); delayTime(0.005);
+
+                        }
+                        dmae.LeftUp();
+                        
+                        break;
+                    }
                 default:
                     break;
             }
 
         }
 
-        public void ScreenLeft(DmAe dmae, int x1, int y1, int x2, int y2, int amount, int ColorX4, int ColorY4, int ColorX5, int ColorY5, int ColorX6, int ColorY6, string Color4 = "ffffff", string Color5 = "ffffff", string Color6 = "ffffff")//x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
+        public void ScreenLeft(DmAe dmae, int x1, int y1, int x2, int y2, int amount, int ColorX4, int ColorY4, int ColorX5, int ColorY5, int ColorX6, int ColorY6,int type = 0)//x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
         {
+            Random ran = new Random();
+            SystemInfo.AppState = "屏幕往左移动";
+            switch (type)
+            {
+                case 2:
+                    {
+                        int tempx = ran.Next(x1, x2);
+                        int tempy = ran.Next(y1, y2);
+                        dmae.MoveTo(tempx, tempy);
+                        dmae.LeftDown();
+                        while (tempx > (x1 + amount))
+                        {
+                            tempx++;
+                            dmae.MoveTo(tempx, tempy); delayTime(0.005);
 
+                        }
+                        dmae.LeftUp();
+                        break;
+                    }
+                default:
+                    break;
+            }
         }
         public void ScreenRight(DmAe dmae, int x1, int y1, int x2, int y2, int amount, int ColorX4, int ColorY4, int ColorX5, int ColorY5, int ColorX6, int ColorY6, string Color4 = "ffffff", string Color5 = "ffffff", string Color6 = "ffffff")//x1,y1,x2,y2起始范围,amount启动的像素点 ,x4 y4 为检测点,x5y5x6y6,col5col6col4为颜色
         {
@@ -229,28 +378,36 @@ namespace testdm
                 dm_ret2 = dmae.CmpColor(ColorX6, ColorY6, Color6, 1);//找不到颜色返回1
             }
         }
-
-        public void MapSet(DmAe dmae, int x1, int y1, int x2, int y2,int x3,int y3,int x4,int y4,string type ="")//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+        /// <summary>
+        /// x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+        /// </summary>
+        /// <param name="dmae"></param>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <param name="x3"></param>
+        /// <param name="y3"></param>
+        /// <param name="x4"></param>
+        /// <param name="y4"></param>
+        /// <param name="type"></param>
+        public void MapSet(DmAe dmae, int x1, int y1, int x2, int y2,int x3,int y3,int x4,int y4,string type ="")
         {
 
             //等待
             bool loopbreak = false;
             SystemInfo.AppState = "缩放地图";
-            int dm_ret0 = dmae.CmpColor(246, 11, "ffffff", 1);
-            while(dm_ret0 == 1)
+            while (dmae.CmpColor(246, 11, "ffffff", 1) == 1)
             {
                 delayTime(1);
-                dm_ret0 = dmae.CmpColor(246, 11, "ffffff", 1);
             }
-
             //等待结束
+
             //开始缩放
-            dmae.MoveTo(x3,y3);
-            int dm_ret1 = dmae.CmpColor(x1, y1, "ffffff", 1);
-            int dm_ret2 = dmae.CmpColor(x2, y2, "ffffff", 1);
-            int dm_ret5 = dmae.CmpColor(x3, y3, "ffffff", 1);
+            dmae.MoveTo(x4,y4);
+
             string tempcolor0 = "", tempcolor1 = "", tempcolor2 = "";
-            switch (WindowsFormsApplication1.BaseData.SystemInfo.SetMapType)
+            switch (SystemInfo.SetMapType)
 
             {
                 case 0://右键平移
@@ -314,57 +471,81 @@ namespace testdm
                     }
                 case 1://ctrl加滚动滑轮
                     {
-
                         while (true)
                         {
-
-                            dmae.KeyUp(17);
-                            dmae.KeyDown(17);
-                            dmae.MoveTo(x4, y4);
-                            for (int x00= 0; x00 < 100; x00++)
+                            if (im.pagecheck.CheckMapSet(dmae.dm, x1, y1, x2, y2, x3, y3))
                             {
-                                dmae.WheelDown();
-                                dmae.MoveTo(x4+x00*2, y4);
-                                delayTime(0.03, 1);
-
-                                if (dmae.CmpColor(x1, y1, "ffffff", 1)==0&& dmae.CmpColor(x2, y2, "ffffff", 1) ==0 && dmae.CmpColor(x3, y3, "ffffff", 1) == 0)
+                                goto end;
+                                //地图初始化成功 退出循环
+                            }
+                            //检测突发情况梯队列表
+                            if (im.pagecheck.CheckTeamSlectPage(dmae.dm) == 0)
+                            {
+                                while (im.pagecheck.CheckTeamSlectPage(dmae.dm) == 0)
                                 {
-                                    goto end;
+                                    LeftClick(dmae, 906, 614, 1045, 664);
+                                    delayTime(1);
                                 }
-
-                                if (im.pagecheck.CheckTeamSlectPage(dmae.dm) == 0)
+                                dmae.MoveTo(x4, y4);
+                            }
+                            if (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
+                            {
+                                //检测突发情况
+                                while (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
                                 {
-                                    //检测突发情况梯队列表
-                                    dmae.KeyUp(17);
-                                    while(im.pagecheck.CheckTeamSlectPage(dmae.dm) == 0)
-                                    {
-                                        LeftClick(dmae, 906, 614, 1045, 664);
-                                        delayTime(1);
-                                    }
-                                    dmae.MoveTo(x4 + x00 * 2, y4);
-                                    dmae.KeyDown(17);
+                                    LeftClick(dmae, 564, 496, 708, 545);
+                                    delayTime(1);
                                 }
-
-                                if(dmae.CmpColor(558, 489, "ffffff", 0.9)==0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
-                                {                            
-                                    //检测突发情况
-                                    dmae.KeyUp(17);
-                                    while (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
-                                    {
-                                        LeftClick(dmae, 564, 496, 708, 545);
-                                        delayTime(1);
-                                    }
-                                    dmae.KeyDown(17);
-                                    if ((x3 - 10) > 0)
-                                    {
-                                        x3 -= 10;
-                                        dmae.MoveTo(x4, y4);
-                                    }
+                                if ((x3 - 10) > 0)
+                                {
+                                    x3 -= 10;
+                                    dmae.MoveTo(x4, y4);
                                 }
                             }
-                        }
-                        end: dmae.KeyUp(17);
 
+
+                            //滑轮滚动过程
+                            SystemInfo.AppState = "滑轮滚动";
+                            dmae.MoveTo(x4, y4);
+                            im.mouse.delayTime(0.5, 1);
+                            dmae.KeyDown(17);
+                            im.mouse.delayTime(0.5, 1);
+                            for (int t = 0; t <= 100; t++)
+                            {
+                                dmae.MoveTo(x4, y4);
+                                im.mouse.delayTime(0.01, 1);
+                                dmae.WheelDown();
+                            }
+                            dmae.KeyUp(17);
+                            im.mouse.delayTime(0.5, 1);
+
+                            //一次滑动循环结束，拖动屏幕上下左右 看是否达到目的
+                            SystemInfo.AppState = "屏幕移动";
+                            switch (type)
+                            {
+                                case "ScreenUp":
+                                    {
+                                        ScreenUp(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
+                                        break;
+                                    }
+                                case "ScreenDown":
+                                    {
+                                        ScreenDown(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
+                                        break;
+                                    }
+                                case "ScreenLeft":
+                                    {
+                                        ScreenLeft(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
+                                        break;
+                                    }
+                                default:
+                                    break;
+                            }
+                        }
+
+
+
+                        end: dmae.KeyUp(17);
                         if (dmae.CmpColor(558, 489, "ffffff", 0.9) == 0 && dmae.CmpColor(721, 489, "ffffff", 0.9) == 0)
                         {
                             //检测突发情况
@@ -383,54 +564,12 @@ namespace testdm
                                 delayTime(1);
                             }
                         }
-
-
-
                         break;
                     }
 
                 default:
                     {
-                        dmae.KeyUp(17);
-                        dmae.KeyDown(17);
-                        while (dm_ret1 == 1 || dm_ret2 == 1 || dm_ret5 == 1) 
-                        {
-
-                            dmae.WheelDown();
-                            delayTime(0.1, 1);
-                            dm_ret1 = dmae.CmpColor(x1, y1, "ffffff", 0.9);
-                            dm_ret2 = dmae.CmpColor(x2, y2, "ffffff", 0.9);
-                            dm_ret5 = dmae.CmpColor(x3, y3, "ffffff", 1);
-
-                            //检测突发情况
-                            int dm_ret3 = dmae.CmpColor(558, 489, "ffffff", 0.9);
-                            int dm_ret4 = dmae.CmpColor(721, 489, "ffffff", 0.9);
-                            if (dm_ret3 == 0 && dm_ret4 == 0)
-                            {
-
-                                dmae.KeyUp(17);
-                                while (dm_ret3 == 0 && dm_ret4 == 0)
-                                {
-                                    LeftClick(dmae, 564, 496, 708, 545);
-                                    delayTime(1);
-                                    dm_ret3 = dmae.CmpColor(558, 489, "ffffff", 0.9);
-                                    dm_ret4 = dmae.CmpColor(721, 489, "ffffff", 0.9);
-                                }
-                                dmae.KeyDown(17);
-
-                                if ((x3 - 10) > 0)
-                                {
-                                    x3 -= 10;
-                                    dmae.MoveTo(x3, y3);
-                                }
-
-                            }
-
-
-                        }
-                        dmae.KeyUp(17);
                         break;
-
                     }
 
             }

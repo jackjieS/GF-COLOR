@@ -671,6 +671,49 @@ namespace PageCheck
 
         }
 
+        /// <summary>
+        /// x1 y1 x2 y2 x3 y3 是连续颜色相同的基点,count 是连续相同像素数量的值 默认为5
+        /// </summary>
+        /// <param name="dm"></param>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <param name="x3"></param>
+        /// <param name="y3"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public bool CheckMapSet(CDmSoft dm, int x1,int y1,int x2,int y2,int x3,int y3,int count = 5)
+        {
+            string color1 = dm.GetColor(x1, y1);
+            for(int tempx = x1; tempx <= x1 + count; tempx++)
+            {
+                if(dm.CmpColor(tempx, y1, color1, 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            string color2 = dm.GetColor(x2, y2);
+            for (int tempx = x2; tempx <= x2 + count; tempx++)
+            {
+                if (dm.CmpColor(tempx, y2, color2, 1) == 1)
+                {
+                    return false;
+                }
+            }
+            string color3 = dm.GetColor(x3, y3);
+            for (int tempx = x3; tempx <= x3 + count; tempx++)
+            {
+                if (dm.CmpColor(tempx, y3, color3, 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public int CheckBattleMapReady(CDmSoft dm, int x1 = 11, int y1 = 12, int x2 = 246, int y2 = 11, int x3 = 235, int y3 = 78)//检查战斗页面没有按战斗开始
         {
             int dm_Ret0 = dm.CmpColor(x1, y1, "ffffff", 1);
