@@ -90,6 +90,9 @@ namespace TaskList
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.BattletabPage = new System.Windows.Forms.TabPage();
+            this.button39 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
@@ -214,9 +217,6 @@ namespace TaskList
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
-            this.button39 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -1094,6 +1094,39 @@ namespace TaskList
             this.BattletabPage.Text = "tabPage2";
             this.BattletabPage.UseVisualStyleBackColor = true;
             // 
+            // button39
+            // 
+            this.button39.Enabled = false;
+            this.button39.Location = new System.Drawing.Point(500, 113);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(41, 21);
+            this.button39.TabIndex = 177;
+            this.button39.Text = "停止\r\n循环";
+            this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
+            // button38
+            // 
+            this.button38.Enabled = false;
+            this.button38.Location = new System.Drawing.Point(500, 88);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(41, 21);
+            this.button38.TabIndex = 176;
+            this.button38.Text = "停止\r\n循环";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+            // 
+            // button37
+            // 
+            this.button37.Enabled = false;
+            this.button37.Location = new System.Drawing.Point(500, 63);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(41, 21);
+            this.button37.TabIndex = 175;
+            this.button37.Text = "停止\r\n循环";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
             // button36
             // 
             this.button36.Enabled = false;
@@ -1940,7 +1973,7 @@ namespace TaskList
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(96, 16);
             this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "12点自动领取";
+            this.checkBox1.Text = "15点自动领取";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button28
@@ -2377,39 +2410,6 @@ namespace TaskList
             this.button1.Text = "初始化";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button37
-            // 
-            this.button37.Enabled = false;
-            this.button37.Location = new System.Drawing.Point(500, 63);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(41, 21);
-            this.button37.TabIndex = 175;
-            this.button37.Text = "停止\r\n循环";
-            this.button37.UseVisualStyleBackColor = true;
-            this.button37.Click += new System.EventHandler(this.button37_Click);
-            // 
-            // button38
-            // 
-            this.button38.Enabled = false;
-            this.button38.Location = new System.Drawing.Point(500, 88);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(41, 21);
-            this.button38.TabIndex = 176;
-            this.button38.Text = "停止\r\n循环";
-            this.button38.UseVisualStyleBackColor = true;
-            this.button38.Click += new System.EventHandler(this.button38_Click);
-            // 
-            // button39
-            // 
-            this.button39.Enabled = false;
-            this.button39.Location = new System.Drawing.Point(500, 113);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(41, 21);
-            this.button39.TabIndex = 177;
-            this.button39.Text = "停止\r\n循环";
-            this.button39.UseVisualStyleBackColor = true;
-            this.button39.Click += new System.EventHandler(this.button39_Click);
             // 
             // Form1
             // 

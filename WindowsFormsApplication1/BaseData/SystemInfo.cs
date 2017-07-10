@@ -91,7 +91,7 @@ namespace WindowsFormsApplication1.BaseData
 
 
 
-        public static bool Time12AddGetFriendBattery = true;
+        public static bool Time15AddGetFriendBattery = true;
         public static bool Time3AddGetFriendBattery = true;
         public static bool GetFriendBatterySecondLoop = true;
         public static bool GetFriendBatteryCapt = true;

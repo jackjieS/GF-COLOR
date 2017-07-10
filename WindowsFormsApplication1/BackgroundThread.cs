@@ -36,28 +36,29 @@ namespace WindowsFormsApplication1
 
                 BeijingTimeNow = CommonHelp.PSTConvertToGMT(Now);
                 //如果12点过了则添加Settings.Default.GetFriendBattleryDelayM
-                if ((BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute == SystemInfo.GetFriendBattleryDelayM) && SystemInfo.Time12AddGetFriendBattery == true)
-                {
-                    im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
-                    SystemInfo.Time12AddGetFriendBattery = false;
-
-                }
-                else
-                {
-                    if(BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute != SystemInfo.GetFriendBattleryDelayM)
-                        SystemInfo.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
-                }
 
                 //3点
                 if(BeijingTimeNow.Hour*60+BeijingTimeNow.Minute == (60 * 3 + (SystemInfo.GetFriendBattleryDelayM))&& SystemInfo.Time3AddGetFriendBattery == true)
                 {
-                    im.taskList.taskadd(WindowsFormsApplication1.BaseData.TaskList.GetFriendDormitoryBattery);
+                    im.taskList.taskadd(BaseData.TaskList.GetFriendDormitoryBattery);
                     SystemInfo.Time3AddGetFriendBattery = false;
                 }
                 else
                 {
                     if (BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute != 60 * 3 + SystemInfo.GetFriendBattleryDelayM)
                         SystemInfo.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
+                }
+
+                //15点
+                if (BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute == (60 * 15 + (SystemInfo.GetFriendBattleryDelayM)) && SystemInfo.Time15AddGetFriendBattery == true)
+                {
+                    im.taskList.taskadd(BaseData.TaskList.GetFriendDormitoryBattery);
+                    SystemInfo.Time15AddGetFriendBattery = false;
+                }
+                else
+                {
+                    if (BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute != 60 * 15 + SystemInfo.GetFriendBattleryDelayM)
+                        SystemInfo.Time15AddGetFriendBattery = im.Form1.checkBox1.Checked;
                 }
 
                 im.gameData.User_operationInfo[0].OperationLastTimeCD(c);
