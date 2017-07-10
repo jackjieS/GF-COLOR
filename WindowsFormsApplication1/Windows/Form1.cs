@@ -91,7 +91,7 @@ namespace TaskList
 
 
 
-            SystemInfo.Time12AddGetFriendBattery = im.Form1.checkBox1.Checked;
+            SystemInfo.Time15AddGetFriendBattery = im.Form1.checkBox1.Checked;
             SystemInfo.Time3AddGetFriendBattery = im.Form1.checkBox4.Checked;
 
             im.dormitory.ReadLogFriendListFromStart();
@@ -439,7 +439,7 @@ namespace TaskList
             WindowsFormsApplication1.BaseData.SystemInfo.LogisticsTask4 = comboBox8.Text;
 
 
-            im.Form1.checkBox1.Checked = SystemInfo.Time12AddGetFriendBattery;
+            im.Form1.checkBox1.Checked = SystemInfo.Time15AddGetFriendBattery;
             im.Form1.checkBox4.Checked = SystemInfo.Time3AddGetFriendBattery;
             SystemInfo.GetFriendBatterySecondLoop = im.Form1.checkBox2.Checked;
             SystemInfo.GetFriendBatteryCapt = im.Form1.checkBox3.Checked;

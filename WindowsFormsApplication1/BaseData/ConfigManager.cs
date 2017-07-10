@@ -314,7 +314,7 @@ namespace WindowsFormsApplication1.BaseData
                 SystemInfo.BattleMissionSlectStrColorOffset = this.im.configManager.getConfigInt("BattleMissionSlectStrColorOffset");
                 SystemInfo.SetMapType = this.im.configManager.getConfigInt("SetMapType");
                 SystemInfo.SimulatorCheckTime = this.im.configManager.getConfigInt("SimulatorCheckTime");
-                SystemInfo.Time12AddGetFriendBattery = this.im.configManager.getConfigBool("Time12AddGetFriendBattery");
+                SystemInfo.Time15AddGetFriendBattery = this.im.configManager.getConfigBool("Time15AddGetFriendBattery");
                 SystemInfo.Time3AddGetFriendBattery = this.im.configManager.getConfigBool("Time3AddGetFriendBattery");
                 SystemInfo.GetFriendBatterySecondLoop = this.im.configManager.getConfigBool("GetFriendBatterySecondLoop");
                 SystemInfo.GetFriendBatteryCapt = this.im.configManager.getConfigBool("GetFriendBatteryCapt");
@@ -383,7 +383,7 @@ namespace WindowsFormsApplication1.BaseData
                 this.im.configManager.setConfigInt("BattleMissionSlectStrColorOffset", SystemInfo.BattleMissionSlectStrColorOffset);
                 this.im.configManager.setConfigInt("SetMapType", SystemInfo.SetMapType);
                 this.im.configManager.setConfigInt("SimulatorCheckTime", SystemInfo.SimulatorCheckTime);
-                this.im.configManager.setConfigBool("Time12AddGetFriendBattery", SystemInfo.Time12AddGetFriendBattery);
+                this.im.configManager.setConfigBool("Time15AddGetFriendBattery", SystemInfo.Time15AddGetFriendBattery);
                 this.im.configManager.setConfigBool("Time3AddGetFriendBattery", SystemInfo.Time3AddGetFriendBattery);
                 this.im.configManager.setConfigBool("GetFriendBatterySecondLoop", SystemInfo.GetFriendBatterySecondLoop);
                 this.im.configManager.setConfigBool("GetFriendBatteryCapt", SystemInfo.GetFriendBatteryCapt);
