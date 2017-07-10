@@ -53,6 +53,7 @@ namespace WindowsFormsApplication1
                 if (BeijingTimeNow.Hour * 60 + BeijingTimeNow.Minute == (60 * 15 + (SystemInfo.GetFriendBattleryDelayM)) && SystemInfo.Time15AddGetFriendBattery == true)
                 {
                     im.taskList.taskadd(BaseData.TaskList.GetFriendDormitoryBattery);
+
                     SystemInfo.Time15AddGetFriendBattery = false;
                 }
                 else
