@@ -38,7 +38,11 @@ namespace WindowsFormsApplication1
             TabPage tp = tabControl1.TabPages[4];//在这里先保存，以便以后还要显示
             tabControl1.TabPages.Remove(tp);//隐藏（删除）
 
-            dmae.BindWindow();
+
+            if (dmae.BindWindow() == 0)
+            {
+                MessageBox.Show("绑定窗口错误");
+            }
             string directPath = Application.StartupPath + "\\Debug";    //获得文件夹路径
 
             dmae.SetDict();

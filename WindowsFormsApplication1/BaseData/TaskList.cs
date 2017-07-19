@@ -99,39 +99,5 @@ namespace WindowsFormsApplication1.BaseData
             }
         }
 
-        public void taskInsertafterOperation(TaskListstruct a)
-        {
-            int count = 0;
-            foreach(var item in im.gameData.User_operationInfo)
-            {
-                if (item.Value.NeedToRecieve == true) count++;
-            }
-
-
-            CommonHelp.gametasklist.Insert(count, a);
-        }
-
-        public void OperationStartAdd(ref bool SetNeedToReceive, TaskListstruct a)
-        {
-
-            //true 有货，空为 false。
-            //加入开始后勤任务
-            //如果当前队列任务是空闲则加入接收和开始后勤任务
-            //如果当前队列任务非空闲则加入开始后勤任务到最后(因为当前任务结束退到主页会检测，添加接收后期任务，故当前不需要添加接收后勤任务)
-            if (CommonHelp.gametasklist.Any())
-            {
-                CommonHelp.gametasklist.Add(a);
-            }
-            else
-            {
-                CommonHelp.gametasklist.Add(BaseData.TaskList.ReceiveLogistics);
-                CommonHelp.gametasklist.Add(a);
-                SetNeedToReceive = true;
-            }
-
-
-
-        }
-
     }
 }

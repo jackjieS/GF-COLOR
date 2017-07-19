@@ -1120,16 +1120,13 @@ namespace PageCheck
         {
             if (dm.CmpColor(x1, y1, "ffffff", 0.9) == 0 && dm.CmpColor(x2, y2, "ffffff", 0.9) == 0 && dm.CmpColor(x3, y3, "ffffff", 0.9) == 0)
             {
-                if (dm.CmpColor(126, 25, "ffffff", 1) == 0)
-                {
-                    return 1;
-                }
+                //if (dm.CmpColor(126, 25, "ffffff", 1) == 0)
+                //{
+                //    return 1;
+                //}
                 return 0;//相同返回0
             }
-            else
-            {
-                return 1;
-            }
+            return 1;
         }
 
         public bool CheckSystemNewsPapge(CDmSoft dm)
@@ -1261,39 +1258,39 @@ namespace PageCheck
         public int CheckBattleDifficultyType(CDmSoft dm)
         {
             int x1 = 940, y1 = 151;
-            for (; x1 <= 1043; x1++)
+            for (; x1 <= 1030; x1++)
             {
                 if (dm.GetColor(x1, y1) != "000000")
                 {
                     break;
                 }
-                if (x1 == 1043)
+                if (x1 == 1030)
                 {
                     return 0;
                 }
             }
 
             x1 = 1055;
-            for (; x1 <= 1157; x1++)
+            for (; x1 <= 1130; x1++)
             {
                 if (dm.GetColor(x1, y1) != "000000")
                 {
                     break;
                 }
-                if (x1 == 1157)
+                if (x1 == 1130)
                 {
                     return 1;
                 }
             }
 
             x1 = 1168;
-            for (; x1 <= 1272; x1++)
+            for (; x1 <= 1250; x1++)
             {
                 if (dm.GetColor(x1, y1) != "000000")
                 {
                     break;
                 }
-                if (x1 == 1272)
+                if (x1 == 1250)
                 {
                     return 2;
                 }

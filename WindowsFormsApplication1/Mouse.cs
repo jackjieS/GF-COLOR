@@ -65,20 +65,20 @@ namespace testdm
 
         public void BindWindowS(DmAe dmae, int B)
         {
-            //windowsStat = 0 解锁 = 1 锁定
-            if (B == 0)//解锁
-            {
-                int dmae0 = dmae.BindWindowUnLock();
-                if (dmae0 == 1)
-                    SystemInfo.WindowsState = 0;
-            }
-            if (B == 1)//锁死鼠标
-            {
+            ////windowsStat = 0 解锁 = 1 锁定
+            //if (B == 0)//解锁
+            //{
+            //    int dmae0 = dmae.BindWindowUnLock();
+            //    if (dmae0 == 1)
+            //        SystemInfo.WindowsState = 0;
+            //}
+            //if (B == 1)//锁死鼠标
+            //{
 
-                int dmae0 = dmae.BindWindowLock();
-                if (dmae0 == 1)
-                    SystemInfo.WindowsState = 1;
-            }
+            //    int dmae0 = dmae.BindWindowLock();
+            //    if (dmae0 == 1)
+            //        SystemInfo.WindowsState = 1;
+            //}
 
         }
         /// <summary>
@@ -473,6 +473,29 @@ namespace testdm
                     {
                         while (true)
                         {
+                            //一次滑动循环结束，拖动屏幕上下左右 看是否达到目的
+                            SystemInfo.AppState = "屏幕移动";
+                            switch (type)
+                            {
+                                case "ScreenUp":
+                                    {
+                                        ScreenUp(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
+                                        break;
+                                    }
+                                case "ScreenDown":
+                                    {
+                                        ScreenDown(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
+                                        break;
+                                    }
+                                case "ScreenLeft":
+                                    {
+                                        ScreenLeft(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
+                                        break;
+                                    }
+                                default:
+                                    break;
+                            }
+
                             if (im.pagecheck.CheckMapSet(dmae.dm, x1, y1, x2, y2, x3, y3))
                             {
                                 goto end;
@@ -519,28 +542,7 @@ namespace testdm
                             dmae.KeyUp(17);
                             im.mouse.delayTime(0.5, 1);
 
-                            //一次滑动循环结束，拖动屏幕上下左右 看是否达到目的
-                            SystemInfo.AppState = "屏幕移动";
-                            switch (type)
-                            {
-                                case "ScreenUp":
-                                    {
-                                        ScreenUp(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
-                                        break;
-                                    }
-                                case "ScreenDown":
-                                    {
-                                        ScreenDown(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
-                                        break;
-                                    }
-                                case "ScreenLeft":
-                                    {
-                                        ScreenLeft(dmae, x4, y4, x4 + 10, y4 + 10, 200, x1, y1, x2, y2, x3, y3, 2);
-                                        break;
-                                    }
-                                default:
-                                    break;
-                            }
+
                         }
 
 
@@ -2384,11 +2386,25 @@ namespace testdm
                             }
                             if (breakbool) break;
                         }
-                    //查找所需战役
-                    //若无,则拉上定位0战役
-                    //根据情况往下拉寻找所需的战役
+                        //查找所需战役
+                        //若无,则拉上定位0战役
+                        //根据情况往下拉寻找所需的战役
 
-                    FirstTag: string CombatMissionMColor = dmae.GetColor(102, 34);
+                        while (true)
+                        {
+                            if(dmae.FindColor(187, 507, 319, 718,"ffffff",1,1, out object intX0,out object intY0) == 1)
+                            {
+                                delayTime(1);
+                                break;
+                            }
+                            else
+                            {
+                                delayTime(1);
+                            }
+                        }
+
+
+                        FirstTag: string CombatMissionMColor = dmae.GetColor(102, 34);
                         //result = dmae.FindStr(254, 97, 380, 719, battle, CombatMissionMColor + "-" + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString()  + SystemInfo.BattleMissionSlectStrColorOffset.ToString() , (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY);
                         result = dmae.FindStr(254, 97, 380, 719, battle, "313031-323132|5E4D25-2E1C0C", (double)((decimal)SystemInfo.BattleMissionSlectStrSim / 100), out intX, out intY);
                         if (result != -1)//-1没有找到

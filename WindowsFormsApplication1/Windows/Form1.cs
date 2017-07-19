@@ -191,6 +191,10 @@ namespace TaskList
                 //模拟器选择
                 int dm_ret = 0;
                 dm_ret = dmae.BindWindow();
+                if (dm_ret == 0)
+                {
+                    MessageBox.Show("绑定窗口错误");
+                }
                 dmae.SetDict();//设置系统路径和字典
 
                 if (im.commonHelp.CheckClientSize(dmae) == false)
@@ -372,7 +376,8 @@ namespace TaskList
             //im.pagecheck.Ver(dmae.dm);
             //im.pagecheck.CheckPointIsEmpty(dmae.dm, 299, 338, 337, 371);
             //im.mouse.CheckBattleSettlementPage(dmae);
-            im.mouse.MapSet(dmae, 977, 565, 566, 693, 237, 212, 208, 650, "ScreenUp");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
+            im.mouse.LeftClick(dmae, 836, 456, 1010, 549);
+            //im.mouse.MapSet(dmae, 977, 565, 566, 693, 237, 212, 208, 650, "ScreenUp");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
 
             ////右下角白点转圈
             ////1157,546,1279,665
@@ -683,6 +688,14 @@ namespace TaskList
         private void button39_Click(object sender, EventArgs e)
         {
             im.gameData.User_battleInfo[3].BattleLoopTime = 0; im.gameData.User_battleInfo[3].BattleFixTime = -1; im.gameData.User_battleInfo[3].Used = false; im.gameData.User_battleInfo[3].BattleGunPostionMove.Clear();
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("主页检测第一个点 color1 = " + dmae.GetColor(1100, 690));
+            MessageBox.Show("主页检测第二个点 color2 = " + dmae.GetColor(975, 680));
+            MessageBox.Show("主页检测第三个点 color3 = " + dmae.GetColor(695, 25));
+            MessageBox.Show("主页检测 result = "+ im.pagecheck.CheckHomePage(dmae.dm).ToString());
         }
     }
 }

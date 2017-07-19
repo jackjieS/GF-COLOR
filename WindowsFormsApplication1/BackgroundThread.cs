@@ -205,7 +205,11 @@ namespace WindowsFormsApplication1
         {
             DmAe dmae = new DmAe();
             
-            dmae.BindWindow();
+
+            if (dmae.BindWindow() == 0)
+            {
+                MessageBox.Show("绑定窗口错误");
+            }
             dmae.SetDict();//设置系统路径和字典
             if (BaseData.SystemInfo.PprogramErrorBackToHome == true)
             {
@@ -1457,7 +1461,10 @@ namespace WindowsFormsApplication1
         public void ThreadT()//处理线程;
         {
             DmAe dmae = new DmAe();
-            dmae.BindWindow();
+            if (dmae.BindWindow() == 0)
+            {
+                MessageBox.Show("绑定窗口错误");
+            }
             dmae.SetDict();//设置系统路径和字典
             while (true)
             {
@@ -1512,7 +1519,10 @@ namespace WindowsFormsApplication1
             intX = intY = -1;
 
             DmAe dmae = new DmAe();
-            int dm_ret = dmae.BindWindow();
+            if (dmae.BindWindow() == 0)
+            {
+                MessageBox.Show("绑定窗口错误");
+            }
 
             string directPath = Application.StartupPath + "\\Debug";    //获得文件夹路径
             dmae.SetPath(directPath);

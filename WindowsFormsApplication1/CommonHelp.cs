@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
 
 
 
-            int ret0 = im.eyLogin.UserLogin(WindowsFormsApplication1.BaseData.SystemInfo.MacCode, "a123456789", "1.5.6.2", mcode);
+            int ret0 = im.eyLogin.UserLogin(WindowsFormsApplication1.BaseData.SystemInfo.MacCode, "a123456789", "v1.0.0", mcode);
 
             if (ret0 == 0)
             {

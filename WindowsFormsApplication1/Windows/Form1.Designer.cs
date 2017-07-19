@@ -217,6 +217,7 @@ namespace TaskList
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.LtabPage.SuspendLayout();
@@ -284,6 +285,7 @@ namespace TaskList
             // LtabPage
             // 
             this.LtabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LtabPage.BackgroundImage")));
+            this.LtabPage.Controls.Add(this.button40);
             this.LtabPage.Controls.Add(this.label50);
             this.LtabPage.Controls.Add(this.label51);
             this.LtabPage.Controls.Add(this.label52);
@@ -565,7 +567,7 @@ namespace TaskList
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(75, 23);
             this.button14.TabIndex = 173;
-            this.button14.Text = "作者测试用";
+            this.button14.Text = "点击坐标836, 456";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click_1);
             // 
@@ -2411,6 +2413,16 @@ namespace TaskList
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button40
+            // 
+            this.button40.Location = new System.Drawing.Point(364, 170);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(75, 23);
+            this.button40.TabIndex = 198;
+            this.button40.Text = "主页检测";
+            this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2654,6 +2666,7 @@ namespace TaskList
         public Button button39;
         public Button button38;
         public Button button37;
+        public Button button40;
     }
 }
 
