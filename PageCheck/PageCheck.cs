@@ -1224,7 +1224,7 @@ namespace PageCheck
             }
         }
 
-        public int CheckFixPage(CDmSoft dm, int x1 = 204, int y1 = 63, int x2 = 138, int y2 = 1, int x3 = 5, int y3 = 94)//检测修复页面
+        public int CheckFixPage(CDmSoft dm, int x1 = 204, int y1 = 63, int x2 = 136, int y2 = 0, int x3 = 5, int y3 = 94)//检测修复页面
         {
             int dm_Ret0 = dm.CmpColor(x1, y1, "ffffff", 0.9);
             int dm_Ret1 = dm.CmpColor(x2, y2, "ffffff", 0.9);
@@ -1240,12 +1240,12 @@ namespace PageCheck
             }
         }
 
-        public int CheckActivityBattlePage(CDmSoft dm, int x1 = 135, int y1 = 94, int x2 = 135, int y2 = 1)
+        public int CheckActivityBattlePage(CDmSoft dm, int x1 = 135, int y1 = 94, int x2 = 135, int y2 = 1,int x3 = 0,int y3 =95)
         {
             int dm_Ret0 = dm.CmpColor(x1, y1, "ffffff", 0.9);
             int dm_Ret1 = dm.CmpColor(x2, y2, "ffffff", 0.9);
-
-            if (dm_Ret0 == 0 && dm_Ret1 == 0)
+            int dm_Ret2 = dm.CmpColor(x3, y3, "ffffff", 0.9);
+            if (dm_Ret0 == 0 && dm_Ret1 == 0 && dm_Ret2 == 0)
             {
                 return 0;
             }
@@ -1300,7 +1300,7 @@ namespace PageCheck
             return -1;
         }
 
-        public int CheckMissionSettingPage(CDmSoft dm, int x1 = 180, int y1 = 64, int x2 = 542, int y2 = 79, int x3 = 195, int y3 = 134)
+        public int CheckMissionSettingPage(CDmSoft dm, int x1 = 180, int y1 = 64, int x2 = 541, int y2 = 79, int x3 = 195, int y3 = 134)
         {
             int dm_Ret0 = dm.CmpColor(x1, y1, "ffffff", 1);
             int dm_Ret1 = dm.CmpColor(x2, y2, "ffffff", 1);
@@ -1336,7 +1336,7 @@ namespace PageCheck
 
         }
 
-        public int CcheckActivityPageReady(CDmSoft dm, int x1 = 200, int y1 = 50, int x2 = 20, int y2 = 675, int x3 = 33, int y3 = 675)//检查魔方行动4个战役加载完毕
+        public int CcheckActivityPageReady(CDmSoft dm, int x1 = 1152, int y1 = 614, int x2 = 1156, int y2 = 617, int x3 = 1156, int y3 = 617)//检查魔方行动4个战役加载完毕
         {
             int dm_Ret0 = dm.CmpColor(x1, y1, "ffffff", 1);
             int dm_Ret1 = dm.CmpColor(x2, y2, "ffffff", 1);
@@ -1836,7 +1836,7 @@ namespace PageCheck
                     }
                 }
             }
-            if (dm_ret >= 90 && dm_ret <= 300)
+            if (dm_ret >= 150 && dm_ret <= 300)
             {
                 return true;
             }
@@ -1934,6 +1934,72 @@ namespace PageCheck
                 }
             }
             return true;
+        }
+
+        //检测E1 E2 E3 加载情况
+        public bool Check2017SummerEventMissionReady(CDmSoft dm)
+        {
+            string color0 = dm.GetColor(195, 444);
+            string color1 = dm.GetColor(195, 566);
+            for (int x = 195, y = 444; y <= 490; y++)
+            {
+                if (dm.CmpColor(x, y, color0, 1) == 1)
+                {
+                    return false;
+                }
+            }
+            for (int x = 195, y = 566; y <= 610; y++)
+            {
+                if (dm.CmpColor(x, y, color1, 1) == 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool Check2017SummerEventMissionSelect(CDmSoft dm,string mission)
+        {
+            string color0 = dm.GetColor(86,444);
+            string color1 = dm.GetColor(86, 505);
+            string color2 = dm.GetColor(86, 566);
+            if (mission == "101")
+            {
+                for(int x= 86, y=444; x <= 214; x++)
+                {
+                    if(dm.CmpColor(x, y, color0, 1) == 1)
+                    {
+                        return false;
+                    }
+
+                }
+            }
+            if (mission == "102")
+            {
+                for (int x = 86, y = 505; x <= 214; x++)
+                {
+                    if (dm.CmpColor(x, y, color1, 1) == 1)
+                    {
+                        return false;
+                    }
+
+                }
+            }
+            if (mission == "103")
+            {
+                for (int x = 86, y = 566; x <= 214; x++)
+                {
+                    if (dm.CmpColor(x, y, color2, 1) == 1)
+                    {
+                        return false;
+                    }
+
+                }
+            }
+            return true;
+
+
         }
     }
 }

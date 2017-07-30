@@ -1562,6 +1562,12 @@ namespace WindowsFormsApplication1
                 //}
 
                 //监控页面
+                if (im.pagecheck.CheckInternetTransfer(dmae.dm))
+                {
+                    BaseData.SystemInfo.PageCheck = "网络传输";
+                    continue;
+                }
+
 
                 if (dmae.CmpColor(74, 333, "ffffff", 1) == 0 && dmae.CmpColor(117, 376, "ffffff", 1) == 0 && dmae.CmpColor(255, 334, "ffffff", 1) == 0 && dmae.CmpColor(295, 374, "ffffff", 1) == 0 && dmae.CmpColor(257, 392, "ffffff", 1) == 0 && dmae.CmpColor(92, 408, "ffffff", 1) == 0)
                 {

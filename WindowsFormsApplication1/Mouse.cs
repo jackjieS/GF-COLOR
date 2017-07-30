@@ -65,20 +65,20 @@ namespace testdm
 
         public void BindWindowS(DmAe dmae, int B)
         {
-            ////windowsStat = 0 解锁 = 1 锁定
-            //if (B == 0)//解锁
-            //{
-            //    int dmae0 = dmae.BindWindowUnLock();
-            //    if (dmae0 == 1)
-            //        SystemInfo.WindowsState = 0;
-            //}
-            //if (B == 1)//锁死鼠标
-            //{
+            //windowsStat = 0 解锁 = 1 锁定
+            if (B == 0)//解锁
+            {
+                int dmae0 = dmae.BindWindowUnLock();
+                if (dmae0 == 1)
+                    SystemInfo.WindowsState = 0;
+            }
+            if (B == 1)//锁死鼠标
+            {
 
-            //    int dmae0 = dmae.BindWindowLock();
-            //    if (dmae0 == 1)
-            //        SystemInfo.WindowsState = 1;
-            //}
+                int dmae0 = dmae.BindWindowLock();
+                if (dmae0 == 1)
+                    SystemInfo.WindowsState = 1;
+            }
 
         }
         /// <summary>
@@ -2360,7 +2360,7 @@ namespace testdm
             object ffffffX1 = -1, ffffffY1 = -1;
             //等待UI加载
 
-
+            delayTime(2, 1);
 
             switch (type)
             {
@@ -2526,7 +2526,8 @@ namespace testdm
                             {
                                 if (dmae.GetColor(500 + x, 105) != color0)
                                 {
-                                    return;
+                                    delayTime(3, 1);
+                                    goto b;
                                 }
                                 else
                                 {
@@ -2535,9 +2536,64 @@ namespace testdm
                             }
                             if (breakbool)
                             {
-                                LeftClick(dmae, 25, 397, 162, 456);//点击模拟作战下一格
+                                LeftClick(dmae, 24, 495, 163, 549);//点击模拟作战下2格
                             }
                         }
+                        //三个大章节分别是E1 E2 E3 
+                        //E1 = 101
+                        //E2 = 102
+                        //E3 = 103
+
+                        b: while (im.pagecheck.Check2017SummerEventMissionReady(dmae.dm)==false)
+                        {
+                            delayTime(1, 1);
+                        }
+                        switch (battle)
+                        {
+
+                            case "101":
+                                {
+                                    while (true)
+                                    {
+                                        if (im.pagecheck.Check2017SummerEventMissionSelect(dmae.dm, battle) == true)
+                                        {
+                                            return;
+                                        }
+
+                                        im.mouse.LeftClick(dmae, 108, 458, 179, 479);
+                                    }
+                                }
+                            case "102":
+                                {
+                                    while (true)
+                                    {
+                                        if (im.pagecheck.Check2017SummerEventMissionSelect(dmae.dm, battle) == true)
+                                        {
+                                            return;
+                                        }
+
+                                        im.mouse.LeftClick(dmae, 99, 516, 185, 539);
+                                    }
+                                }
+                            case "103":
+                                {
+                                    while (true)
+                                    {
+                                        if (im.pagecheck.Check2017SummerEventMissionSelect(dmae.dm, battle) == true)
+                                        {
+                                            return;
+                                        }
+
+                                        im.mouse.LeftClick(dmae, 106, 577, 181, 599);
+                                    }
+                                }
+                            default:
+                                break;
+                        }
+
+
+
+                        break;
                     }
 
                 case 1://后勤
@@ -2696,7 +2752,7 @@ namespace testdm
                         while (dm_Ret1 == 1)
                         {
                             LeftClick(dmae, 386, 235, 641, 344);
-                            delayTime(1);
+                            delayTime(2);
                             dm_Ret1 = im.pagecheck.CheckMissionSettingPage(dmae.dm);
                         }
                         WriteLog.WriteError("点击完成");
@@ -2711,7 +2767,7 @@ namespace testdm
                         while (dm_Ret1 == 1)
                         {
                             LeftClick(dmae, 874, 198, 1116, 295);
-                            delayTime(1);
+                            delayTime(2);
                             dm_Ret1 = im.pagecheck.CheckMissionSettingPage(dmae.dm);
                         }
                         WriteLog.WriteError("点击完成");
@@ -2724,7 +2780,7 @@ namespace testdm
                         while (dm_Ret1 == 1)
                         {
                             LeftClick(dmae, 371, 473, 646, 590);
-                            delayTime(1);
+                            delayTime(2);
                             dm_Ret1 = im.pagecheck.CheckMissionSettingPage(dmae.dm);
                         }
                         WriteLog.WriteError("点击完成");
@@ -2739,7 +2795,7 @@ namespace testdm
                         while (dm_Ret1 == 1)
                         {
                             LeftClick(dmae, 900, 515, 1112, 587);
-                            delayTime(1);
+                            delayTime(2);
                             dm_Ret1 = im.pagecheck.CheckMissionSettingPage(dmae.dm);
                         }
                         WriteLog.WriteError("点击完成");
@@ -3012,16 +3068,15 @@ namespace testdm
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "选择作战方式";
             WriteLog.WriteError("准备选择作战方式");
 
-            while (dmae.CmpColor(525, 90, "ffffff", 0.9) == 1 || dmae.CmpColor(210, 90, "ffffff", 0.9) == 1)
+            while (dmae.CmpColor(525, 90, "ffffff", 1) == 1 || dmae.CmpColor(210, 90, "ffffff", 1) == 1 || dmae.CmpColor(310, 200, "ffffff", 1) == 1)
             {
-
-                delayTime(1);
+                delayTime(2);
             }
             im.pagecheck.CheckNormalAndAutoBattleButton(dmae.dm,out int NormalButtonX1, out int NormalButtonY1, out int AutoButtonX1, out int AutoButtonY1);
 
             if (s1 == "self-discipline")
             {
-                while (dmae.CmpColor(525, 90, "ffffff", 0.9) == 0 && dmae.CmpColor(210, 90, "ffffff", 0.9) == 0)
+                while (dmae.CmpColor(525, 90, "ffffff", 1) == 0 && dmae.CmpColor(210, 90, "ffffff", 1) == 0)
                 {
 
 
@@ -3038,7 +3093,7 @@ namespace testdm
                 //判断单击是否成功
                 //x坐标范围 800-825 542-616
 
-                while (dmae.CmpColor(525, 90, "ffffff", 0.9) == 0 && dmae.CmpColor(210, 90, "ffffff", 0.9) == 0 && dmae.CmpColor(310, 200, "ffffff", 0.9) == 0)
+                while (dmae.CmpColor(525, 90, "ffffff", 1) == 0 && dmae.CmpColor(210, 90, "ffffff", 1) == 0 && dmae.CmpColor(310, 200, "ffffff", 1) == 0)
                 {
                     //dm_ret = dmae.FindColor(428, 527, 885, 664, "ffba00" + "|" + Settings.Default.normal, 0.9, 0, out intX, out intY);
 
@@ -3520,7 +3575,12 @@ namespace testdm
             dm_ret1 = 1;
             while (true)
             {
-
+                if (im.pagecheck.ChckBattleDropWindow(dmae.dm))
+                {
+                    SystemInfo.AppState = "战利品";
+                    LeftClick(dmae, 569, 495, 704, 544);
+                    delayTime(0.5);
+                }
                 delayTime(0.1, 1);
 
                 dm_ret1 = im.pagecheck.CheckBattleStart(dmae.dm);
@@ -4478,8 +4538,14 @@ namespace testdm
 
             return 99;
         }
-
-        public void StopBattle(DmAe dmae)//作战中止
+        /// <summary>
+        /// StopBattle
+        /// type = 0 默认 已主页为结束点
+        /// type = 1 则以 返回基地左上角的四个点为结束点 多用于 活动图 如夏活
+        /// </summary>
+        /// <param name="dmae"></param>
+        /// <param name="type"></param>
+        public void StopBattle(DmAe dmae,int type = 0)//作战中止
         {
             SystemInfo.AppState = "中止作战";
 
@@ -4508,6 +4574,7 @@ namespace testdm
                     delayTime(0.1);
                     continue;
                 }
+
 
 
 
@@ -4551,6 +4618,14 @@ namespace testdm
                 if (im.pagecheck.CheckHomePage(dmae.dm) == 0)
                 {
                     break;
+                }
+
+                if(type == 1)
+                {
+                    if (im.pagecheck.CheckActivityBattlePage(dmae.dm) == 0)
+                    {
+                        im.mouse.LeftClick(dmae, 22, 23, 123, 81);
+                    }
                 }
 
 
@@ -4719,7 +4794,7 @@ namespace testdm
         {
             SystemInfo.AppState = "返回主页";
             //2017.1.29重构
-            while(dmae.CmpColor(138, 2, "ffffff", 0.9) ==1 && dmae.CmpColor(1140, 20, "ffffff", 0.9) == 1)
+            while(dmae.CmpColor(136, 2, "ffffff", 0.9) ==1 && dmae.CmpColor(1140, 20, "ffffff", 0.9) == 1)
             {
                 delayTime(1);
             }
@@ -4741,7 +4816,7 @@ namespace testdm
                     delayTime(0.3, 1);
                     continue;
                 }
-                if (dmae.CmpColor(138, 2, "ffffff", 0.9) == 0 && dmae.CmpColor(1140, 20, "ffffff", 0.9) == 0)
+                if (dmae.CmpColor(136, 0, "ffffff", 1) == 0 && dmae.CmpColor(1140, 20, "ffffff", 1) == 0)
                 {
                     LeftClick(dmae, 54, 6, 133, 19);
                 }

@@ -373,10 +373,11 @@ namespace TaskList
 
         private void button14_Click_1(object sender, EventArgs e)
         {
+
             //im.pagecheck.Ver(dmae.dm);
             //im.pagecheck.CheckPointIsEmpty(dmae.dm, 299, 338, 337, 371);
             //im.mouse.CheckBattleSettlementPage(dmae);
-            im.mouse.LeftClick(dmae, 836, 456, 1010, 549);
+            im.mouse.LeftClickHomeToBattle(dmae, "101", -1, 13, -1);
             //im.mouse.MapSet(dmae, 977, 565, 566, 693, 237, 212, 208, 650, "ScreenUp");//x1,y1,x2,y2,x3,y3是地图缩放到最小的监测点x4y4鼠标移动位置
 
             ////右下角白点转圈

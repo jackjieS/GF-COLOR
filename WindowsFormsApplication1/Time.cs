@@ -1678,6 +1678,23 @@ namespace testdm
                 //        SummerE4(dmae, mouse, mainteam, supportteam, tasktype, support,fix, fixmaxpercentage, setmap);
                 //        break;
                 //    }
+                case "DeepDiveE1_3":
+                    {
+                        DeepDiveE1_3(dmae, mouse, ref userBattleInfo);
+                        break;
+                    }
+
+                case "DeepDiveE3_2":
+                    {
+                        DeepDiveE3_2(dmae, mouse, ref userBattleInfo);
+                        break;
+                    }
+                case "DeepDiveE3_3":
+                    {
+                        DeepDiveE3_3(dmae, mouse, ref userBattleInfo);
+                        break;
+                    }
+
 
                 default:
                     break;
@@ -3509,7 +3526,159 @@ namespace testdm
 
         }
 
+        public void DeepDiveE1_3(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
+        {
 
+            im.mouse.LeftClickHomeToBattle(dmae, "101", -1, 13, -1);//101 = E1 13 = 3图
+            mouse.delayTime(1);
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
+
+
+            mouse.delayTime(4);
+            if (userBattleInfo.SetMap == true)
+            {
+                im.mouse.MapSet(dmae, 457, 197, 839, 657, 675, 197, 208, 650, "ScreenUp");
+            }
+
+
+            mouse.delayTime(1);
+            if (mouse.Teamdispose(dmae, 753, 169, 817, 231, userBattleInfo.TaskMianTeam) == -1)//指挥部部署
+            {
+                mouse.BackToHomeFromBattlePageREADY(dmae);
+                userBattleInfo.Team_Serror = true;
+                return;
+            }
+
+
+            mouse.BattleStart(dmae);
+            if (userBattleInfo.ChoiceToSupply == true) { mouse.Support(dmae, 753, 169, 817, 231); }
+            mouse.MoveAndMove(dmae, 753, 169, 817, 231, /*第一个点坐标*/774, 645, 807, 677,/*第二个点坐标*/653, 175, 739, 194/*监测点坐标*/, 0, 0);//第一开始
+            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 457, 197, 839, 657, 675, 197,1);
+            mouse.MoveAndFight(dmae, 774, 645, 807, 677, /*第一个点坐标*/896, 639, 936, 674,/*第二个点坐标*/645, 633, 750, 656/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
+            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 457, 197, 839, 657, 675, 197, 1);
+
+            mouse.RoundEnd2(dmae);
+            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 457, 197, 839, 657, 675, 197, 1);
+            mouse.Teamdispose(dmae, 753, 169, 817, 231, userBattleInfo.TaskSupportTeam1);
+
+            mouse.MoveToAirport(dmae, 896, 644, 936, 672, 898, 454, 938, 489,/**/ 806, 641, 878, 651, /*move坐标*/822, 340,/*点击移动坐标*/802, 349, 881, 382);//第四开始
+            mouse.delayTime(1);
+            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 457, 197, 839, 657, 675, 197, 1);
+            mouse.Evacuate(dmae, 902, 457, 926, 483, ref userBattleInfo);
+
+            mouse.StopBattle(dmae,1);
+
+
+
+
+        }
+
+        public void DeepDiveE3_2(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
+        {
+
+            im.mouse.LeftClickHomeToBattle(dmae, "103", -1, 12, -1);//101 = E1 13 = 3图
+            mouse.delayTime(1);
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
+
+
+            mouse.delayTime(4);
+            if (userBattleInfo.SetMap == true)
+            {
+                im.mouse.MapSet(dmae, 118, 585, 435, 134, 1099, 440, 208, 650, "ScreenUp");
+            }
+
+
+            mouse.delayTime(1);
+            if (mouse.Teamdispose(dmae, 617, 578, 632, 595, userBattleInfo.TaskMianTeam) == -1)//指挥部部署
+            {
+                mouse.BackToHomeFromBattlePageREADY(dmae);
+                userBattleInfo.Team_Serror = true;
+                return;
+            }
+
+            if (mouse.Teamdispose(dmae, 635, 113, 666, 143, userBattleInfo.TaskSupportTeam1) == -1)//指挥部部署
+            {
+                mouse.BackToHomeFromBattlePageREADY(dmae);
+                userBattleInfo.Team_Serror = true;
+                return;
+            }
+
+            mouse.BattleStart(dmae);
+
+            //关掉任务简报
+            mouse.ClosMissionHelp(dmae);
+
+            if (userBattleInfo.ChoiceToSupply == true) { mouse.Support(dmae, 617, 578, 632, 595); }
+            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 118, 585, 435, 134, 1099, 440, 1);
+
+            mouse.MoveAndFight(dmae, 617, 578, 632, 595, /*第一个点坐标*/611, 431, 636, 451,/*第二个点坐标*/568, 575, 605, 584/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
+            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 118, 585, 435, 134, 1099, 440, 1);
+
+            mouse.MoveToAirport(dmae, 615, 431, 635, 455, 617, 577, 631, 595,/**/522, 427, 604, 436, /*move坐标*/588, 367,/*点击移动坐标*/522, 378, 599, 402);//第四开始
+            mouse.delayTime(1);
+            //mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 118, 585, 435, 134, 1099, 440, 1);
+
+            mouse.Evacuate(dmae, 614, 376, 632, 396, ref userBattleInfo);
+            mouse.StopBattle(dmae, 1);
+
+
+
+
+
+        }
+
+        public void DeepDiveE3_3(DmAe dmae, Mouse mouse, ref UserBattleInfo userBattleInfo)
+        {
+
+            im.mouse.LeftClickHomeToBattle(dmae, "103", -1, 13, -1);//101 = E1 13 = 3图
+            mouse.delayTime(1);
+            mouse.ClickFightType(dmae, "normal", ref userBattleInfo);
+            if (userBattleInfo.NeetToDismantleGunOrEquipment == true) return;
+
+
+            mouse.delayTime(4);
+            if (userBattleInfo.SetMap == true)
+            {
+                im.mouse.MapSet(dmae, 407, 349,981, 415, 517, 349, 208, 650, "ScreenLeft");
+            }
+
+
+            mouse.delayTime(1);
+            if (mouse.Teamdispose(dmae, 499, 361, 533, 393, userBattleInfo.TaskMianTeam) == -1)//指挥部部署
+            {
+                mouse.BackToHomeFromBattlePageREADY(dmae);
+                userBattleInfo.Team_Serror = true;
+                return;
+            }
+
+            mouse.BattleStart(dmae);
+
+            //关掉任务简报
+
+
+            if (userBattleInfo.ChoiceToSupply == true) { mouse.Support(dmae, 499, 361, 533, 393); }
+
+            mouse.ScreenLeft(dmae, 297, 549, 470, 671, 300, 407, 349, 981, 415, 517, 349, 1);
+
+            mouse.MoveAndFight(dmae, 499, 361, 533, 393, /*第一个点坐标*/274, 364, 295, 384,/*第二个点坐标*/509, 405, 523, 434/*监测点坐标*/, 0, 1, userBattleInfo, true);//第一开始
+            mouse.ScreenLeft(dmae, 297, 549, 470, 671, 300, 407, 349, 981, 415, 517, 349, 1);
+
+            mouse.Teamdispose(dmae, 499, 361, 533, 393, userBattleInfo.TaskSupportTeam1);
+
+            mouse.MoveToAirport(dmae, 274, 364, 295, 384, 499, 361, 533, 393,/**/137, 357, 196, 377, /*move坐标*/435, 358,/*点击移动坐标*/403, 359, 489, 391);//第四开始
+            mouse.delayTime(1);
+            //mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 118, 585, 435, 134, 1099, 440, 1);
+
+            mouse.Evacuate(dmae, 499, 361, 533, 393, ref userBattleInfo);
+            mouse.StopBattle(dmae, 1);
+
+
+
+
+
+        }
         //public void SummerE4(DmAe dmae, Mouse mouse, string mainteam, string supportteam, int tasktype, bool supply,bool fix,int fixmaxpercentage, bool setmap = false)
         //{
 
