@@ -29,11 +29,15 @@ namespace WindowsFormsApplication1
                     {
                         try
                         {
-                            string temp0 = dm.EnumWindow(0, "QWidgetClassWindow", "Qt5QWindowIcon", 1 + 2);//temp自动找
+                            //QWidgetClassWindow
+                            //Qt5QWindowIcon
+                            //string temp0 = dm.EnumWindow(0, "QWidgetClassWindow", "Qt5QWindowIcon", 1 + 2);//temp自动找
+                            string temp0 = dm.EnumWindow(0, "夜神模拟器", "Qt5QWindowIcon", 1 + 4 + 8 + 16);//temp自动找
+                            temp0 = dm.EnumWindow(Convert.ToInt32(temp0), "ScreenBoardClassWindow", "Qt5QWindowIcon", 1 + 4 + 8 + 16);
+                            temp0 = dm.EnumWindow(Convert.ToInt32(temp0), "QWidgetClassWindow", "Qt5QWindowIcon", 1 + 4 + 8 + 16);
                             if (temp0 != "")
                             {
-                                string[] s = temp0.Split(new char[] { ',' });
-                                BaseData.SystemInfo.GameWindowsHwnd = Int32.Parse(s[1]);
+                                BaseData.SystemInfo.GameWindowsHwnd = Convert.ToInt32(temp0);
                             }
                             return -2;
                         }

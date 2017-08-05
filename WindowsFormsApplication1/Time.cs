@@ -3586,7 +3586,7 @@ namespace testdm
             mouse.delayTime(4);
             if (userBattleInfo.SetMap == true)
             {
-                im.mouse.MapSet(dmae, 118, 585, 435, 134, 1099, 440, 208, 650, "ScreenUp");
+                im.mouse.MapSet(dmae, 118, 588, 968, 105, 270, 135, 208, 650, "ScreenUp");
             }
 
 
@@ -3611,10 +3611,10 @@ namespace testdm
             mouse.ClosMissionHelp(dmae);
 
             if (userBattleInfo.ChoiceToSupply == true) { mouse.Support(dmae, 617, 578, 632, 595); }
-            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 118, 585, 435, 134, 1099, 440, 1);
+            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 118, 588, 968, 105, 270, 135, 1);
 
-            mouse.MoveAndFight(dmae, 617, 578, 632, 595, /*第一个点坐标*/611, 431, 636, 451,/*第二个点坐标*/568, 575, 605, 584/*监测点坐标*/, 0, 0, userBattleInfo, true);//第一开始
-            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 118, 585, 435, 134, 1099, 440, 1);
+            mouse.MoveAndFight(dmae, 617, 578, 632, 595, /*第一个点坐标*/611, 431, 636, 451,/*第二个点坐标*/644, 571, 690, 586/*监测点坐标*/, 0, 0, userBattleInfo, false);//第一开始
+            mouse.ScreenUp(dmae, 297, 549, 470, 671, 300, 118, 588, 968, 105, 270, 135, 1);
 
             mouse.MoveToAirport(dmae, 615, 431, 635, 455, 617, 577, 631, 595,/**/522, 427, 604, 436, /*move坐标*/588, 367,/*点击移动坐标*/522, 378, 599, 402);//第四开始
             mouse.delayTime(1);

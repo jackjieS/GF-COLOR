@@ -2359,8 +2359,11 @@ namespace testdm
             int result = -1;
             object ffffffX1 = -1, ffffffY1 = -1;
             //等待UI加载
-
-            delayTime(2, 1);
+            WindowsFormsApplication1.BaseData.SystemInfo.AppState = "选择战役";
+            while (im.pagecheck.CheckCombatPageReady(dmae.dm))
+            {
+                delayTime(0.1);
+            }
 
             switch (type)
             {
@@ -2502,7 +2505,7 @@ namespace testdm
                     {
                         while (true)
                         {
-                            delayTime(1);
+                            delayTime(0.3);
                             string color0 = dmae.GetColor(500, 105);
                             for (int x = 0; x < 100; x++)
                             {
@@ -2519,7 +2522,7 @@ namespace testdm
 
                         a: while (true)
                         {
-                            delayTime(1);
+                            delayTime(0.3);
                             string color0 = dmae.GetColor(500, 105);
                             bool breakbool = false;
                             for (int x = 0; x < 100; x++)
@@ -2546,7 +2549,7 @@ namespace testdm
 
                         b: while (im.pagecheck.Check2017SummerEventMissionReady(dmae.dm)==false)
                         {
-                            delayTime(1, 1);
+                            delayTime(0.3);
                         }
                         switch (battle)
                         {
@@ -3647,91 +3650,64 @@ namespace testdm
         {
             //return -1表示部署
             WindowsFormsApplication1.BaseData.SystemInfo.AppState = "部署梯队";
-            int count = 0;
-            int count0 = 0;
-
-            //等待界面加在完毕
-            int dm_ret6 = im.pagecheck.CheckBattleMapReady(dmae.dm);
-            while(dm_ret6 ==1)
+            while (true)
             {
-                delayTime(1);
-                dm_ret6 = im.pagecheck.CheckBattleMapReady(dmae.dm);
-
+                delayTime(0.3);
                 //检查突发情况
-                int dm_ret7 = im.pagecheck.CheckErrorWindows(dmae.dm);
-                while (dm_ret7 == 0)
+                if (im.pagecheck.CheckErrorWindows(dmae.dm) == 0)
                 {
-                    delayTime(1);
-                    LeftClick(dmae, 567, 495, 708, 542);
-                    dm_ret7 = im.pagecheck.CheckErrorWindows(dmae.dm);
+                    WriteLog.WriteError("意外错误 error = 1");
+                    LeftClick(dmae, 567, 491, 710, 546);
+                    continue;
                 }
-            }
-            //等待界面加载完毕
-
-            //点击机场或指挥部
-            while (dm_ret6 == 0)
-            {
-                if (x == 1)
+                //等待界面加在完毕
+                while (im.pagecheck.CheckBattleMapReady(dmae.dm) == 1)
                 {
-                    count0 += 1;
-                    if (count0 == 15) { return -1; }
+                    WriteLog.WriteError("等待 ");
+                    break;
                 }
 
-                LeftClick(dmae, x1, y1, x2, y2);
-                delayTime(1);
-                dm_ret6 = im.pagecheck.CheckBattleMapReady(dmae.dm);
-
-
-
-            }
-            delayTime(1);
-
-
-            int dm_ret2 = im.pagecheck.CheckTeamSlectPage(dmae.dm);
-            while (dm_ret2 == 1)
-            {
-                //检查突发情况(我方总部需。。。)
-                int dm_ret7 = im.pagecheck.CheckErrorWindows(dmae.dm);
-                while (dm_ret7 == 0)
+                //开始执行
+                //点击机场或指挥部
+                if (im.pagecheck.CheckBattleMapReady(dmae.dm) == 0)
                 {
-                    delayTime(1);
-                    LeftClick(dmae, 567, 495, 708, 542);
-                    dm_ret7 = im.pagecheck.CheckErrorWindows(dmae.dm);
+                    WriteLog.WriteError("点击机场或指挥部 ");
+                    LeftClick(dmae, x1, y1, x2, y2);
+                    continue;
                 }
-                
-                LeftClick(dmae, x1, y1, x2, y2);
-                delayTime(1);
-                dm_ret2 = im.pagecheck.CheckTeamSlectPage(dmae.dm);
-
-            }
-
-            if(im.time.Team_S(dmae, this, TeamNumber)==false)//选择梯队
-            {
-                //如果选择失败则返回
+                //梯队页面检查
                 while (im.pagecheck.CheckTeamSlectPage(dmae.dm) == 0)
                 {
-                    Team_SeclectClickCancel(dmae);
-                    delayTime(1);
+                    //检查突发情况
+                    if (im.pagecheck.CheckErrorWindows(dmae.dm) == 0)
+                    {
+                        WriteLog.WriteError("意外错误 error = 2 ");
+                        LeftClick(dmae, 567, 491, 710, 546);
+                        break;
+                    }
+                    if (im.time.Team_S(dmae, this, TeamNumber) == false)//选择梯队
+                    {
+                        //如果选择失败则返回
+                        while (im.pagecheck.CheckTeamSlectPage(dmae.dm) == 0)
+                        {
+                            Team_SeclectClickCancel(dmae);
+                        }
+                        return -1;
+                    }
+                    while (im.pagecheck.CheckTeamSlectPage(dmae.dm) == 0)
+                    {
+                        WriteLog.WriteError("点击部署 ");
+                        LeftClick(dmae, 1113, 619, 1228, 656);
+                        delayTime(0.3);
+                    }
+                    return 0;
                 }
-                return -1;
             }
-            delayTime(1);
 
 
-            int dm_ret1 = im.pagecheck.CheckTeamSlectPage(dmae.dm);
-            count = 0;
-            while (dm_ret1 == 0)
-            {
-                if (count == 20)
-                {
-                    MessageBox.Show("部署梯队失败", "少女前线");
-                }
-                count += 1;
-                LeftClick(dmae, 1087, 612, 1244, 659);
-                delayTime(1);
-                dm_ret1 = im.pagecheck.CheckTeamSlectPage(dmae.dm);
-            }
-            return 0;
+
+
+
         }
 
         public int FindTeamSelectLine(DmAe dmae, int x1, int y1, int x2, int y2, int findtype, int cmpcolornumber = 50, double sim = 1)//findtpe=0是横着找，=1是竖着找

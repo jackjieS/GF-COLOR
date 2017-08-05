@@ -332,17 +332,14 @@ namespace PageCheck
 
         public int CheckErrorWindows(CDmSoft dm, int x1 = 558, int y1 = 489, int x2 = 721, int y2 = 489)
         {
-            int dm_ret0 = dm.CmpColor(x1, y1, "ffffff", 0.9);
-            int dm_ret1 = dm.CmpColor(x2, y2, "ffffff", 0.9);
-
-            if (dm_ret0 == 0 && dm_ret1 == 0)
+            for (; x1 <= x2; x1++)
             {
-                return 0;
+                if (dm.CmpColor(x1, y1, "ffffff", 1) == 1)
+                {
+                    return 1;
+                }
             }
-            else
-            {
-                return 1;
-            }
+            return 0;
 
         }
 
@@ -397,6 +394,18 @@ namespace PageCheck
             }
 
 
+        }
+
+        public bool CheckCombatPageReady(CDmSoft dm)
+        {
+            for(int x1= 207,y1 = 612;x1<= 318; x1++)
+            {
+                if (dm.CmpColor(x1, y1, "ffffff", 1) == 1)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public int CheckBuildEquipmentS(CDmSoft dm, int area)
